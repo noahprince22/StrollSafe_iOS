@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 // Lets the time display as 2.00 and not 2
-extension Float {
+extension Double {
     func format(f: String) -> String {
         return NSString(format: "%\(f)f", self) as String
     }
@@ -19,6 +19,7 @@ extension Float {
 class MainViewController: UIViewController {
     // hacked see http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
     static var test: Bool = true
+    static var TIME_TO_LOCKDOWN: Double = 1.5
     
     enum state {
         case START, THUMB, RELEASE,SHAKE
@@ -89,19 +90,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    /* Sets an observer to change progress every time 
-    * the timer is updated 
-    */
-    var timer:Float = 0 /*{
-        didSet {
-            let fractionalProgress = Float(timer) / 200.0
-            let animated = timer != 0
-            
-            progressBar.setProgress(fractionalProgress, animated: animated)
-            progressLabel.text = ("\(timer/100)")
-
-        }
-    }*/
     var passcode: String = ""
         
     @IBAction func thumbDown(sender: UIButton) {
@@ -152,7 +140,6 @@ class MainViewController: UIViewController {
     }
     
     func enterThumbState(){
-        timer = 0
         setThumbVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: true)
@@ -163,7 +150,10 @@ class MainViewController: UIViewController {
         mode = state.THUMB
     }
     
-    func enterReleaseState(){
+    /**
+    Changes the display to reflect that the release state
+    */
+    func enterDisplayReleaseState() {
         setThumbVisibility(true)
         setProgressVisibility(true)
         setShakeVisibility(false,type: true)
@@ -171,40 +161,58 @@ class MainViewController: UIViewController {
         mode = state.RELEASE
         
         progressLabel.text = "0"
-        self.timer = 0
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            for _ in 0..<20 {
-                if (self.mode != state.RELEASE){
-                    break
-                }
-                usleep(2500)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.incrementTimer()
-                })
-            }
-            if (self.mode == state.RELEASE){
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.lockdown()
-                })
-            }
-        })
     }
     
-    func incrementTimer() {
-        self.timer++
-        let fractionalProgress = Float(self.timer) / 20.0
-        let animated = false;
+    /**
+    Dispatches an aynchronous timer that will enter the lockdown state after 2 seconds
+      if the phone is still in the release state
+    */
+    func dispatchLockdownTimer() {
+        let timedActionBuilder = TimedActionBuilder {builder in
+            builder.secondsToRun = MainViewController.TIME_TO_LOCKDOWN
+            builder.recurrentFunction = self.updateProgress
+            builder.breakCondition = { _ in
+                return self.mode != state.RELEASE
+            }
+            builder.exitFunction = { _ in
+                if (self.mode == state.RELEASE){
+                    self.lockdown()
+                }
+            }
+        }
         
-        self.progressBar.setProgress(fractionalProgress, animated: animated)
-        self.progressLabel.text = ("\(2-(self.timer/10)) seconds remaining")
+        TimedAction(builder: timedActionBuilder).run()
     }
     
     func lockdown() {
-        performSegueWithIdentifier("lockdownSegue", sender: nil)
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("lockdownSegue", sender: nil)
+        })
+    }
+    
+    func enterReleaseState(){
+        enterDisplayReleaseState()
+        dispatchLockdownTimer()
+    }
+    
+    /**
+    Updates the progressbar progress with the timeElapsed based on the endTime
+    
+    :param: timeElapsed the time elapsed
+    :param: endTime the time this progress bar ends at
+    */
+    func updateProgress(timeElapsed: Double) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let fractionalProgress = Float(timeElapsed / MainViewController.TIME_TO_LOCKDOWN)
+            let animated = false;
+            
+            self.progressBar.setProgress(fractionalProgress, animated: animated)
+            let progressString = (MainViewController.TIME_TO_LOCKDOWN - timeElapsed).format("0.2")
+            self.progressLabel.text = ("\(progressString) seconds remaining")
+        })
     }
     
     func enterShakeState(){
-        timer = 0
         setThumbVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)

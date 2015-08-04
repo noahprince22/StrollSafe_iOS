@@ -25,11 +25,11 @@ class TimedActionBuilder {
 
 class TimedAction {
     var secondsToRun: Double = 1
-    var recurrentInterval: Double = 0.01
+    var recurrentInterval: Double = 0.00001
     var recurrentFunction: (Double) -> (Void) = { timeElapsed in }
     var exitFunction: (Double) -> (Void) = {timeElapsed in }
     var breakCondition: (Double) -> (Bool) = {timeElapsed in return false}
-    var accelerationRate: Double = 0.02
+    var accelerationRate: Double = 002
     
     var timeElapsed: Double = 0
     var acceleratedIterations = 0

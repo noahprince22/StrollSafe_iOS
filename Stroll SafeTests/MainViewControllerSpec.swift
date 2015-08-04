@@ -11,6 +11,13 @@ import Quick
 import Nimble
 @testable import Stroll_Safe
 
+// Lets the time display as 2.00 and not 2
+extension Double {
+    func format(f: String) -> String {
+        return NSString(format: "%\(f)f", self) as String
+    }
+}
+
 class MainViewControllerSpec: QuickSpec {
     
     override func spec() {
@@ -47,6 +54,26 @@ class MainViewControllerSpec: QuickSpec {
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())
                 expect(viewController.progressBar.hidden).to(beTrue())
+            }
+            
+            it ("exposes the progress bar in release state") {
+                viewController.enterDisplayReleaseState()
+                
+                expect(viewController.thumb.hidden).to(beFalse())
+                expect(viewController.thumbDesc.hidden).to(beFalse())
+                expect(viewController.shake.hidden).to(beTrue())
+                expect(viewController.shakeDesc.hidden).to(beTrue())
+                expect(viewController.progressLabel.hidden).to(beFalse())
+                expect(viewController.progressBar.hidden).to(beFalse())
+            }
+            
+            it ("can update the progress bar in the release state") {
+                let expectedProgress = Stroll_Safe.MainViewController.TIME_TO_LOCKDOWN / 2
+                viewController.updateProgress(expectedProgress)
+                
+                expect(viewController.progressBar.progress).to(beCloseTo(0.5, within: 0.05))
+                let expectedProgressString = expectedProgress.format("0.2")
+                expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
             }
             
             it ("does not lock down immediately when thumb is released") {
