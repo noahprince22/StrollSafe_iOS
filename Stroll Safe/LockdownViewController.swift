@@ -74,6 +74,11 @@ class LockdownViewController: UIViewController {
         }
     }
 
+    /**
+    Updates the status bar with the correct time elapsed
+    
+    :param: timeElapsed the elapsed time
+    */
     func updateProgress(timeElapsed: Double) {
         dispatch_async(dispatch_get_main_queue(), {
             let fractionalProgress = timeElapsed / LockdownViewController.LOCKDOWN_DURATION
@@ -129,10 +134,20 @@ class LockdownViewController: UIViewController {
         })
     }
     
+    /**
+    When someone touches down on the progress bar to accelerate/call quickly
+    
+    :param: sender
+    */
     @IBAction func timerTouchDown(sender: AnyObject) {
         asyncAlertAction.enableAcceleration()
     }
     
+    /**
+    When someone releases the progress bar, stop the acceleration
+    
+    :param: sender
+    */
     @IBAction func timerTouchUp(sender: AnyObject) {
         asyncAlertAction.disableAcceleration()
     }
@@ -141,14 +156,4 @@ class LockdownViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

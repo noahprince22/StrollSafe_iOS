@@ -13,7 +13,6 @@
 		ACDDF2EB1ABD57F60029DF5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDDF2E91ABD57F60029DF5D /* Main.storyboard */; };
 		ACDDF2ED1ABD57F60029DF5D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACDDF2EC1ABD57F60029DF5D /* Images.xcassets */; };
 		ACDDF2F01ABD57F60029DF5D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACDDF2EE1ABD57F60029DF5D /* LaunchScreen.xib */; };
-		ACDDF2FC1ABD57F60029DF5D /* Stroll_SafeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDDF2FB1ABD57F60029DF5D /* Stroll_SafeTests.swift */; };
 		BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0155891AC2094E00BED16A /* CircleProgressView.swift */; };
 		BF2516A01AC368D200024CF6 /* Passcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF25169F1AC368D200024CF6 /* Passcode.swift */; };
 		BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF2516A11AC3927300024CF6 /* PinpadViewController.swift */; };
@@ -134,7 +133,6 @@
 		ACDDF2EF1ABD57F60029DF5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		ACDDF2F51ABD57F60029DF5D /* Stroll SafeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACDDF2FA1ABD57F60029DF5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ACDDF2FB1ABD57F60029DF5D /* Stroll_SafeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroll_SafeTests.swift; sourceTree = "<group>"; };
 		BF0155891AC2094E00BED16A /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		BF25169F1AC368D200024CF6 /* Passcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passcode.swift; sourceTree = "<group>"; };
 		BF2516A11AC3927300024CF6 /* PinpadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinpadViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			children = (
 				FA9E54801B6573A3005267F9 /* View Controllers */,
 				FA9E547F1B65739E005267F9 /* Util */,
-				ACDDF2FB1ABD57F60029DF5D /* Stroll_SafeTests.swift */,
 				ACDDF2F91ABD57F60029DF5D /* Supporting Files */,
 				FAD0D5851B6FF868000B7F1E /* TestUtils.swift */,
 			);
@@ -593,7 +590,6 @@
 				FAD0D5881B700B15000B7F1E /* PasscodeSpec.swift in Sources */,
 				FA9E54871B657676005267F9 /* PinpadViewControllSpec.swift in Sources */,
 				FAD0D5861B6FF868000B7F1E /* TestUtils.swift in Sources */,
-				ACDDF2FC1ABD57F60029DF5D /* Stroll_SafeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
