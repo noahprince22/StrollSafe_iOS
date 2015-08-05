@@ -113,7 +113,7 @@ class LockdownViewController: UIViewController {
             builder.breakCondition = { _ in
                 !self.lock.isLocked()
             }
-            builder.accelerationRate = 0.00002
+            builder.accelerationRate = 0.000004
         }
         self.asyncAlertAction = TimedAction(builder: timedActionBuilder)
         
