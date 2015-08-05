@@ -112,7 +112,12 @@ class LockdownViewController: UIViewController {
     }
     
     func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
-        lock.lock(try! Passcode.get(managedObjectContext))
+        do {
+            lock.lock(try Passcode.get(managedObjectContext))
+        } catch let error as NSError {
+            NSLog(error.localizedDescription)
+            NSLog("Something very bad happened. There was no stored pass when they got to the lockdown view")
+        }
 
         pinpadViewController.setEnteredFunction({(pass: String) -> () in
             self.pinpadViewController.clear();
