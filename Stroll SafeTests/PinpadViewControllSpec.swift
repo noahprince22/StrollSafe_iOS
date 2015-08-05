@@ -38,7 +38,7 @@ class PinpadViewControllerSpec: QuickSpec {
             }
             
             // The following three should cover all number presses
-            describe ("number buttons"){
+            describe ("number buttons") {
                 it ("fills placeholders for numbers") {
                     expect(viewController.first.hidden).to(beTrue())
                     viewController.buttonOne(self)

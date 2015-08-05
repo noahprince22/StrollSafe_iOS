@@ -48,17 +48,7 @@ class LockdownViewController: UIViewController {
     let lock = Lock()
 
     @IBOutlet weak var progressCircle: CircleProgressView!
-    @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var first: UIButton!
-    @IBOutlet weak var second: UIButton!
-    @IBOutlet weak var third: UIButton!
-    @IBOutlet weak var fourth: UIButton!
-    @IBOutlet weak var placeholder1: UIView!
-    @IBOutlet weak var placeholder2: UIView!
-    @IBOutlet weak var placeholder3: UIView!
-    @IBOutlet weak var placeholder4: UIView!
-    @IBOutlet weak var progressLayer: UIView!
-    
+    @IBOutlet weak var progressLabel: UILabel!    
 
     var input = -1
 

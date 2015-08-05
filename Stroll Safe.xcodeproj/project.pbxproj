@@ -30,6 +30,7 @@
 		FA9E548A1B65848F005267F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDDF2E91ABD57F60029DF5D /* Main.storyboard */; };
 		FA9E548D1B6C1D71005267F9 /* MainViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E548C1B6C1D71005267F9 /* MainViewControllerSpec.swift */; };
 		FAA2A1721B7142FD00F3F89C /* TimedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A1711B7142FD00F3F89C /* TimedAction.swift */; };
+		FAA2A18A1B719C2200F3F89C /* LockdownViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA2A1891B719C2200F3F89C /* LockdownViewControllerSpec.swift */; };
 		FAD0D5861B6FF868000B7F1E /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5851B6FF868000B7F1E /* TestUtils.swift */; };
 		FAD0D5881B700B15000B7F1E /* PasscodeSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5871B700B15000B7F1E /* PasscodeSpec.swift */; };
 		FAD0D5941B704884000B7F1E /* TimedActionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */; };
@@ -151,6 +152,7 @@
 		FA9E54861B657676005267F9 /* PinpadViewControllSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinpadViewControllSpec.swift; sourceTree = "<group>"; };
 		FA9E548C1B6C1D71005267F9 /* MainViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewControllerSpec.swift; sourceTree = "<group>"; };
 		FAA2A1711B7142FD00F3F89C /* TimedAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedAction.swift; sourceTree = "<group>"; };
+		FAA2A1891B719C2200F3F89C /* LockdownViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockdownViewControllerSpec.swift; sourceTree = "<group>"; };
 		FAD0D5851B6FF868000B7F1E /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		FAD0D5871B700B15000B7F1E /* PasscodeSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasscodeSpec.swift; sourceTree = "<group>"; };
 		FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimedActionSpec.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			children = (
 				FA9E54861B657676005267F9 /* PinpadViewControllSpec.swift */,
 				FA9E548C1B6C1D71005267F9 /* MainViewControllerSpec.swift */,
+				FAA2A1891B719C2200F3F89C /* LockdownViewControllerSpec.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 			files = (
 				FAD0D5941B704884000B7F1E /* TimedActionSpec.swift in Sources */,
 				FA9E548D1B6C1D71005267F9 /* MainViewControllerSpec.swift in Sources */,
+				FAA2A18A1B719C2200F3F89C /* LockdownViewControllerSpec.swift in Sources */,
 				FAD0D5881B700B15000B7F1E /* PasscodeSpec.swift in Sources */,
 				FA9E54871B657676005267F9 /* PinpadViewControllSpec.swift in Sources */,
 				FAD0D5861B6FF868000B7F1E /* TestUtils.swift in Sources */,
