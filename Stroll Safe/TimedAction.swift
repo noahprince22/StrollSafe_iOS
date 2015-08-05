@@ -29,9 +29,8 @@ class TimedAction {
     var recurrentFunction: (Double) -> (Void) = { timeElapsed in }
     var exitFunction: (Double) -> (Void) = {timeElapsed in }
     var breakCondition: (Double) -> (Bool) = {timeElapsed in return false}
-    var accelerationRate: Double = 002
+    var accelerationRate: Double = 0.02
     
-    var timeElapsed: Double = 0
     var acceleratedIterations = 0
     var accelerated = false
     
@@ -63,12 +62,14 @@ class TimedAction {
     
     func run() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            let start = NSDate()
+            var start = NSDate()
             while((NSDate().timeIntervalSinceDate(start) < self.secondsToRun) && !self.breakCondition(NSDate().timeIntervalSinceDate(start))) {
                 let curTime = NSDate().timeIntervalSinceDate(start)
                 self.recurrentFunction(curTime)
                 
-                self.timeElapsed +=  curTime + ((Double)(self.acceleratedIterations)*self.accelerationRate)
+                let calendar = NSCalendar.currentCalendar()
+                let nanosecondsAcceleratedForward: Int = (Int) (((Double)(self.acceleratedIterations)*self.accelerationRate) * 1000000000)
+                start = calendar.dateByAddingUnit(NSCalendarUnit.Nanosecond, value: -nanosecondsAcceleratedForward, toDate: start, options: [])!
                 
                 if self.accelerated {
                     self.acceleratedIterations++

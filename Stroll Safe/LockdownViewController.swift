@@ -9,7 +9,10 @@
 import UIKit
 import CoreData
 
+
 class LockdownViewController: UIViewController {
+    
+    static let LOCKDOWN_DURATION = 20.0
     
     class Lock {
         var pass: String = ""
@@ -59,12 +62,7 @@ class LockdownViewController: UIViewController {
 
     var input = -1
 
-    var currentIdx = 0;
-    var timer = 0
-    var velocity = 1
-    let acceleration = 3
-    var timerPressed: Bool = false
-    let sleepTime:useconds_t = 10000
+    var asyncAlertAction: TimedAction!
     
     weak var pinpadViewController: PinpadViewController!
     
@@ -75,42 +73,47 @@ class LockdownViewController: UIViewController {
                 self.pinpadViewController = vc
         }
     }
-    
-/*  while (sizeof(array) < 4)
-        listen for button presses
-        chage input accordingly
-        passField.append(input)
-*/
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            while (self.timer < 200) {
-                usleep(self.sleepTime)
-                dispatch_async(dispatch_get_main_queue(), {
-                    self.timer+=self.velocity
-                    let fractionalProgress = Double(self.timer)/200.0
-                    
-                    if (fractionalProgress <= 1){
-                        self.progressCircle.progress = fractionalProgress
-                        self.progressLabel.text = ("\(20-(self.timer/10))")
-                    }
-                })
-            }
+    func updateProgress(timeElapsed: Double) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let fractionalProgress = timeElapsed / LockdownViewController.LOCKDOWN_DURATION
             
-            dispatch_async(dispatch_get_main_queue(), {
-                    self.progressCircle.progress = 1
-                    self.progressLabel.text = ("0")
-            })
-            
-            if self.lock.isLocked() {
-                let url:NSURL = NSURL(string: "tel://2179941016")!
-                UIApplication.sharedApplication().openURL(url)
+            if (fractionalProgress <= 1){
+                self.progressCircle.progress = fractionalProgress
+                
+                let timeRemainingText = (LockdownViewController.LOCKDOWN_DURATION - timeElapsed).format("0.1")
+                self.progressLabel.text = (timeRemainingText)
             }
         })
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let timedActionBuilder = TimedActionBuilder{ builder in
+            builder.secondsToRun = 20.0
+            builder.exitFunction = { _ in
+                if self.lock.isLocked() {
+                    // Set the progress to zero so it's not displaying some fraction
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.progressCircle.progress = 1
+                        self.progressLabel.text = ("0")
+                    })
+                    
+                    let url:NSURL = NSURL(string: "tel://2179941016")!
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            builder.recurrentFunction = self.updateProgress
+            builder.breakCondition = { _ in
+                !self.lock.isLocked()
+            }
+            builder.accelerationRate = 0.00002
+        }
+        self.asyncAlertAction = TimedAction(builder: timedActionBuilder)
         
         setupPinpadViewWithStoredPasscode()
+        asyncAlertAction.run()
     }
     
     func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
@@ -127,26 +130,12 @@ class LockdownViewController: UIViewController {
     }
     
     @IBAction func timerTouchDown(sender: AnyObject) {
-        timerPressed = true
-        
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            for _ in 0..<200 {
-                if (self.timerPressed && self.lock.isLocked()){
-                    self.velocity+=self.acceleration
-                    usleep(self.sleepTime)
-                }
-                else{
-                    break
-                }
-            }
-        })
+        asyncAlertAction.enableAcceleration()
     }
     
     @IBAction func timerTouchUp(sender: AnyObject) {
-        timerPressed = false
-        velocity = 1
+        asyncAlertAction.disableAcceleration()
     }
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

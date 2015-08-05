@@ -49,13 +49,12 @@ public class Passcode: NSManagedObject {
     class func set(passcode: String, managedObjectContext: NSManagedObjectContext) {
         // Store the password
         let newItem = NSEntityDescription.insertNewObjectForEntityForName("Passcode", inManagedObjectContext: managedObjectContext) as! Passcode
+        newItem.passcode = passcode
         do {
             try managedObjectContext.save()
         } catch let error as NSError {
             NSLog("Unresolved error while storing password \(error), \(error.userInfo)")
             abort()
         }
-        
-        newItem.passcode = passcode
     }
 }

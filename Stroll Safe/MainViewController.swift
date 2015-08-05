@@ -18,7 +18,8 @@ extension Double {
 
 class MainViewController: UIViewController {
     // hacked see http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
-    static var test: Bool = true
+    static var test: Bool = false
+    
     static var TIME_TO_LOCKDOWN: Double = 1.5
     
     enum state {

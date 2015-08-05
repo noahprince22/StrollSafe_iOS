@@ -289,11 +289,11 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 <rect key="frame" x="120" y="73" width="80" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-LA-qql">
-                                        <rect key="frame" x="25" y="26" width="30" height="27"/>
+                                        <rect key="frame" x="11" y="11" width="59" height="58"/>
                                         <accessibility key="accessibilityConfiguration" identifier="timeRemaining"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="27" id="hAB-6b-vhB"/>
-                                            <constraint firstAttribute="width" constant="30" id="k8G-Of-wFn"/>
+                                            <constraint firstAttribute="width" constant="59" id="2Dk-22-05P"/>
+                                            <constraint firstAttribute="height" constant="58" id="6Qj-b8-4yn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <nil key="highlightedColor"/>
@@ -316,9 +316,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="3Fz-YB-hLR"/>
-                                    <constraint firstAttribute="centerX" secondItem="eWn-LA-qql" secondAttribute="centerX" id="EhQ-TJ-BhQ"/>
-                                    <constraint firstItem="eWn-LA-qql" firstAttribute="top" secondItem="Y83-4d-8fY" secondAttribute="top" constant="26" id="aKA-A9-LNd"/>
                                     <constraint firstAttribute="height" constant="80" id="c9a-3y-f4E"/>
+                                    <constraint firstItem="eWn-LA-qql" firstAttribute="centerY" secondItem="Y83-4d-8fY" secondAttribute="centerY" id="p6Q-WG-JNs"/>
+                                    <constraint firstItem="eWn-LA-qql" firstAttribute="centerX" secondItem="Y83-4d-8fY" secondAttribute="centerX" id="tfV-cm-7BU"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="trackWidth">
@@ -722,6 +722,6 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Gf1-St-0ga"/>
-        <segue reference="BtO-pi-kDi"/>
+        <segue reference="ddd-sB-b0W"/>
     </inferredMetricsTieBreakers>
 </document>

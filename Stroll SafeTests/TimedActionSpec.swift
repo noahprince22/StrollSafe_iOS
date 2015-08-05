@@ -79,6 +79,25 @@ class TimedActionSpec: QuickSpec {
                 expect(executeTimesCalled).toEventually(beGreaterThan(1), timeout: breakTime)
             }
             
+            it("accelerates when enableAcceleration is called") {
+                let secondsToRun: Double = 10.03
+                let accelerationRate = 0.8
+                
+                var executeTimesCalled = 0
+                let timedActionBuilder = TimedActionBuilder { builder in
+                    builder.secondsToRun = secondsToRun
+                    builder.recurrentFunction = { (timeElapsed: Double) in
+                        executeTimesCalled++
+                    }
+                    builder.accelerationRate = accelerationRate
+                }
+                
+                let action = TimedAction(builder: timedActionBuilder)
+                action.run()
+                action.enableAcceleration()
+                expect(executeTimesCalled).toEventually(beGreaterThan(3), timeout: 1)
+            }
+            
             it("stops accelerating when disableAcceleration is called") {
                 let secondsToRun:Double  = 1
                 let recurrentInterval = 0.001
@@ -105,30 +124,6 @@ class TimedActionSpec: QuickSpec {
                 expect(exitFunctionCalled).to(beFalse())
                 NSThread.sleepForTimeInterval(0.5 + tolerance)
                 expect(exitFunctionCalled).to(beTrue())
-            }
-
-            it("accelerates when enableAcceleration is called") {
-                let secondsToRun: Double = 1.03
-                let recurrentInterval = 0.01
-                let accelerationRate = 0.02
-                
-                var totalTime: Double = 0
-                var executeTimesCalled = 0
-                let timedActionBuilder = TimedActionBuilder { builder in
-                    builder.secondsToRun = secondsToRun
-                    builder.recurrentInterval = recurrentInterval
-                    builder.recurrentFunction = { (timeElapsed: Double) in
-                        expect(timeElapsed).to(beGreaterThanOrEqualTo(totalTime))
-                        totalTime += recurrentInterval+((Double) (executeTimesCalled)*accelerationRate)
-                        executeTimesCalled++
-                    }
-                    builder.accelerationRate = accelerationRate
-                }
-                
-                let action = TimedAction(builder: timedActionBuilder)
-                action.run()
-                action.enableAcceleration()
-                expect(executeTimesCalled).toEventually(beGreaterThan(2), timeout: secondsToRun - 0.5)
             }
         }
     }
