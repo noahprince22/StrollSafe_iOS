@@ -16,9 +16,7 @@ class LockdownViewControllerSpec: QuickSpec {
         describe ("the lockdown view") {
             var viewController: Stroll_Safe.LockdownViewController!
             
-            beforeEach {
-                MainViewController.test = true
-                
+            beforeEach {                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 viewController =
