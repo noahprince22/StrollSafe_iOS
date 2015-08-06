@@ -1,0 +1,123 @@
+
+/* Class = "UIButton"; accessibilityIdentifier = "Fourth"; ObjectID = "3Xd-SQ-9vN"; */
+"3Xd-SQ-9vN.accessibilityIdentifier" = "Fourth";
+
+/* Class = "UIButton"; normalTitle = "*"; ObjectID = "3Xd-SQ-9vN"; */
+"3Xd-SQ-9vN.normalTitle" = "*";
+
+/* Class = "UILabel"; text = "2.00"; ObjectID = "4j7-iG-I5K"; */
+"4j7-iG-I5K.text" = "2.00";
+
+/* Class = "UIButton"; accessibilityIdentifier = "Second"; ObjectID = "6rE-oa-ehj"; */
+"6rE-oa-ehj.accessibilityIdentifier" = "Second";
+
+/* Class = "UIButton"; normalTitle = "*"; ObjectID = "6rE-oa-ehj"; */
+"6rE-oa-ehj.normalTitle" = "*";
+
+/* Class = "UIButton"; normalTitle = "6"; ObjectID = "7HU-Qm-U3D"; */
+"7HU-Qm-U3D.normalTitle" = "6";
+
+/* Class = "UIButton"; normalTitle = "8"; ObjectID = "8d4-rC-m2A"; */
+"8d4-rC-m2A.normalTitle" = "8";
+
+/* Class = "UILabel"; text = "Contacting Police"; ObjectID = "Foe-9y-mV3"; */
+"Foe-9y-mV3.text" = "Contacting Police";
+
+/* Class = "UILabel"; text = "Press and Hold to Arm"; ObjectID = "HpK-ox-49w"; */
+"HpK-ox-49w.text" = "Press and Hold to Arm";
+
+/* Class = "UIButton"; accessibilityIdentifier = "Third"; ObjectID = "JEK-8b-s0e"; */
+"JEK-8b-s0e.accessibilityIdentifier" = "Third";
+
+/* Class = "UIButton"; normalTitle = "*"; ObjectID = "JEK-8b-s0e"; */
+"JEK-8b-s0e.normalTitle" = "*";
+
+/* Class = "UIButton"; normalTitle = "5"; ObjectID = "JvR-Bo-K0P"; */
+"JvR-Bo-K0P.normalTitle" = "5";
+
+/* Class = "UILabel"; text = "Stroll Safe"; ObjectID = "KOv-yq-ZNo"; */
+"KOv-yq-ZNo.text" = "Stroll Safe";
+
+/* Class = "UIButton"; normalTitle = "0"; ObjectID = "N2Q-gI-TmN"; */
+"N2Q-gI-TmN.normalTitle" = "0";
+
+/* Class = "UIButton"; normalTitle = "2"; ObjectID = "T2b-0S-xed"; */
+"T2b-0S-xed.normalTitle" = "2";
+
+/* Class = "UIButton"; accessibilityIdentifier = "clear"; ObjectID = "U8W-HY-hyT"; */
+"U8W-HY-hyT.accessibilityIdentifier" = "clear";
+
+/* Class = "UIButton"; normalTitle = "CLEAR"; ObjectID = "U8W-HY-hyT"; */
+"U8W-HY-hyT.normalTitle" = "CLEAR";
+
+/* Class = "UIView"; accessibilityIdentifier = "circleProgressView"; ObjectID = "Y83-4d-8fY"; */
+"Y83-4d-8fY.accessibilityIdentifier" = "circleProgressView";
+
+/* Class = "UIButton"; accessibilityIdentifier = "shake icon"; ObjectID = "YGA-Gq-kzX"; */
+"YGA-Gq-kzX.accessibilityIdentifier" = "shake icon";
+
+/* Class = "UIButton"; accessibilityIdentifier = "back"; ObjectID = "Zay-4Y-dwF"; */
+"Zay-4Y-dwF.accessibilityIdentifier" = "back";
+
+/* Class = "UIButton"; normalTitle = "BACK"; ObjectID = "Zay-4Y-dwF"; */
+"Zay-4Y-dwF.normalTitle" = "BACK";
+
+/* Class = "UILabel"; text = "Hold Circle to Call Immediately"; ObjectID = "aTe-Qr-oxz"; */
+"aTe-Qr-oxz.text" = "Hold Circle to Call Immediately";
+
+/* Class = "UILabel"; text = "Setting Passcode"; ObjectID = "amY-Mo-hzk"; */
+"amY-Mo-hzk.text" = "Setting Passcode";
+
+/* Class = "UILabel"; text = "Enter Passcode to Disarm"; ObjectID = "dcx-vE-bWb"; */
+"dcx-vE-bWb.text" = "Enter Passcode to Disarm";
+
+/* Class = "UIButton"; normalTitle = "4"; ObjectID = "e1Z-wb-vnQ"; */
+"e1Z-wb-vnQ.normalTitle" = "4";
+
+/* Class = "UILabel"; accessibilityIdentifier = "timeRemaining"; ObjectID = "eWn-LA-qql"; */
+"eWn-LA-qql.accessibilityIdentifier" = "timeRemaining";
+
+/* Class = "UILabel"; text = "0.0"; ObjectID = "eWn-LA-qql"; */
+"eWn-LA-qql.text" = "0.0";
+
+/* Class = "UIButton"; normalTitle = "I Agree, Continue"; ObjectID = "evC-fH-9eH"; */
+"evC-fH-9eH.normalTitle" = "I Agree, Continue";
+
+/* Class = "UILabel"; text = "Enter a passcode"; ObjectID = "gDq-vk-kVj"; */
+"gDq-vk-kVj.text" = "Enter a passcode";
+
+/* Class = "UIButton"; normalTitle = "1"; ObjectID = "h2e-DO-sVP"; */
+"h2e-DO-sVP.normalTitle" = "1";
+
+/* Class = "UIButton"; normalTitle = "7"; ObjectID = "hu1-Xy-C6r"; */
+"hu1-Xy-C6r.normalTitle" = "7";
+
+/* Class = "UIButton"; normalTitle = "*"; ObjectID = "i8N-t9-jbW"; */
+"i8N-t9-jbW.normalTitle" = "*";
+
+/* Class = "UIButton"; normalTitle = "3"; ObjectID = "jtl-xy-ZDZ"; */
+"jtl-xy-ZDZ.normalTitle" = "3";
+
+/* Class = "UILabel"; text = "Slide Thumb and Release to Enter Shake Mode"; ObjectID = "kbx-8F-CS3"; */
+"kbx-8F-CS3.text" = "Slide Thumb and Release to Enter Shake Mode";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit amet, ei mazim solet eligendi sea. Eu nec tota everti mnesarchum, ut dicit ceteros alienum eum, te conceptam adolescens pro. Et vix affert noster aperiri, ex mea utroque consequat. Qui indoctum periculis in. Usu te esse praesent hendrerit, malis urbanitas repudiandae mea cu.\n\nQuando equidem dolorem mel in. Et mea quis impedit. Eu mei meliore mentitum antiopam. His ut nulla diceret instructior. Unum adolescens pro eu.\n\nAt debitis phaedrum vim, ne animal impetus pri, vide inani paulo ex cum. Id duo inani officiis, te cum partem eirmod, pro tation patrioque eu. At eam menandri mediocrem, mei stet affert probatus ex. His ea etiam augue. Nam facer oblique invenire ad, libris animal laboramus id mea.\n\nUtroque atomorum ocurreret duo ut. Pro agam esse et, te movet aliquip sit, cum saperet propriae voluptatibus cu. Duo zril nusquam ei. Pertinacia liberavisse necessitatibus quo at, labore voluptatibus in vis, ex ornatus noluisse vix. Qui altera iuvaret ea, eu his gloriatur constituam. Electram torquatos scripserit ex quo. Eleifend splendide temporibus ei his.\n\nEos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. Ad mei tota vidisse mentitum, ut vix vidisse mediocritatem. In porro graecis est, id aperiri percipitur his, eros quodsi te eos. Ad vel mutat erant cotidieque, enim luptatum urbanitas eu usu. Integre verterem interpretaris an duo, ex invidunt volutpat similique vim, vim suscipit splendide ad."; ObjectID = "p6j-94-mZ7"; */
+"p6j-94-mZ7.text" = "Lorem ipsum dolor sit amet, ei mazim solet eligendi sea. Eu nec tota everti mnesarchum, ut dicit ceteros alienum eum, te conceptam adolescens pro. Et vix affert noster aperiri, ex mea utroque consequat. Qui indoctum periculis in. Usu te esse praesent hendrerit, malis urbanitas repudiandae mea cu.\n\nQuando equidem dolorem mel in. Et mea quis impedit. Eu mei meliore mentitum antiopam. His ut nulla diceret instructior. Unum adolescens pro eu.\n\nAt debitis phaedrum vim, ne animal impetus pri, vide inani paulo ex cum. Id duo inani officiis, te cum partem eirmod, pro tation patrioque eu. At eam menandri mediocrem, mei stet affert probatus ex. His ea etiam augue. Nam facer oblique invenire ad, libris animal laboramus id mea.\n\nUtroque atomorum ocurreret duo ut. Pro agam esse et, te movet aliquip sit, cum saperet propriae voluptatibus cu. Duo zril nusquam ei. Pertinacia liberavisse necessitatibus quo at, labore voluptatibus in vis, ex ornatus noluisse vix. Qui altera iuvaret ea, eu his gloriatur constituam. Electram torquatos scripserit ex quo. Eleifend splendide temporibus ei his.\n\nEos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. Ad mei tota vidisse mentitum, ut vix vidisse mediocritatem. In porro graecis est, id aperiri percipitur his, eros quodsi te eos. Ad vel mutat erant cotidieque, enim luptatum urbanitas eu usu. Integre verterem interpretaris an duo, ex invidunt volutpat similique vim, vim suscipit splendide ad.";
+
+/* Class = "UILabel"; text = "Keeping You Safe on Your Late Night Strolls"; ObjectID = "pa5-dg-QGN"; */
+"pa5-dg-QGN.text" = "Keeping You Safe on Your Late Night Strolls";
+
+/* Class = "UIViewController"; title = "Pinpad"; ObjectID = "sT2-At-Ld4"; */
+"sT2-At-Ld4.title" = "Pinpad";
+
+/* Class = "UIButton"; accessibilityIdentifier = "First"; ObjectID = "t9d-Oh-yy1"; */
+"t9d-Oh-yy1.accessibilityIdentifier" = "First";
+
+/* Class = "UIButton"; normalTitle = "*"; ObjectID = "t9d-Oh-yy1"; */
+"t9d-Oh-yy1.normalTitle" = "*";
+
+/* Class = "UIButton"; accessibilityIdentifier = "speed-dial"; ObjectID = "wQU-3l-7vX"; */
+"wQU-3l-7vX.accessibilityIdentifier" = "speed-dial";
+
+/* Class = "UIButton"; normalTitle = "9"; ObjectID = "xAb-Ai-swq"; */
+"xAb-Ai-swq.normalTitle" = "9";

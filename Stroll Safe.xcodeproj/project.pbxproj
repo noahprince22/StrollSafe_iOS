@@ -21,6 +21,7 @@
 		BFD7C97E1ABE3D8200D973DF /* close_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD7C97B1ABE3D8200D973DF /* close_icon.png */; };
 		BFD7C97F1ABE3D8200D973DF /* finger_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD7C97C1ABE3D8200D973DF /* finger_icon.png */; };
 		BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD7C97D1ABE3D8200D973DF /* shake_icon.png */; };
+		FA430BE61B73D24A00A0FA99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA430BE51B73D24A00A0FA99 /* Localizable.strings */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
@@ -143,6 +144,7 @@
 		BFD7C97B1ABE3D8200D973DF /* close_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = close_icon.png; path = images/close_icon.png; sourceTree = "<group>"; };
 		BFD7C97C1ABE3D8200D973DF /* finger_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finger_icon.png; path = images/finger_icon.png; sourceTree = "<group>"; };
 		BFD7C97D1ABE3D8200D973DF /* shake_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shake_icon.png; path = images/shake_icon.png; sourceTree = "<group>"; };
+		FA430BE51B73D24A00A0FA99 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroll_SafeUITests.swift; sourceTree = "<group>"; };
 		FA59FE5D1B64196300F27162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				ACDDF2EE1ABD57F60029DF5D /* LaunchScreen.xib */,
 				ACDDF2E41ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld */,
 				ACDDF2E01ABD57F50029DF5D /* Supporting Files */,
+				FA430BE51B73D24A00A0FA99 /* Localizable.strings */,
 			);
 			path = "Stroll Safe";
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				ACDDF2EB1ABD57F60029DF5D /* Main.storyboard in Resources */,
 				BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */,
 				ACDDF2F01ABD57F60029DF5D /* LaunchScreen.xib in Resources */,
+				FA430BE61B73D24A00A0FA99 /* Localizable.strings in Resources */,
 				ACDDF2ED1ABD57F60029DF5D /* Images.xcassets in Resources */,
 				BFD7C97E1ABE3D8200D973DF /* close_icon.png in Resources */,
 				BFD7C97F1ABE3D8200D973DF /* finger_icon.png in Resources */,

@@ -57,7 +57,7 @@ class SetPasscodeViewController: UIViewController {
                     self.firstEntered = false
                     self.firstPass = ""
                     
-                    self.subLabel.text = "Enter a passcode"
+                    self.subLabel.text = NSLocalizedString("set_passcode_enter", comment: "")
                     self.pinpadViewController.shake()
                 }
             }else{
@@ -66,7 +66,7 @@ class SetPasscodeViewController: UIViewController {
                 self.firstEntered = true
                 self.firstPass = pass
                 
-                self.subLabel.text = "Re-enter passcode"
+                self.subLabel.text = NSLocalizedString("set_passcode_reenter", comment: "")
             }
         })
     }

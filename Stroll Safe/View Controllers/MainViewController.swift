@@ -135,7 +135,7 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(false, type: true)
-        changeTitle("Stroll Safe", sub: "Keeping You Safe on Your Late Night Strolls")
+        changeTitle(NSLocalizedString("main_title", comment: ""), sub: NSLocalizedString("main_title_sub", comment: ""))
         
         mode = state.START
     }
@@ -144,9 +144,9 @@ class MainViewController: UIViewController {
         setThumbVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: true)
-        changeTitle("Release Mode", sub:"Release Thumb to Contact Police")
+        changeTitle(NSLocalizedString("main_thumb_title", comment: ""), sub: NSLocalizedString("main_thumb_title_sub", comment: ""))
         
-        shakeDesc.text = "Slide Thumb and Release to Enter Shake Mode"
+        shakeDesc.text = NSLocalizedString("main_preshake_desc", comment: "")
         
         mode = state.THUMB
     }
@@ -158,7 +158,7 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(true)
         setShakeVisibility(false,type: true)
-        changeTitle("Thumb Released", sub: "Press and Hold Button to Cancel")
+        changeTitle(NSLocalizedString("main_release_title", comment: ""), sub: NSLocalizedString("main_release_title_sub", comment: ""))
         mode = state.RELEASE
         
         progressLabel.text = "0"
@@ -217,9 +217,9 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)
-        changeTitle("Shake Mode", sub: "Shake Phone to Contact Police")
+        changeTitle(NSLocalizedString("main_shake_title", comment: ""), sub: NSLocalizedString("main_shake_title_sub", comment: ""))
         
-        shakeDesc.text = "Press and Hold to Exit the App"
+        shakeDesc.text = NSLocalizedString("main_shake_desc", comment: "")
         
         mode = state.SHAKE
     }

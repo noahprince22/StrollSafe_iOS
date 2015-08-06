@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Stroll Safe
+
+  Created by Noah Prince on 8/6/15.
+  Copyright © 2015 Stroll Safe. All rights reserved.
+*/
+
+"set_passcode_enter" = "Enter a passcode"
+"set_passcode_reenter" = "Re-enter passcode"
+"main_title" = "Stroll Safe"
+"main_title_sub" = "Keeping You Safe on Your Late Night Strolls"
+"main_thumb_title" = "Release Mode"
+"main_thumb_title_sub" = "Release Thumb to Contact Police"
+"main_preshake_desc" = "Slide Thumb and Release to Enter Shake Mode"
+"main_release_title" = "Thumb Released"
+"main_release_title_sub" = "Press and Hold Button to Cancel"
+"main_shake_title" = "Shake Mode"
+"main_shake_title_sub" = "Shake Phone to Contact Police"
+"main_shake_desc" = "Press and Hold to Exit the App"
+
