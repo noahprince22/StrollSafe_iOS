@@ -30,18 +30,7 @@ class LockdownViewControllerSpec: QuickSpec {
                 viewController.asyncAlertAction.pause()
             }
             
-            describe ("progress bar") {
-                it ("can update the progress bar") {
-                    let expectedProgress = Stroll_Safe.LockdownViewController.LOCKDOWN_DURATION / 2
-                    viewController.updateProgress(expectedProgress)
-                    
-                    expect(viewController.progressCircle.progress).toEventually(beCloseTo(0.5, within: 0.05), timeout: 1)
-                    let expectedProgressString = expectedProgress.format("0.1")
-                    expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
-                }
-            }
-            
-            describe ("pinpad controlls") {
+            describe ("pinpad controll") {
                 class PinpadViewControllerMock: Stroll_Safe.PinpadViewController {
                     var enteredFunction: ((String) throws -> ())!
                     var shaken = false
@@ -85,6 +74,33 @@ class LockdownViewControllerSpec: QuickSpec {
                     expect(viewController.lock.isLocked()).to(beFalse());
                     expect(pinpadViewController.shaken).to(beFalse())
                     expect(pinpadViewController.cleared).to(beTrue())
+                }
+            }
+            
+            // makes sure the provided asynch action functions work as expected
+            describe ("asynchAction") {
+                describe("break condition") {
+                    it ("does not break when the lock is locked") {
+                        viewController.lock.lock("1234")
+                        expect(viewController.asyncAlertAction.breakCondition(1)).to(beFalse())
+                    }
+                    
+                    it ("breaks when the lock is unlocked") {
+                        viewController.lock.lock("1234")
+                        viewController.lock.unlock("1234")
+                        expect(viewController.asyncAlertAction.breakCondition(1)).to(beTrue())
+                    }
+                }
+                
+                describe("recurrent function") {
+                    it ("updates the progress bar") {
+                        let expectedProgress = Stroll_Safe.LockdownViewController.LOCKDOWN_DURATION / 2
+                        viewController.asyncAlertAction.recurrentFunction(expectedProgress)
+                        
+                        expect(viewController.progressCircle.progress).toEventually(beCloseTo(0.5, within: 0.05), timeout: 1)
+                        let expectedProgressString = expectedProgress.format("0.1")
+                        expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
+                    }
                 }
             }
         }
