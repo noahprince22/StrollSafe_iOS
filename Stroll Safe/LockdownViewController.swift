@@ -71,7 +71,7 @@ class LockdownViewController: UIViewController {
     */
     func updateProgress(timeElapsed: Double) {
         dispatch_async(dispatch_get_main_queue(), {
-            let fractionalProgress = timeElapsed / LockdownViewController.LOCKDOWN_DURATION
+            let fractionalProgress:Double = timeElapsed / LockdownViewController.LOCKDOWN_DURATION
             
             if (fractionalProgress <= 1){
                 self.progressCircle.progress = fractionalProgress

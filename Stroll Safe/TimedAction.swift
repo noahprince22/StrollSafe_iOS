@@ -33,6 +33,7 @@ class TimedAction {
     
     var acceleratedIterations = 0
     var accelerated = false
+    var paused = false
     
     init(builder: TimedActionBuilder) {
         if let secondsToRun = builder.secondsToRun {
@@ -61,9 +62,11 @@ class TimedAction {
     }
     
     func run() {
+        paused = false
+        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             var start = NSDate()
-            while((NSDate().timeIntervalSinceDate(start) < self.secondsToRun) && !self.breakCondition(NSDate().timeIntervalSinceDate(start))) {
+            while((NSDate().timeIntervalSinceDate(start) < self.secondsToRun) && !self.breakCondition(NSDate().timeIntervalSinceDate(start)) && !self.paused) {
                 let curTime = NSDate().timeIntervalSinceDate(start)
                 self.recurrentFunction(curTime)
                 
@@ -78,8 +81,10 @@ class TimedAction {
                 NSThread.sleepForTimeInterval(self.recurrentInterval)
             }
             
-            // Return the greater of actual time or acceleration adjusted time
-            self.exitFunction(NSDate().timeIntervalSinceDate(start))
+            if (!self.paused) {
+                // Return the greater of actual time or acceleration adjusted time
+                self.exitFunction(NSDate().timeIntervalSinceDate(start))
+            }
         })
     }
     
@@ -90,5 +95,12 @@ class TimedAction {
     func disableAcceleration() {
         accelerated = false
         acceleratedIterations = 0
+    }
+    
+    /**
+    Suspends the asynch thread
+    */
+    func pause() {
+        paused = true
     }
 }

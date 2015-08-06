@@ -125,6 +125,29 @@ class TimedActionSpec: QuickSpec {
                 NSThread.sleepForTimeInterval(0.5 + tolerance)
                 expect(exitFunctionCalled).to(beTrue())
             }
+            
+            it ("pauses") {
+                let secondsToRun: Double = 0.8
+                let recurrentInterval = 0.005
+                
+                var exitFunctionCalled = false
+                let timedActionBuilder = TimedActionBuilder { builder in
+                    builder.secondsToRun = secondsToRun
+                    builder.recurrentInterval = recurrentInterval
+                    builder.exitFunction = { (timeElapsed: Double) in
+                        exitFunctionCalled = true
+                        expect(timeElapsed).to(beCloseTo(secondsToRun, within: tolerance))
+                    }
+                }
+                
+                let action = TimedAction(builder: timedActionBuilder)
+                action.run()
+                action.pause()
+                NSThread.sleepForTimeInterval(0.8 + tolerance)
+                expect(exitFunctionCalled).to(beFalse())
+                action.run()
+                expect(exitFunctionCalled).toEventually(beTrue(), timeout: secondsToRun + tolerance)
+            }
         }
     }
 }
