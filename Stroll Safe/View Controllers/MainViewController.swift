@@ -279,6 +279,9 @@ class MainViewController: UIViewController {
         
         initializeApp()
         enterStartState()
+        
+        // Don't allow auto screen locking while app is running
+        UIApplication.sharedApplication().idleTimerDisabled = true
     }
 
     override func didReceiveMemoryWarning() {
