@@ -10,6 +10,10 @@ import UIKit
 import CoreData
 
 class SetPasscodeViewController: UIViewController {
+    
+    static var ENTER_TEXT = "Enter a passcode"
+    static var REENTER_TEXT = "Re-enter passcode"
+
     @IBOutlet weak var subLabel: UILabel!
 
     var firstPass = ""
@@ -57,7 +61,7 @@ class SetPasscodeViewController: UIViewController {
                     self.firstEntered = false
                     self.firstPass = ""
                     
-                    self.subLabel.text = "Enter a passcode"
+                    self.subLabel.text = SetPasscodeViewController.ENTER_TEXT
                     self.pinpadViewController.shake()
                 }
             }else{
@@ -66,7 +70,7 @@ class SetPasscodeViewController: UIViewController {
                 self.firstEntered = true
                 self.firstPass = pass
                 
-                self.subLabel.text = "Re-enter passcode"
+                self.subLabel.text = SetPasscodeViewController.REENTER_TEXT
             }
         })
     }

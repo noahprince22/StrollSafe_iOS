@@ -17,6 +17,21 @@ extension Double {
 }
 
 class MainViewController: UIViewController {
+    
+    static var MAIN_TITLE = "Stroll Safe"
+    static var MAIN_TITLE_SUB = "Keeping You Safe on Your Late Night Strolls"
+    
+    static var THUMB_TITLE = "Armed"
+    static var THUMB_TITLE_SUB = "Release Finger to Enter Lockdown"
+    static var THUMB_SHAKE_DESC = "Slide and Release Here to Enter Shake Mode"
+    
+    static var RELEASE_TITLE = "Thumb Released"
+    static var RELEASE_TITLE_SUB = "Press and Hold Button to Cancel"
+    
+    static var SHAKE_TITLE = "Shake Mode"
+    static var SHAKE_TITLE_SUB = "Shake Phone to Enter Lockdown"
+    static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit the App"
+    
     // hacked see http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
     static var test: Bool = true
     
@@ -135,7 +150,7 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(false, type: true)
-        changeTitle("Stroll Safe", sub: "Keeping You Safe on Your Late Night Strolls")
+        changeTitle(MainViewController.MAIN_TITLE, sub: MainViewController.MAIN_TITLE_SUB)
         
         mode = state.START
     }
@@ -144,9 +159,9 @@ class MainViewController: UIViewController {
         setThumbVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: true)
-        changeTitle("Release Mode", sub:"Release Thumb to Contact Police")
+        changeTitle(MainViewController.THUMB_TITLE, sub: MainViewController.THUMB_TITLE_SUB)
         
-        shakeDesc.text = "Slide Thumb and Release to Enter Shake Mode"
+        shakeDesc.text = MainViewController.THUMB_SHAKE_DESC
         
         mode = state.THUMB
     }
@@ -158,7 +173,7 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(true)
         setShakeVisibility(false,type: true)
-        changeTitle("Thumb Released", sub: "Press and Hold Button to Cancel")
+        changeTitle(MainViewController.RELEASE_TITLE, sub: MainViewController.RELEASE_TITLE_SUB)
         mode = state.RELEASE
         
         progressLabel.text = "0"
@@ -217,10 +232,9 @@ class MainViewController: UIViewController {
         setThumbVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)
-        changeTitle("Shake Mode", sub: "Shake Phone to Contact Police")
+        changeTitle(MainViewController.SHAKE_TITLE, sub: MainViewController.SHAKE_TITLE_SUB)
         
-        shakeDesc.text = "Press and Hold to Exit the App"
-        
+        shakeDesc.text = MainViewController.SHAKE_SHAKE_DESC
         mode = state.SHAKE
     }
     
