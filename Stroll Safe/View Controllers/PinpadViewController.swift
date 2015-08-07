@@ -10,15 +10,15 @@ import UIKit
 
 class PinpadViewController: UIViewController {
 
-    @IBOutlet weak var first: UIButton!
-    @IBOutlet weak var second: UIButton!
-    @IBOutlet weak var third: UIButton!
-    @IBOutlet weak var fourth: UIButton!
+    @IBOutlet weak var first: UIImageView!
+    @IBOutlet weak var second: UIImageView!
+    @IBOutlet weak var third: UIImageView!
+    @IBOutlet weak var fourth: UIImageView!
     
-    @IBOutlet weak var placeholder1: UIView!
-    @IBOutlet weak var placeholder2: UIView!
-    @IBOutlet weak var placeholder3: UIView!
-    @IBOutlet weak var placeholder4: UIView!
+    @IBOutlet weak var placeholder1: UIImageView!
+    @IBOutlet weak var placeholder2: UIImageView!
+    @IBOutlet weak var placeholder3: UIImageView!
+    @IBOutlet weak var placeholder4: UIImageView!
     
     var correctPass = [Double](count: 4, repeatedValue: 2.0)
     var passField = [Double](count: 4, repeatedValue: 0.0)

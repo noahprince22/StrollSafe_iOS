@@ -3,7 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Terms View Controller-->
@@ -31,7 +31,7 @@
                                     <action selector="acceptTerms:" destination="bWi-6g-m7W" eventType="touchUpInside" id="I7B-iA-sCH"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-94-mZ7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-94-mZ7">
                                 <rect key="frame" x="16" y="28" width="288" height="482"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -81,12 +81,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upq-3U-inV">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="upq-3U-inV">
                                 <rect key="frame" x="16" y="185" width="288" height="363"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="upq-3U-inV" secondAttribute="height" multiplier="96:121" id="4Ty-BL-Cik"/>
-                                    <constraint firstAttribute="width" secondItem="upq-3U-inV" secondAttribute="height" multiplier="96:121" id="e9R-JG-yNi"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="sT2-At-Ld4" kind="embed" identifier="setPassEmbedPinpad" id="BtO-pi-kDi"/>
                                 </connections>
@@ -111,13 +107,18 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="upq-3U-inV" secondAttribute="trailing" constant="-4" id="429-n0-ck5"/>
                             <constraint firstAttribute="centerX" secondItem="gDq-vk-kVj" secondAttribute="centerX" id="5Pc-ax-d4o"/>
                             <constraint firstAttribute="centerX" secondItem="amY-Mo-hzk" secondAttribute="centerX" id="6By-zp-xR9"/>
                             <constraint firstItem="amY-Mo-hzk" firstAttribute="top" secondItem="ZWk-fU-65G" secondAttribute="top" constant="20" id="8rj-Pn-kuB"/>
+                            <constraint firstItem="upq-3U-inV" firstAttribute="top" secondItem="gDq-vk-kVj" secondAttribute="bottom" constant="121" id="CEC-g9-FRc"/>
                             <constraint firstItem="gDq-vk-kVj" firstAttribute="top" secondItem="ZWk-fU-65G" secondAttribute="top" constant="43" id="Fy7-kP-4cw"/>
-                            <constraint firstAttribute="centerX" secondItem="upq-3U-inV" secondAttribute="centerX" id="M1z-7n-rdc"/>
+                            <constraint firstItem="upq-3U-inV" firstAttribute="leading" secondItem="ZWk-fU-65G" secondAttribute="leadingMargin" constant="-4" id="Ksd-CE-ifj"/>
                             <constraint firstItem="gDq-vk-kVj" firstAttribute="centerX" secondItem="amY-Mo-hzk" secondAttribute="centerX" id="Qw0-zV-ag9"/>
-                            <constraint firstItem="upq-3U-inV" firstAttribute="top" secondItem="ZWk-fU-65G" secondAttribute="top" constant="185" id="avr-U7-gCa"/>
+                            <constraint firstItem="gUM-GT-cVr" firstAttribute="top" secondItem="upq-3U-inV" secondAttribute="bottom" constant="20" id="TMB-pA-jgr"/>
+                            <constraint firstItem="upq-3U-inV" firstAttribute="leading" secondItem="ZWk-fU-65G" secondAttribute="leadingMargin" constant="-4" id="ejn-tK-od7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="upq-3U-inV" secondAttribute="trailing" constant="-4" id="g9p-pC-aef"/>
+                            <constraint firstItem="upq-3U-inV" firstAttribute="centerX" secondItem="ZWk-fU-65G" secondAttribute="centerX" id="mfo-Lv-QKH"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -352,11 +353,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ud0-bo-PFM">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ud0-bo-PFM">
                                 <rect key="frame" x="16" y="190" width="288" height="363"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ud0-bo-PFM" secondAttribute="height" multiplier="96:121" id="xfd-wH-nDM"/>
-                                </constraints>
                                 <connections>
                                     <segue destination="sT2-At-Ld4" kind="embed" identifier="lockdownEmbedPinpad" id="ddd-sB-b0W"/>
                                 </connections>
@@ -364,11 +362,13 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ud0-bo-PFM" firstAttribute="top" secondItem="AXr-dZ-oqk" secondAttribute="top" constant="190" id="8X0-3c-Vh7"/>
+                            <constraint firstItem="ud0-bo-PFM" firstAttribute="top" secondItem="aTe-Qr-oxz" secondAttribute="bottom" constant="8" id="4hl-PT-vf5"/>
                             <constraint firstItem="dcx-vE-bWb" firstAttribute="top" secondItem="AXr-dZ-oqk" secondAttribute="top" constant="44" id="GXV-mF-fD4"/>
                             <constraint firstItem="aTe-Qr-oxz" firstAttribute="top" secondItem="AXr-dZ-oqk" secondAttribute="top" constant="161" id="GhN-Wd-ZzD"/>
-                            <constraint firstAttribute="centerX" secondItem="ud0-bo-PFM" secondAttribute="centerX" id="T8l-xg-WLj"/>
+                            <constraint firstItem="ud0-bo-PFM" firstAttribute="leading" secondItem="AXr-dZ-oqk" secondAttribute="leadingMargin" constant="-4" id="Out-ZL-rlQ"/>
+                            <constraint firstItem="3eU-ma-6fG" firstAttribute="top" secondItem="ud0-bo-PFM" secondAttribute="bottom" constant="15" id="UPq-Sb-Khq"/>
                             <constraint firstItem="Y83-4d-8fY" firstAttribute="top" secondItem="AXr-dZ-oqk" secondAttribute="top" constant="73" id="Uc8-KE-dbX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ud0-bo-PFM" secondAttribute="trailing" constant="-4" id="ZKM-KF-LdN"/>
                             <constraint firstAttribute="centerX" secondItem="aTe-Qr-oxz" secondAttribute="centerX" id="fRo-qE-RgG"/>
                             <constraint firstItem="Foe-9y-mV3" firstAttribute="top" secondItem="AXr-dZ-oqk" secondAttribute="top" constant="20" id="jmb-uc-mXb"/>
                             <constraint firstAttribute="centerX" secondItem="Y83-4d-8fY" secondAttribute="centerX" id="xpu-zS-h4S"/>
@@ -399,93 +399,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="288" height="363"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDe-lN-GGl">
-                                <rect key="frame" x="16" y="20" width="40" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9d-Oh-yy1">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="First"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="*">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="t9d-Oh-yy1" secondAttribute="trailing" id="0G9-XB-kPV"/>
-                                    <constraint firstItem="t9d-Oh-yy1" firstAttribute="top" secondItem="CDe-lN-GGl" secondAttribute="top" id="5Bp-9i-EzW"/>
-                                    <constraint firstAttribute="height" constant="40" id="5t4-3m-OZu"/>
-                                    <constraint firstAttribute="bottom" secondItem="t9d-Oh-yy1" secondAttribute="bottom" id="6nG-EL-MBR"/>
-                                    <constraint firstAttribute="width" constant="40" id="8eW-ZA-4aH"/>
-                                    <constraint firstItem="t9d-Oh-yy1" firstAttribute="leading" secondItem="CDe-lN-GGl" secondAttribute="leading" id="yLK-UW-fDw"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qCf-FJ-2vw">
-                                <rect key="frame" x="162" y="20" width="40" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEK-8b-s0e">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="Third"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="*">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="RFv-LE-Dpx"/>
-                                    <constraint firstAttribute="width" constant="40" id="bpW-lN-Dda"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXZ-S4-sEt">
-                                <rect key="frame" x="232" y="20" width="40" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Xd-SQ-9vN">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="Fourth"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="*">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="pSx-5d-rCl"/>
-                                    <constraint firstAttribute="width" constant="40" id="sLI-op-XVe"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5Z-0i-OoO">
-                                <rect key="frame" x="89" y="20" width="40" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rE-oa-ehj">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="Second"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <state key="normal" title="*">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Qk7-hn-odO"/>
-                                    <constraint firstAttribute="width" constant="40" id="a61-Md-Tzm"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2e-DO-sVP">
-                                <rect key="frame" x="1" y="81" width="96" height="60"/>
+                                <rect key="frame" x="8" y="82" width="88.5" height="62.5"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="6xE-gy-SG1"/>
-                                    <constraint firstAttribute="width" constant="96" id="fbu-ae-0Kc"/>
-                                </constraints>
                                 <state key="normal" title="1">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -495,11 +411,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-0S-xed">
-                                <rect key="frame" x="96" y="81" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="0we-fd-kfm"/>
-                                    <constraint firstAttribute="height" constant="60" id="Rcn-7c-ifv"/>
-                                </constraints>
+                                <rect key="frame" x="100.5" y="82" width="88" height="62.5"/>
                                 <state key="normal" title="2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -509,11 +421,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtl-xy-ZDZ">
-                                <rect key="frame" x="192" y="81" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="fJm-Df-vw0"/>
-                                    <constraint firstAttribute="height" constant="60" id="xJN-rK-3gE"/>
-                                </constraints>
+                                <rect key="frame" x="193.5" y="82" width="88.5" height="62.5"/>
                                 <state key="normal" title="3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -523,11 +431,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvR-Bo-K0P">
-                                <rect key="frame" x="96" y="148" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="S3l-Ah-xRY"/>
-                                    <constraint firstAttribute="width" constant="96" id="bqy-5x-YLu"/>
-                                </constraints>
+                                <rect key="frame" x="100.5" y="152.5" width="88" height="62.5"/>
                                 <state key="normal" title="5">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -537,11 +441,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1Z-wb-vnQ">
-                                <rect key="frame" x="0.0" y="148" width="97" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="5TA-MH-9RE"/>
-                                    <constraint firstAttribute="height" constant="60" id="KBv-lB-Cc6"/>
-                                </constraints>
+                                <rect key="frame" x="10" y="152.5" width="88.5" height="62.5"/>
                                 <state key="normal" title="4">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -550,27 +450,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonFour:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="z0M-7a-dz7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-Qm-U3D">
-                                <rect key="frame" x="192" y="148" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="PbF-AV-chd"/>
-                                    <constraint firstAttribute="height" constant="60" id="cCw-pn-AQd"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="kFL-F0-d88"/>
-                                </constraints>
-                                <state key="normal" title="6">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="buttonSix:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="fPe-a1-t59"/>
-                                    <action selector="buttonSix:" destination="sT2-At-Ld4" eventType="touchUpInside" id="kkA-M6-csx"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu1-Xy-C6r">
-                                <rect key="frame" x="1" y="216" width="97" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="Lkq-aH-UNZ"/>
-                                    <constraint firstAttribute="height" constant="60" id="TJh-za-7gQ"/>
-                                </constraints>
+                                <rect key="frame" x="10" y="222" width="88.5" height="62.5"/>
                                 <state key="normal" title="7">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -580,11 +461,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d4-rC-m2A">
-                                <rect key="frame" x="96" y="216" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Fv0-bh-w2E"/>
-                                    <constraint firstAttribute="width" constant="96" id="FxA-d3-EcI"/>
-                                </constraints>
+                                <rect key="frame" x="100.5" y="222" width="88" height="62.5"/>
                                 <state key="normal" title="8">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -594,11 +471,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-Ai-swq">
-                                <rect key="frame" x="192" y="216" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Ph5-dP-DIY"/>
-                                    <constraint firstAttribute="width" constant="96" id="vaf-nR-YXa"/>
-                                </constraints>
+                                <rect key="frame" x="190.5" y="222" width="88.5" height="62.5"/>
                                 <state key="normal" title="9">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -608,11 +481,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-gI-TmN">
-                                <rect key="frame" x="96" y="284" width="96" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="XhT-Xe-smX"/>
-                                    <constraint firstAttribute="height" constant="60" id="ija-tN-5K6"/>
-                                </constraints>
+                                <rect key="frame" x="97.5" y="292.5" width="88" height="62.5"/>
                                 <state key="normal" title="0">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -622,12 +491,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-4Y-dwF">
-                                <rect key="frame" x="192" y="284" width="96" height="59"/>
+                                <rect key="frame" x="187.5" y="292.5" width="88.5" height="62.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="back" label=""/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="dgN-e6-dEo"/>
-                                    <constraint firstAttribute="width" constant="96" id="r9h-Sk-u5s"/>
-                                </constraints>
                                 <state key="normal" title="BACK">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -636,20 +501,19 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonBack:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="a6O-KI-v6E"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8N-t9-jbW">
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="*">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-Qm-U3D">
+                                <rect key="frame" x="190.5" y="152.5" width="88.5" height="62.5"/>
+                                <state key="normal" title="6">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="buttonSix:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="fPe-a1-t59"/>
+                                    <action selector="buttonSix:" destination="sT2-At-Ld4" eventType="touchUpInside" id="kkA-M6-csx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-HY-hyT">
-                                <rect key="frame" x="1" y="284" width="96" height="59"/>
+                                <rect key="frame" x="8" y="292.5" width="88.5" height="62.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="clear"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="96" id="6Ou-1w-c7Z"/>
-                                    <constraint firstAttribute="height" constant="59" id="fgy-1N-kJc"/>
-                                </constraints>
                                 <state key="normal" title="CLEAR">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -658,74 +522,185 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonClear:" destination="sT2-At-Ld4" eventType="touchUpInside" id="jAt-aO-A0t"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pBk-5b-CHN">
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8b4-xi-re8"/>
+                                    <constraint firstAttribute="width" constant="40" id="aWY-gS-6Rf"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mit-jt-BVE">
+                                <rect key="frame" x="90" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="DxI-CQ-5vc"/>
+                                    <constraint firstAttribute="width" constant="40" id="a3b-wP-aHq"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ps0-KP-NSA">
+                                <rect key="frame" x="160" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="pDN-Z6-kLK"/>
+                                    <constraint firstAttribute="width" constant="40" id="q2V-kU-TiW"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="FOa-os-V4a">
+                                <rect key="frame" x="20" y="20" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="First"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="8Nr-EO-j7u"/>
+                                    <constraint firstAttribute="height" constant="40" id="Hvw-0x-Okv"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="NsQ-l6-HSt">
+                                <rect key="frame" x="160" y="20" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Third"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="UYE-4Y-xmZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="ciV-mP-ql8"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="3T6-Z5-fnm">
+                                <rect key="frame" x="90" y="20" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Second"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Noq-58-HQT"/>
+                                    <constraint firstAttribute="width" constant="40" id="zqV-tb-Sgg"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="LZX-SW-1xA">
+                                <rect key="frame" x="228" y="20" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="MrZ-2t-5YP"/>
+                                    <constraint firstAttribute="height" constant="40" id="xr9-PH-XSC"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="MgQ-d5-sNS">
+                                <rect key="frame" x="228" y="20" width="40" height="40"/>
+                                <accessibility key="accessibilityConfiguration" label="Fourth"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="mtS-vj-Xcf"/>
+                                    <constraint firstAttribute="height" constant="40" id="zeI-Sa-zJu"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="qCf-FJ-2vw" secondAttribute="centerX" constant="-38" id="4gZ-d2-yoo"/>
-                            <constraint firstAttribute="bottom" secondItem="hu1-Xy-C6r" secondAttribute="bottom" constant="87" id="62b-1M-ypr"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="trailing" secondItem="CDe-lN-GGl" secondAttribute="trailing" constant="146" id="7rb-xY-jDk"/>
-                            <constraint firstAttribute="centerX" secondItem="N2Q-gI-TmN" secondAttribute="centerX" id="8lo-XR-9Aq"/>
-                            <constraint firstAttribute="bottom" secondItem="CDe-lN-GGl" secondAttribute="bottom" constant="303" id="Arr-AI-dAA"/>
-                            <constraint firstAttribute="bottom" secondItem="JvR-Bo-K0P" secondAttribute="bottom" constant="155" id="Duk-wH-MPZ"/>
-                            <constraint firstAttribute="bottom" secondItem="U8W-HY-hyT" secondAttribute="bottom" constant="20" id="Efw-CC-z8t"/>
-                            <constraint firstAttribute="bottom" secondItem="VXZ-S4-sEt" secondAttribute="bottom" constant="303" id="HEd-EA-Qnd"/>
-                            <constraint firstAttribute="bottom" secondItem="7HU-Qm-U3D" secondAttribute="bottom" constant="155" id="Lbg-qG-U7v"/>
-                            <constraint firstAttribute="bottom" secondItem="8d4-rC-m2A" secondAttribute="bottom" constant="87" id="MH0-92-N3H"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="trailing" secondItem="VXZ-S4-sEt" secondAttribute="trailing" constant="-70" id="NMd-p5-Nre"/>
-                            <constraint firstAttribute="bottom" secondItem="h2e-DO-sVP" secondAttribute="bottom" constant="222" id="PDL-qQ-3Ha"/>
-                            <constraint firstAttribute="bottom" secondItem="e1Z-wb-vnQ" secondAttribute="bottom" constant="155" id="Q9N-LV-cDg"/>
-                            <constraint firstAttribute="centerX" secondItem="Zay-4Y-dwF" secondAttribute="centerX" constant="-96" id="Qh7-3M-n7C"/>
-                            <constraint firstAttribute="centerX" secondItem="CDe-lN-GGl" secondAttribute="centerX" constant="108" id="R9l-ya-wWW"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="trailing" secondItem="e5Z-0i-OoO" secondAttribute="trailing" constant="73" id="Sn1-tk-P6P"/>
-                            <constraint firstAttribute="bottom" secondItem="T2b-0S-xed" secondAttribute="bottom" constant="222" id="Tfk-Tu-xaQ"/>
-                            <constraint firstAttribute="centerX" secondItem="hu1-Xy-C6r" secondAttribute="centerX" constant="94.5" id="U77-rK-M96"/>
-                            <constraint firstAttribute="centerX" secondItem="VXZ-S4-sEt" secondAttribute="centerX" constant="-108" id="WlK-xR-042"/>
-                            <constraint firstAttribute="centerX" secondItem="jtl-xy-ZDZ" secondAttribute="centerX" constant="-96" id="XCf-hp-XqC"/>
-                            <constraint firstAttribute="centerX" secondItem="JvR-Bo-K0P" secondAttribute="centerX" id="YXl-Kd-46r"/>
-                            <constraint firstAttribute="bottom" secondItem="jtl-xy-ZDZ" secondAttribute="bottom" constant="222" id="ZhZ-Ag-VdM"/>
-                            <constraint firstAttribute="bottom" secondItem="qCf-FJ-2vw" secondAttribute="bottom" constant="303" id="brG-6X-RM2"/>
-                            <constraint firstAttribute="bottom" secondItem="Zay-4Y-dwF" secondAttribute="bottom" constant="20" id="cax-wF-Nhv"/>
-                            <constraint firstAttribute="centerX" secondItem="T2b-0S-xed" secondAttribute="centerX" id="e4O-E4-WcF"/>
-                            <constraint firstAttribute="centerX" secondItem="xAb-Ai-swq" secondAttribute="centerX" constant="-96" id="eAg-H9-fcO"/>
-                            <constraint firstAttribute="centerX" secondItem="e1Z-wb-vnQ" secondAttribute="centerX" constant="95.5" id="fqw-dP-VWc"/>
-                            <constraint firstAttribute="centerX" secondItem="e5Z-0i-OoO" secondAttribute="centerX" constant="35" id="hc4-3U-1Cc"/>
-                            <constraint firstAttribute="centerX" secondItem="8d4-rC-m2A" secondAttribute="centerX" id="iUs-Dw-oEY"/>
-                            <constraint firstAttribute="centerX" secondItem="U8W-HY-hyT" secondAttribute="centerX" constant="95" id="jp5-tB-neM"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="leading" secondItem="e5Z-0i-OoO" secondAttribute="leading" constant="73" id="kTy-6m-PjW"/>
-                            <constraint firstAttribute="bottom" secondItem="e5Z-0i-OoO" secondAttribute="bottom" constant="303" id="nXv-G0-jWr"/>
-                            <constraint firstAttribute="centerX" secondItem="h2e-DO-sVP" secondAttribute="centerX" constant="95" id="nwx-o5-QIX"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="leading" secondItem="VXZ-S4-sEt" secondAttribute="leading" constant="-70" id="tQc-3O-a4h"/>
-                            <constraint firstAttribute="bottom" secondItem="N2Q-gI-TmN" secondAttribute="bottom" constant="19" id="tXI-KC-U7z"/>
-                            <constraint firstAttribute="bottom" secondItem="xAb-Ai-swq" secondAttribute="bottom" constant="87" id="wx7-Um-xnd"/>
-                            <constraint firstAttribute="centerX" secondItem="7HU-Qm-U3D" secondAttribute="centerX" constant="-96" id="xIL-pn-6eX"/>
-                            <constraint firstItem="qCf-FJ-2vw" firstAttribute="leading" secondItem="CDe-lN-GGl" secondAttribute="leading" constant="146" id="yZN-zo-zHz"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="top" secondItem="T2b-0S-xed" secondAttribute="bottom" constant="8" id="16i-33-GTj"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="top" secondItem="jtl-xy-ZDZ" secondAttribute="bottom" constant="8" id="1xE-4Q-fsF"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="top" secondItem="xAb-Ai-swq" secondAttribute="bottom" constant="8" id="24d-vi-AeK"/>
+                            <constraint firstItem="LZX-SW-1xA" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="104" id="3ut-wb-mXk"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="top" secondItem="jtl-xy-ZDZ" secondAttribute="bottom" constant="8" id="4KM-GT-FFC"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="6cO-N2-RO2"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="7FA-ww-ED3"/>
+                            <constraint firstItem="ps0-KP-NSA" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="7no-N3-fzj"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="top" secondItem="8d4-rC-m2A" secondAttribute="bottom" constant="8" id="7oc-AR-NPY"/>
+                            <constraint firstItem="pBk-5b-CHN" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="-104" id="8CM-ir-jgi"/>
+                            <constraint firstItem="jtl-xy-ZDZ" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="8f5-YQ-jvR"/>
+                            <constraint firstItem="T2b-0S-xed" firstAttribute="leading" secondItem="h2e-DO-sVP" secondAttribute="trailing" constant="4" id="9qC-PT-vgF"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="top" secondItem="7HU-Qm-U3D" secondAttribute="bottom" constant="7" id="B9j-OU-sy4"/>
+                            <constraint firstItem="FOa-os-V4a" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="Dbd-yB-eur"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="top" secondItem="xAb-Ai-swq" secondAttribute="bottom" constant="8" id="Dd7-TQ-RQF"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="leading" secondItem="6fL-Bh-0cy" secondAttribute="leadingMargin" constant="-6" id="E2L-hv-eug"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="top" secondItem="jtl-xy-ZDZ" secondAttribute="bottom" constant="8" id="E88-SC-yXm"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="EAG-vI-iTq"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="top" secondItem="h2e-DO-sVP" secondAttribute="bottom" constant="8" id="FBn-JO-XuU"/>
+                            <constraint firstItem="3T6-Z5-fnm" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="FXa-PO-Qd6"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="HHC-fh-zqm"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="leading" secondItem="6fL-Bh-0cy" secondAttribute="leadingMargin" constant="-6" id="I4b-tr-Xqe"/>
+                            <constraint firstItem="yaw-3x-Upx" firstAttribute="top" secondItem="U8W-HY-hyT" secondAttribute="bottom" constant="8" id="IW3-1b-Phx"/>
+                            <constraint firstItem="T2b-0S-xed" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="MMY-6t-YJi"/>
+                            <constraint firstItem="T2b-0S-xed" firstAttribute="top" secondItem="3T6-Z5-fnm" secondAttribute="bottom" constant="22" id="NH1-6Y-Jrl"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="NIL-Oh-mw4"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="O5N-Zd-uPg"/>
+                            <constraint firstItem="yaw-3x-Upx" firstAttribute="top" secondItem="N2Q-gI-TmN" secondAttribute="bottom" constant="8" id="OMy-Tv-gxI"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="top" secondItem="8d4-rC-m2A" secondAttribute="bottom" constant="8" id="Oqr-Pe-H4E"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="Ow5-wh-wSK"/>
+                            <constraint firstItem="Mit-jt-BVE" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="-34" id="R8S-0j-fhn"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="top" secondItem="h2e-DO-sVP" secondAttribute="bottom" constant="8" id="RK6-NH-MkZ"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="top" secondItem="hu1-Xy-C6r" secondAttribute="bottom" constant="8" id="Rau-1g-ZOd"/>
+                            <constraint firstItem="LZX-SW-1xA" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="SBy-EJ-jXg"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="TbH-76-Ogf"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="top" secondItem="hu1-Xy-C6r" secondAttribute="bottom" constant="8" id="UB7-ab-Trv"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="VN4-tR-myO"/>
+                            <constraint firstItem="MgQ-d5-sNS" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="104" id="VVH-Cj-7z6"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="WKu-LZ-00D"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="top" secondItem="e1Z-wb-vnQ" secondAttribute="bottom" constant="7" id="WXO-6E-Hud"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="leading" secondItem="6fL-Bh-0cy" secondAttribute="leadingMargin" constant="-8" id="WZX-bE-cwF"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="top" secondItem="T2b-0S-xed" secondAttribute="bottom" constant="8" id="X4W-9I-9Xc"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="Xny-nc-fio"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="top" secondItem="e1Z-wb-vnQ" secondAttribute="bottom" constant="7" id="Z4E-18-eiD"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="top" secondItem="h2e-DO-sVP" secondAttribute="bottom" constant="8" id="ZMN-ja-NnC"/>
+                            <constraint firstItem="e1Z-wb-vnQ" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="ZuU-wL-er7"/>
+                            <constraint firstItem="7HU-Qm-U3D" firstAttribute="leading" secondItem="JvR-Bo-K0P" secondAttribute="trailing" constant="2" id="b4E-zV-PhV"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="top" secondItem="8d4-rC-m2A" secondAttribute="bottom" constant="8" id="b8d-TW-abQ"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="bEO-pJ-0J6"/>
+                            <constraint firstItem="NsQ-l6-HSt" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="cCK-Qb-x0B"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="top" secondItem="T2b-0S-xed" secondAttribute="bottom" constant="8" id="csn-UY-dAu"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="top" secondItem="JvR-Bo-K0P" secondAttribute="bottom" constant="7" id="cv6-cM-bMM"/>
+                            <constraint firstItem="yaw-3x-Upx" firstAttribute="top" secondItem="Zay-4Y-dwF" secondAttribute="bottom" constant="8" id="d1Y-4b-ZJs"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="leading" secondItem="N2Q-gI-TmN" secondAttribute="trailing" constant="2" id="d9H-oM-ff7"/>
+                            <constraint firstItem="U8W-HY-hyT" firstAttribute="top" secondItem="hu1-Xy-C6r" secondAttribute="bottom" constant="8" id="dEa-yY-fEw"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="leading" secondItem="hu1-Xy-C6r" secondAttribute="trailing" constant="2" id="dMd-lr-s7C"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="jtl-xy-ZDZ" secondAttribute="trailing" constant="-10" id="dch-cE-l4d"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="e4w-os-It7"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="leading" secondItem="8d4-rC-m2A" secondAttribute="trailing" constant="2" id="faR-rm-Xqa"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="top" secondItem="JvR-Bo-K0P" secondAttribute="bottom" constant="7" id="fzf-IZ-dSq"/>
+                            <constraint firstItem="MgQ-d5-sNS" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="gPE-1H-Xp6"/>
+                            <constraint firstItem="ps0-KP-NSA" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="36" id="gVG-aN-iZd"/>
+                            <constraint firstItem="NsQ-l6-HSt" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="36" id="hHf-Yz-PyB"/>
+                            <constraint firstItem="jtl-xy-ZDZ" firstAttribute="leading" secondItem="T2b-0S-xed" secondAttribute="trailing" constant="5" id="in7-Bx-aoq"/>
+                            <constraint firstItem="8d4-rC-m2A" firstAttribute="top" secondItem="JvR-Bo-K0P" secondAttribute="bottom" constant="7" id="jMl-yJ-xkR"/>
+                            <constraint firstItem="Mit-jt-BVE" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="jZe-Cd-DBX"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="leading" secondItem="e1Z-wb-vnQ" secondAttribute="trailing" constant="2" id="lPv-Fe-hRc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="7HU-Qm-U3D" secondAttribute="trailing" constant="-7" id="mun-kz-n9o"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="top" secondItem="7HU-Qm-U3D" secondAttribute="bottom" constant="7" id="mw7-KK-ZWN"/>
+                            <constraint firstItem="FOa-os-V4a" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="-104" id="n51-Ea-7G5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Zay-4Y-dwF" secondAttribute="trailing" constant="-4" id="oit-2E-r13"/>
+                            <constraint firstItem="T2b-0S-xed" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="p6p-I9-PIe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xAb-Ai-swq" secondAttribute="trailing" constant="-7" id="pND-Vi-Qga"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="top" secondItem="xAb-Ai-swq" secondAttribute="bottom" constant="8" id="pVE-6v-UQi"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="q3w-18-CxW"/>
+                            <constraint firstItem="xAb-Ai-swq" firstAttribute="top" secondItem="7HU-Qm-U3D" secondAttribute="bottom" constant="7" id="qEh-X2-ITi"/>
+                            <constraint firstItem="h2e-DO-sVP" firstAttribute="top" secondItem="3T6-Z5-fnm" secondAttribute="bottom" constant="22" id="qee-8R-Rbu"/>
+                            <constraint firstItem="3T6-Z5-fnm" firstAttribute="centerX" secondItem="6fL-Bh-0cy" secondAttribute="centerX" constant="-34" id="sbK-qz-6fk"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="sh9-Ij-tQe"/>
+                            <constraint firstItem="jtl-xy-ZDZ" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="uJM-u3-ObU"/>
+                            <constraint firstItem="N2Q-gI-TmN" firstAttribute="leading" secondItem="U8W-HY-hyT" secondAttribute="trailing" constant="1" id="w46-Yj-K47"/>
+                            <constraint firstItem="JvR-Bo-K0P" firstAttribute="height" secondItem="h2e-DO-sVP" secondAttribute="height" id="waT-Po-EFL"/>
+                            <constraint firstItem="jtl-xy-ZDZ" firstAttribute="top" secondItem="MgQ-d5-sNS" secondAttribute="bottom" constant="22" id="xQq-UH-bBx"/>
+                            <constraint firstItem="h2e-DO-sVP" firstAttribute="leading" secondItem="6fL-Bh-0cy" secondAttribute="leadingMargin" constant="-8" id="xks-3z-wsn"/>
+                            <constraint firstItem="pBk-5b-CHN" firstAttribute="top" secondItem="j3f-8Q-PmN" secondAttribute="bottom" constant="20" id="xvR-PP-s1I"/>
+                            <constraint firstItem="Zay-4Y-dwF" firstAttribute="width" secondItem="h2e-DO-sVP" secondAttribute="width" id="z54-Nq-im6"/>
+                            <constraint firstItem="hu1-Xy-C6r" firstAttribute="top" secondItem="e1Z-wb-vnQ" secondAttribute="bottom" constant="7" id="zdQ-To-SZc"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
                     <keyCommands/>
                     <connections>
-                        <outlet property="first" destination="t9d-Oh-yy1" id="1mb-0M-CDm"/>
-                        <outlet property="fourth" destination="3Xd-SQ-9vN" id="hHK-uR-J37"/>
-                        <outlet property="placeholder1" destination="CDe-lN-GGl" id="5A0-Ov-qss"/>
-                        <outlet property="placeholder2" destination="e5Z-0i-OoO" id="Fl7-K1-2xl"/>
-                        <outlet property="placeholder3" destination="qCf-FJ-2vw" id="5Ji-oX-ku0"/>
-                        <outlet property="placeholder4" destination="VXZ-S4-sEt" id="FPp-yr-kho"/>
-                        <outlet property="second" destination="6rE-oa-ehj" id="enS-je-KIk"/>
-                        <outlet property="third" destination="JEK-8b-s0e" id="jiq-Cs-6JH"/>
+                        <outlet property="first" destination="FOa-os-V4a" id="uB7-aY-WQX"/>
+                        <outlet property="fourth" destination="MgQ-d5-sNS" id="b9G-G4-cUu"/>
+                        <outlet property="placeholder1" destination="pBk-5b-CHN" id="7rz-G9-EfR"/>
+                        <outlet property="placeholder2" destination="Mit-jt-BVE" id="cbT-O8-Tc6"/>
+                        <outlet property="placeholder3" destination="ps0-KP-NSA" id="TK3-xB-46p"/>
+                        <outlet property="placeholder4" destination="LZX-SW-1xA" id="VXX-cw-5Ka"/>
+                        <outlet property="second" destination="3T6-Z5-fnm" id="GfS-Zp-nzH"/>
+                        <outlet property="third" destination="NsQ-l6-HSt" id="Rqj-xr-fFN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoN-kV-gK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="307" y="850.5"/>
+            <point key="canvasLocation" x="351" y="884.5"/>
         </scene>
     </scenes>
     <resources>
+        <image name="filler.png" width="63" height="63"/>
         <image name="finger_icon.png" width="100" height="100"/>
+        <image name="placeholder.png" width="63" height="63"/>
         <image name="progressImage" width="250" height="250"/>
         <image name="shake_icon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p6v-z3-XDB"/>
-        <segue reference="BtO-pi-kDi"/>
+        <segue reference="ddd-sB-b0W"/>
+        <segue reference="Gf1-St-0ga"/>
     </inferredMetricsTieBreakers>
 </document>

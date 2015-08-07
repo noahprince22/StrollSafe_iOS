@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import MessageUI
 
 // Lets the time display as 2.00 and not 2
 extension Double {
@@ -30,8 +31,8 @@ class MainViewController: UIViewController {
     
     static var SHAKE_TITLE = "Shake Mode"
     static var SHAKE_TITLE_SUB = "Shake Phone to Enter Lockdown"
-    static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit the App"
-    
+    static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
+
     // hacked see http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
     static var test: Bool = true
     
@@ -229,7 +230,7 @@ class MainViewController: UIViewController {
     }
     
     func enterShakeState(){
-        setThumbVisibility(true)
+        setThumbVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)
         changeTitle(MainViewController.SHAKE_TITLE, sub: MainViewController.SHAKE_TITLE_SUB)

@@ -67,6 +67,17 @@ class MainViewControllerSpec: QuickSpec {
                 expect(viewController.progressBar.hidden).to(beFalse())
             }
             
+            it ("exposes the exit button in shake state") {
+                viewController.enterShakeState()
+                
+                expect(viewController.thumb.hidden).to(beTrue())
+                expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.shake.hidden).to(beFalse())
+                expect(viewController.shakeDesc.hidden).to(beFalse())
+                expect(viewController.progressLabel.hidden).to(beTrue())
+                expect(viewController.progressBar.hidden).to(beTrue())
+            }
+            
             it ("can update the progress bar in the release state") {
                 let expectedProgress = Stroll_Safe.MainViewController.TIME_TO_LOCKDOWN / 2
                 viewController.updateProgress(expectedProgress)

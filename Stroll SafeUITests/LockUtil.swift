@@ -54,7 +54,7 @@ class LockUtil {
     }
     
     private func currentPlaceholderFilled() -> Bool {
-        return app.buttons[currentFocused].hittable
+        return app.images[currentFocused].hittable
     }
     
     private func nextFocused() {
