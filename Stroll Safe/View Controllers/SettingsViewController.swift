@@ -1,20 +1,18 @@
 //
-//  SettingsTableViewController.swift
+//  SettingsViewController.swift
 //  Stroll Safe
 //
-//  Created by Lynda Prince on 8/10/15.
+//  Created by Noah Prince on 8/10/15.
 //  Copyright © 2015 Stroll Safe. All rights reserved.
 //
 
 import UIKit
 
-class SettingsTableViewController: UITableViewController {
+class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UIApplication.sharedApplication().statusBarHidden = true
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,13 +28,24 @@ class SettingsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
 
-        return 7
+        switch section {
+        case 0:
+            return 2
+        case 1:
+            return 2
+        case 2:
+            return 2
+        case 3:
+            return 1
+        default:
+            return 0
+        }
     }
 
     /*

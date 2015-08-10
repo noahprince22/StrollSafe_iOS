@@ -20,11 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // TODO check global variable for password
-        // if password exists, continue to app
-        // else, ask for password and store (hashed?) in variable
-        // then go to pre-touch mode
-        
+        //application.statusBarHidden = true
         
         return true
     }

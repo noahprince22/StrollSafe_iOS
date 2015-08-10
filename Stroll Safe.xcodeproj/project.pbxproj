@@ -23,7 +23,7 @@
 		BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BFD7C97D1ABE3D8200D973DF /* shake_icon.png */; };
 		EC4317F484EC0F39A5FFEFB7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96E087458326E70C02E0FD7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03783A1B7839FE000083E0 /* Configuration.swift */; };
-		FA0378401B7937F5000083E0 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03783F1B7937F5000083E0 /* SettingsTableViewController.swift */; };
+		FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03783F1B7937F5000083E0 /* SettingsViewController.swift */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
 		FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
@@ -166,7 +166,7 @@
 		BFD7C97C1ABE3D8200D973DF /* finger_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finger_icon.png; path = images/finger_icon.png; sourceTree = "<group>"; };
 		BFD7C97D1ABE3D8200D973DF /* shake_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shake_icon.png; path = images/shake_icon.png; sourceTree = "<group>"; };
 		FA03783A1B7839FE000083E0 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
-		FA03783F1B7937F5000083E0 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = "View Controllers/SettingsTableViewController.swift"; sourceTree = "<group>"; };
+		FA03783F1B7937F5000083E0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationsUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -412,7 +412,7 @@
 				ACDDF2E71ABD57F60029DF5D /* MainViewController.swift */,
 				BF477D411ABE782D005D76E8 /* LockdownViewController.swift */,
 				BF2516A11AC3927300024CF6 /* PinpadViewController.swift */,
-				FA03783F1B7937F5000083E0 /* SettingsTableViewController.swift */,
+				FA03783F1B7937F5000083E0 /* SettingsViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -747,7 +747,7 @@
 				ACDDF2E61ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld in Sources */,
 				FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */,
 				FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */,
-				FA0378401B7937F5000083E0 /* SettingsTableViewController.swift in Sources */,
+				FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */,
 				ACDDF2E31ABD57F60029DF5D /* AppDelegate.swift in Sources */,
 				BF2516A61AC3A4C600024CF6 /* SetPasscodeViewController.swift in Sources */,
 				BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */,
