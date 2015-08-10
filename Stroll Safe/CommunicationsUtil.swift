@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let MESSAGE_URL = "http://9737875b.ngrok.io/message"
+    static let MESSAGE_URL = "https://9737875b.ngrok.io/message"
     
     /**
     Sends an sms using twilio by requesting to my twilio server ruby app
@@ -18,13 +18,15 @@ class CommunicationUtil {
     :param: recipient the recipient phone number
     :param: body      the body of the text to send
     */
-    func sendSms(recipient: String, body: String) {
-        let request = Alamofire.request(.POST, CommunicationUtil.MESSAGE_URL, parameters: ["to": recipient, "body": body])
-        request.validate()
-        request.response { request, response, data, error in
-            print(request)
-            print(response)
-            print(error)
+    func sendSms(recipients: [String], body: String) {
+        for recipient in recipients {
+            let request = Alamofire.request(.POST, CommunicationUtil.MESSAGE_URL, parameters: ["to": recipient, "body": body])
+            request.validate()
+            request.response { request, response, data, error in
+                print(request)
+                print(response)
+                print(error)
+            }
         }
     }
     

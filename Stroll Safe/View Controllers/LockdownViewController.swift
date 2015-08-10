@@ -12,7 +12,10 @@ import Alamofire
 
 class LockdownViewController: UIViewController {
 
-    static let LOCKDOWN_DURATION = 20.0
+    var lockdownDuration: Double!
+    var smsRecipients: [String]!
+    var callRecipient: String!
+    var smsBody: String!
     
     class Lock {
         var pass: String = ""
@@ -71,12 +74,12 @@ class LockdownViewController: UIViewController {
     */
     func updateProgress(timeElapsed: Double) {
         dispatch_async(dispatch_get_main_queue(), {
-            let fractionalProgress:Double = timeElapsed / LockdownViewController.LOCKDOWN_DURATION
+            let fractionalProgress:Double = timeElapsed / self.lockdownDuration
             
             if (fractionalProgress <= 1){
                 self.progressCircle.progress = fractionalProgress
                 
-                let timeRemainingText = (LockdownViewController.LOCKDOWN_DURATION - timeElapsed).format("0.1")
+                let timeRemainingText = (self.lockdownDuration - timeElapsed).format("0.1")
                 self.progressLabel.text = (timeRemainingText)
             }
         })
@@ -84,14 +87,48 @@ class LockdownViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
         setupPinpadViewWithStoredPasscode()
-        buildAsyncAlertAction()
-        runAsyncAlertAction()
+        self.asyncAlertAction = buildAsyncAlertAction()
+        asyncAlertAction.run()
     }
     
-    func buildAsyncAlertAction(communicationUtil: CommunicationUtil = CommunicationUtil()) {
+    
+    /**
+    Configures this view controller with the stored configuration
+    
+    :param: configurationContext (optional) the managed object context to get the configuration
+    */
+    func configure(configurationContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
+        do {
+            let conf = try Configuration.get(configurationContext)
+            self.lockdownDuration = conf.lockdown_duration as? Double
+            // Take comma separated values to array of numbers
+            self.smsRecipients = conf.sms_recipients!.characters.split {$0 == ","}.map { String($0) }
+            self.callRecipient = conf.call_recipient!
+            self.smsBody = conf.sms_body!
+        } catch let error as NSError {
+            print("An error occurred while loading the configuration in the MainViewController, using fallback values")
+            print(error.localizedDescription)
+            
+            self.lockdownDuration = 20
+            
+            self.smsRecipients = ["8675309"]
+            self.callRecipient = "8675309"
+            self.smsBody = "This is an alert from StrollSafe"
+        }
+    }
+    
+    /**
+    Builds the timed action that will eventually contact the emergency contacts
+    
+    :param: communicationUtil a utility to contact emergency contacts
+    
+    :returns: the timed action
+    */
+    func buildAsyncAlertAction(communicationUtil: CommunicationUtil = CommunicationUtil()) -> TimedAction {
         let timedActionBuilder = TimedActionBuilder{ builder in
-            builder.secondsToRun = 20.0
+            builder.secondsToRun = self.lockdownDuration
             builder.exitFunction = { _ in
                 if self.lock.isLocked() {
                     // Set the progress to zero so it's not displaying some fraction
@@ -100,9 +137,8 @@ class LockdownViewController: UIViewController {
                         self.progressLabel.text = ("0")
                     })
                     
-                    //communicationUtil.sendSms("3017515134", body: "fuck")
-                    
-                    
+                    communicationUtil.sendSms(self.smsRecipients, body: self.smsBody)
+                    communicationUtil.sendCall(self.callRecipient)
                 }
             }
             builder.recurrentFunction = self.updateProgress
@@ -111,11 +147,7 @@ class LockdownViewController: UIViewController {
             }
             builder.accelerationRate = 0.000004
         }
-        self.asyncAlertAction = TimedAction(builder: timedActionBuilder)
-    }
-    
-    func runAsyncAlertAction() {
-        asyncAlertAction.run()
+        return TimedAction(builder: timedActionBuilder)
     }
     
     func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {

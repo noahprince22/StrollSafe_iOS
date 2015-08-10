@@ -34,6 +34,7 @@ class ConfigurationSpec: QuickSpec {
                 let release_duration = 2
                 let sms_recipients = "2222222222,2222222222"
                 let call_recipient = "1234567890"
+                let sms_body = "body"
                 
                 let conf = TestUtils().getNewConfigurationItem(managedObjectContext)
                 conf.passcode = passcode
@@ -41,6 +42,7 @@ class ConfigurationSpec: QuickSpec {
                 conf.release_duration = release_duration
                 conf.sms_recipients = sms_recipients
                 conf.call_recipient = call_recipient
+                conf.sms_body = sms_body
                 try! managedObjectContext.save()
                 
                 let storedConf = try! Configuration.get(managedObjectContext)
@@ -49,6 +51,7 @@ class ConfigurationSpec: QuickSpec {
                 expect(storedConf.release_duration).to(equal(release_duration))
                 expect(storedConf.sms_recipients).to(equal(sms_recipients))
                 expect(storedConf.call_recipient).to(equal(call_recipient))
+                expect(storedConf.sms_body).to(equal(sms_body))
             }
             
             it ("has default values for every core application need, except passcode") {
@@ -60,6 +63,7 @@ class ConfigurationSpec: QuickSpec {
                 expect(storedConf.release_duration).toNot(beNil())
                 expect(storedConf.sms_recipients).toNot(beNil())
                 expect(storedConf.call_recipient).toNot(beNil())
+                expect(storedConf.sms_body).toNot(beNil())
             }
         }
     }

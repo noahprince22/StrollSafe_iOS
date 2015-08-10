@@ -5,9 +5,10 @@
         <attribute name="lockdown_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="20" syncable="YES"/>
         <attribute name="passcode" attributeType="String" syncable="YES"/>
         <attribute name="release_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="1.5" syncable="YES"/>
+        <attribute name="sms_body" optional="YES" attributeType="String" defaultValueString="This is an alert from StrollSafe" syncable="YES"/>
         <attribute name="sms_recipients" optional="YES" attributeType="String" defaultValueString="3017515134" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Configuration" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Configuration" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

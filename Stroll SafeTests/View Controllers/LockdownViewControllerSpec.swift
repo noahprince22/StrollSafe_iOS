@@ -77,27 +77,107 @@ class LockdownViewControllerSpec: QuickSpec {
             
             // makes sure the provided asynch action functions work as expected
             describe ("asynchAction") {
+                var conf: Stroll_Safe.Configuration!
+                let lockdownDuration: Double = 10
+                var action: TimedAction!
+                
+                let smsRecipient1 = "1234567890"
+                let smsRecipient2 = "2222222222"
+                let smsRecipients = "\(smsRecipient1),\(smsRecipient2)"
+                let callRecipient = "8888888888"
+                let smsBody = "body"
+                let passcode = "1234"
+                
+                class CommunicationUtilMock: Stroll_Safe.CommunicationUtil {
+                    var smsRecipients: [String]!
+                    var callRecipient: String!
+                    var smsBody: String!
+                    
+                    override func sendSms(recipients: [String], body: String) {
+                        smsRecipients = recipients
+                        smsBody = body
+                    }
+                    
+                    override func sendCall(recipient: String) {
+                        callRecipient = recipient
+                    }
+                }
+                
+                var communicationUtilMock: CommunicationUtilMock!
+                
+                beforeEach {
+                    communicationUtilMock = CommunicationUtilMock()
+                    
+                    let moc = TestUtils().setUpInMemoryManagedObjectContext()
+                    conf = TestUtils().getNewConfigurationItem(moc)
+                    conf.passcode = passcode
+                    conf.sms_body = smsBody
+                    conf.call_recipient = callRecipient
+                    conf.sms_recipients = smsRecipients
+                    conf.lockdown_duration = lockdownDuration
+                    try! moc.save()
+                    
+                    viewController.configure(moc)
+                    viewController.lock.lock(passcode)
+                    action = viewController.buildAsyncAlertAction(communicationUtilMock)
+                }
+                
                 describe("break condition") {
                     it ("does not break when the lock is locked") {
-                        viewController.lock.lock("1234")
-                        expect(viewController.asyncAlertAction.breakCondition(1)).to(beFalse())
+                        viewController.lock.lock(passcode)
+                        expect(action.breakCondition(1)).to(beFalse())
                     }
                     
                     it ("breaks when the lock is unlocked") {
-                        viewController.lock.lock("1234")
-                        viewController.lock.unlock("1234")
-                        expect(viewController.asyncAlertAction.breakCondition(1)).to(beTrue())
+                        viewController.lock.lock(passcode)
+                        viewController.lock.unlock(passcode)
+                        expect(action.breakCondition(1)).to(beTrue())
                     }
                 }
                 
                 describe("recurrent function") {
                     it ("updates the progress bar") {
-                        let expectedProgress = Stroll_Safe.LockdownViewController.LOCKDOWN_DURATION / 2
-                        viewController.asyncAlertAction.recurrentFunction(expectedProgress)
+                        let expectedProgress = viewController.lockdownDuration / 2
+                        action.recurrentFunction(expectedProgress)
                         
                         expect(viewController.progressCircle.progress).toEventually(beCloseTo(0.5, within: 0.05), timeout: 1)
                         let expectedProgressString = expectedProgress.format("0.1")
                         expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
+                    }
+                }
+                
+                it ("sets seconds to run to the configured lockdown duration") {
+                    expect(action.secondsToRun).to(equal(lockdownDuration))
+                }
+                
+                describe ("exit function") {
+                    describe ("while locked") {
+                        beforeEach {
+                            action.exitFunction(viewController.lockdownDuration)
+                        }
+                        
+                        it ("calls the configured contacts") {
+                            expect(communicationUtilMock.callRecipient).to(equal(callRecipient))
+                        }
+                        
+                        it ("sms messages the configured contacts with the configured body") {
+                            expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient1))
+                            expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
+                            expect(communicationUtilMock.smsBody).to(equal(smsBody))
+                        }
+                    }
+                    
+                    describe ("while unlocked") {
+                        beforeEach {
+                            viewController.lock.unlock(passcode)
+                            action.exitFunction(viewController.lockdownDuration)
+                        }
+                        
+                        it ("does not call or text") {
+                            expect(communicationUtilMock.smsBody).to(beNil())
+                            expect(communicationUtilMock.smsRecipients).to(beNil())
+                            expect(communicationUtilMock.callRecipient).to(beNil())
+                        }
                     }
                 }
             }
