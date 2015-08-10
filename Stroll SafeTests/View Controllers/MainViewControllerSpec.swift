@@ -78,15 +78,6 @@ class MainViewControllerSpec: QuickSpec {
                 expect(viewController.progressBar.hidden).to(beTrue())
             }
             
-            it ("can update the progress bar in the release state") {
-                let expectedProgress = Stroll_Safe.MainViewController.TIME_TO_LOCKDOWN / 2
-                viewController.updateProgress(expectedProgress)
-                
-                expect(viewController.progressBar.progress).to(beCloseTo(0.5, within: 0.05))
-                let expectedProgressString = expectedProgress.format("0.2")
-                expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
-            }
-            
             it ("does not lock down immediately when thumb is released") {
                 viewController.thumbUpInside(UIButton())
                 viewController.thumbDown(UIButton())
@@ -97,6 +88,46 @@ class MainViewControllerSpec: QuickSpec {
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())
                 expect(viewController.progressBar.hidden).to(beTrue())
+            }
+            
+            describe("lockdown timer") {
+                var action: TimedAction!
+                var conf: Stroll_Safe.Configuration!
+                let releaseDuration: Double = 1
+                
+                beforeEach {
+                    let moc = TestUtils().setUpInMemoryManagedObjectContext()
+                    conf = TestUtils().getNewConfigurationItem(moc)
+                    conf.passcode = "1234"
+                    conf.release_duration = releaseDuration
+                    try! moc.save()
+                    
+                    viewController.enterDisplayReleaseState()
+                    viewController.configure(moc)
+                    action = viewController.dispatchLockdownTimer()
+                    
+                    // We don't want this action actually doing anything, just want to check some values
+                    action.pause()
+                }
+                
+                it ("sets the correct value for the release duration") {
+                    expect(action.secondsToRun).to(equal(releaseDuration))
+                }
+                
+                it ("breaks only when in release mode") {
+                    expect(action.breakCondition(0.0)).to(beFalse())
+                    viewController.enterThumbState()
+                    expect(action.breakCondition(0)).to(beTrue())
+                }
+                
+                it ("updates the progress bar in the release state on recurrent function") {
+                    let expectedProgress = action.secondsToRun / 2
+                    action.recurrentFunction(expectedProgress)
+                    
+                    expect(viewController.progressBar.progress).to(beCloseTo(0.5, within: 0.05))
+                    let expectedProgressString = expectedProgress.format("0.2")
+                    expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
+                }
             }
         }
     }

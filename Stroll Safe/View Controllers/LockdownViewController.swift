@@ -8,10 +8,10 @@
 
 import UIKit
 import CoreData
-
+import Alamofire
 
 class LockdownViewController: UIViewController {
-    
+
     static let LOCKDOWN_DURATION = 20.0
     
     class Lock {
@@ -84,7 +84,12 @@ class LockdownViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupPinpadViewWithStoredPasscode()
+        buildAsyncAlertAction()
+        runAsyncAlertAction()
+    }
+    
+    func buildAsyncAlertAction(communicationUtil: CommunicationUtil = CommunicationUtil()) {
         let timedActionBuilder = TimedActionBuilder{ builder in
             builder.secondsToRun = 20.0
             builder.exitFunction = { _ in
@@ -95,8 +100,9 @@ class LockdownViewController: UIViewController {
                         self.progressLabel.text = ("0")
                     })
                     
-                    let url:NSURL = NSURL(string: "tel://2179941016")!
-                    UIApplication.sharedApplication().openURL(url)
+                    //communicationUtil.sendSms("3017515134", body: "fuck")
+                    
+                    
                 }
             }
             builder.recurrentFunction = self.updateProgress
@@ -106,14 +112,15 @@ class LockdownViewController: UIViewController {
             builder.accelerationRate = 0.000004
         }
         self.asyncAlertAction = TimedAction(builder: timedActionBuilder)
-        
-        setupPinpadViewWithStoredPasscode()
+    }
+    
+    func runAsyncAlertAction() {
         asyncAlertAction.run()
     }
     
     func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
         do {
-            lock.lock(try Passcode.get(managedObjectContext))
+            lock.lock(try Configuration.get(managedObjectContext).passcode!)
         } catch let error as NSError {
             NSLog(error.localizedDescription)
             NSLog("Something very bad happened. There was no stored pass when they got to the lockdown view")

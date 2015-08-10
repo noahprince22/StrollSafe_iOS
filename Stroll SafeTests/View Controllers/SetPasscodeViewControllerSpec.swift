@@ -78,7 +78,8 @@ class SetPasscodeViewControllerSpec: QuickSpec {
                     expect(pinpadViewController.cleared).to(beTrue())
                     expect(pinpadViewController.shaken).to(beFalse())
                     
-                    expect(try! Passcode.get(managedObjectContext)).to(equal(pass))
+                    let storedConf = try! Configuration.get(managedObjectContext)
+                    expect(storedConf.passcode).to(equal(pass))
                 }
             }
         }

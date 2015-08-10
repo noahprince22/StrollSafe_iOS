@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 import MessageUI
+import AudioToolbox
+
 
 // Lets the time display as 2.00 and not 2
 extension Double {
@@ -33,15 +35,15 @@ class MainViewController: UIViewController {
     static var SHAKE_TITLE_SUB = "Shake Phone to Enter Lockdown"
     static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
 
-    // hacked see http://stackoverflow.com/questions/24015207/class-variables-not-yet-supported
+    // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
     static var test: Bool = true
-    
-    static var TIME_TO_LOCKDOWN: Double = 1.5
     
     enum state {
         case START, THUMB, RELEASE,SHAKE
     }
     var mode = state.START;
+    
+    var releaseDuration: Double!
     
     @IBOutlet weak var titleMain: UILabel!
     @IBOutlet weak var titleSub: UILabel!
@@ -63,24 +65,24 @@ class MainViewController: UIViewController {
     */
     func initializeApp(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
         if (MainViewController.test) {
-            let request = NSFetchRequest(entityName: "Passcode")
+            let request = NSFetchRequest(entityName: "Configuration")
             
-            var passcodes = try! managedObjectContext.executeFetchRequest(request)
+            var configs = try! managedObjectContext.executeFetchRequest(request)
             
-            for passcode: AnyObject in passcodes
+            for config: AnyObject in configs
             {
-                managedObjectContext.deleteObject(passcode as! NSManagedObject)
+                managedObjectContext.deleteObject(config as! NSManagedObject)
             }
             
-            passcodes.removeAll(keepCapacity: false)
+            configs.removeAll(keepCapacity: false)
             try! managedObjectContext.save()
             
             MainViewController.test = false
         }
         
         do {
-            try Passcode.get(managedObjectContext)
-        } catch Passcode.PasscodeError.NoResultsFound {
+            try Configuration.get(managedObjectContext)
+        } catch Configuration.ConfigurationError.NoResultsFound {
             dispatch_async(dispatch_get_main_queue(), {
                 self.performSegueWithIdentifier("firstTimeUserSegue", sender: nil)
             })
@@ -114,6 +116,7 @@ class MainViewController: UIViewController {
     }
     
    @IBAction func thumbUpInside(sender: UIButton) {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         enterReleaseState()
     }
     
@@ -138,13 +141,6 @@ class MainViewController: UIViewController {
                     enterShakeState()
                 }
         }
-    }
-    
-
-    @IBAction func releaseButtonAction(sender: AnyObject) {
-    }
-    
-    @IBAction func thumbButtonAction(sender: AnyObject) {
     }
     
     func enterStartState(){
@@ -181,12 +177,30 @@ class MainViewController: UIViewController {
     }
     
     /**
+    Configures this view controller with the stored configuration
+    
+    :param: configurationContext (optional) the managed object context to get the configuration
+    */
+    func configure(configurationContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
+        do {
+            let conf = try Configuration.get(configurationContext)
+            self.releaseDuration = conf.release_duration as? Double
+        } catch let error as NSError {
+            print("An error occurred while loading the configuration in the MainViewController, using fallback values")
+            print(error.localizedDescription)
+            
+            self.releaseDuration = 1.5
+        }
+    }
+    
+    /**
     Dispatches an aynchronous timer that will enter the lockdown state after 2 seconds
       if the phone is still in the release state
+    
     */
-    func dispatchLockdownTimer() {
+    func dispatchLockdownTimer() -> TimedAction {
         let timedActionBuilder = TimedActionBuilder {builder in
-            builder.secondsToRun = MainViewController.TIME_TO_LOCKDOWN
+            builder.secondsToRun = self.releaseDuration
             builder.recurrentFunction = self.updateProgress
             builder.breakCondition = { _ in
                 return self.mode != state.RELEASE
@@ -198,10 +212,14 @@ class MainViewController: UIViewController {
             }
         }
         
-        TimedAction(builder: timedActionBuilder).run()
+        let action = TimedAction(builder: timedActionBuilder)
+        action.run()
+        return action
     }
     
     func lockdown() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+
         dispatch_async(dispatch_get_main_queue(), {
             self.performSegueWithIdentifier("lockdownSegue", sender: nil)
         })
@@ -220,11 +238,11 @@ class MainViewController: UIViewController {
     */
     func updateProgress(timeElapsed: Double) {
         dispatch_async(dispatch_get_main_queue(), {
-            let fractionalProgress = Float(timeElapsed / MainViewController.TIME_TO_LOCKDOWN)
+            let fractionalProgress = Float(timeElapsed / self.releaseDuration)
             let animated = false;
             
             self.progressBar.setProgress(fractionalProgress, animated: animated)
-            let progressString = (MainViewController.TIME_TO_LOCKDOWN - timeElapsed).format("0.2")
+            let progressString = (self.releaseDuration - timeElapsed).format("0.2")
             self.progressLabel.text = ("\(progressString) seconds remaining")
         })
     }
@@ -278,6 +296,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         initializeApp()
+        configure()
         enterStartState()
         
         // Don't allow auto screen locking while app is running

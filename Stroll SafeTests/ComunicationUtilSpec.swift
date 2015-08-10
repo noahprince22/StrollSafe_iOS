@@ -9,26 +9,21 @@
 import Foundation
 import Nimble
 import Quick
-import MessageUI
 @testable import Stroll_Safe
 
 class CommunicationUtilSpec: QuickSpec {
     
-    override func spec() {
-        class MFMessageComposeViewControllerMock: MFMessageComposeViewController {
-            var sendMessageCalled = false
-            
-        }
-        
-        describe("the communications util") {
-            it ("can send a text message") {
-                
-            }
-            
-            it ("can initiate a phone call") {
-                
-            }
-        }
-    }
-    
+    // There is no testing for the CommunicationUtil. It uses all static methods 
+    // that cannot be mocked or tested. Just have to hope and pray they work
+//    override func spec() {
+//        describe("the communications util") {
+//            it ("can send a text message") {
+//                CommunicationUtil().sendSms("5555555555", body: <#T##String#>)
+//            }
+//            
+//            it ("can initiate a phone call") {
+//                
+//            }
+//        }
+//    }
 }

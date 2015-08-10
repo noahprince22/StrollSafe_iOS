@@ -4,20 +4,29 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "67620B5EFA902936DF04070AF595B76AB0333747" : 0,
     "95438028B10BBB846574013D29F154A00556A9D1" : 0,
-    "A7BCAB4A99E072697503E5E4C6E4DEBB3FDD7212" : 0,
-    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : 0
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : 0,
+    "C6B16E7A45CC83B1EE729332F37CCDCE3876C23D" : 0,
+    "A7BCAB4A99E072697503E5E4C6E4DEBB3FDD7212" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "A0A6789F-AB5D-4A2F-8FEC-59BF5484DDA3",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "stroll_safe_ios\/Vendor\/Alamofire\/",
     "95438028B10BBB846574013D29F154A00556A9D1" : "stroll_safe_ios\/Vendor\/Quick\/Externals\/Nimble\/",
-    "A7BCAB4A99E072697503E5E4C6E4DEBB3FDD7212" : "stroll_safe_ios\/",
-    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : "stroll_safe_ios\/Vendor\/Quick\/"
+    "D0725CAC6FF2D66F2C83C2C48DC12106D42DAA64" : "stroll_safe_ios\/Vendor\/Quick\/",
+    "C6B16E7A45CC83B1EE729332F37CCDCE3876C23D" : "stroll_safe_ios\/Vendor\/SwiftRequest\/",
+    "A7BCAB4A99E072697503E5E4C6E4DEBB3FDD7212" : "stroll_safe_ios\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Stroll Safe",
   "DVTSourceControlWorkspaceBlueprintVersion" : 203,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Stroll Safe.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Quick\/Nimble.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
@@ -27,6 +36,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/github.com\/wortman\/stroll_safe_ios.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A7BCAB4A99E072697503E5E4C6E4DEBB3FDD7212"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/rickyrobinett\/SwiftRequest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C6B16E7A45CC83B1EE729332F37CCDCE3876C23D"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:Quick\/Quick.git",

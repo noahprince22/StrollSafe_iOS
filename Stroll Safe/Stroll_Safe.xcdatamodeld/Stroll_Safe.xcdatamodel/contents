@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8166.2" systemVersion="14E46" minimumToolsVersion="Automatic">
-    <entity name="Passcode" representedClassName="Stroll_Safe.Passcode" syncable="YES">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8175.2" systemVersion="14E46" minimumToolsVersion="Automatic">
+    <entity name="Configuration" representedClassName="Stroll_Safe.Configuration" syncable="YES">
+        <attribute name="call_recipient" optional="YES" attributeType="String" defaultValueString="8675309" syncable="YES"/>
+        <attribute name="lockdown_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="20" syncable="YES"/>
         <attribute name="passcode" attributeType="String" syncable="YES"/>
+        <attribute name="release_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="1.5" syncable="YES"/>
+        <attribute name="sms_recipients" optional="YES" attributeType="String" defaultValueString="3017515134" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Passcode" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="Configuration" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

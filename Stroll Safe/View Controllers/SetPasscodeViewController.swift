@@ -37,7 +37,6 @@ class SetPasscodeViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     /**
@@ -52,7 +51,15 @@ class SetPasscodeViewController: UIViewController {
             if (self.firstEntered){
                 // They entered the second password, verify it's the same as the first one they entered
                 if self.firstPass == pass {
-                    Passcode.set(pass, managedObjectContext: managedObjectContext)
+                    // We can be sure this is the first run, so we'll just set the passcode on a new
+                    //    configuration, which will have all of the default values for everything else
+                    let newConf = NSEntityDescription.insertNewObjectForEntityForName("Configuration", inManagedObjectContext: managedObjectContext) as! Configuration
+                    
+                    newConf.passcode = pass
+                    
+                    // This shouldn't fail, but if it does we should die. Don't want a lockdown to init
+                    //    with no stored password to unlock it
+                    try! managedObjectContext.save()
                     
                     // Transition to the main screen
                     self.performSegueWithIdentifier("setPassSuccessSegue", sender: nil)
@@ -74,16 +81,4 @@ class SetPasscodeViewController: UIViewController {
             }
         })
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

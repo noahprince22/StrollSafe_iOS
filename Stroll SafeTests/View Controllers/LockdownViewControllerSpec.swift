@@ -51,7 +51,7 @@ class LockdownViewControllerSpec: QuickSpec {
                 
                 // Store a pass as "5678"
                 let managedObjectContext = TestUtils().setUpInMemoryManagedObjectContext()
-                Passcode.set("5678", managedObjectContext: managedObjectContext)
+                try! TestUtils().storeConfWithPass("5678", managedObjectContext: managedObjectContext)
                 
                 beforeEach {
                     pinpadViewController = PinpadViewControllerMock()
