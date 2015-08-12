@@ -62,12 +62,105 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="acceptButton" destination="evC-fH-9eH" id="DVN-Nx-HGS"/>
-                        <segue destination="PaD-Ot-r0Q" kind="show" identifier="setPassSegue" id="dVi-UD-bLE"/>
+                        <segue destination="bEl-p5-fu6" kind="show" identifier="tutorialSegue" id="Ieg-CH-pCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SD-lj-lYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-928" y="239"/>
+            <point key="canvasLocation" x="-1538" y="239"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="1cS-JI-vqY">
+            <objects>
+                <viewController id="bEl-p5-fu6" customClass="TutorialViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Vu-Rh-r9o"/>
+                        <viewControllerLayoutGuide type="bottom" id="0ZX-G2-wkp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="McW-5w-6Lz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHB-jb-z5T">
+                                <rect key="frame" x="254" y="530" width="42" height="30"/>
+                                <state key="normal" title="Got it!"/>
+                                <connections>
+                                    <action selector="gotItPressed:" destination="bEl-p5-fu6" eventType="touchUpInside" id="HrW-dz-ttj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="sHB-jb-z5T" secondAttribute="trailing" constant="8" id="PHX-HF-TaK"/>
+                            <constraint firstItem="0ZX-G2-wkp" firstAttribute="top" secondItem="sHB-jb-z5T" secondAttribute="bottom" constant="8" symbolic="YES" id="za3-2c-n9U"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="gotIt" destination="sHB-jb-z5T" id="xbn-64-YKD"/>
+                        <segue destination="PaD-Ot-r0Q" kind="show" identifier="tutorialToSettingsSegue" id="ece-KQ-CTx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G5f-Zo-CkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1003" y="239"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="KTV-Oe-7ho">
+            <objects>
+                <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="wd6-Ie-cX9" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dxa-Fe-yKc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1003" y="-409"/>
+        </scene>
+        <!--Tutorial Content View Controller-->
+        <scene sceneID="D6h-ca-ibJ">
+            <objects>
+                <viewController storyboardIdentifier="TutorialContentViewController" id="FMi-Bd-Jqg" customClass="TutorialContentViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pp1-uI-uPA"/>
+                        <viewControllerLayoutGuide type="bottom" id="f0p-h6-PAI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CAw-ab-Xoz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xXC-8X-4P2">
+                                <rect key="frame" x="20" y="110" width="280" height="458"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="458" id="rwK-8o-McS"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thM-aO-NtP">
+                                <rect key="frame" x="20" y="0.0" width="280" height="102"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xXC-8X-4P2" firstAttribute="top" secondItem="thM-aO-NtP" secondAttribute="bottom" constant="8" symbolic="YES" id="2nz-dq-zFf"/>
+                            <constraint firstItem="thM-aO-NtP" firstAttribute="leading" secondItem="xXC-8X-4P2" secondAttribute="leading" id="8Fm-Vx-U7n"/>
+                            <constraint firstItem="thM-aO-NtP" firstAttribute="trailing" secondItem="xXC-8X-4P2" secondAttribute="trailing" id="Emx-IM-lqb"/>
+                            <constraint firstItem="xXC-8X-4P2" firstAttribute="leading" secondItem="CAw-ab-Xoz" secondAttribute="leadingMargin" id="W1m-Wc-TOp"/>
+                            <constraint firstAttribute="bottom" secondItem="xXC-8X-4P2" secondAttribute="bottom" id="jQt-Sm-TDQ"/>
+                            <constraint firstItem="thM-aO-NtP" firstAttribute="top" secondItem="CAw-ab-Xoz" secondAttribute="top" id="ndO-bl-DUO"/>
+                            <constraint firstItem="xXC-8X-4P2" firstAttribute="centerX" secondItem="CAw-ab-Xoz" secondAttribute="centerX" id="yQP-vU-xLJ"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="desc" destination="thM-aO-NtP" id="rU8-n4-NjM"/>
+                        <outlet property="imageView" destination="xXC-8X-4P2" id="wpN-2x-uHz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qgY-UI-WZ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1003" y="-1065"/>
         </scene>
         <!--Set Passcode View Controller-->
         <scene sceneID="uKC-ym-7za">
@@ -129,12 +222,12 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKJ-np-6hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-497" y="239"/>
+            <point key="canvasLocation" x="-559" y="239"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Ov6-Fx-xIK">
             <objects>
-                <tableViewController storyboardIdentifier="settings" modalPresentationStyle="overFullScreen" id="bAY-0K-uxt" customClass="SettingsViewController" customModule="Stroll_Safe" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="settings" modalPresentationStyle="overFullScreen" id="bAY-0K-uxt" customClass="SettingsViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qrD-Pm-JMd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -144,7 +237,11 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="Settings" id="O5l-OL-lde">
-                                    <barButtonItem key="rightBarButtonItem" title="Done" id="Wdd-gB-bEK"/>
+                                    <barButtonItem key="rightBarButtonItem" title="Done" id="Wdd-gB-bEK">
+                                        <connections>
+                                            <action selector="donePress:" destination="bAY-0K-uxt" id="3Xm-Bg-yST"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -341,7 +438,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="done" destination="Wdd-gB-bEK" id="J7h-t5-p9v"/>
                         <outlet property="searchDisplayController" destination="v35-Uu-wcr" id="cON-us-gh2"/>
+                        <segue destination="vXZ-lx-hvc" kind="show" identifier="settingsToMainSegue" id="XoG-uO-gJ3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wu0-Q5-x5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -354,7 +453,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-89" y="239"/>
+            <point key="canvasLocation" x="-133" y="239"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -507,7 +606,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contacting Police" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foe-9y-mV3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contacting" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Foe-9y-mV3">
                                 <rect key="frame" x="75" y="20" width="171" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="cOD-Ub-OMQ"/>
@@ -560,7 +659,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <userDefinedRuntimeAttribute type="image" keyPath="trackImage" value="progressImage"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Passcode to Disarm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcx-vE-bWb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Passcode to Cancel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcx-vE-bWb">
                                 <rect key="frame" x="53" y="44" width="214" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Gfc-0b-NQf"/>
@@ -925,6 +1024,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <image name="shake_icon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="XoG-uO-gJ3"/>
         <segue reference="BtO-pi-kDi"/>
     </inferredMetricsTieBreakers>
 </document>

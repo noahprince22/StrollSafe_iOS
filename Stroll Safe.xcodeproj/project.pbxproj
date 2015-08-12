@@ -24,6 +24,13 @@
 		EC4317F484EC0F39A5FFEFB7 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B96E087458326E70C02E0FD7 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03783A1B7839FE000083E0 /* Configuration.swift */; };
 		FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03783F1B7937F5000083E0 /* SettingsViewController.swift */; };
+		FA03784D1B7AA44A000083E0 /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03784C1B7AA44A000083E0 /* TutorialContentViewController.swift */; };
+		FA03784F1B7AA594000083E0 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03784E1B7AA594000083E0 /* TutorialViewController.swift */; };
+		FA0378511B7AF9DC000083E0 /* mainscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378501B7AF9DC000083E0 /* mainscreen.png */; };
+		FA0378531B7B0285000083E0 /* release.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378521B7B0285000083E0 /* release.png */; };
+		FA0378551B7B0593000083E0 /* lockdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378541B7B0593000083E0 /* lockdown.png */; };
+		FA0378571B7B0677000083E0 /* thumbdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378561B7B0677000083E0 /* thumbdown.png */; };
+		FA0378591B7B0AF5000083E0 /* shakemode.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378581B7B0AF5000083E0 /* shakemode.png */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
 		FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
@@ -167,6 +174,13 @@
 		BFD7C97D1ABE3D8200D973DF /* shake_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shake_icon.png; path = images/shake_icon.png; sourceTree = "<group>"; };
 		FA03783A1B7839FE000083E0 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
 		FA03783F1B7937F5000083E0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
+		FA03784C1B7AA44A000083E0 /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialContentViewController.swift; path = "View Controllers/tutorial/TutorialContentViewController.swift"; sourceTree = "<group>"; };
+		FA03784E1B7AA594000083E0 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = "View Controllers/tutorial/TutorialViewController.swift"; sourceTree = "<group>"; };
+		FA0378501B7AF9DC000083E0 /* mainscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainscreen.png; path = images/mainscreen.png; sourceTree = "<group>"; };
+		FA0378521B7B0285000083E0 /* release.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = release.png; path = images/release.png; sourceTree = "<group>"; };
+		FA0378541B7B0593000083E0 /* lockdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lockdown.png; path = images/lockdown.png; sourceTree = "<group>"; };
+		FA0378561B7B0677000083E0 /* thumbdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbdown.png; path = images/thumbdown.png; sourceTree = "<group>"; };
+		FA0378581B7B0AF5000083E0 /* shakemode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shakemode.png; path = images/shakemode.png; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationsUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +321,11 @@
 		BFD7C97A1ABE3D5000D973DF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA0378581B7B0AF5000083E0 /* shakemode.png */,
+				FA0378561B7B0677000083E0 /* thumbdown.png */,
+				FA0378541B7B0593000083E0 /* lockdown.png */,
+				FA0378521B7B0285000083E0 /* release.png */,
+				FA0378501B7AF9DC000083E0 /* mainscreen.png */,
 				FABC7EC01B75290B00C5E5C3 /* placeholder.png */,
 				FABC7EBE1B75282B00C5E5C3 /* filler.png */,
 				BFD7C97B1ABE3D8200D973DF /* close_icon.png */,
@@ -314,6 +333,15 @@
 				BFD7C97D1ABE3D8200D973DF /* shake_icon.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		FA03784B1B7AA41D000083E0 /* tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				FA03784C1B7AA44A000083E0 /* TutorialContentViewController.swift */,
+				FA03784E1B7AA594000083E0 /* TutorialViewController.swift */,
+			);
+			name = tutorial;
 			sourceTree = "<group>";
 		};
 		FA430BD91B73CE4100A0FA99 /* Models */ = {
@@ -407,6 +435,7 @@
 		FA9E54841B65740E005267F9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA03784B1B7AA41D000083E0 /* tutorial */,
 				FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */,
 				BF2516A51AC3A4C600024CF6 /* SetPasscodeViewController.swift */,
 				ACDDF2E71ABD57F60029DF5D /* MainViewController.swift */,
@@ -614,12 +643,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACDDF2EB1ABD57F60029DF5D /* Main.storyboard in Resources */,
+				FA0378511B7AF9DC000083E0 /* mainscreen.png in Resources */,
 				BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */,
+				FA0378531B7B0285000083E0 /* release.png in Resources */,
+				FA0378571B7B0677000083E0 /* thumbdown.png in Resources */,
 				ACDDF2F01ABD57F60029DF5D /* LaunchScreen.xib in Resources */,
 				FABC7EBF1B75282B00C5E5C3 /* filler.png in Resources */,
+				FA0378591B7B0AF5000083E0 /* shakemode.png in Resources */,
 				ACDDF2ED1ABD57F60029DF5D /* Images.xcassets in Resources */,
 				FABC7EC11B75290B00C5E5C3 /* placeholder.png in Resources */,
 				BFD7C97E1ABE3D8200D973DF /* close_icon.png in Resources */,
+				FA0378551B7B0593000083E0 /* lockdown.png in Resources */,
 				BFD7C97F1ABE3D8200D973DF /* finger_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,10 +781,12 @@
 				ACDDF2E61ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld in Sources */,
 				FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */,
 				FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */,
+				FA03784F1B7AA594000083E0 /* TutorialViewController.swift in Sources */,
 				FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */,
 				ACDDF2E31ABD57F60029DF5D /* AppDelegate.swift in Sources */,
 				BF2516A61AC3A4C600024CF6 /* SetPasscodeViewController.swift in Sources */,
 				BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */,
+				FA03784D1B7AA44A000083E0 /* TutorialContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

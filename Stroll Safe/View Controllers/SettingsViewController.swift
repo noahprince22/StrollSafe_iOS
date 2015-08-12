@@ -10,6 +10,10 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
+    @IBOutlet weak var done: UIBarButtonItem!
+    @IBAction func donePress(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("settingsToMainSegue", sender: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         

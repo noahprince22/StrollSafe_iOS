@@ -1,29 +1,32 @@
 //
-//  TermsViewController.swift
+//  TutorialContentViewController.swift
 //  Stroll Safe
 //
-//  Created by Noah Prince on 5/15/15.
-//  Copyright (c) 2015 Stroll Safe. All rights reserved.
+//  Created by Lynda Prince on 8/11/15.
+//  Copyright © 2015 Stroll Safe. All rights reserved.
 //
 
 import UIKit
 
-class TermsViewController: UIViewController {
+class TutorialContentViewController: UIViewController {
+    
+    var pageIndex: Int!
+    var descriptionText: String!
+    var imageFile: String!
 
-    @IBOutlet weak var acceptButton: UIButton!
+    @IBOutlet weak var desc: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.imageView.image = UIImage(named: self.imageFile)
+        self.desc.text = self.descriptionText
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func acceptTerms(sender: UIButton) {
-        self.performSegueWithIdentifier("tutorialSegue", sender: nil)
     }
 
     /*
