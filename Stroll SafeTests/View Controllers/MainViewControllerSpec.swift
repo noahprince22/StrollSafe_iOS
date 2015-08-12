@@ -36,6 +36,18 @@ class MainViewControllerSpec: QuickSpec {
                 viewController.endAppearanceTransition()
             }
             
+            it ("enters the shake state when interrupted") {
+                NSNotificationCenter.defaultCenter().postNotificationName("UIApplicationWillResignActiveNotification", object:self, userInfo:nil);
+                
+                
+                expect(viewController.thumb.hidden).to(beTrue())
+                expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.shake.hidden).to(beFalse())
+                expect(viewController.shakeDesc.hidden).to(beFalse())
+                expect(viewController.progressLabel.hidden).to(beTrue())
+                expect(viewController.progressBar.hidden).to(beTrue())
+            }
+            
             it ("starts out in the default state") {
                 expect(viewController.thumb.hidden).to(beFalse())
                 expect(viewController.thumbDesc.hidden).to(beFalse())

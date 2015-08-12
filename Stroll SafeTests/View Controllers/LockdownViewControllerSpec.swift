@@ -75,6 +75,42 @@ class LockdownViewControllerSpec: QuickSpec {
                 }
             }
             
+            describe("interruptions") {
+                class TimedActionMock: TimedAction {
+                    var pausedMock = false
+                    var runMock = false
+
+                    override func pause() {
+                        pausedMock = true
+                        runMock = false
+                    }
+                    
+                    override func run() {
+                        runMock = true
+                        pausedMock = false
+                    }
+                }
+                
+                var action: TimedActionMock!
+                beforeEach {
+                    action = TimedActionMock(builder: TimedActionBuilder(buildClosure: { _ in }))
+                    viewController.asyncAlertAction = action
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("UIApplicationWillResignActiveNotification", object:self, userInfo:nil);
+                }
+                
+                it ("pauses the timer when interrupted") {
+                    expect(action.pausedMock).to(beTrue())
+                    expect(action.runMock).to(beFalse())
+                }
+                
+                it ("resumes the timer when resumed") {
+                    NSNotificationCenter.defaultCenter().postNotificationName("UIApplicationWillEnterForegroundNotification", object:self, userInfo:nil);
+                    expect(action.pausedMock).to(beFalse())
+                    expect(action.runMock).to(beTrue())
+                }
+            }
+            
             // makes sure the provided asynch action functions work as expected
             describe ("asynchAction") {
                 var conf: Stroll_Safe.Configuration!

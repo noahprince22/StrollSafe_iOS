@@ -91,8 +91,18 @@ class LockdownViewController: UIViewController {
         setupPinpadViewWithStoredPasscode()
         self.asyncAlertAction = buildAsyncAlertAction()
         asyncAlertAction.run()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "interrupted", name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumed", name: UIApplicationWillEnterForegroundNotification, object: nil)
     }
     
+    func interrupted() {
+        asyncAlertAction.pause()
+    }
+    
+    func resumed() {
+        asyncAlertAction.run()
+    }
     
     /**
     Configures this view controller with the stored configuration

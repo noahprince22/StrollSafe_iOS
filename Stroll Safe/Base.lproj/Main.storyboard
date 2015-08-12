@@ -133,7 +133,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <constraint firstAttribute="height" constant="458" id="rwK-8o-McS"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="thM-aO-NtP">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thM-aO-NtP">
                                 <rect key="frame" x="20" y="0.0" width="280" height="102"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -246,63 +246,122 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             </items>
                         </navigationBar>
                         <sections>
-                            <tableViewSection headerTitle="Calling" id="Qpa-vc-ULG">
+                            <tableViewSection headerTitle="Personal Information" id="Qpa-vc-ULG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zl5-eS-MWv">
-                                        <rect key="frame" x="0.0" y="93.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="94" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zl5-eS-MWv" id="Uag-Hd-yoL">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Champaign Police:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1q-al-T4K">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Full Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K1q-al-T4K">
                                                     <rect key="frame" x="8" y="11" width="203" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WVy-AT-FZa">
-                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
-                                                </switch>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First and Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-ki-aus">
+                                                    <rect key="frame" x="95" y="6" width="217" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="WVy-AT-FZa" firstAttribute="trailing" secondItem="Uag-Hd-yoL" secondAttribute="trailingMargin" id="x6J-jW-qlh"/>
+                                                <constraint firstItem="NFk-ki-aus" firstAttribute="centerY" secondItem="K1q-al-T4K" secondAttribute="centerY" id="4M1-xJ-SCh"/>
+                                                <constraint firstItem="NFk-ki-aus" firstAttribute="trailing" secondItem="Uag-Hd-yoL" secondAttribute="trailingMargin" id="IHY-ay-f80"/>
+                                                <constraint firstItem="NFk-ki-aus" firstAttribute="centerY" secondItem="Uag-Hd-yoL" secondAttribute="centerY" id="NkZ-VY-5eI"/>
+                                                <constraint firstItem="NFk-ki-aus" firstAttribute="leading" secondItem="Uag-Hd-yoL" secondAttribute="leadingMargin" constant="87" id="lea-TN-RIB"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ssH-Km-5T0">
-                                        <rect key="frame" x="0.0" y="137.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="138" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ssH-Km-5T0" id="b1g-ff-XlN">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHs-La-GZa">
-                                                    <rect key="frame" x="8" y="11" width="19" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHs-La-GZa">
+                                                    <rect key="frame" x="8" y="11" width="107" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" text="" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="gno-ee-MAu">
-                                                    <rect key="frame" x="27" y="0.0" width="293" height="44"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="next"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="bAY-0K-uxt" id="ZQj-FI-AoO"/>
-                                                    </connections>
-                                                </searchBar>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please include area code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-XH-udz">
+                                                    <rect key="frame" x="123" y="7" width="189" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="gno-ee-MAu" firstAttribute="leading" secondItem="qHs-La-GZa" secondAttribute="trailing" id="Pg7-s9-shf"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gno-ee-MAu" secondAttribute="trailing" constant="-8" id="a7b-GP-Hen"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="centerY" secondItem="qHs-La-GZa" secondAttribute="centerY" id="028-NW-zvp"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="trailing" secondItem="b1g-ff-XlN" secondAttribute="trailingMargin" id="USF-r4-coS"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="centerY" secondItem="b1g-ff-XlN" secondAttribute="centerY" id="VcT-kN-Fpg"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="leading" secondItem="qHs-La-GZa" secondAttribute="trailing" constant="8" id="q9c-wh-Kir"/>
+                                                <constraint firstItem="qHs-La-GZa" firstAttribute="leading" secondItem="b1g-ff-XlN" secondAttribute="leadingMargin" id="yrh-vR-9PI"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Texting" id="cfv-ZZ-YeD">
+                            <tableViewSection headerTitle="Calling" id="AbD-Wl-g8v">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0HP-RU-cz6">
+                                        <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0HP-RU-cz6" id="jnj-qq-nsB">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Champaign Police:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYr-yi-BuY">
+                                                    <rect key="frame" x="8" y="11" width="203" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lB6-TE-pQG">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lB6-TE-pQG" firstAttribute="trailing" secondItem="jnj-qq-nsB" secondAttribute="trailingMargin" id="ch6-cb-FXP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="b5L-K1-ddO">
+                                        <rect key="frame" x="0.0" y="275.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b5L-K1-ddO" id="VtF-Nh-NxK">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Or" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gnm-ii-JlE">
+                                                    <rect key="frame" x="8" y="11" width="19" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <searchBar contentMode="redraw" ambiguous="YES" misplaced="YES" searchBarStyle="minimal" text="" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="AhU-XL-Dar">
+                                                    <rect key="frame" x="27" y="0.0" width="293" height="44"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="bAY-0K-uxt" id="nic-ON-55Y"/>
+                                                    </connections>
+                                                </searchBar>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AhU-XL-Dar" secondAttribute="trailing" constant="-8" id="6bc-V1-DVw"/>
+                                                <constraint firstItem="AhU-XL-Dar" firstAttribute="leading" secondItem="Gnm-ii-JlE" secondAttribute="trailing" id="Vtt-dZ-fVL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Texting (Optional)" id="cfv-ZZ-YeD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NFW-tD-f5p">
-                                        <rect key="frame" x="0.0" y="231.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="369.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFW-tD-f5p" id="bPB-bQ-SjU">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -316,7 +375,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <searchBar contentMode="redraw" ambiguous="YES" searchBarStyle="minimal" placeholder="Person or Numbers to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="605-oE-SHT">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" returnKeyType="next"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="bAY-0K-uxt" id="lHV-JM-42A"/>
                                                     </connections>
@@ -329,7 +388,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0Zk-1k-QUc">
-                                        <rect key="frame" x="0.0" y="275.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="413.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Zk-1k-QUc" id="2hf-n6-b5d">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -344,7 +403,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location data will be appended" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1s-ry-lfB">
                                                     <rect key="frame" x="56" y="8" width="256" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -355,10 +414,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Timing" id="Lro-35-gIg">
+                            <tableViewSection headerTitle="Timing (optional)" id="Lro-35-gIg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="slm-hF-Tnx">
-                                        <rect key="frame" x="0.0" y="369.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="507.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="slm-hF-Tnx" id="i8P-fx-uhq">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -373,7 +432,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-4Y-KL1">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -382,7 +441,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="utX-lY-EKF">
-                                        <rect key="frame" x="0.0" y="413.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="551.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="utX-lY-EKF" id="tKg-pW-mzi">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -397,7 +456,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.5" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-sD-Cdu">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -410,7 +469,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <tableViewSection headerTitle="Passcode" id="zk6-iJ-uXJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iFl-tE-dSY">
-                                        <rect key="frame" x="0.0" y="507.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="645.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iFl-tE-dSY" id="7W6-cr-9TD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -438,8 +497,15 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="callContact" destination="AhU-XL-Dar" id="MNR-ls-cid"/>
                         <outlet property="done" destination="Wdd-gB-bEK" id="J7h-t5-p9v"/>
+                        <outlet property="lockdownTime" destination="qaT-4Y-KL1" id="nsh-zZ-Vme"/>
+                        <outlet property="name" destination="NFk-ki-aus" id="kTd-Wv-c3N"/>
+                        <outlet property="phonenumber" destination="Thp-XH-udz" id="8PL-Kc-gyg"/>
+                        <outlet property="releaseTime" destination="Mlb-sD-Cdu" id="aWU-MH-sSI"/>
                         <outlet property="searchDisplayController" destination="v35-Uu-wcr" id="cON-us-gh2"/>
+                        <outlet property="textBody" destination="U1s-ry-lfB" id="6Rf-eT-qud"/>
+                        <outlet property="textContact" destination="605-oE-SHT" id="11x-Zf-UUZ"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="settingsToMainSegue" id="XoG-uO-gJ3"/>
                     </connections>
                 </tableViewController>

@@ -301,12 +301,14 @@ class MainViewController: UIViewController {
         
         // Don't allow auto screen locking while app is running
         UIApplication.sharedApplication().idleTimerDisabled = true
+        
+        // If interrupted by a phone call or something, just go back to start state
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterShakeState", name: UIApplicationWillResignActiveNotification, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-   
+    }   
 }
 
