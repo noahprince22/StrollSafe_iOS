@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController, UITextFieldDelegate {
+class SettingsViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate{
     
+    @IBOutlet weak var contactPoliceSwitch: UISwitch!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phonenumber: UITextField!
     @IBOutlet weak var callContact: UISearchBar!
@@ -26,18 +27,24 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         
         self.name.delegate = self
         self.phonenumber.delegate = self
-        //self.callContact.delegate = self
+        self.callContact.delegate = self
         //self.textContact.delegate = self
         self.textBody.delegate = self
         self.lockdownTime.delegate = self
         self.releaseTime.delegate = self
         
+        //self.callContact.delegate = ContactSearchDelegate( { _ in
+            //println("hello")        })
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.contactPoliceSwitch.on = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,7 +88,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate {
         userText.resignFirstResponder()
         return true;
     }
-
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

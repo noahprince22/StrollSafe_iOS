@@ -11,6 +11,8 @@ import CoreData
 
 class Configuration: NSManagedObject {
     
+    @NSManaged var full_name: String?
+    @NSManaged var phone_number: String?
     @NSManaged var sms_body: String?
     @NSManaged var passcode: String?
     @NSManaged var lockdown_duration: NSNumber?

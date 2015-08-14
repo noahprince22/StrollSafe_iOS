@@ -51,9 +51,14 @@ class SetPasscodeViewController: UIViewController {
             if (self.firstEntered){
                 // They entered the second password, verify it's the same as the first one they entered
                 if self.firstPass == pass {
-                    // We can be sure this is the first run, so we'll just set the passcode on a new
-                    //    configuration, which will have all of the default values for everything else
-                    let newConf = NSEntityDescription.insertNewObjectForEntityForName("Configuration", inManagedObjectContext: managedObjectContext) as! Configuration
+                    var newConf: Configuration
+                    do {
+                        try newConf = Configuration.get(managedObjectContext)
+                    } catch {
+                        // We can be sure this is the first run, so we'll just set the passcode on a new
+                        //    configuration, which will have all of the default values for everything else
+                        newConf = NSEntityDescription.insertNewObjectForEntityForName("Configuration", inManagedObjectContext: managedObjectContext) as! Configuration
+                    }
                     
                     newConf.passcode = pass
                     

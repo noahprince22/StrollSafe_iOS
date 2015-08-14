@@ -31,6 +31,7 @@
 		FA0378551B7B0593000083E0 /* lockdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378541B7B0593000083E0 /* lockdown.png */; };
 		FA0378571B7B0677000083E0 /* thumbdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378561B7B0677000083E0 /* thumbdown.png */; };
 		FA0378591B7B0AF5000083E0 /* shakemode.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378581B7B0AF5000083E0 /* shakemode.png */; };
+		FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
 		FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
@@ -181,6 +182,7 @@
 		FA0378541B7B0593000083E0 /* lockdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lockdown.png; path = images/lockdown.png; sourceTree = "<group>"; };
 		FA0378561B7B0677000083E0 /* thumbdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbdown.png; path = images/thumbdown.png; sourceTree = "<group>"; };
 		FA0378581B7B0AF5000083E0 /* shakemode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shakemode.png; path = images/shakemode.png; sourceTree = "<group>"; };
+		FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchDelegate.swift; path = Delegates/ContactSearchDelegate.swift; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationsUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,7 @@
 		ACDDF2DF1ABD57F50029DF5D /* Stroll Safe */ = {
 			isa = PBXGroup;
 			children = (
+				FA03785A1B7BD61B000083E0 /* Delegates */,
 				FA430BD91B73CE4100A0FA99 /* Models */,
 				FA9E54841B65740E005267F9 /* View Controllers */,
 				FA9E54831B6573FD005267F9 /* Util */,
@@ -342,6 +345,14 @@
 				FA03784E1B7AA594000083E0 /* TutorialViewController.swift */,
 			);
 			name = tutorial;
+			sourceTree = "<group>";
+		};
+		FA03785A1B7BD61B000083E0 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */,
+			);
+			name = Delegates;
 			sourceTree = "<group>";
 		};
 		FA430BD91B73CE4100A0FA99 /* Models */ = {
@@ -774,6 +785,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */,
+				FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */,
 				BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */,
 				ACDDF2E81ABD57F60029DF5D /* MainViewController.swift in Sources */,
 				FAA2A1721B7142FD00F3F89C /* TimedAction.swift in Sources */,
