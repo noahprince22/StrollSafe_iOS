@@ -102,7 +102,7 @@ class Stroll_SafeUITests: XCTestCase {
                 Disarming and rearming
                 Base call with full 20 second wait
     */
-    // Beta 5 broke this test, it finds multiple matches for everything on the lock screen
+    // Adding the settings view broke this test, it finds multiple matches for everything on the lock screen
 //    func testReleaseArmDisarm(){
 //        let app = testCorrectSetPass()
 //        app.buttons["Done"].tap()
