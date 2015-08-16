@@ -32,6 +32,7 @@
 		FA0378571B7B0677000083E0 /* thumbdown.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378561B7B0677000083E0 /* thumbdown.png */; };
 		FA0378591B7B0AF5000083E0 /* shakemode.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0378581B7B0AF5000083E0 /* shakemode.png */; };
 		FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */; };
+		FA1AD3AF1B800AE500CB4FC2 /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
 		FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
@@ -183,6 +184,7 @@
 		FA0378561B7B0677000083E0 /* thumbdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbdown.png; path = images/thumbdown.png; sourceTree = "<group>"; };
 		FA0378581B7B0AF5000083E0 /* shakemode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shakemode.png; path = images/shakemode.png; sourceTree = "<group>"; };
 		FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchDelegate.swift; path = Delegates/ContactSearchDelegate.swift; sourceTree = "<group>"; };
+		FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationsUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -453,6 +455,7 @@
 				BF477D411ABE782D005D76E8 /* LockdownViewController.swift */,
 				BF2516A11AC3927300024CF6 /* PinpadViewController.swift */,
 				FA03783F1B7937F5000083E0 /* SettingsViewController.swift */,
+				FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -795,6 +798,7 @@
 				FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */,
 				FA03784F1B7AA594000083E0 /* TutorialViewController.swift in Sources */,
 				FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */,
+				FA1AD3AF1B800AE500CB4FC2 /* ContactSearchViewController.swift in Sources */,
 				ACDDF2E31ABD57F60029DF5D /* AppDelegate.swift in Sources */,
 				BF2516A61AC3A4C600024CF6 /* SetPasscodeViewController.swift in Sources */,
 				BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */,
