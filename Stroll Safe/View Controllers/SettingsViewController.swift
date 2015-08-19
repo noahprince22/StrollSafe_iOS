@@ -13,16 +13,45 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var contactPoliceSwitch: UISwitch!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var phonenumber: UITextField!
-    @IBOutlet weak var callContact: UISearchBar!
-    @IBOutlet weak var textContact: UISearchBar!
-    @IBOutlet weak var textBody: UITextField!
     @IBOutlet weak var lockdownTime: UITextField!
+    @IBOutlet weak var textContact: UITextField!
+    @IBOutlet weak var callContact: UITextField!
     @IBOutlet weak var releaseTime: UITextField!
     @IBOutlet weak var done: UIBarButtonItem!
+    @IBOutlet weak var textBody: UITextField!
     var contactSearchVC: ContactSearchViewController!
     
     @IBAction func donePress(sender: UIBarButtonItem) {
         self.performSegueWithIdentifier("settingsToMainSegue", sender: nil)
+    }
+    
+    @IBAction func callAddressBook(sender: UIButton) {
+        let contactSearchVC = self.storyboard?.instantiateViewControllerWithIdentifier("ContactSearchViewController") as! ContactSearchViewController
+        contactSearchVC.setCompletion({ selectedNumber in
+            if (selectedNumber != "") {
+                do {
+                    self.callContact.text = try CommunicationUtil().formatNumber(selectedNumber)
+                } catch let error as NSError {
+                    NSLog("This shouldn't happen, but is recoverable")
+                    NSLog(error.localizedDescription)
+                }
+                
+                self.contactPoliceSwitch.on = false
+            }
+        })
+        
+        self.presentViewController(contactSearchVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func textAddressBook(sender: UIButton) {
+        let contactSearchVC = self.storyboard?.instantiateViewControllerWithIdentifier("ContactSearchViewController") as! ContactSearchViewController
+        contactSearchVC.setCompletion({ selectedNumber in
+            if (selectedNumber != "") {
+                self.textContact.text = selectedNumber
+            }
+        })
+        
+        self.presentViewController(contactSearchVC, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -30,7 +59,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         
         self.name.delegate = self
         self.phonenumber.delegate = self
-        self.callContact.delegate = self
+        //self.callContact.delegate = self
         //self.textContact.delegate = self
         self.textBody.delegate = self
         self.lockdownTime.delegate = self
@@ -44,19 +73,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        if (searchBar == callContact) {
-            self.contactPoliceSwitch.on = false
-        }
-        
-        let contactSearchVC = self.storyboard?.instantiateViewControllerWithIdentifier("ContactSearchViewController") as! ContactSearchViewController
-        contactSearchVC.setCompletion({ selectedNumber in
-            searchBar.text = selectedNumber
-        })
-        
-        self.presentViewController(contactSearchVC, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -23,15 +23,15 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
     var searchActive : Bool = false
     var people : [(String, String)] = []
     var filtered:[(String, String)] = []
-    var completionFn: ((String) -> (Void))!
+    var completionFn: ((String) throws -> (Void))!
 
     /**
     Sets the function that will be executed when a number is selected
     
     :param: fn The function to execute
     */
-    func setCompletion(fn: (String) -> (Void)) {
-        self.completionFn = { fn($0) }
+    func setCompletion(fn: (String) throws -> (Void)) {
+        self.completionFn = { try fn($0) }
     }
     
     func readFromAddressBook(addressBook: ABAddressBookRef){
@@ -107,7 +107,7 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         searchActive = false;
         
         self.dismissViewControllerAnimated(true, completion: { _ in
-            self.completionFn(searchBar.text!)
+            try! self.completionFn(searchBar.text!)
         })
     }
     
@@ -115,7 +115,7 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         searchActive = false;
 
         self.dismissViewControllerAnimated(true, completion: { _ in
-            self.completionFn("")
+            try! self.completionFn("")
         })
     }
     
@@ -178,7 +178,7 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         
         self.dismissViewControllerAnimated(true, completion: { _ in
-            self.completionFn(cell!.detailTextLabel!.text!)
+            try! self.completionFn(cell!.detailTextLabel!.text!)
         })
     }
 }
