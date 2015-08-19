@@ -39,6 +39,7 @@
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
 		FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */; };
+		FA95347B1B83F5CC00763416 /* SettingsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */; };
 		FA9E547D1B65738D005267F9 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA9E54691B657356005267F9 /* Quick.framework */; };
 		FA9E54871B657676005267F9 /* PinpadViewControllSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9E54861B657676005267F9 /* PinpadViewControllSpec.swift */; };
 		FA9E548A1B65848F005267F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACDDF2E91ABD57F60029DF5D /* Main.storyboard */; };
@@ -193,6 +194,7 @@
 		FA59FE641B641D2F00F27162 /* LockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockUtil.swift; sourceTree = "<group>"; };
 		FA7A9C811B6FDEBC00B7366B /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsViewController.swift; path = "View Controllers/TermsViewController.swift"; sourceTree = "<group>"; };
+		FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerSpec.swift; sourceTree = "<group>"; };
 		FA9E54591B657355005267F9 /* Quick.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Quick.xcodeproj; path = Vendor/Quick/Quick.xcodeproj; sourceTree = "<group>"; };
 		FA9E54861B657676005267F9 /* PinpadViewControllSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PinpadViewControllSpec.swift; path = "View Controllers/PinpadViewControllSpec.swift"; sourceTree = "<group>"; };
 		FA9E548C1B6C1D71005267F9 /* MainViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewControllerSpec.swift; path = "View Controllers/MainViewControllerSpec.swift"; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 				FA9E548C1B6C1D71005267F9 /* MainViewControllerSpec.swift */,
 				FAA2A1891B719C2200F3F89C /* LockdownViewControllerSpec.swift */,
 				FAA2A18B1B72EAFD00F3F89C /* SetPasscodeViewControllerSpec.swift */,
+				FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 			files = (
 				FAD0D5941B704884000B7F1E /* TimedActionSpec.swift in Sources */,
 				FA9E548D1B6C1D71005267F9 /* MainViewControllerSpec.swift in Sources */,
+				FA95347B1B83F5CC00763416 /* SettingsViewControllerSpec.swift in Sources */,
 				FAA2A18A1B719C2200F3F89C /* LockdownViewControllerSpec.swift in Sources */,
 				FAD0D5881B700B15000B7F1E /* ConfigurationSpec.swift in Sources */,
 				FAA2A18C1B72EAFD00F3F89C /* SetPasscodeViewControllerSpec.swift in Sources */,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="n9b-Wu-fAG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bAY-0K-uxt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
@@ -229,7 +229,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <!--Contact Search View Controller-->
         <scene sceneID="zre-dk-Crh">
             <objects>
-                <viewController id="n9b-Wu-fAG" customClass="ContactSearchViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactSearchViewController" id="n9b-Wu-fAG" customClass="ContactSearchViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tNb-ho-ZFp"/>
                         <viewControllerLayoutGuide type="bottom" id="SVf-Ea-6X1"/>
@@ -238,35 +238,17 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CXo-Bd-bmF">
+                            <searchBar contentMode="redraw" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="CXo-Bd-bmF">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="n9b-Wu-fAG" id="7vS-DK-BlK"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="o7L-sb-SE9">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="MQ8-6m-WuW">
-                                        <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MQ8-6m-WuW" id="6Ag-WZ-haW">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="CXo-Bd-bmF" firstAttribute="leading" secondItem="o7L-sb-SE9" secondAttribute="leading" id="BSq-xf-DI2"/>
-                            <constraint firstItem="CXo-Bd-bmF" firstAttribute="bottom" secondItem="o7L-sb-SE9" secondAttribute="top" id="Hq3-cu-XfV"/>
-                            <constraint firstItem="o7L-sb-SE9" firstAttribute="bottom" secondItem="SVf-Ea-6X1" secondAttribute="top" id="QXf-Tm-JUT"/>
                             <constraint firstAttribute="trailing" secondItem="CXo-Bd-bmF" secondAttribute="trailing" id="gnF-Qo-WEj"/>
-                            <constraint firstItem="CXo-Bd-bmF" firstAttribute="trailing" secondItem="o7L-sb-SE9" secondAttribute="trailing" id="lDX-si-RdA"/>
                             <constraint firstItem="CXo-Bd-bmF" firstAttribute="top" secondItem="RJn-g1-heW" secondAttribute="top" id="tsf-65-dMW"/>
                             <constraint firstItem="CXo-Bd-bmF" firstAttribute="leading" secondItem="RJn-g1-heW" secondAttribute="leading" id="xyO-wN-GHG"/>
                         </constraints>
@@ -275,7 +257,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <connections>
                         <outlet property="searchBar" destination="CXo-Bd-bmF" id="a6f-bH-HZT"/>
                         <outlet property="searchDisplayController" destination="SOf-NF-YFT" id="Pvk-8h-XmT"/>
-                        <outlet property="tableView" destination="o7L-sb-SE9" id="WGO-lw-6Au"/>
+                        <segue destination="bAY-0K-uxt" kind="popoverPresentation" identifier="contactDone" popoverAnchorView="CXo-Bd-bmF" id="yP8-g2-hfg">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrj-Ux-FZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +273,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-115" y="-434"/>
+            <point key="canvasLocation" x="-115" y="-448"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Ov6-Fx-xIK">
@@ -298,7 +282,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="qrD-Pm-JMd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="h4P-WL-j79">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -328,7 +312,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                         <constraint firstAttribute="width" constant="203" id="XWw-6O-96c"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First and Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-ki-aus">
@@ -357,7 +341,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHs-La-GZa">
                                                     <rect key="frame" x="8" y="12.5" width="107" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please include area code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-XH-udz">
@@ -386,21 +370,25 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Champaign Police:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYr-yi-BuY">
-                                                    <rect key="frame" x="14" y="12" width="197" height="19.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lB6-TE-pQG">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="contactPoliceSwitch:" destination="bAY-0K-uxt" eventType="valueChanged" id="l8y-ZD-Qw0"/>
+                                                    </connections>
                                                 </switch>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Champaign Police:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYr-yi-BuY">
+                                                    <rect key="frame" x="8" y="12" width="197" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lB6-TE-pQG" firstAttribute="leading" secondItem="MYr-yi-BuY" secondAttribute="trailing" constant="52" id="9be-zI-3ze"/>
-                                                <constraint firstItem="lB6-TE-pQG" firstAttribute="centerY" secondItem="MYr-yi-BuY" secondAttribute="centerY" id="RlW-DJ-idA"/>
+                                                <constraint firstItem="MYr-yi-BuY" firstAttribute="leading" secondItem="jnj-qq-nsB" secondAttribute="leadingMargin" id="DJC-ix-6OQ"/>
+                                                <constraint firstItem="MYr-yi-BuY" firstAttribute="top" secondItem="jnj-qq-nsB" secondAttribute="topMargin" constant="4" id="JD9-Av-XoN"/>
                                                 <constraint firstItem="lB6-TE-pQG" firstAttribute="centerY" secondItem="jnj-qq-nsB" secondAttribute="centerY" id="US6-Ws-bcd"/>
                                                 <constraint firstItem="lB6-TE-pQG" firstAttribute="trailing" secondItem="jnj-qq-nsB" secondAttribute="trailingMargin" id="ch6-cb-FXP"/>
+                                                <constraint firstItem="MYr-yi-BuY" firstAttribute="centerY" secondItem="lB6-TE-pQG" secondAttribute="centerY" id="fx0-pf-gee"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -417,7 +405,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                         <constraint firstAttribute="width" constant="19" id="Zhk-XX-bc4"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="AhU-XL-Dar">
@@ -442,20 +430,27 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             </tableViewSection>
                             <tableViewSection headerTitle="Texting (Optional)" id="cfv-ZZ-YeD">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NFW-tD-f5p">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NGe-7C-Bet">
                                         <rect key="frame" x="0.0" y="369.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFW-tD-f5p" id="bPB-bQ-SjU">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NGe-7C-Bet" id="HpR-XF-Wai">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIX-1q-alr">
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enabled:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5z3-uV-6D3">
+                                                    <rect key="frame" x="189" y="12" width="66" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Person or Numbers to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="605-oE-SHT">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-Os-JPL">
+                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="contactPoliceSwitch:" destination="bAY-0K-uxt" eventType="valueChanged" id="agD-jJ-jP5"/>
+                                                    </connections>
+                                                </switch>
+                                                <searchBar contentMode="redraw" misplaced="YES" searchBarStyle="minimal" placeholder="Contact" translatesAutoresizingMaskIntoConstraints="NO" id="605-oE-SHT">
+                                                    <rect key="frame" x="0.0" y="-1" width="189" height="44"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="namePhonePad" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="bAY-0K-uxt" id="lHV-JM-42A"/>
@@ -463,11 +458,13 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </searchBar>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="605-oE-SHT" firstAttribute="top" secondItem="XIX-1q-alr" secondAttribute="top" id="21F-Vg-gPs"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="605-oE-SHT" secondAttribute="trailing" constant="-8" id="HYY-uz-Vd2"/>
-                                                <constraint firstItem="605-oE-SHT" firstAttribute="leading" secondItem="bPB-bQ-SjU" secondAttribute="leadingMargin" constant="-8" id="Oj9-Ye-DUt"/>
-                                                <constraint firstItem="605-oE-SHT" firstAttribute="leading" secondItem="XIX-1q-alr" secondAttribute="leading" id="dVo-z2-vCh"/>
-                                                <constraint firstItem="605-oE-SHT" firstAttribute="top" secondItem="bPB-bQ-SjU" secondAttribute="top" id="gro-nO-HcL"/>
+                                                <constraint firstItem="M1j-Os-JPL" firstAttribute="centerY" secondItem="HpR-XF-Wai" secondAttribute="centerY" id="3hz-kB-DQ7"/>
+                                                <constraint firstItem="605-oE-SHT" firstAttribute="leading" secondItem="HpR-XF-Wai" secondAttribute="leadingMargin" constant="-8" id="5DJ-dr-EOv"/>
+                                                <constraint firstItem="M1j-Os-JPL" firstAttribute="centerY" secondItem="605-oE-SHT" secondAttribute="centerY" id="9q9-O2-IaL"/>
+                                                <constraint firstItem="M1j-Os-JPL" firstAttribute="centerY" secondItem="5z3-uV-6D3" secondAttribute="centerY" id="U0h-ML-j9c"/>
+                                                <constraint firstItem="5z3-uV-6D3" firstAttribute="leading" secondItem="605-oE-SHT" secondAttribute="trailing" id="a9Y-8w-zcF"/>
+                                                <constraint firstItem="M1j-Os-JPL" firstAttribute="trailing" secondItem="HpR-XF-Wai" secondAttribute="trailingMargin" id="obJ-Y4-3UY"/>
+                                                <constraint firstItem="M1j-Os-JPL" firstAttribute="leading" secondItem="5z3-uV-6D3" secondAttribute="trailing" constant="8" id="xHv-lU-Isb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -484,7 +481,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                         <constraint firstAttribute="width" constant="40" id="TzQ-Tr-k8B"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location data will be appended" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1s-ry-lfB">
@@ -503,12 +500,27 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NFW-tD-f5p">
+                                        <rect key="frame" x="0.0" y="457.5" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NFW-tD-f5p" id="bPB-bQ-SjU">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIX-1q-alr">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Timing (optional)" id="Lro-35-gIg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="slm-hF-Tnx">
-                                        <rect key="frame" x="0.0" y="507.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="551.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="slm-hF-Tnx" id="i8P-fx-uhq">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -517,7 +529,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release to Lockdown Duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-Ts-Mp5">
                                                     <rect key="frame" x="20.5" y="11" width="211.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-4Y-KL1">
@@ -539,7 +551,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="utX-lY-EKF">
-                                        <rect key="frame" x="0.0" y="551.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="595.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="utX-lY-EKF" id="tKg-pW-mzi">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -548,7 +560,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lockdown to Contact Duration:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JmC-Tz-yDE">
                                                     <rect key="frame" x="19.5" y="11" width="212.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.5" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-sD-Cdu">
@@ -574,7 +586,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <tableViewSection headerTitle="Passcode" id="zk6-iJ-uXJ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iFl-tE-dSY">
-                                        <rect key="frame" x="0.0" y="645.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="689.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iFl-tE-dSY" id="7W6-cr-9TD">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -614,6 +626,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <outlet property="textBody" destination="U1s-ry-lfB" id="6Rf-eT-qud"/>
                         <outlet property="textContact" destination="605-oE-SHT" id="11x-Zf-UUZ"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="settingsToMainSegue" id="XoG-uO-gJ3"/>
+                        <segue destination="n9b-Wu-fAG" kind="presentation" identifier="contactPopover" id="5Na-bD-Xg5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wu0-Q5-x5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1200,6 +1213,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XoG-uO-gJ3"/>
+        <segue reference="yP8-g2-hfg"/>
         <segue reference="ddd-sB-b0W"/>
     </inferredMetricsTieBreakers>
 </document>

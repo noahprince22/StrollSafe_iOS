@@ -18,12 +18,21 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         }()
     
     
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
     var searchActive : Bool = false
     var people : [(String, String)] = []
-    var filtered:[String] = []
+    var filtered:[(String, String)] = []
+    var completionFn: ((String) -> (Void))!
+
+    /**
+    Sets the function that will be executed when a number is selected
+    
+    :param: fn The function to execute
+    */
+    func setCompletion(fn: (String) -> (Void)) {
+        self.completionFn = { fn($0) }
+    }
     
     func readFromAddressBook(addressBook: ABAddressBookRef){
         
@@ -59,6 +68,7 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.becomeFirstResponder()
         
         switch ABAddressBookGetAuthorizationStatus(){
         case .Authorized:
@@ -85,14 +95,8 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
             
         }
         
-        
-        /* Setup delegates */
-        tableView.delegate = self
-        tableView.dataSource = self
         searchBar.delegate = self
-        
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
+        searchBarTextDidBeginEditing(searchBar)
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -101,10 +105,18 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         searchActive = false;
+        
+        self.dismissViewControllerAnimated(true, completion: { _ in
+            self.completionFn(searchBar.text!)
+        })
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchActive = false;
+
+        self.dismissViewControllerAnimated(true, completion: { _ in
+            self.completionFn("")
+        })
     }
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
@@ -112,10 +124,12 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered.append(("",searchText))
+        
         filtered = []
         for person in people {
-            if (person.0.rangeOfString(searchText) != nil || person.1.rangeOfString(searchText) != nil) {
-                filtered.append("\(person.0) \(person.1)")
+            if (person.0.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch) != nil || person.1.rangeOfString(searchText) != nil) {
+                filtered.append(person)
             }
         }
         
@@ -124,7 +138,6 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         } else {
             searchActive = true;
         }
-        self.tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -151,11 +164,21 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         }
         
         if(searchActive){
-            cell!.textLabel!.text = filtered[indexPath.row]
+            cell!.textLabel!.text = filtered[indexPath.row].0
+            cell!.detailTextLabel!.text = filtered[indexPath.row].1
         } else {
-            cell!.textLabel!.text = "\(people[indexPath.row].0) \(people[indexPath.row].1)";
+            cell!.textLabel!.text = people[indexPath.row].0
+            cell!.detailTextLabel!.text = people[indexPath.row].1
         }
         
         return cell!;
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        
+        self.dismissViewControllerAnimated(true, completion: { _ in
+            self.completionFn(cell!.detailTextLabel!.text!)
+        })
     }
 }
