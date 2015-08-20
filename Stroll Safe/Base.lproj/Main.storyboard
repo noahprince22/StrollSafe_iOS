@@ -413,6 +413,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                     <rect key="frame" x="35" y="7" width="246" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <connections>
+                                                        <action selector="callContactDidChange:" destination="bAY-0K-uxt" eventType="editingChanged" id="v90-as-NYj"/>
+                                                    </connections>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QuG-F2-Hk9">
                                                     <rect key="frame" x="281" y="6" width="31" height="30"/>
@@ -458,7 +461,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-Os-JPL">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-Os-JPL">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="contactPoliceSwitch:" destination="bAY-0K-uxt" eventType="valueChanged" id="agD-jJ-jP5"/>
@@ -522,6 +525,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="U1s-ry-lfB" firstAttribute="leading" secondItem="Gio-Ut-BfD" secondAttribute="trailing" constant="8" id="1f5-dN-qch"/>
                                                 <constraint firstItem="U1s-ry-lfB" firstAttribute="trailing" secondItem="2hf-n6-b5d" secondAttribute="trailingMargin" id="B6m-zK-occ"/>
                                                 <constraint firstItem="U1s-ry-lfB" firstAttribute="leading" secondItem="Gio-Ut-BfD" secondAttribute="trailing" constant="8" id="TrF-cy-wqj"/>
                                                 <constraint firstItem="Gio-Ut-BfD" firstAttribute="leading" secondItem="2hf-n6-b5d" secondAttribute="leadingMargin" id="l5b-4e-W3l"/>
@@ -562,7 +566,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-4Y-KL1">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.5" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-4Y-KL1">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="DeM-7b-GNJ"/>
@@ -593,7 +597,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.5" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-sD-Cdu">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-sD-Cdu">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="bun-CA-m0q"/>
@@ -625,6 +629,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-aq-LxW">
                                                     <rect key="frame" x="8" y="7" width="304" height="30"/>
                                                     <state key="normal" title="Reset Passcode"/>
+                                                    <connections>
+                                                        <action selector="resetPasscode:" destination="bAY-0K-uxt" eventType="touchUpInside" id="d6z-h9-ICF"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -655,8 +662,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <outlet property="searchDisplayController" destination="v35-Uu-wcr" id="cON-us-gh2"/>
                         <outlet property="textBody" destination="U1s-ry-lfB" id="3pt-jz-K0c"/>
                         <outlet property="textContact" destination="fYL-bo-s1m" id="7UD-Ks-LJs"/>
+                        <outlet property="textEnabledSwitch" destination="M1j-Os-JPL" id="4jm-F4-zQi"/>
                         <segue destination="vXZ-lx-hvc" kind="show" identifier="settingsToMainSegue" id="XoG-uO-gJ3"/>
                         <segue destination="n9b-Wu-fAG" kind="presentation" identifier="contactPopover" id="5Na-bD-Xg5"/>
+                        <segue destination="PaD-Ot-r0Q" kind="show" identifier="resetPassSegue" id="tnN-Bn-FlZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wu0-Q5-x5W" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1231,7 +1240,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DoN-kV-gK2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="884.5"/>
+            <point key="canvasLocation" x="291" y="886.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1244,7 +1253,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XoG-uO-gJ3"/>
-        <segue reference="yP8-g2-hfg"/>
+        <segue reference="5rJ-g3-Db6"/>
+        <segue reference="tnN-Bn-FlZ"/>
         <segue reference="ddd-sB-b0W"/>
     </inferredMetricsTieBreakers>
 </document>

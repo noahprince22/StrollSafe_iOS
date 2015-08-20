@@ -15,7 +15,8 @@ class CommunicationUtil {
     enum PhoneNumberError: ErrorType {
         case TooShort
         case TooLong
-        case ContainsLetters
+        case ContainsInvalidCharacters
+        case CannotContact
     }
     
     /**
@@ -53,11 +54,11 @@ class CommunicationUtil {
     :param: number the phone number
     */
     func formatNumber(number: String) throws -> String {
-        if (!containsNoLetters(number)) {
-            throw PhoneNumberError.ContainsLetters
-        }
-        
         let strippedPhoneNumber = "".join(number.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+        
+        if (containsInvalidCharacters(strippedPhoneNumber)) {
+            throw PhoneNumberError.ContainsInvalidCharacters
+        }
         
         if (strippedPhoneNumber.characters.count < 10) {
             throw PhoneNumberError.TooShort
@@ -68,16 +69,24 @@ class CommunicationUtil {
             throw PhoneNumberError.TooLong
         }
         
-        return strippedPhoneNumber
-    }
-    
-    func containsNoLetters(input: String) -> Bool {
-        for chr in input.characters {
-            if ((chr >= "a" && chr <= "z") || (chr >= "A" && chr <= "Z") ) {
-                return false
+        // Finally, check if the number can be dialed
+        if let phoneCallURL:NSURL = NSURL(string:"tel://"+"\(strippedPhoneNumber)") {
+            let application:UIApplication = UIApplication.sharedApplication()
+            if (application.canOpenURL(phoneCallURL)) {
+                throw PhoneNumberError.CannotContact
             }
         }
         
-        return true
+        return strippedPhoneNumber
+    }
+    
+    func containsInvalidCharacters(input: String) -> Bool {
+        for chr in input.characters {
+            if (!(chr >= "0" && chr <= "9")) {
+                return true
+            }
+        }
+        
+        return false
     }
 }

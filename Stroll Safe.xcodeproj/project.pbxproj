@@ -34,7 +34,7 @@
 		FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */; };
 		FA1AD3AF1B800AE500CB4FC2 /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
-		FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */; };
+		FA1B93571B743B5F00046268 /* CommunicationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationUtil.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
@@ -189,7 +189,7 @@
 		FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchDelegate.swift; path = Delegates/ContactSearchDelegate.swift; sourceTree = "<group>"; };
 		FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
-		FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationsUtil.swift; sourceTree = "<group>"; };
+		FA1B93561B743B5F00046268 /* CommunicationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroll_SafeUITests.swift; sourceTree = "<group>"; };
 		FA59FE5D1B64196300F27162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 			children = (
 				BF0155891AC2094E00BED16A /* CircleProgressView.swift */,
 				FAA2A1711B7142FD00F3F89C /* TimedAction.swift */,
-				FA1B93561B743B5F00046268 /* CommunicationsUtil.swift */,
+				FA1B93561B743B5F00046268 /* CommunicationUtil.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -806,7 +806,7 @@
 				BF477D421ABE782D005D76E8 /* LockdownViewController.swift in Sources */,
 				ACDDF2E61ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld in Sources */,
 				FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */,
-				FA1B93571B743B5F00046268 /* CommunicationsUtil.swift in Sources */,
+				FA1B93571B743B5F00046268 /* CommunicationUtil.swift in Sources */,
 				FA03784F1B7AA594000083E0 /* TutorialViewController.swift in Sources */,
 				FA0378401B7937F5000083E0 /* SettingsViewController.swift in Sources */,
 				FA1AD3AF1B800AE500CB4FC2 /* ContactSearchViewController.swift in Sources */,

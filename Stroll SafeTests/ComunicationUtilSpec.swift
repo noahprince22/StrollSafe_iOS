@@ -30,6 +30,14 @@ class CommunicationUtilSpec: QuickSpec {
                     it ("fails if there are any letters") {
                         expect { try util.formatNumber("abc 123 bbca") }.to(throwError())
                     }
+                    
+                    it ("fails for emergency numbers like 911") {
+                        expect { try util.formatNumber("911") }.to(throwError())
+                    }
+                    
+                    it ("fails for odd characters") {
+                        expect { try util.formatNumber("123.4(5)6?788/*8 9&99") }.to(throwError())
+                    }
                 }
                 
                 describe ("valid phone numbers") {
