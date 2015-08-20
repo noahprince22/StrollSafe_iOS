@@ -31,9 +31,33 @@ class Stroll_SafeUITests: XCTestCase {
         //Passcode.purge()
     }
     
-    func testSpeedCall(){
+    func testLoginWithSettings() -> XCUIApplication{
         let app = testCorrectSetPass()
-        app.buttons["Done"].tap()
+        
+        let tablesQuery = app.tables
+        tablesQuery.textFields["full_name"].tap()
+        tablesQuery.textFields["full_name"].typeText("Urist McTest")
+        tablesQuery.textFields["Please include area code"].tap()
+        tablesQuery.textFields["phone_number"].typeText("3018675309")
+        tablesQuery.cells.containingType(.StaticText, identifier:"Or").textFields["Number to Contact"].tap()
+        tablesQuery.textFields["call_contact"].typeText("5555555555")
+        
+        let textContactTextField = tablesQuery.textFields["text_contact"]
+        textContactTextField.tap()
+        textContactTextField.typeText("555555555")
+        tablesQuery.switches["Enabled:"].tap()
+        
+        let doneButton = tablesQuery.buttons["Done"]
+        doneButton.tap()
+        app.alerts["Oops!"].collectionViews.buttons["Ok"].tap()
+        textContactTextField.typeText("5")
+        doneButton.tap()
+        
+        return app
+    }
+    
+    func testSpeedCall() {
+        let app = testLoginWithSettings()
 
         let fingerIconButton = app.buttons["finger icon"]
         fingerIconButton.tap()
@@ -106,9 +130,8 @@ class Stroll_SafeUITests: XCTestCase {
     //    so we don't use the lockutil or any verify on the lock screen view. It's bad, and needs to be fixed
     //    but since they both use the same view, the view does get verified in setup pin.
     func testReleaseArmDisarm(){
-        let app = testCorrectSetPass()
+        let app = testLoginWithSettings()
         let window = app.childrenMatchingType(.Window).elementBoundByIndex(0)
-        app.buttons["Done"].tap()
         
         let fingerIconButton = app.buttons["finger icon"]
         fingerIconButton.tap()

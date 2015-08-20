@@ -67,12 +67,12 @@ class ConfigurationSpec: QuickSpec {
                 let storedConf = try! Configuration.get(managedObjectContext)
                 expect(storedConf.lockdown_duration).toNot(beNil())
                 expect(storedConf.release_duration).toNot(beNil())
-                expect(storedConf.sms_recipients).toNot(beNil())
-                expect(storedConf.call_recipient).toNot(beNil())
                 expect(storedConf.sms_body).toNot(beNil())
                 
                 expect(storedConf.full_name).to(beNil())
                 expect(storedConf.phone_number).to(beNil())
+                expect(storedConf.sms_recipients).to(beNil())
+                expect(storedConf.call_recipient).to(beNil())
             }
         }
     }

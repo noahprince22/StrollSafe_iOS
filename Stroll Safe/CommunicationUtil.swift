@@ -80,6 +80,18 @@ class CommunicationUtil {
         return strippedPhoneNumber
     }
     
+    /**
+    Splits comma separated numbers into an array of strings
+    "5555555555,2222222222" -> ["5555555555", "2222222222"]
+    
+    :param: numbers the phone numbers
+    
+    :returns: an array of the phone numbers
+    */
+    func csvNumbersToArray(numbers: String) -> [String] {
+        return numbers.characters.split {$0 == ","}.map { String($0) }
+    }
+    
     func containsInvalidCharacters(input: String) -> Bool {
         for chr in input.characters {
             if (!(chr >= "0" && chr <= "9")) {

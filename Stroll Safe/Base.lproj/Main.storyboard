@@ -318,6 +318,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First and Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFk-ki-aus">
                                                     <rect key="frame" x="95" y="6" width="217" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="full_name"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -347,6 +348,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please include area code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-XH-udz">
                                                     <rect key="frame" x="123" y="7" width="189" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="phone_number"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
@@ -411,6 +413,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number to Contact" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UBu-g5-9Mf">
                                                     <rect key="frame" x="35" y="7" width="246" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="call_contact"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     <connections>
@@ -463,9 +466,6 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-Os-JPL">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
-                                                    <connections>
-                                                        <action selector="contactPoliceSwitch:" destination="bAY-0K-uxt" eventType="valueChanged" id="agD-jJ-jP5"/>
-                                                    </connections>
                                                 </switch>
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTa-cP-CET">
                                                     <rect key="frame" x="153" y="6" width="31" height="30"/>
@@ -480,6 +480,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </button>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Number to Contact" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fYL-bo-s1m">
                                                     <rect key="frame" x="8" y="7" width="145" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="text_contact"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 </textField>
@@ -517,6 +518,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location data will be appended" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1s-ry-lfB">
                                                     <rect key="frame" x="96" y="7" width="216" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="text_body"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="216" id="GJd-oh-c0c"/>
                                                     </constraints>
@@ -551,7 +553,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Timing (optional)" id="Lro-35-gIg">
+                            <tableViewSection headerTitle="Timing" id="Lro-35-gIg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="slm-hF-Tnx">
                                         <rect key="frame" x="0.0" y="551.5" width="320" height="44"/>
@@ -568,6 +570,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.5" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qaT-4Y-KL1">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="release_duration"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="DeM-7b-GNJ"/>
                                                     </constraints>
@@ -599,6 +602,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="20" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mlb-sD-Cdu">
                                                     <rect key="frame" x="250" y="6" width="62" height="30"/>
+                                                    <accessibility key="accessibilityConfiguration" label="lockdown_duration"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="62" id="bun-CA-m0q"/>
                                                     </constraints>
@@ -628,7 +632,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bb-aq-LxW">
                                                     <rect key="frame" x="8" y="7" width="304" height="30"/>
-                                                    <state key="normal" title="Reset Passcode"/>
+                                                    <state key="normal" title="Reset Passcode (Saves any Changes)"/>
                                                     <connections>
                                                         <action selector="resetPasscode:" destination="bAY-0K-uxt" eventType="touchUpInside" id="d6z-h9-ICF"/>
                                                     </connections>
@@ -655,10 +659,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <outlet property="callContact" destination="UBu-g5-9Mf" id="ebr-Is-T6h"/>
                         <outlet property="contactPoliceSwitch" destination="lB6-TE-pQG" id="jdu-dO-k5m"/>
                         <outlet property="done" destination="Wdd-gB-bEK" id="J7h-t5-p9v"/>
-                        <outlet property="lockdownTime" destination="qaT-4Y-KL1" id="nsh-zZ-Vme"/>
+                        <outlet property="lockdownTime" destination="Mlb-sD-Cdu" id="g0R-3A-uFe"/>
                         <outlet property="name" destination="NFk-ki-aus" id="kTd-Wv-c3N"/>
                         <outlet property="phonenumber" destination="Thp-XH-udz" id="8PL-Kc-gyg"/>
-                        <outlet property="releaseTime" destination="Mlb-sD-Cdu" id="aWU-MH-sSI"/>
+                        <outlet property="releaseTime" destination="qaT-4Y-KL1" id="dwt-dD-DU3"/>
                         <outlet property="searchDisplayController" destination="v35-Uu-wcr" id="cON-us-gh2"/>
                         <outlet property="textBody" destination="U1s-ry-lfB" id="3pt-jz-K0c"/>
                         <outlet property="textContact" destination="fYL-bo-s1m" id="7UD-Ks-LJs"/>

@@ -13,7 +13,7 @@ import Alamofire
 class LockdownViewController: UIViewController {
 
     var lockdownDuration: Double!
-    var smsRecipients: [String]!
+    var smsRecipients: [String] = []
     var callRecipient: String!
     var smsBody: String!
     
@@ -109,12 +109,15 @@ class LockdownViewController: UIViewController {
     
     :param: configurationContext (optional) the managed object context to get the configuration
     */
-    func configure(configurationContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
+    func configure(configurationContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!, communicationUtil: CommunicationUtil = CommunicationUtil()) {
         do {
             let conf = try Configuration.get(configurationContext)
             self.lockdownDuration = conf.lockdown_duration as? Double
-            // Take comma separated values to array of numbers
-            self.smsRecipients = conf.sms_recipients!.characters.split {$0 == ","}.map { String($0) }
+            
+            if let smsRecip = conf.sms_recipients {
+                self.smsRecipients = communicationUtil.csvNumbersToArray(smsRecip)
+            }
+            
             self.callRecipient = conf.call_recipient!
             self.smsBody = conf.sms_body!
         } catch let error as NSError {
