@@ -45,7 +45,6 @@ class Stroll_SafeUITests: XCTestCase {
         let textContactTextField = tablesQuery.textFields["text_contact"]
         textContactTextField.tap()
         textContactTextField.typeText("555555555")
-        tablesQuery.switches["Enabled:"].tap()
         
         let doneButton = tablesQuery.buttons["Done"]
         doneButton.tap()

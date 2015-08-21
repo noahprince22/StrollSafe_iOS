@@ -48,6 +48,15 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBAction func callContactDidChange(sender: UITextField) {
         contactPoliceSwitch.on = false
     }
+    
+    @IBAction func textContactDidChange(sender: UITextField) {
+        if (sender.text == "") {
+            self.textEnabledSwitch.on = false
+        } else {
+            self.textEnabledSwitch.on = true
+        }
+    }
+    
 
     /**
     Attempts to save all settings
