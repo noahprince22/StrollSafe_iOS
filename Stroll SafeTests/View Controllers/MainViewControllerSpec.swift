@@ -138,7 +138,7 @@ class MainViewControllerSpec: QuickSpec {
                     
                     expect(viewController.progressBar.progress).to(beCloseTo(0.5, within: 0.05))
                     let expectedProgressString = expectedProgress.format("0.2")
-                    expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5)
+                    expect(viewController.progressLabel.text).toEventually(contain(expectedProgressString), timeout: 0.5 + 0.05)
                 }
             }
         }

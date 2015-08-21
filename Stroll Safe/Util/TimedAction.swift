@@ -34,11 +34,14 @@ class TimedAction {
     var acceleratedIterations = 0
     var accelerated = false
     var paused = false
+    var secondsRemaining: Double!
     
     init(builder: TimedActionBuilder) {
         if let secondsToRun = builder.secondsToRun {
             self.secondsToRun = secondsToRun
+            self.secondsRemaining = secondsToRun
         }
+        
         
         if let recurrentInterval = builder.recurrentInterval {
             self.recurrentInterval = recurrentInterval
@@ -65,25 +68,22 @@ class TimedAction {
         paused = false
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
-            var start = NSDate()
-            while((NSDate().timeIntervalSinceDate(start) < self.secondsToRun) && !self.breakCondition(NSDate().timeIntervalSinceDate(start)) && !self.paused) {
-                let curTime = NSDate().timeIntervalSinceDate(start)
-                self.recurrentFunction(curTime)
+            var curTime = NSDate()
+            while((self.secondsRemaining > 0) && !self.breakCondition(self.secondsToRun - self.secondsRemaining) && !self.paused) {
+                curTime = NSDate()
+                NSThread.sleepForTimeInterval(self.recurrentInterval)
                 
-                let calendar = NSCalendar.currentCalendar()
-                let nanosecondsAcceleratedForward: Int = (Int) (((Double)(self.acceleratedIterations)*self.accelerationRate) * 1000000000)
-                start = calendar.dateByAddingUnit(NSCalendarUnit.Nanosecond, value: -nanosecondsAcceleratedForward, toDate: start, options: [])!
+                self.secondsRemaining = self.secondsRemaining - NSDate().timeIntervalSinceDate(curTime) - ((Double)(self.acceleratedIterations)*self.accelerationRate)
                 
                 if self.accelerated {
                     self.acceleratedIterations++
                 }
                 
-                NSThread.sleepForTimeInterval(self.recurrentInterval)
+                self.recurrentFunction(self.secondsToRun - self.secondsRemaining)
             }
             
             if (!self.paused) {
-                // Return the greater of actual time or acceleration adjusted time
-                self.exitFunction(NSDate().timeIntervalSinceDate(start))
+                self.exitFunction(self.secondsToRun - self.secondsRemaining)
             }
         })
     }

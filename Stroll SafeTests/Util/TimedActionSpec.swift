@@ -34,7 +34,7 @@ class TimedActionSpec: QuickSpec {
                 }
                 
                 Stroll_Safe.TimedAction(builder: timedActionBuilder).run()
-                expect(executeTimesCalled).toEventually(beGreaterThan(2), timeout: secondsToRun)
+                expect(executeTimesCalled).toEventually(beGreaterThanOrEqualTo(2), timeout: secondsToRun)
             }
             
             it("executes an exit function") {
@@ -120,9 +120,9 @@ class TimedActionSpec: QuickSpec {
                 action.disableAcceleration()
                 
                 // It should still be running at this point
-                NSThread.sleepForTimeInterval(0.5)
+                NSThread.sleepForTimeInterval(0.5 - tolerance)
                 expect(exitFunctionCalled).to(beFalse())
-                NSThread.sleepForTimeInterval(0.5 + tolerance)
+                NSThread.sleepForTimeInterval(0.5 + 2*tolerance)
                 expect(exitFunctionCalled).to(beTrue())
             }
             
@@ -142,11 +142,12 @@ class TimedActionSpec: QuickSpec {
                 
                 let action = TimedAction(builder: timedActionBuilder)
                 action.run()
+                NSThread.sleepForTimeInterval(0.3)
                 action.pause()
                 NSThread.sleepForTimeInterval(0.8 + tolerance)
                 expect(exitFunctionCalled).to(beFalse())
                 action.run()
-                expect(exitFunctionCalled).toEventually(beTrue(), timeout: secondsToRun + tolerance)
+                expect(exitFunctionCalled).toEventually(beTrue(), timeout: secondsToRun - 0.3 + tolerance)
             }
         }
     }
