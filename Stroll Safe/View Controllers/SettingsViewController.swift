@@ -301,6 +301,8 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                     NSLog(error.localizedDescription)
                 }
             }
+            
+            self.textEnabledSwitch.on = true
         })
         
         self.presentViewController(contactSearchVC, animated: true, completion: nil)

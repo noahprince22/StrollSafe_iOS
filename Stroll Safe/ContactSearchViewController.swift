@@ -96,7 +96,11 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
         }
         
         searchBar.delegate = self
-        searchBarTextDidBeginEditing(searchBar)
+        searchBar.becomeFirstResponder()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        searchBar.becomeFirstResponder()
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {

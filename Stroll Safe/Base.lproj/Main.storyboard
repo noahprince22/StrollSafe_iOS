@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8173.3" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bAY-0K-uxt">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8142"/>
@@ -85,7 +85,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sHB-jb-z5T">
-                                <rect key="frame" x="254" y="530" width="42" height="30"/>
+                                <rect key="frame" x="249" y="532" width="55" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Got it!"/>
                                 <connections>
                                     <action selector="gotItPressed:" destination="bEl-p5-fu6" eventType="touchUpInside" id="HrW-dz-ttj"/>
@@ -94,8 +95,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="sHB-jb-z5T" secondAttribute="trailing" constant="8" id="PHX-HF-TaK"/>
-                            <constraint firstItem="0ZX-G2-wkp" firstAttribute="top" secondItem="sHB-jb-z5T" secondAttribute="bottom" constant="8" symbolic="YES" id="za3-2c-n9U"/>
+                            <constraint firstItem="0ZX-G2-wkp" firstAttribute="top" secondItem="sHB-jb-z5T" secondAttribute="bottom" id="UPe-yA-GBE"/>
+                            <constraint firstItem="sHB-jb-z5T" firstAttribute="trailing" secondItem="McW-5w-6Lz" secondAttribute="trailingMargin" id="d82-lX-swe"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -239,26 +240,26 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="CXo-Bd-bmF">
+                            <searchBar contentMode="redraw" misplaced="YES" placeholder="Person or Number to Contact" translatesAutoresizingMaskIntoConstraints="NO" id="x5L-HB-dIq">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="no" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                                 <connections>
-                                    <outlet property="delegate" destination="n9b-Wu-fAG" id="7vS-DK-BlK"/>
+                                    <outlet property="delegate" destination="n9b-Wu-fAG" id="6xh-8X-hXi"/>
                                 </connections>
                             </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CXo-Bd-bmF" secondAttribute="trailing" id="gnF-Qo-WEj"/>
-                            <constraint firstItem="CXo-Bd-bmF" firstAttribute="top" secondItem="RJn-g1-heW" secondAttribute="top" id="tsf-65-dMW"/>
-                            <constraint firstItem="CXo-Bd-bmF" firstAttribute="leading" secondItem="RJn-g1-heW" secondAttribute="leading" id="xyO-wN-GHG"/>
+                            <constraint firstItem="x5L-HB-dIq" firstAttribute="leading" secondItem="RJn-g1-heW" secondAttribute="leadingMargin" constant="-20" id="Clq-0m-rP3"/>
+                            <constraint firstItem="x5L-HB-dIq" firstAttribute="top" secondItem="RJn-g1-heW" secondAttribute="topMargin" id="FP3-6N-fKo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="x5L-HB-dIq" secondAttribute="trailing" constant="-20" id="IJu-eb-lVa"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="searchBar" destination="CXo-Bd-bmF" id="a6f-bH-HZT"/>
-                        <outlet property="searchDisplayController" destination="SOf-NF-YFT" id="Pvk-8h-XmT"/>
-                        <segue destination="bAY-0K-uxt" kind="popoverPresentation" identifier="contactDone" popoverAnchorView="CXo-Bd-bmF" id="yP8-g2-hfg">
+                        <outlet property="searchBar" destination="x5L-HB-dIq" id="KP4-aR-mmE"/>
+                        <outlet property="searchDisplayController" destination="DK6-7a-ahk" id="qMz-WM-hpI"/>
+                        <segue destination="bAY-0K-uxt" kind="popoverPresentation" identifier="contactDone" popoverAnchorView="RJn-g1-heW" id="yP8-g2-hfg">
                             <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                         </segue>
                     </connections>
@@ -266,11 +267,18 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mrj-Ux-FZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="SOf-NF-YFT">
                     <connections>
-                        <outlet property="delegate" destination="n9b-Wu-fAG" id="YxQ-hq-KJP"/>
-                        <outlet property="searchBar" destination="CXo-Bd-bmF" id="Q24-8r-doG"/>
                         <outlet property="searchContentsController" destination="n9b-Wu-fAG" id="7nf-Wl-CLi"/>
                         <outlet property="searchResultsDataSource" destination="n9b-Wu-fAG" id="btE-tZ-kas"/>
                         <outlet property="searchResultsDelegate" destination="n9b-Wu-fAG" id="Fzc-Vr-7nP"/>
+                    </connections>
+                </searchDisplayController>
+                <searchDisplayController id="DK6-7a-ahk">
+                    <connections>
+                        <outlet property="delegate" destination="n9b-Wu-fAG" id="6CO-Sf-3Bi"/>
+                        <outlet property="searchBar" destination="x5L-HB-dIq" id="cHN-hR-u3p"/>
+                        <outlet property="searchContentsController" destination="n9b-Wu-fAG" id="Yw0-or-Efi"/>
+                        <outlet property="searchResultsDataSource" destination="n9b-Wu-fAG" id="k5H-IV-Wzk"/>
+                        <outlet property="searchResultsDelegate" destination="n9b-Wu-fAG" id="OnP-n1-T4i"/>
                     </connections>
                 </searchDisplayController>
             </objects>
@@ -1260,8 +1268,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XoG-uO-gJ3"/>
-        <segue reference="5rJ-g3-Db6"/>
-        <segue reference="tnN-Bn-FlZ"/>
+        <segue reference="yP8-g2-hfg"/>
         <segue reference="ddd-sB-b0W"/>
+        <segue reference="ece-KQ-CTx"/>
     </inferredMetricsTieBreakers>
 </document>
