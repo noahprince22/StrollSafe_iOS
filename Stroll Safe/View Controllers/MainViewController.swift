@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import MessageUI
 import AudioToolbox
+import Darwin
 
 
 // Lets the time display as 2.00 and not 2
@@ -86,6 +87,7 @@ class MainViewController: UIViewController {
             dispatch_async(dispatch_get_main_queue(), {
                 self.performSegueWithIdentifier("firstTimeUserSegue", sender: nil)
             })
+            return
         } catch let error as NSError {
             NSLog(error.localizedDescription)
             abort()
@@ -177,7 +179,8 @@ class MainViewController: UIViewController {
     }
     
     /**
-    Configures this view controller with the stored configuration
+    Configures this view controller with the stored configuration, checks to see if there is 
+    an internet connection to send sms
     
     :param: configurationContext (optional) the managed object context to get the configuration
     */
@@ -185,6 +188,36 @@ class MainViewController: UIViewController {
         do {
             let conf = try Configuration.get(configurationContext)
             self.releaseDuration = conf.release_duration as? Double
+            
+            // If texting is enabled, must have an internet connection
+            if let _ = conf.sms_recipients {
+                // Every 10 seconds check to see if the internet is up, otherwise we can't send sms
+                var seenOnce = false
+                let timedActionBuilder = TimedActionBuilder { builder in
+                    builder.secondsToRun = DBL_MAX
+                    builder.recurrentInterval = 10
+                    builder.recurrentFunction = { (timeElapsed: Double) in
+                        dispatch_async(dispatch_get_main_queue(), {
+                            if (!Reachability.isConnectedToNetwork()) {
+                                let alert = UIAlertView()
+                                alert.title = "Network Unavailable"
+                                alert.message = "Please enable networking or disable the texting feature. This app cannot send an emergency SMS without an internet connection"
+                                alert.addButtonWithTitle("Ok")
+                                alert.show()
+                                seenOnce = true
+                            }
+                        })
+                    }
+                    builder.breakCondition = { _ in
+                        return seenOnce
+                    }
+                }
+                
+                // Run once to make sure we're connected now
+                timedActionBuilder.recurrentFunction!(0)
+                
+                TimedAction(builder: timedActionBuilder).run()
+            }
         } catch let error as NSError {
             print("An error occurred while loading the configuration in the MainViewController, using fallback values")
             print(error.localizedDescription)

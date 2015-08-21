@@ -38,6 +38,7 @@
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
+		FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */; };
 		FA8B3C011B8403040029BC93 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3C001B8403040029BC93 /* search.png */; };
 		FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */; };
 		FA95347B1B83F5CC00763416 /* SettingsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */; };
@@ -195,6 +196,7 @@
 		FA59FE5D1B64196300F27162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA59FE641B641D2F00F27162 /* LockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockUtil.swift; sourceTree = "<group>"; };
 		FA7A9C811B6FDEBC00B7366B /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
+		FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FA8B3C001B8403040029BC93 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
 		FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsViewController.swift; path = "View Controllers/TermsViewController.swift"; sourceTree = "<group>"; };
 		FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -450,6 +452,7 @@
 				BF0155891AC2094E00BED16A /* CircleProgressView.swift */,
 				FAA2A1711B7142FD00F3F89C /* TimedAction.swift */,
 				FA1B93561B743B5F00046268 /* CommunicationUtil.swift */,
+				FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				ACDDF2E81ABD57F60029DF5D /* MainViewController.swift in Sources */,
 				FAA2A1721B7142FD00F3F89C /* TimedAction.swift in Sources */,
 				BF477D421ABE782D005D76E8 /* LockdownViewController.swift in Sources */,
+				FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */,
 				ACDDF2E61ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld in Sources */,
 				FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */,
 				FA1B93571B743B5F00046268 /* CommunicationUtil.swift in Sources */,
