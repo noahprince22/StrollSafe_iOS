@@ -46,6 +46,8 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
         self.pageViewController.didMoveToParentViewController(self)
         
         gotIt.hidden = true
+        gotIt.layer.zPosition = 1000
+        self.view.bringSubviewToFront(gotIt)
     }
 
     override func didReceiveMemoryWarning() {

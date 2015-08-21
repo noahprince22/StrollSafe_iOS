@@ -64,7 +64,7 @@ class SettingsViewControllerSpec: QuickSpec {
                 
                 viewController =
                     storyboard.instantiateViewControllerWithIdentifier(
-                        "settings") as! Stroll_Safe.SettingsViewController
+                        "settingsViewController") as! Stroll_Safe.SettingsViewController
                 
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
@@ -115,7 +115,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         viewController =
                             storyboard.instantiateViewControllerWithIdentifier(
-                                "settings") as! Stroll_Safe.SettingsViewController
+                                "settingsViewController") as! Stroll_Safe.SettingsViewController
                         
                         viewController.beginAppearanceTransition(true, animated: false)
                         viewController.endAppearanceTransition()

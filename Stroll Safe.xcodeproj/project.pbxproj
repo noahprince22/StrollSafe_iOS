@@ -39,6 +39,7 @@
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
 		FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */; };
+		FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */; };
 		FA8B3C011B8403040029BC93 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3C001B8403040029BC93 /* search.png */; };
 		FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */; };
 		FA95347B1B83F5CC00763416 /* SettingsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */; };
@@ -179,7 +180,7 @@
 		BFD7C97C1ABE3D8200D973DF /* finger_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finger_icon.png; path = images/finger_icon.png; sourceTree = "<group>"; };
 		BFD7C97D1ABE3D8200D973DF /* shake_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shake_icon.png; path = images/shake_icon.png; sourceTree = "<group>"; };
 		FA03783A1B7839FE000083E0 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Configuration.swift; path = Models/Configuration.swift; sourceTree = "<group>"; };
-		FA03783F1B7937F5000083E0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/SettingsViewController.swift"; sourceTree = "<group>"; };
+		FA03783F1B7937F5000083E0 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = "View Controllers/settings/SettingsViewController.swift"; sourceTree = "<group>"; };
 		FA03784C1B7AA44A000083E0 /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialContentViewController.swift; path = "View Controllers/tutorial/TutorialContentViewController.swift"; sourceTree = "<group>"; };
 		FA03784E1B7AA594000083E0 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = "View Controllers/tutorial/TutorialViewController.swift"; sourceTree = "<group>"; };
 		FA0378501B7AF9DC000083E0 /* mainscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mainscreen.png; path = images/mainscreen.png; sourceTree = "<group>"; };
@@ -188,7 +189,7 @@
 		FA0378561B7B0677000083E0 /* thumbdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbdown.png; path = images/thumbdown.png; sourceTree = "<group>"; };
 		FA0378581B7B0AF5000083E0 /* shakemode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shakemode.png; path = images/shakemode.png; sourceTree = "<group>"; };
 		FA03785B1B7BD65D000083E0 /* ContactSearchDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchDelegate.swift; path = Delegates/ContactSearchDelegate.swift; sourceTree = "<group>"; };
-		FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactSearchViewController.swift; sourceTree = "<group>"; };
+		FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchViewController.swift; path = "View Controllers/settings/ContactSearchViewController.swift"; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationUtil.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +198,7 @@
 		FA59FE641B641D2F00F27162 /* LockUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockUtil.swift; sourceTree = "<group>"; };
 		FA7A9C811B6FDEBC00B7366B /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = "View Controllers/settings/NavigatorViewController.swift"; sourceTree = "<group>"; };
 		FA8B3C001B8403040029BC93 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
 		FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsViewController.swift; path = "View Controllers/TermsViewController.swift"; sourceTree = "<group>"; };
 		FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -412,6 +414,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FA8B24881B87D9E100A7F8B9 /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */,
+				FA03783F1B7937F5000083E0 /* SettingsViewController.swift */,
+				FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
 		FA9E545A1B657355005267F9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,14 +472,13 @@
 		FA9E54841B65740E005267F9 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA8B24881B87D9E100A7F8B9 /* settings */,
 				FA03784B1B7AA41D000083E0 /* tutorial */,
 				FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */,
 				BF2516A51AC3A4C600024CF6 /* SetPasscodeViewController.swift */,
 				ACDDF2E71ABD57F60029DF5D /* MainViewController.swift */,
 				BF477D411ABE782D005D76E8 /* LockdownViewController.swift */,
 				BF2516A11AC3927300024CF6 /* PinpadViewController.swift */,
-				FA03783F1B7937F5000083E0 /* SettingsViewController.swift */,
-				FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -801,6 +812,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */,
 				FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */,
 				FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */,
 				BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */,

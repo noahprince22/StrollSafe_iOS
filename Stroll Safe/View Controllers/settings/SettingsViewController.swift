@@ -34,17 +34,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var phonenumber: UITextField!
     @IBOutlet weak var textContact: UITextField!
     @IBOutlet weak var callContact: UITextField!
-    @IBOutlet weak var done: UIBarButtonItem!
     @IBOutlet weak var textBody: UITextField!
     var contactSearchVC: ContactSearchViewController!
     @IBOutlet weak var textEnabledSwitch: UISwitch!
-    
-    @IBAction func donePress(sender: UIBarButtonItem) {
-        if (saveSettings()) {
-            self.performSegueWithIdentifier("settingsToMainSegue", sender: nil)
-        }
-    }
-    
+        
     @IBAction func callContactDidChange(sender: UITextField) {
         contactPoliceSwitch.on = false
     }

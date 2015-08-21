@@ -13,8 +13,8 @@ import Alamofire
 class LockdownViewController: UIViewController {
 
     var lockdownDuration: Double!
-    var smsRecipients: [String] = []
-    var callRecipient: String!
+    var smsRecipients: [String]? = []
+    var callRecipient: String?
     var smsBody: String!
     
     class Lock {
@@ -114,12 +114,14 @@ class LockdownViewController: UIViewController {
             let conf = try Configuration.get(configurationContext)
             self.lockdownDuration = conf.lockdown_duration as? Double
             
+            self.callRecipient = conf.call_recipient
             if let smsRecip = conf.sms_recipients {
                 self.smsRecipients = communicationUtil.csvNumbersToArray(smsRecip)
             }
             
-            self.callRecipient = conf.call_recipient!
-            self.smsBody = conf.sms_body!
+            if let body = conf.sms_body {
+                self.smsBody = "\(conf.full_name!)\n\(conf.phone_number!):\n\n\(body)\n\nAlert sent using StrollSafe"
+            }
         } catch let error as NSError {
             print("An error occurred while loading the configuration in the MainViewController, using fallback values")
             print(error.localizedDescription)
@@ -150,8 +152,13 @@ class LockdownViewController: UIViewController {
                         self.progressLabel.text = ("0")
                     })
                     
-                    communicationUtil.sendSms(self.smsRecipients, body: self.smsBody)
-                    communicationUtil.sendCall(self.callRecipient)
+                    if let smsRecips = self.smsRecipients {
+                        communicationUtil.sendSms(smsRecips, body: self.smsBody)
+                    }
+                    
+                    if let callRecip = self.callRecipient {
+                        communicationUtil.sendCall(callRecip)
+                    }
                 }
             }
             builder.recurrentFunction = self.updateProgress
@@ -163,6 +170,11 @@ class LockdownViewController: UIViewController {
         return TimedAction(builder: timedActionBuilder)
     }
     
+    /**
+    Sets up the embedded pinpad view with the correct functionality
+    
+    :param: managedObjectContext the managed object context to store the pass in on completion
+    */
     func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
         do {
             lock.lock(try Configuration.get(managedObjectContext).passcode!)

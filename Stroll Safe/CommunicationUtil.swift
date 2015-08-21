@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let MESSAGE_URL = "https://9737875b.ngrok.io/message"
+    static let MESSAGE_URL = "https://697c8438.ngrok.io/message"
     
     enum PhoneNumberError: ErrorType {
         case TooShort
@@ -72,7 +72,7 @@ class CommunicationUtil {
         // Finally, check if the number can be dialed
         if let phoneCallURL:NSURL = NSURL(string:"tel://"+"\(strippedPhoneNumber)") {
             let application:UIApplication = UIApplication.sharedApplication()
-            if (application.canOpenURL(phoneCallURL)) {
+            if (!application.canOpenURL(phoneCallURL)) {
                 throw PhoneNumberError.CannotContact
             }
         }

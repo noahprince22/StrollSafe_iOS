@@ -46,7 +46,7 @@ class Stroll_SafeUITests: XCTestCase {
         textContactTextField.tap()
         textContactTextField.typeText("555555555")
         
-        let doneButton = tablesQuery.buttons["Done"]
+        let doneButton = app.navigationBars["Settings"].buttons["Done"]
         doneButton.tap()
         app.alerts["Oops!"].collectionViews.buttons["Ok"].tap()
         textContactTextField.typeText("5")
