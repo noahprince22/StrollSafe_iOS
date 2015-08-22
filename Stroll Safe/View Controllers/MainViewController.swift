@@ -118,7 +118,6 @@ class MainViewController: UIViewController {
     }
     
    @IBAction func thumbUpInside(sender: UIButton) {
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         enterReleaseState()
     }
     
@@ -259,6 +258,7 @@ class MainViewController: UIViewController {
     }
     
     func enterReleaseState(){
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         enterDisplayReleaseState()
         dispatchLockdownTimer()
     }
