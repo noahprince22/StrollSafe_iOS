@@ -417,6 +417,22 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epi-yX-hjt">
+                                <rect key="frame" x="16" y="508" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="Xgc-zK-QvA"/>
+                                    <constraint firstAttribute="height" constant="40" id="aMf-pH-lqv"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Settings-50.png"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Qd-zFx">
+                                <rect key="frame" x="264" y="508" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="5he-rN-AE6"/>
+                                    <constraint firstAttribute="width" constant="40" id="Oph-Ua-LT3"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="Help-50 (2).png"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -426,12 +442,14 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <constraint firstAttribute="centerX" secondItem="4j7-iG-I5K" secondAttribute="centerX" id="B5g-9S-lEU"/>
                             <constraint firstAttribute="centerY" secondItem="rQ4-Hc-fec" secondAttribute="centerY" id="GeN-1a-j4g"/>
                             <constraint firstAttribute="bottom" secondItem="60C-pj-h49" secondAttribute="bottom" constant="20" id="IBj-uQ-ySh"/>
+                            <constraint firstItem="epi-yX-hjt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="K48-kH-xGK"/>
                             <constraint firstAttribute="centerX" secondItem="kbx-8F-CS3" secondAttribute="centerX" id="Pt1-O4-4n1"/>
                             <constraint firstAttribute="trailing" secondItem="rQ4-Hc-fec" secondAttribute="trailing" constant="16" id="RPy-Ez-qos"/>
                             <constraint firstAttribute="trailing" secondItem="kbx-8F-CS3" secondAttribute="trailing" constant="-12" id="UUi-Mi-4wz"/>
                             <constraint firstItem="YGA-Gq-kzX" firstAttribute="top" secondItem="kbx-8F-CS3" secondAttribute="top" constant="-99" id="XCP-qe-KkL"/>
                             <constraint firstAttribute="centerX" secondItem="rQ4-Hc-fec" secondAttribute="centerX" id="YaG-Wc-h5s"/>
                             <constraint firstAttribute="centerX" secondItem="pa5-dg-QGN" secondAttribute="centerX" id="dkW-N2-eib"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JpO-Qd-zFx" secondAttribute="trailing" constant="-4" id="dmx-v1-XeI"/>
                             <constraint firstItem="YGA-Gq-kzX" firstAttribute="centerX" secondItem="kbx-8F-CS3" secondAttribute="centerX" id="f1m-II-xK6"/>
                             <constraint firstAttribute="centerY" secondItem="YGA-Gq-kzX" secondAttribute="centerY" constant="49" id="lVj-AS-VY1"/>
                             <constraint firstAttribute="centerX" secondItem="YGA-Gq-kzX" secondAttribute="centerX" id="mtn-tB-HKk"/>
@@ -440,8 +458,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <constraint firstAttribute="centerX" secondItem="KOv-yq-ZNo" secondAttribute="centerX" id="psV-ga-Wpd"/>
                             <constraint firstItem="YGA-Gq-kzX" firstAttribute="top" secondItem="kbx-8F-CS3" secondAttribute="top" constant="-99" id="q5W-Y8-LdE"/>
                             <constraint firstAttribute="centerX" secondItem="YGA-Gq-kzX" secondAttribute="centerX" id="qnR-zn-JaC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="JpO-Qd-zFx" secondAttribute="bottom" constant="20" id="tmS-eP-T9z"/>
                             <constraint firstItem="KOv-yq-ZNo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="top" constant="12" id="uS3-ZP-ET5"/>
                             <constraint firstAttribute="centerX" secondItem="HpK-ox-49w" secondAttribute="centerX" id="vYS-hR-jL0"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="epi-yX-hjt" secondAttribute="bottom" constant="20" id="zFi-DK-ix0"/>
                         </constraints>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
@@ -1268,6 +1288,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         </scene>
     </scenes>
     <resources>
+        <image name="Help-50 (2).png" width="50" height="50"/>
+        <image name="Settings-50.png" width="50" height="50"/>
         <image name="address-book.png" width="50" height="50"/>
         <image name="filler.png" width="63" height="63"/>
         <image name="finger_icon.png" width="100" height="100"/>

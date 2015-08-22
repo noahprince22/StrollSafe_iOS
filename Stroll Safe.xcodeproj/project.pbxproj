@@ -40,6 +40,9 @@
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
 		FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */; };
 		FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */; };
+		FA8B24901B88F34000A7F8B9 /* Help-50 (2).png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B248F1B88F34000A7F8B9 /* Help-50 (2).png */; };
+		FA8B24941B88F43000A7F8B9 /* Settings 3-50 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B24931B88F43000A7F8B9 /* Settings 3-50 (1).png */; };
+		FA8B24961B88F4A400A7F8B9 /* Settings-50.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B24951B88F4A400A7F8B9 /* Settings-50.png */; };
 		FA8B3C011B8403040029BC93 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3C001B8403040029BC93 /* search.png */; };
 		FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */; };
 		FA95347B1B83F5CC00763416 /* SettingsViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */; };
@@ -199,6 +202,9 @@
 		FA7A9C811B6FDEBC00B7366B /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = "View Controllers/settings/NavigatorViewController.swift"; sourceTree = "<group>"; };
+		FA8B248F1B88F34000A7F8B9 /* Help-50 (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Help-50 (2).png"; sourceTree = "<group>"; };
+		FA8B24931B88F43000A7F8B9 /* Settings 3-50 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 3-50 (1).png"; sourceTree = "<group>"; };
+		FA8B24951B88F4A400A7F8B9 /* Settings-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings-50.png"; sourceTree = "<group>"; };
 		FA8B3C001B8403040029BC93 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
 		FA8C718C1B069A3B0091BEB8 /* TermsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TermsViewController.swift; path = "View Controllers/TermsViewController.swift"; sourceTree = "<group>"; };
 		FA95347A1B83F5CC00763416 /* SettingsViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerSpec.swift; sourceTree = "<group>"; };
@@ -336,6 +342,9 @@
 		BFD7C97A1ABE3D5000D973DF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FA8B24951B88F4A400A7F8B9 /* Settings-50.png */,
+				FA8B24931B88F43000A7F8B9 /* Settings 3-50 (1).png */,
+				FA8B248F1B88F34000A7F8B9 /* Help-50 (2).png */,
 				FABD328E1B84094F002144F5 /* address-book.png */,
 				FA8B3C001B8403040029BC93 /* search.png */,
 				FA0378581B7B0AF5000083E0 /* shakemode.png */,
@@ -682,9 +691,12 @@
 				ACDDF2EB1ABD57F60029DF5D /* Main.storyboard in Resources */,
 				FA0378511B7AF9DC000083E0 /* mainscreen.png in Resources */,
 				BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */,
+				FA8B24941B88F43000A7F8B9 /* Settings 3-50 (1).png in Resources */,
 				FA8B3C011B8403040029BC93 /* search.png in Resources */,
 				FA0378531B7B0285000083E0 /* release.png in Resources */,
 				FA0378571B7B0677000083E0 /* thumbdown.png in Resources */,
+				FA8B24961B88F4A400A7F8B9 /* Settings-50.png in Resources */,
+				FA8B24901B88F34000A7F8B9 /* Help-50 (2).png in Resources */,
 				ACDDF2F01ABD57F60029DF5D /* LaunchScreen.xib in Resources */,
 				FABC7EBF1B75282B00C5E5C3 /* filler.png in Resources */,
 				FA0378591B7B0AF5000083E0 /* shakemode.png in Resources */,

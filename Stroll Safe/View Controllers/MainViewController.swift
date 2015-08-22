@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
 
     // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
-    static var test: Bool = true
+    static var test: Bool = false
     
     enum state {
         case START, THUMB, RELEASE,SHAKE
