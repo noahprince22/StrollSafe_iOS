@@ -30,7 +30,7 @@ class MainViewControllerSpec: QuickSpec {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 viewController =
                     storyboard.instantiateViewControllerWithIdentifier(
-                        "MainView") as! Stroll_Safe.MainViewController
+                        "MainViewController") as! Stroll_Safe.MainViewController
 
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
@@ -42,6 +42,8 @@ class MainViewControllerSpec: QuickSpec {
                 
                 expect(viewController.thumb.hidden).to(beTrue())
                 expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.settings.hidden).to(beTrue())
+                expect(viewController.help.hidden).to(beTrue())
                 expect(viewController.shake.hidden).to(beFalse())
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())
@@ -51,6 +53,8 @@ class MainViewControllerSpec: QuickSpec {
             it ("starts out in the default state") {
                 expect(viewController.thumb.hidden).to(beFalse())
                 expect(viewController.thumbDesc.hidden).to(beFalse())
+                expect(viewController.settings.hidden).to(beFalse())
+                expect(viewController.help.hidden).to(beFalse())
                 expect(viewController.shake.hidden).to(beTrue())
                 expect(viewController.shakeDesc.hidden).to(beTrue())
                 expect(viewController.progressLabel.hidden).to(beTrue())
@@ -62,6 +66,8 @@ class MainViewControllerSpec: QuickSpec {
             
                 expect(viewController.thumb.hidden).to(beTrue())
                 expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.settings.hidden).to(beTrue())
+                expect(viewController.help.hidden).to(beTrue())
                 expect(viewController.shake.hidden).to(beFalse())
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())
@@ -73,6 +79,8 @@ class MainViewControllerSpec: QuickSpec {
                 
                 expect(viewController.thumb.hidden).to(beFalse())
                 expect(viewController.thumbDesc.hidden).to(beFalse())
+                expect(viewController.settings.hidden).to(beFalse())
+                expect(viewController.help.hidden).to(beFalse())
                 expect(viewController.shake.hidden).to(beTrue())
                 expect(viewController.shakeDesc.hidden).to(beTrue())
                 expect(viewController.progressLabel.hidden).to(beFalse())
@@ -84,6 +92,8 @@ class MainViewControllerSpec: QuickSpec {
                 
                 expect(viewController.thumb.hidden).to(beTrue())
                 expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.settings.hidden).to(beTrue())
+                expect(viewController.help.hidden).to(beTrue())
                 expect(viewController.shake.hidden).to(beFalse())
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())
@@ -96,6 +106,8 @@ class MainViewControllerSpec: QuickSpec {
                 
                 expect(viewController.thumb.hidden).to(beTrue())
                 expect(viewController.thumbDesc.hidden).to(beTrue())
+                expect(viewController.settings.hidden).to(beTrue())
+                expect(viewController.help.hidden).to(beTrue())
                 expect(viewController.shake.hidden).to(beFalse())
                 expect(viewController.shakeDesc.hidden).to(beFalse())
                 expect(viewController.progressLabel.hidden).to(beTrue())

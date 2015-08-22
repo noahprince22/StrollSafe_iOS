@@ -70,12 +70,8 @@ class Stroll_SafeUITests: XCTestCase {
     func testIncorrectSetPass() {
         let app = XCUIApplication()
         app.buttons["I Agree, Continue"].tap()
-        let element = app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
-        element.swipeLeft()
-        element.swipeLeft()
-        element.swipeLeft()
-        element.swipeLeft()
-        app.buttons["Got it!"].tap()
+
+        TutorialUtil(app: app).finishTutorial()
         
         let lockUtil = LockUtil(app: app)
         
@@ -96,12 +92,8 @@ class Stroll_SafeUITests: XCTestCase {
     func testCorrectSetPass() -> XCUIApplication {
         let app = XCUIApplication()
         app.buttons["I Agree, Continue"].tap()
-        let element = app.childrenMatchingType(.Window).elementBoundByIndex(0).childrenMatchingType(.Other).elementBoundByIndex(1).childrenMatchingType(.Other).element
-        element.swipeLeft()
-        element.swipeLeft()
-        element.swipeLeft()
-        element.swipeLeft()
-        app.buttons["Got it!"].tap()
+
+        TutorialUtil(app: app).finishTutorial()
         
         let lockUtil = LockUtil(app: app)
         // Test valid entries
@@ -118,6 +110,21 @@ class Stroll_SafeUITests: XCTestCase {
         return app;
     }
     
+    func testSettingsButton() {
+        let app = testLoginWithSettings()
+        app.buttons["settings"].tap()
+
+        let doneButton = app.navigationBars["Settings"].buttons["Done"]
+        doneButton.tap()
+    }
+    
+    func testTutorialButton() {
+        let app = testLoginWithSettings()
+        app.buttons["help"].tap()
+        
+        TutorialUtil(app: app).finishTutorial()
+    }
+    
     /** Covers: Releasing your finger and placing it back
                 Incorrect pass code entry
                 Back button press
@@ -130,19 +137,23 @@ class Stroll_SafeUITests: XCTestCase {
     //    but since they both use the same view, the view does get verified in setup pin.
     func testReleaseArmDisarm(){
         let app = testLoginWithSettings()
-        let window = app.childrenMatchingType(.Window).elementBoundByIndex(0)
-        
+
         let fingerIconButton = app.buttons["finger icon"]
         fingerIconButton.tap()
         
-        let element2 = window.childrenMatchingType(.Other).elementBoundByIndex(5)
-        element2.buttons["2"].doubleTap()
-        element2.buttons["4"].doubleTap()
+        let lockUtil = LockUtil(app: app)
+        // Test valid entries
+        lockUtil.keyPressAndVerify("2");
+        lockUtil.keyPressAndVerify("2");
+        lockUtil.keyPressAndVerify("4");
+        lockUtil.keyPressAndVerify("4");
+
         fingerIconButton.tap()
         
-        let element3 = window.childrenMatchingType(.Other).elementBoundByIndex(7)
-        element3.buttons["2"].doubleTap()
-        element3.buttons["4"].doubleTap()
+        lockUtil.keyPressAndVerify("2");
+        lockUtil.keyPressAndVerify("2");
+        lockUtil.keyPressAndVerify("4");
+        lockUtil.keyPressAndVerify("4");
     }
     
 /**  

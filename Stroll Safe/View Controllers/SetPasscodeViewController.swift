@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 
+let setPasscodeFinishedNotificationKey = "com.strollsafe.setPasscodeFinishedNotificationKey"
 class SetPasscodeViewController: UIViewController {
     
     static var ENTER_TEXT = "Enter a passcode"
@@ -67,7 +68,9 @@ class SetPasscodeViewController: UIViewController {
                     try! managedObjectContext.save()
                     
                     // Transition to the main screen
-                    self.performSegueWithIdentifier("setPassSuccessSegue", sender: nil)
+                    self.dismissViewControllerAnimated(true, completion: {_ in
+                        NSNotificationCenter.defaultCenter().postNotificationName(setPasscodeFinishedNotificationKey, object: self)
+                    })
                 }else{
                     // They fucked up, take them back to the beginning
                     self.firstEntered = false

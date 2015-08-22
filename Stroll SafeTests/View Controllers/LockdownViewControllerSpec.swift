@@ -8,6 +8,7 @@
 import Foundation
 import Quick
 import Nimble
+import CoreData
 @testable import Stroll_Safe
 
 class LockdownViewControllerSpec: QuickSpec {
@@ -15,8 +16,37 @@ class LockdownViewControllerSpec: QuickSpec {
     override func spec() {
         describe ("the lockdown view") {
             var viewController: Stroll_Safe.LockdownViewController!
+            var conf: Stroll_Safe.Configuration!
+            let smsRecipient1 = "1234567890"
+            let smsRecipient2 = "2222222222"
+            let smsRecipients = "\(smsRecipient1),\(smsRecipient2)"
+            let callRecipient = "8888888888"
+            let smsBody = "body"
+            let passcode = "5678"
+            let phonenumber = "8748728374"
+            let lockdownDuration: Double = 10
+            let fullName = "Urist McTest"
             
-            beforeEach {                
+            var moc: NSManagedObjectContext!
+            
+            class CommunicationUtilMock: Stroll_Safe.CommunicationUtil {
+                var smsRecipients: [String]!
+                var callRecipient: String!
+                var smsBody: String!
+                
+                override func sendSms(recipients: [String], body: String) {
+                    smsRecipients = recipients
+                    smsBody = body
+                }
+                
+                override func sendCall(recipient: String) {
+                    callRecipient = recipient
+                }
+            }
+            
+            var communicationUtilMock: CommunicationUtilMock!
+            
+            beforeEach {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 viewController =
@@ -26,6 +56,22 @@ class LockdownViewControllerSpec: QuickSpec {
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
                 viewController.asyncAlertAction.pause()
+                
+                communicationUtilMock = CommunicationUtilMock()
+                
+                moc = TestUtils().setUpInMemoryManagedObjectContext()
+                conf = TestUtils().getNewConfigurationItem(moc)
+                conf.passcode = passcode
+                conf.sms_body = smsBody
+                conf.call_recipient = callRecipient
+                conf.sms_recipients = smsRecipients
+                conf.lockdown_duration = lockdownDuration
+                conf.phone_number = phonenumber
+                conf.full_name = fullName
+                try! moc.save()
+                
+                viewController.configure(moc)
+                viewController.lock.lock(passcode)
             }
             
             describe ("pinpad controll") {
@@ -49,15 +95,11 @@ class LockdownViewControllerSpec: QuickSpec {
                 
                 var pinpadViewController: PinpadViewControllerMock!
                 
-                // Store a pass as "5678"
-                let managedObjectContext = TestUtils().setUpInMemoryManagedObjectContext()
-                try! TestUtils().storeConfWithPass("5678", managedObjectContext: managedObjectContext)
-                
                 beforeEach {
                     pinpadViewController = PinpadViewControllerMock()
                     
                     viewController.pinpadViewController = pinpadViewController
-                    viewController.setupPinpadViewWithStoredPasscode(managedObjectContext)
+                    viewController.setupPinpadViewWithStoredPasscode(moc)
                 }
                 
                 it ("does not unlock when provided the wrong code") {
@@ -68,7 +110,7 @@ class LockdownViewControllerSpec: QuickSpec {
                 }
                 
                 it ("unlocks when provided the right code") {
-                    try! pinpadViewController.enteredFunction("5678")
+                    try! pinpadViewController.enteredFunction(passcode)
                     expect(viewController.lock.isLocked()).to(beFalse());
                     expect(pinpadViewController.shaken).to(beFalse())
                     expect(pinpadViewController.cleared).to(beTrue())
@@ -113,48 +155,9 @@ class LockdownViewControllerSpec: QuickSpec {
             
             // makes sure the provided asynch action functions work as expected
             describe ("asynchAction") {
-                var conf: Stroll_Safe.Configuration!
-                let lockdownDuration: Double = 10
                 var action: TimedAction!
                 
-                let smsRecipient1 = "1234567890"
-                let smsRecipient2 = "2222222222"
-                let smsRecipients = "\(smsRecipient1),\(smsRecipient2)"
-                let callRecipient = "8888888888"
-                let smsBody = "body"
-                let passcode = "1234"
-                
-                class CommunicationUtilMock: Stroll_Safe.CommunicationUtil {
-                    var smsRecipients: [String]!
-                    var callRecipient: String!
-                    var smsBody: String!
-                    
-                    override func sendSms(recipients: [String], body: String) {
-                        smsRecipients = recipients
-                        smsBody = body
-                    }
-                    
-                    override func sendCall(recipient: String) {
-                        callRecipient = recipient
-                    }
-                }
-                
-                var communicationUtilMock: CommunicationUtilMock!
-                
                 beforeEach {
-                    communicationUtilMock = CommunicationUtilMock()
-                    
-                    let moc = TestUtils().setUpInMemoryManagedObjectContext()
-                    conf = TestUtils().getNewConfigurationItem(moc)
-                    conf.passcode = passcode
-                    conf.sms_body = smsBody
-                    conf.call_recipient = callRecipient
-                    conf.sms_recipients = smsRecipients
-                    conf.lockdown_duration = lockdownDuration
-                    try! moc.save()
-                    
-                    viewController.configure(moc)
-                    viewController.lock.lock(passcode)
                     action = viewController.buildAsyncAlertAction(communicationUtilMock)
                 }
                 
@@ -199,7 +202,7 @@ class LockdownViewControllerSpec: QuickSpec {
                         it ("sms messages the configured contacts with the configured body") {
                             expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient1))
                             expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
-                            expect(communicationUtilMock.smsBody).to(equal(smsBody))
+                            expect(communicationUtilMock.smsBody).to(contain(smsBody))
                         }
                     }
                     

@@ -14,7 +14,6 @@ class NavigatorViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? SettingsViewController
             where segue.identifier == "settingsEmbed" {
-                
                 self.settingsViewController = vc
         }
     }

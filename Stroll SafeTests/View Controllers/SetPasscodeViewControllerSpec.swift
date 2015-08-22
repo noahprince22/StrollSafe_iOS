@@ -22,7 +22,7 @@ class SetPasscodeViewControllerSpec: QuickSpec {
                 
                 viewController =
                     storyboard.instantiateViewControllerWithIdentifier(
-                        "SetPasscode") as! Stroll_Safe.SetPasscodeViewController
+                        "SetPasscodeViewController") as! Stroll_Safe.SetPasscodeViewController
                 
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()

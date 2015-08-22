@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
 
     // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
-    static var test: Bool = false
+    static var test: Bool = true
     
     enum state {
         case START, THUMB, RELEASE,SHAKE
@@ -55,7 +55,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var shake: UIButton!
     @IBOutlet weak var shakeDesc: UILabel!
     @IBOutlet weak var thumbDesc: UILabel!
-        
+    @IBOutlet weak var settings: UIButton!
+    @IBOutlet weak var help: UIButton!
+    
+    var termsVC: TermsViewController?
+    var tutorialVC: TutorialViewController?
+    var setPasscodeVC: SetPasscodeViewController?
+    
+    @IBAction func settingsClicked(sender: UIButton) {
+        displaySettings()
+    }
+    
+    @IBAction func helpClicked(sender: UIButton) {
+        displayTutorial()
+    }
+    
     /**
     Should execute before displaying any view
     For now decides which view to start at, set password or main
@@ -84,14 +98,50 @@ class MainViewController: UIViewController {
         do {
             try Configuration.get(managedObjectContext)
         } catch Configuration.ConfigurationError.NoResultsFound {
-            dispatch_async(dispatch_get_main_queue(), {
-                self.performSegueWithIdentifier("firstTimeUserSegue", sender: nil)
-            })
+            firstTimeUser()
             return
         } catch let error as NSError {
             NSLog(error.localizedDescription)
             abort()
         }
+    }
+    
+    func firstTimeUser() {
+        displayTerms()
+        let notificationCenter = NSNotificationCenter.defaultCenter()
+        notificationCenter.addObserver(self, selector: "displayTutorial", name: termsFinishedNotificationKey, object: nil)
+        notificationCenter.addObserver(self, selector: "displaySetPasscode", name: tutorialFinishedNotificationKey, object: nil)
+        notificationCenter.addObserver(self, selector: "displaySettings", name: setPasscodeFinishedNotificationKey, object: nil)
+    }
+    
+    func displayTerms() {
+        dispatch_async(dispatch_get_main_queue(), {
+            if let vc = self.termsVC {
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func displayTutorial() {
+        dispatch_async(dispatch_get_main_queue(), {
+            if let vc = self.tutorialVC {
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func displaySetPasscode() {
+        dispatch_async(dispatch_get_main_queue(), {
+            if let vc = self.setPasscodeVC {
+                self.presentViewController(vc, animated: true, completion: nil)
+            }
+        })
+    }
+    
+    func displaySettings() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.performSegueWithIdentifier("mainToSettingsSegue", sender: self)
+        })
     }
     
     override func canBecomeFirstResponder() -> Bool {
@@ -145,7 +195,7 @@ class MainViewController: UIViewController {
     }
     
     func enterStartState(){
-        setThumbVisibility(true)
+        setBottomRowVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(false, type: true)
         changeTitle(MainViewController.MAIN_TITLE, sub: MainViewController.MAIN_TITLE_SUB)
@@ -154,7 +204,7 @@ class MainViewController: UIViewController {
     }
     
     func enterThumbState(){
-        setThumbVisibility(false)
+        setBottomRowVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: true)
         changeTitle(MainViewController.THUMB_TITLE, sub: MainViewController.THUMB_TITLE_SUB)
@@ -168,7 +218,7 @@ class MainViewController: UIViewController {
     Changes the display to reflect that the release state
     */
     func enterDisplayReleaseState() {
-        setThumbVisibility(true)
+        setBottomRowVisibility(true)
         setProgressVisibility(true)
         setShakeVisibility(false,type: true)
         changeTitle(MainViewController.RELEASE_TITLE, sub: MainViewController.RELEASE_TITLE_SUB)
@@ -281,7 +331,7 @@ class MainViewController: UIViewController {
     }
     
     func enterShakeState(){
-        setThumbVisibility(false)
+        setBottomRowVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)
         changeTitle(MainViewController.SHAKE_TITLE, sub: MainViewController.SHAKE_TITLE_SUB)
@@ -300,7 +350,9 @@ class MainViewController: UIViewController {
         progressLabel.hidden = !visibility
     }
     
-    func setThumbVisibility(visibility: Bool){
+    func setBottomRowVisibility(visibility: Bool){
+        settings.hidden = !visibility
+        help.hidden = !visibility
         thumb.hidden = !visibility
         thumbDesc.hidden = !visibility
     }
@@ -338,9 +390,25 @@ class MainViewController: UIViewController {
         // If interrupted by a phone call or something, just go back to start state
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterShakeState", name: UIApplicationWillResignActiveNotification, object: nil)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.termsVC =     self.storyboard?.instantiateViewControllerWithIdentifier("TermsViewController") as? TermsViewController
+        
+        self.tutorialVC =     self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController
+        
+        self.setPasscodeVC =     self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as? SetPasscodeViewController
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        self.termsVC = nil
+        self.tutorialVC = nil
+        self.setPasscodeVC = nil
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        
         // Dispose of any resources that can be recreated.
+        self.termsVC = nil
     }   
 }

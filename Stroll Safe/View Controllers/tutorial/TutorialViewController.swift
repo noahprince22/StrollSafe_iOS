@@ -8,7 +8,10 @@
 
 import UIKit
 
+let tutorialFinishedNotificationKey = "com.strollsafe.tutorialFinishedNotificationKey"
+
 class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
+    
     var pageViewController: UIPageViewController!
     var pageTitles: NSArray!
     var pageImages: NSArray!
@@ -22,7 +25,9 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
     @IBOutlet weak var gotIt: UIButton!
 
     @IBAction func gotItPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("tutorialToSettingsSegue", sender: nil)
+        self.dismissViewControllerAnimated(true, completion: {_ in
+            NSNotificationCenter.defaultCenter().postNotificationName(tutorialFinishedNotificationKey, object: self)
+        })
     }
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,7 +12,7 @@
         <!--Terms View Controller-->
         <scene sceneID="boV-Dt-H9M">
             <objects>
-                <viewController id="bWi-6g-m7W" customClass="TermsViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TermsViewController" id="bWi-6g-m7W" customClass="TermsViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aEf-o3-uGh"/>
                         <viewControllerLayoutGuide type="bottom" id="6ja-uk-Tcc"/>
@@ -22,7 +22,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evC-fH-9eH">
-                                <rect key="frame" x="186" y="518" width="118" height="30"/>
+                                <rect key="frame" x="180" y="488" width="132" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Z0C-pL-meW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="I Agree, Continue">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -31,7 +35,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-94-mZ7">
-                                <rect key="frame" x="16" y="28" width="288" height="482"/>
+                                <rect key="frame" x="8" y="28" width="304" height="452"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit amet, ei mazim solet eligendi sea. Eu nec tota everti mnesarchum, ut dicit ceteros alienum eum, te conceptam adolescens pro. Et vix affert noster aperiri, ex mea utroque consequat. Qui indoctum periculis in. Usu te esse praesent hendrerit, malis urbanitas repudiandae mea cu.
 
@@ -48,18 +52,17 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="p6j-94-mZ7" secondAttribute="trailing" id="LBa-Yu-ymT"/>
-                            <constraint firstItem="6ja-uk-Tcc" firstAttribute="top" secondItem="evC-fH-9eH" secondAttribute="bottom" constant="20" id="QKQ-Q6-co2"/>
-                            <constraint firstItem="p6j-94-mZ7" firstAttribute="leading" secondItem="0yC-5F-3da" secondAttribute="leadingMargin" id="SJR-Y1-0Af"/>
-                            <constraint firstItem="evC-fH-9eH" firstAttribute="top" secondItem="p6j-94-mZ7" secondAttribute="bottom" constant="8" id="SzP-BK-toT"/>
-                            <constraint firstItem="p6j-94-mZ7" firstAttribute="top" secondItem="aEf-o3-uGh" secondAttribute="bottom" constant="8" id="aTW-qC-pJs"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="evC-fH-9eH" secondAttribute="trailing" id="u5T-eX-URk"/>
+                            <constraint firstItem="6ja-uk-Tcc" firstAttribute="top" secondItem="evC-fH-9eH" secondAttribute="bottom" constant="20" id="9pm-sy-36E"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="evC-fH-9eH" secondAttribute="trailing" constant="-8" id="E3B-Iu-MQH"/>
+                            <constraint firstItem="evC-fH-9eH" firstAttribute="top" secondItem="p6j-94-mZ7" secondAttribute="bottom" constant="8" id="HPl-NY-gKN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="p6j-94-mZ7" secondAttribute="trailing" constant="-8" id="h21-YS-4tC"/>
+                            <constraint firstItem="p6j-94-mZ7" firstAttribute="top" secondItem="aEf-o3-uGh" secondAttribute="bottom" constant="8" id="uCF-yo-EaA"/>
+                            <constraint firstItem="p6j-94-mZ7" firstAttribute="leading" secondItem="0yC-5F-3da" secondAttribute="leadingMargin" constant="-8" id="y0a-aX-toe"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="acceptButton" destination="evC-fH-9eH" id="DVN-Nx-HGS"/>
-                        <segue destination="bEl-p5-fu6" kind="show" identifier="tutorialSegue" id="Ieg-CH-pCo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SD-lj-lYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -69,7 +72,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <!--Tutorial View Controller-->
         <scene sceneID="1cS-JI-vqY">
             <objects>
-                <viewController id="bEl-p5-fu6" customClass="TutorialViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TutorialViewController" id="bEl-p5-fu6" customClass="TutorialViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8Vu-Rh-r9o"/>
                         <viewControllerLayoutGuide type="bottom" id="0ZX-G2-wkp"/>
@@ -79,8 +82,11 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXe-Sb-9Di">
-                                <rect key="frame" x="257" y="515" width="47" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="252" y="488" width="52" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="M1X-jS-rCP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Got it!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -99,7 +105,6 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="gotIt" destination="sXe-Sb-9Di" id="otD-yC-3of"/>
-                        <segue destination="PaD-Ot-r0Q" kind="show" identifier="tutorialToSettingsSegue" id="ece-KQ-CTx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5f-Zo-CkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -166,7 +171,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <!--Set Passcode View Controller-->
         <scene sceneID="uKC-ym-7za">
             <objects>
-                <viewController storyboardIdentifier="SetPasscode" id="PaD-Ot-r0Q" customClass="SetPasscodeViewController" customModule="Stroll_Safe" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetPasscodeViewController" id="PaD-Ot-r0Q" customClass="SetPasscodeViewController" customModule="Stroll_Safe" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S18-mu-Bgq"/>
                         <viewControllerLayoutGuide type="bottom" id="gUM-GT-cVr"/>
@@ -218,7 +223,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="subLabel" destination="gDq-vk-kVj" id="iJg-ES-k4J"/>
-                        <segue destination="OXr-5H-NnQ" kind="show" identifier="setPassSuccessSegue" id="NSF-y5-V7D"/>
+                        <segue destination="OXr-5H-NnQ" kind="showDetail" identifier="setPassSuccessSegue" id="NSF-y5-V7D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zKJ-np-6hj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,7 +286,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <!--Navigator View Controller-->
         <scene sceneID="2eH-i3-A6I">
             <objects>
-                <viewController id="OXr-5H-NnQ" customClass="NavigatorViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsNavigationViewController" id="OXr-5H-NnQ" customClass="NavigatorViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dlb-Yj-6Kd"/>
                         <viewControllerLayoutGuide type="bottom" id="d9C-dq-ETG"/>
@@ -322,7 +327,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="show" identifier="settingsToMainSegue" id="4QZ-Ka-Nlb"/>
+                        <segue destination="vXZ-lx-hvc" kind="showDetail" identifier="settingsToMainSegue" id="4QZ-Ka-Nlb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RGb-JM-wRz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -332,7 +337,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <!--Main View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="MainView" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="vXZ-lx-hvc" customClass="MainViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -417,21 +422,27 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epi-yX-hjt">
-                                <rect key="frame" x="16" y="508" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epi-yX-hjt">
+                                <rect key="frame" x="12" y="508" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="Xgc-zK-QvA"/>
                                     <constraint firstAttribute="height" constant="40" id="aMf-pH-lqv"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Settings-50.png"/>
+                                <state key="normal" backgroundImage="settings.png"/>
+                                <connections>
+                                    <action selector="settingsClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KOj-gh-p0O"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Qd-zFx">
-                                <rect key="frame" x="264" y="508" width="40" height="40"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JpO-Qd-zFx">
+                                <rect key="frame" x="268" y="508" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="5he-rN-AE6"/>
                                     <constraint firstAttribute="width" constant="40" id="Oph-Ua-LT3"/>
                                 </constraints>
-                                <state key="normal" backgroundImage="Help-50 (2).png"/>
+                                <state key="normal" backgroundImage="help.png"/>
+                                <connections>
+                                    <action selector="helpClicked:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="i58-Fx-bzI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -440,6 +451,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <constraint firstItem="KOv-yq-ZNo" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="12" id="3u8-L4-nRZ"/>
                             <constraint firstItem="4j7-iG-I5K" firstAttribute="top" secondItem="rQ4-Hc-fec" secondAttribute="top" id="90j-P7-Boc"/>
                             <constraint firstAttribute="centerX" secondItem="4j7-iG-I5K" secondAttribute="centerX" id="B5g-9S-lEU"/>
+                            <constraint firstItem="epi-yX-hjt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="BXF-Au-UJi"/>
                             <constraint firstAttribute="centerY" secondItem="rQ4-Hc-fec" secondAttribute="centerY" id="GeN-1a-j4g"/>
                             <constraint firstAttribute="bottom" secondItem="60C-pj-h49" secondAttribute="bottom" constant="20" id="IBj-uQ-ySh"/>
                             <constraint firstItem="epi-yX-hjt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="K48-kH-xGK"/>
@@ -467,8 +479,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="help" destination="JpO-Qd-zFx" id="BHd-5p-m8E"/>
                         <outlet property="progressBar" destination="rQ4-Hc-fec" id="bOG-HM-6lD"/>
                         <outlet property="progressLabel" destination="4j7-iG-I5K" id="7s5-BZ-5hg"/>
+                        <outlet property="settings" destination="epi-yX-hjt" id="3Yz-Il-9sI"/>
                         <outlet property="shake" destination="YGA-Gq-kzX" id="bGL-rn-agD"/>
                         <outlet property="shakeDesc" destination="kbx-8F-CS3" id="cYa-J9-q9U"/>
                         <outlet property="thumb" destination="60C-pj-h49" id="G1f-5n-yM4"/>
@@ -476,7 +490,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <outlet property="titleMain" destination="KOv-yq-ZNo" id="rCn-LQ-4xC"/>
                         <outlet property="titleSub" destination="pa5-dg-QGN" id="ejg-Zk-aqX"/>
                         <segue destination="Fm8-VZ-o5H" kind="show" identifier="lockdownSegue" id="Ik0-4p-X00"/>
-                        <segue destination="bWi-6g-m7W" kind="show" identifier="firstTimeUserSegue" id="eSv-Dr-Uxe"/>
+                        <segue destination="OXr-5H-NnQ" kind="showDetail" identifier="mainToSettingsSegue" id="gWW-fq-g0A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -830,7 +844,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                         <rect key="frame" x="0.0" y="369.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Zk-1k-QUc" id="2hf-n6-b5d">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location data will be appended" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1s-ry-lfB">
@@ -1288,18 +1302,18 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         </scene>
     </scenes>
     <resources>
-        <image name="Help-50 (2).png" width="50" height="50"/>
-        <image name="Settings-50.png" width="50" height="50"/>
         <image name="address-book.png" width="50" height="50"/>
         <image name="filler.png" width="63" height="63"/>
         <image name="finger_icon.png" width="100" height="100"/>
+        <image name="help.png" width="50" height="50"/>
         <image name="placeholder.png" width="63" height="63"/>
         <image name="progressImage" width="250" height="250"/>
+        <image name="settings.png" width="50" height="50"/>
         <image name="shake_icon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4QZ-Ka-Nlb"/>
-        <segue reference="6we-HC-AhV"/>
         <segue reference="BtO-pi-kDi"/>
+        <segue reference="gWW-fq-g0A"/>
+        <segue reference="4QZ-Ka-Nlb"/>
     </inferredMetricsTieBreakers>
 </document>

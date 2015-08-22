@@ -8,6 +8,7 @@
 
 import UIKit
 
+let termsFinishedNotificationKey = "com.strollsafe.termsFinishedNotificationKey"
 class TermsViewController: UIViewController {
 
     @IBOutlet weak var acceptButton: UIButton!
@@ -23,7 +24,14 @@ class TermsViewController: UIViewController {
     }
     
     @IBAction func acceptTerms(sender: UIButton) {
-        self.performSegueWithIdentifier("tutorialSegue", sender: nil)
+        // Open the tutorial vc and have it go to setings when it's done
+        self.dismissViewControllerAnimated(true, completion: {_ in
+            NSNotificationCenter.defaultCenter().postNotificationName(termsFinishedNotificationKey, object: self)
+        })
+    }
+    
+    func goToSettings() {
+        self.performSegueWithIdentifier("termsToSetPasscodeSegue", sender: self)
     }
 
     /*
