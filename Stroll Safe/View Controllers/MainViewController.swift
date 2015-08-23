@@ -198,7 +198,8 @@ class MainViewController: UIViewController {
     }
     
     func enterStartState(){
-        setBottomRowVisibility(true)
+        setThumbVisibility(true)
+        setSettingsVisibility(true)
         setProgressVisibility(false)
         setShakeVisibility(false, type: true)
         changeTitle(MainViewController.MAIN_TITLE, sub: MainViewController.MAIN_TITLE_SUB)
@@ -207,7 +208,8 @@ class MainViewController: UIViewController {
     }
     
     func enterThumbState(){
-        setBottomRowVisibility(false)
+        setThumbVisibility(false)
+        setSettingsVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: true)
         changeTitle(MainViewController.THUMB_TITLE, sub: MainViewController.THUMB_TITLE_SUB)
@@ -221,7 +223,8 @@ class MainViewController: UIViewController {
     Changes the display to reflect that the release state
     */
     func enterDisplayReleaseState() {
-        setBottomRowVisibility(true)
+        setThumbVisibility(true)
+        setSettingsVisibility(false)
         setProgressVisibility(true)
         setShakeVisibility(false,type: true)
         changeTitle(MainViewController.RELEASE_TITLE, sub: MainViewController.RELEASE_TITLE_SUB)
@@ -334,7 +337,8 @@ class MainViewController: UIViewController {
     }
     
     func enterShakeState(){
-        setBottomRowVisibility(false)
+        setThumbVisibility(false)
+        setSettingsVisibility(false)
         setProgressVisibility(false)
         setShakeVisibility(true, type: false)
         changeTitle(MainViewController.SHAKE_TITLE, sub: MainViewController.SHAKE_TITLE_SUB)
@@ -353,11 +357,14 @@ class MainViewController: UIViewController {
         progressLabel.hidden = !visibility
     }
     
-    func setBottomRowVisibility(visibility: Bool){
-        settings.hidden = !visibility
-        help.hidden = !visibility
+    func setThumbVisibility(visibility: Bool){
         thumb.hidden = !visibility
         thumbDesc.hidden = !visibility
+    }
+    
+    func setSettingsVisibility(visibility: Bool) {
+        settings.hidden = !visibility
+        help.hidden = !visibility
     }
     
     // First parameter is whether it's visible

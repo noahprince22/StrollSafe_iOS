@@ -94,8 +94,8 @@ class MainViewControllerSpec: QuickSpec {
                 
                 expect(viewController.thumb.hidden).to(beFalse())
                 expect(viewController.thumbDesc.hidden).to(beFalse())
-                expect(viewController.settings.hidden).to(beFalse())
-                expect(viewController.help.hidden).to(beFalse())
+                expect(viewController.settings.hidden).to(beTrue())
+                expect(viewController.help.hidden).to(beTrue())
                 expect(viewController.shake.hidden).to(beTrue())
                 expect(viewController.shakeDesc.hidden).to(beTrue())
                 expect(viewController.progressLabel.hidden).to(beFalse())
