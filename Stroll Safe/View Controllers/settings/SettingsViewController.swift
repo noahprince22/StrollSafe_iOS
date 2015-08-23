@@ -364,6 +364,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         // Get the first text contact. TODO: support multiple texting
         if let textContacts = conf.sms_recipients {
             self.textContact.text = communicationUtil.csvNumbersToArray(textContacts)[0]
+            self.textEnabledSwitch.on = true
         }
         
         if let body = conf.sms_body {

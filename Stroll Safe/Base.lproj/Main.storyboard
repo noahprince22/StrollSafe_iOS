@@ -356,7 +356,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 <rect key="frame" x="16" y="283" width="288" height="2"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="60C-pj-h49">
-                                <rect key="frame" x="110" y="432" width="100" height="100"/>
+                                <rect key="frame" x="110" y="433" width="100" height="100"/>
                                 <gestureRecognizers/>
                                 <state key="normal" image="finger_icon.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -393,7 +393,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and Hold to Arm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpK-ox-49w">
-                                <rect key="frame" x="-11" y="531" width="343" height="21"/>
+                                <rect key="frame" x="-11" y="532" width="343" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="343" id="G4N-dB-Uul"/>
                                     <constraint firstAttribute="height" constant="21" id="jU4-5i-EaN"/>
@@ -453,7 +453,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             <constraint firstAttribute="centerX" secondItem="4j7-iG-I5K" secondAttribute="centerX" id="B5g-9S-lEU"/>
                             <constraint firstItem="epi-yX-hjt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="BXF-Au-UJi"/>
                             <constraint firstAttribute="centerY" secondItem="rQ4-Hc-fec" secondAttribute="centerY" id="GeN-1a-j4g"/>
-                            <constraint firstAttribute="bottom" secondItem="60C-pj-h49" secondAttribute="bottom" constant="36" id="IBj-uQ-ySh"/>
+                            <constraint firstAttribute="bottom" secondItem="60C-pj-h49" secondAttribute="bottom" constant="35" id="IBj-uQ-ySh"/>
                             <constraint firstItem="epi-yX-hjt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-4" id="K48-kH-xGK"/>
                             <constraint firstAttribute="centerX" secondItem="kbx-8F-CS3" secondAttribute="centerX" id="Pt1-O4-4n1"/>
                             <constraint firstAttribute="trailing" secondItem="rQ4-Hc-fec" secondAttribute="trailing" constant="16" id="RPy-Ez-qos"/>
@@ -851,7 +851,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                     <rect key="frame" x="96" y="7" width="216" height="30"/>
                                                     <accessibility key="accessibilityConfiguration" label="text_body"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SMS Body:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gio-Ut-BfD">
                                                     <rect key="frame" x="8" y="12" width="80" height="18"/>

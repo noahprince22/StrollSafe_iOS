@@ -129,7 +129,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         expect(viewController.lockdownTime.text).to(equal("\(lockdown_duration)"))
                         expect(viewController.releaseTime.text).to(equal("\(release_duration)"))
                         expect(viewController.contactPoliceSwitch.on).to(beFalse())
-                        expect(viewController.textEnabledSwitch.on).to(beFalse())
+                        expect(viewController.textEnabledSwitch.on).to(beTrue())
                     }
                     
                     it ("saves the full name and phone number") {
