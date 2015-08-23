@@ -20,6 +20,10 @@ extension Double {
     }
 }
 
+
+// hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
+let testing: Bool = true
+
 class MainViewController: UIViewController {
     
     static var MAIN_TITLE = "Stroll Safe"
@@ -36,9 +40,6 @@ class MainViewController: UIViewController {
     static var SHAKE_TITLE_SUB = "Shake Phone to Enter Lockdown"
     static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
 
-    // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
-    static var test: Bool = true
-    
     enum state {
         case START, THUMB, RELEASE,SHAKE
     }
@@ -61,6 +62,8 @@ class MainViewController: UIViewController {
     var termsVC: TermsViewController?
     var tutorialVC: TutorialViewController?
     var setPasscodeVC: SetPasscodeViewController?
+    
+    static var test = testing
     
     @IBAction func settingsClicked(sender: UIButton) {
         displaySettings()
@@ -388,7 +391,7 @@ class MainViewController: UIViewController {
         UIApplication.sharedApplication().idleTimerDisabled = true
         
         // If interrupted by a phone call or something, just go back to start state
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "enterShakeState", name: UIApplicationWillResignActiveNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "interrupted", name: UIApplicationWillResignActiveNotification, object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -403,6 +406,12 @@ class MainViewController: UIViewController {
         self.termsVC = nil
         self.tutorialVC = nil
         self.setPasscodeVC = nil
+    }
+    
+    func interrupted() {
+        if (self.mode == state.THUMB) {
+            enterShakeState()
+        }
     }
 
     override func didReceiveMemoryWarning() {

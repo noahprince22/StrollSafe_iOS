@@ -70,10 +70,12 @@ class CommunicationUtil {
         }
         
         // Finally, check if the number can be dialed
-        if let phoneCallURL:NSURL = NSURL(string:"tel://"+"\(strippedPhoneNumber)") {
-            let application:UIApplication = UIApplication.sharedApplication()
-            if (application.canOpenURL(phoneCallURL)) {
-                throw PhoneNumberError.CannotContact
+        if (!testing) {
+            if let phoneCallURL:NSURL = NSURL(string:"tel://"+"\(strippedPhoneNumber)") {
+                let application:UIApplication = UIApplication.sharedApplication()
+                if (!application.canOpenURL(phoneCallURL)) {
+                    throw PhoneNumberError.CannotContact
+                }
             }
         }
         
