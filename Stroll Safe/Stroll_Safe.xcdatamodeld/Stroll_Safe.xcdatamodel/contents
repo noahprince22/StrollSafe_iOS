@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8175.2" systemVersion="14E46" minimumToolsVersion="Automatic">
     <entity name="Configuration" representedClassName="Stroll_Safe.Configuration" syncable="YES">
-        <attribute name="call_recipient" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="call_recipient" optional="YES" attributeType="String" defaultValueString="4444444466" syncable="YES"/>
         <attribute name="full_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lockdown_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="20" syncable="YES"/>
         <attribute name="passcode" attributeType="String" syncable="YES"/>

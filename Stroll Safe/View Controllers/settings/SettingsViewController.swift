@@ -171,7 +171,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             conf.full_name = self.name.text
             conf.phone_number = formattedPersonalContact
             
-            if (formattedCallContact == "") {
+            if (formattedCallContact == "" && self.contactPoliceSwitch.on == true) {
                 conf.call_recipient = SettingsViewController.POLICE_PHONE_NUMBER
             } else {
                 conf.call_recipient = formattedCallContact
@@ -359,7 +359,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                 self.callContact.text = callContact
                 self.contactPoliceSwitch.on = false
             }
-        }
+        } 
         
         // Get the first text contact. TODO: support multiple texting
         if let textContacts = conf.sms_recipients {
@@ -417,9 +417,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     /**
      Will make text fields close on return
     
-    :param: userText <#userText description#>
+    :param: userText
     
-    :returns: <#return value description#>
+    :returns: true
     */
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()

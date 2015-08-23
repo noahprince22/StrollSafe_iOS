@@ -68,11 +68,11 @@ class ConfigurationSpec: QuickSpec {
                 expect(storedConf.lockdown_duration).toNot(beNil())
                 expect(storedConf.release_duration).toNot(beNil())
                 expect(storedConf.sms_body).toNot(beNil())
+                expect(storedConf.call_recipient).to(equal(SettingsViewController.POLICE_PHONE_NUMBER))
                 
                 expect(storedConf.full_name).to(beNil())
                 expect(storedConf.phone_number).to(beNil())
                 expect(storedConf.sms_recipients).to(beNil())
-                expect(storedConf.call_recipient).to(beNil())
             }
         }
     }

@@ -132,6 +132,58 @@ class SettingsViewControllerSpec: QuickSpec {
                         expect(viewController.textEnabledSwitch.on).to(beTrue())
                     }
                     
+                    
+                    it ("leaves the contact police switch off if it was initially off during saving") {
+                        let full_name = "Noah Prince"
+                        let phone_number = "5555555555"
+                        
+                        viewController.phonenumber.text = phone_number
+                        viewController.name.text = full_name
+                        viewController.contactPoliceSwitch.on = false
+                        viewController.textContact.text = phone_number
+                        viewController.textEnabledSwitch.on = true
+                        viewController.saveSettings(managedObjectContext)
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        viewController =
+                            storyboard.instantiateViewControllerWithIdentifier(
+                                "settingsViewController") as! Stroll_Safe.SettingsViewController
+                        
+                        viewController.beginAppearanceTransition(true, animated: false)
+                        viewController.endAppearanceTransition()
+                        viewController.initSavedValues(managedObjectContext)
+                        
+                        expect(viewController.callContact.text).to(equal(""))
+                        expect(viewController.contactPoliceSwitch.on).to(beFalse())
+                        expect(viewController.textEnabledSwitch.on).to(beTrue())
+                    }
+                    
+                    it ("leaves the contact police switch on if it was on during saving") {
+                        let full_name = "Noah Prince"
+                        let phone_number = "5555555555"
+                        
+                        viewController.phonenumber.text = phone_number
+                        viewController.name.text = full_name
+                        viewController.saveSettings(managedObjectContext)
+                        viewController.contactPoliceSwitch.on = true
+                        viewController.saveSettings(managedObjectContext)
+                        
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        viewController =
+                            storyboard.instantiateViewControllerWithIdentifier(
+                                "settingsViewController") as! Stroll_Safe.SettingsViewController
+                        
+                        viewController.beginAppearanceTransition(true, animated: false)
+                        viewController.endAppearanceTransition()
+                        viewController.initSavedValues(managedObjectContext)
+                        
+                        expect(viewController.callContact.text).to(equal(""))
+                        expect(viewController.contactPoliceSwitch.on).to(beTrue())
+                        expect(viewController.textEnabledSwitch.on).to(beFalse())
+                    }
+                    
                     it ("saves the full name and phone number") {
                         viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
                         expect(alertView.shown).to(beFalse())
