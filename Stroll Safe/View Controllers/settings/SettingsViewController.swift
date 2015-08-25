@@ -23,9 +23,10 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     static let TIMER_MULTIPLE_DECIMALS = "Timer values cannot have multiple decimals"
     static let POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD = 10.0
     static let POLICE_MINIMUM_LOCKDOWN_TIME = "Lockdown to Contact duration must be greater than \(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD) seconds when contacting the police. This is to prevent accidental calling of the police as much as possible"
-    static let REQUIRE_RELEASE = "The release to lockdown duration is required"
-    static let REQUIRE_LOCKDOWN = "The lockdown to contact duration is required"
     static let POLICE_PHONE_NUMBER = "4444444466"
+    static let DEFAULT_RELEASE = 1.5
+    static let DEFAULT_LOCKDOWN = 20
+    static let DEFAULT_TEXT_BODY = "This is an alert from StrollSafe"
     
     @IBOutlet weak var contactPoliceSwitch: UISwitch!
     @IBOutlet weak var name: UITextField!
@@ -50,6 +51,13 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         }
     }
     
+    @IBAction func personalPhoneHelp(sender: AnyObject) {
+        let alert = UIAlertView()
+        alert.addButtonWithTitle("Ok")
+        alert.title = "Privacy"
+        alert.message = "Stroll Safe uses your phone number only to identify you to the police and to your emergency text contact.\n\nWe will not sell or distribute this information"
+        alert.show()
+    }
 
     /**
     Attempts to save all settings
@@ -145,11 +153,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                 if ((self.lockdownTime.text! as NSString).doubleValue < SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD && self.contactPoliceSwitch.on) {
                     alertView.message! += alertItem(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)
                 }
-            } else {
-                alertView.message! += alertItem(SettingsViewController.REQUIRE_LOCKDOWN)
             }
-        } else {
-            alertView.message! += alertItem(SettingsViewController.REQUIRE_LOCKDOWN)
         }
         
         if let release = self.releaseTime.text {
@@ -157,11 +161,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                 if (countOccurencesOfCharInWord(release, char: ".") > 1) {
                     alertView.message! += alertItem(SettingsViewController.TIMER_MULTIPLE_DECIMALS)
                 }
-            } else {
-                alertView.message! += alertItem(SettingsViewController.REQUIRE_RELEASE)
             }
-        } else {
-            alertView.message! += alertItem(SettingsViewController.REQUIRE_RELEASE)
         }
         
         // Save everything if there was no error
@@ -182,8 +182,17 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                 conf.sms_body = self.textBody.text
             }
             
-            conf.lockdown_duration = (self.lockdownTime.text! as NSString).doubleValue
-            conf.release_duration = (self.releaseTime.text! as NSString).doubleValue
+            if let lockdown = lockdownTime.text {
+                if (lockdown != "") {
+                    conf.lockdown_duration = (self.lockdownTime.text! as NSString).doubleValue
+                }
+            }
+            
+            if let release = releaseTime.text {
+                if (release != "") {
+                    conf.release_duration = (self.releaseTime.text! as NSString).doubleValue
+                }
+            }
             
             do {
                 try managedObjectContext.save()
@@ -367,16 +376,24 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             self.textEnabledSwitch.on = true
         }
         
+        // Default lockdown release, and body display as placeholders, this is to make
+        //   them look more optional
         if let body = conf.sms_body {
-            self.textBody.text = body
+            if (body != SettingsViewController.DEFAULT_TEXT_BODY) {
+                self.textBody.text = body
+            }
         }
         
         if let lockdown = conf.lockdown_duration {
-            self.lockdownTime.text = "\(lockdown)"
+            if (lockdown != SettingsViewController.DEFAULT_LOCKDOWN) {
+                self.lockdownTime.text = "\(lockdown)"
+            }
         }
         
         if let release = conf.release_duration {
-            self.releaseTime.text = "\(release)"
+            if (release != SettingsViewController.DEFAULT_RELEASE) {
+                self.releaseTime.text = "\(release)"
+            }
         }
     }
 

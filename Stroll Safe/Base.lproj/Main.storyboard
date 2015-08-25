@@ -67,7 +67,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4SD-lj-lYU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1538" y="239"/>
+            <point key="canvasLocation" x="-1430" y="239"/>
         </scene>
         <!--Tutorial View Controller-->
         <scene sceneID="1cS-JI-vqY">
@@ -134,33 +134,33 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xXC-8X-4P2">
-                                <rect key="frame" x="12" y="110" width="296" height="438"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="438" id="Vc8-De-rPD"/>
-                                </constraints>
+                                <rect key="frame" x="8" y="136" width="304" height="412"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thM-aO-NtP">
-                                <rect key="frame" x="12" y="0.0" width="296" height="102"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqU-WC-PBu">
+                                <rect key="frame" x="16" y="20" width="288" height="113"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="w1s-2J-Ozb"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="trailing" secondItem="CAw-ab-Xoz" secondAttribute="trailingMargin" constant="4" id="ENu-jJ-HrU"/>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="leading" secondItem="thM-aO-NtP" secondAttribute="leading" id="Vpj-eO-KEX"/>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="top" secondItem="thM-aO-NtP" secondAttribute="bottom" constant="8" symbolic="YES" id="Z0B-ST-JSL"/>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="leading" secondItem="CAw-ab-Xoz" secondAttribute="leadingMargin" constant="-4" id="mIZ-Yg-Zzb"/>
-                            <constraint firstItem="thM-aO-NtP" firstAttribute="top" secondItem="CAw-ab-Xoz" secondAttribute="top" id="ndO-bl-DUO"/>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="trailing" secondItem="thM-aO-NtP" secondAttribute="trailing" id="oxS-r5-NDf"/>
-                            <constraint firstItem="xXC-8X-4P2" firstAttribute="bottom" secondItem="f0p-h6-PAI" secondAttribute="top" constant="-20" id="pWj-uT-K15"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xXC-8X-4P2" secondAttribute="trailing" constant="-8" id="7U7-cs-V82"/>
+                            <constraint firstItem="oqU-WC-PBu" firstAttribute="centerX" secondItem="xXC-8X-4P2" secondAttribute="centerX" id="HVx-4X-rAp"/>
+                            <constraint firstItem="xXC-8X-4P2" firstAttribute="top" secondItem="oqU-WC-PBu" secondAttribute="bottom" constant="3" id="Kra-qT-7RO"/>
+                            <constraint firstItem="xXC-8X-4P2" firstAttribute="leading" secondItem="CAw-ab-Xoz" secondAttribute="leadingMargin" constant="-8" id="aF6-6u-gPf"/>
+                            <constraint firstItem="oqU-WC-PBu" firstAttribute="top" secondItem="Pp1-uI-uPA" secondAttribute="bottom" id="eGs-Jb-1og"/>
+                            <constraint firstItem="f0p-h6-PAI" firstAttribute="top" secondItem="xXC-8X-4P2" secondAttribute="bottom" constant="20" id="gfH-os-CQh"/>
+                            <constraint firstItem="oqU-WC-PBu" firstAttribute="trailing" secondItem="CAw-ab-Xoz" secondAttribute="trailingMargin" id="st1-0V-zm8"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="desc" destination="thM-aO-NtP" id="rU8-n4-NjM"/>
+                        <outlet property="desc" destination="oqU-WC-PBu" id="Av4-Bh-8OL"/>
                         <outlet property="imageView" destination="xXC-8X-4P2" id="wpN-2x-uHz"/>
                     </connections>
                 </viewController>
@@ -626,7 +626,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="CtA-M0-sYq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Personal Information" id="Qpa-vc-ULG">
                                 <cells>
@@ -670,31 +670,47 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHs-La-GZa">
-                                                    <rect key="frame" x="8" y="12.5" width="107" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Phone Number: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHs-La-GZa">
+                                                    <rect key="frame" x="8" y="12" width="111" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please include area code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-XH-udz">
-                                                    <rect key="frame" x="123" y="7" width="189" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please include area code" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-XH-udz">
+                                                    <rect key="frame" x="127" y="7" width="156" height="30"/>
                                                     <accessibility key="accessibilityConfiguration" label="phone_number"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad" enablesReturnKeyAutomatically="YES"/>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZC-nM-Y9G">
+                                                    <rect key="frame" x="288" y="8" width="26" height="26"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="26" id="LpF-qv-kiF"/>
+                                                        <constraint firstAttribute="height" constant="26" id="b8F-zB-Ktq"/>
+                                                    </constraints>
+                                                    <state key="normal" backgroundImage="info.png"/>
+                                                    <connections>
+                                                        <action selector="personalPhoneHelp:" destination="vwp-iV-zhN" eventType="touchUpInside" id="DdE-nX-97Z"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Thp-XH-udz" firstAttribute="centerY" secondItem="qHs-La-GZa" secondAttribute="centerY" id="028-NW-zvp"/>
-                                                <constraint firstItem="Thp-XH-udz" firstAttribute="trailing" secondItem="b1g-ff-XlN" secondAttribute="trailingMargin" id="USF-r4-coS"/>
-                                                <constraint firstItem="Thp-XH-udz" firstAttribute="centerY" secondItem="b1g-ff-XlN" secondAttribute="centerY" id="VcT-kN-Fpg"/>
-                                                <constraint firstItem="Thp-XH-udz" firstAttribute="leading" secondItem="qHs-La-GZa" secondAttribute="trailing" constant="8" id="q9c-wh-Kir"/>
-                                                <constraint firstItem="qHs-La-GZa" firstAttribute="leading" secondItem="b1g-ff-XlN" secondAttribute="leadingMargin" id="yrh-vR-9PI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Thp-XH-udz" secondAttribute="bottom" constant="-1" id="5bY-qM-bjR"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="top" secondItem="b1g-ff-XlN" secondAttribute="topMargin" constant="-1" id="61J-Uw-SZn"/>
+                                                <constraint firstItem="Thp-XH-udz" firstAttribute="leading" secondItem="qHs-La-GZa" secondAttribute="trailing" constant="8" id="GQh-WK-Wa1"/>
+                                                <constraint firstItem="qHs-La-GZa" firstAttribute="top" secondItem="b1g-ff-XlN" secondAttribute="topMargin" constant="4" id="Gpu-mx-yED"/>
+                                                <constraint firstItem="vZC-nM-Y9G" firstAttribute="leading" secondItem="Thp-XH-udz" secondAttribute="trailing" constant="8" id="UOC-yg-MhO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="qHs-La-GZa" secondAttribute="bottom" constant="6" id="VJV-ow-8ei"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vZC-nM-Y9G" secondAttribute="trailing" constant="-2" id="eUO-at-I7I"/>
+                                                <constraint firstItem="vZC-nM-Y9G" firstAttribute="leading" secondItem="Thp-XH-udz" secondAttribute="trailing" constant="5" id="rnC-LA-HGw"/>
+                                                <constraint firstItem="qHs-La-GZa" firstAttribute="leading" secondItem="b1g-ff-XlN" secondAttribute="leadingMargin" id="tII-6Q-4oU"/>
+                                                <constraint firstItem="vZC-nM-Y9G" firstAttribute="trailing" secondItem="b1g-ff-XlN" secondAttribute="trailingMargin" id="xCU-Qv-k3f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Calling" id="AbD-Wl-g8v">
+                            <tableViewSection headerTitle="Emergency Contact" id="AbD-Wl-g8v">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0HP-RU-cz6">
                                         <rect key="frame" x="0.0" y="187.5" width="320" height="44"/>
@@ -778,7 +794,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Texting (Optional)" id="cfv-ZZ-YeD">
+                            <tableViewSection headerTitle="Emergency Text (Optional)" id="cfv-ZZ-YeD">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="NGe-7C-Bet">
                                         <rect key="frame" x="0.0" y="325.5" width="320" height="44"/>
@@ -874,7 +890,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Timing" id="Lro-35-gIg">
+                            <tableViewSection headerTitle="Timing (Optional)" id="Lro-35-gIg">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="slm-hF-Tnx">
                                         <rect key="frame" x="0.0" y="463.5" width="320" height="44"/>
@@ -1006,7 +1022,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <rect key="frame" x="0.0" y="0.0" width="296" height="363"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2e-DO-sVP">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2e-DO-sVP">
                                 <rect key="frame" x="8" y="82" width="91.5" height="62.5"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <state key="normal" title="1">
@@ -1017,7 +1033,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonOne:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="SK8-ec-8uY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-0S-xed">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T2b-0S-xed">
                                 <rect key="frame" x="103" y="82" width="90.5" height="62.5"/>
                                 <state key="normal" title="2">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1027,7 +1043,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonTwo:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="EUQ-Y1-kZF"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtl-xy-ZDZ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtl-xy-ZDZ">
                                 <rect key="frame" x="198" y="82" width="91.5" height="62.5"/>
                                 <state key="normal" title="3">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1037,7 +1053,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonThree:" destination="sT2-At-Ld4" eventType="touchUpInside" id="T06-IZ-VN5"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvR-Bo-K0P">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JvR-Bo-K0P">
                                 <rect key="frame" x="103" y="152" width="90.5" height="62.5"/>
                                 <state key="normal" title="5">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1047,7 +1063,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonFive:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="og6-7F-gij"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1Z-wb-vnQ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1Z-wb-vnQ">
                                 <rect key="frame" x="10" y="152" width="91.5" height="62.5"/>
                                 <state key="normal" title="4">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1057,7 +1073,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonFour:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="z0M-7a-dz7"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu1-Xy-C6r">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hu1-Xy-C6r">
                                 <rect key="frame" x="10" y="222" width="91.5" height="62.5"/>
                                 <state key="normal" title="7">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1067,7 +1083,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonSeven:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="VIM-wP-6AT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d4-rC-m2A">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8d4-rC-m2A">
                                 <rect key="frame" x="103" y="222" width="90.5" height="62.5"/>
                                 <state key="normal" title="8">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1077,7 +1093,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonEight:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="wZp-w8-3vr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-Ai-swq">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xAb-Ai-swq">
                                 <rect key="frame" x="195" y="222" width="91.5" height="62.5"/>
                                 <state key="normal" title="9">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1087,7 +1103,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonNine:" destination="sT2-At-Ld4" eventType="touchUpInside" id="Q1S-kY-nVU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-gI-TmN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2Q-gI-TmN">
                                 <rect key="frame" x="100" y="292" width="90.5" height="62.5"/>
                                 <state key="normal" title="0">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1097,7 +1113,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonZero:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="WA9-kq-FrT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-4Y-dwF">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zay-4Y-dwF">
                                 <rect key="frame" x="192" y="292" width="91.5" height="62.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="back" label=""/>
                                 <state key="normal" title="BACK">
@@ -1108,7 +1124,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonBack:" destination="Fm8-VZ-o5H" eventType="touchUpInside" id="a6O-KI-v6E"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-Qm-U3D">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7HU-Qm-U3D">
                                 <rect key="frame" x="195" y="152" width="91.5" height="62.5"/>
                                 <state key="normal" title="6">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1118,7 +1134,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonSix:" destination="sT2-At-Ld4" eventType="touchUpInside" id="kkA-M6-csx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-HY-hyT">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8W-HY-hyT">
                                 <rect key="frame" x="8" y="292" width="91.5" height="62.5"/>
                                 <accessibility key="accessibilityConfiguration" identifier="clear"/>
                                 <state key="normal" title="CLEAR">
@@ -1129,28 +1145,28 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <action selector="buttonClear:" destination="sT2-At-Ld4" eventType="touchUpInside" id="jAt-aO-A0t"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pBk-5b-CHN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pBk-5b-CHN">
                                 <rect key="frame" x="24" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8b4-xi-re8"/>
                                     <constraint firstAttribute="width" constant="40" id="aWY-gS-6Rf"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mit-jt-BVE">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="Mit-jt-BVE">
                                 <rect key="frame" x="94" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="DxI-CQ-5vc"/>
                                     <constraint firstAttribute="width" constant="40" id="a3b-wP-aHq"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ps0-KP-NSA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ps0-KP-NSA">
                                 <rect key="frame" x="164" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="pDN-Z6-kLK"/>
                                     <constraint firstAttribute="width" constant="40" id="q2V-kU-TiW"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="FOa-os-V4a">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="FOa-os-V4a">
                                 <rect key="frame" x="24" y="20" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="First" label="First"/>
                                 <constraints>
@@ -1158,7 +1174,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <constraint firstAttribute="height" constant="40" id="Hvw-0x-Okv"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="NsQ-l6-HSt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="NsQ-l6-HSt">
                                 <rect key="frame" x="164" y="20" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Third" label="Third"/>
                                 <constraints>
@@ -1166,14 +1182,14 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <constraint firstAttribute="height" constant="40" id="ciV-mP-ql8"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="LZX-SW-1xA">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="LZX-SW-1xA">
                                 <rect key="frame" x="232" y="20" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="MrZ-2t-5YP"/>
                                     <constraint firstAttribute="height" constant="40" id="xr9-PH-XSC"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="MgQ-d5-sNS">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="MgQ-d5-sNS">
                                 <rect key="frame" x="232" y="20" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Fourth" label="Fourth"/>
                                 <constraints>
@@ -1181,7 +1197,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                     <constraint firstAttribute="height" constant="40" id="zeI-Sa-zJu"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="3T6-Z5-fnm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="filler.png" translatesAutoresizingMaskIntoConstraints="NO" id="3T6-Z5-fnm">
                                 <rect key="frame" x="94" y="20" width="40" height="40"/>
                                 <accessibility key="accessibilityConfiguration" identifier="Second" label="Second">
                                     <bool key="isElement" value="YES"/>
@@ -1285,6 +1301,8 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     </view>
                     <toolbarItems/>
                     <keyCommands/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="296" height="363"/>
                     <connections>
                         <outlet property="first" destination="FOa-os-V4a" id="uB7-aY-WQX"/>
                         <outlet property="fourth" destination="MgQ-d5-sNS" id="b9G-G4-cUu"/>
@@ -1306,14 +1324,15 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <image name="filler.png" width="63" height="63"/>
         <image name="finger_icon.png" width="100" height="100"/>
         <image name="help.png" width="50" height="50"/>
+        <image name="info.png" width="50" height="50"/>
         <image name="placeholder.png" width="63" height="63"/>
         <image name="progressImage" width="250" height="250"/>
         <image name="settings.png" width="50" height="50"/>
         <image name="shake_icon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BtO-pi-kDi"/>
-        <segue reference="gWW-fq-g0A"/>
         <segue reference="4QZ-Ka-Nlb"/>
+        <segue reference="NSF-y5-V7D"/>
+        <segue reference="BtO-pi-kDi"/>
     </inferredMetricsTieBreakers>
 </document>

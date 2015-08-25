@@ -14,6 +14,7 @@ class TutorialContentViewController: UIViewController {
     var descriptionText: String!
     var imageFile: String!
 
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var desc: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     override func viewDidLoad() {
@@ -22,6 +23,7 @@ class TutorialContentViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.imageView.image = UIImage(named: self.imageFile)
         self.desc.text = self.descriptionText
+        self.desc.font = UIFont.systemFontOfSize(15)
     }
 
     override func didReceiveMemoryWarning() {

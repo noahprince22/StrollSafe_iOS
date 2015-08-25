@@ -85,9 +85,13 @@ class SettingsViewControllerSpec: QuickSpec {
                         comUtil = CommunicationUtilNonErrorMock()
                     }
                     
-                    it ("populates both timers with default values") {
-                        expect(viewController.releaseTime.text).toNot(equal(""))
-                        expect(viewController.lockdownTime.text).toNot(equal(""))
+                    it ("does not populate the text body when using the default values") {
+                        expect(viewController.textBody.text).to(equal(""))
+                    }
+                    
+                    it ("does not populate both timers when using default values") {
+                        expect(viewController.releaseTime.text).to(equal(""))
+                        expect(viewController.lockdownTime.text).to(equal(""))
                     }
                     
                     it ("populates all values with the saved values") {
@@ -245,6 +249,28 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.lockdown_duration) == 0.2
+                    }
+                    
+                    it ("saves the default lockdown timer when empty") {
+                        viewController.lockdownTime.text = ""
+                        viewController.contactPoliceSwitch.on = false
+                        viewController.callContact.text = "5558675309"
+                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
+                        expect(alertView.shown).to(beFalse())
+                        
+                        let storedConf = try! Configuration.get(managedObjectContext)
+                        expect(storedConf.lockdown_duration) == 20
+                    }
+                    
+                    it ("saves the default release timer when empty") {
+                        viewController.releaseTime.text = ""
+                        viewController.contactPoliceSwitch.on = false
+                        viewController.callContact.text = "5558675309"
+                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
+                        expect(alertView.shown).to(beFalse())
+                        
+                        let storedConf = try! Configuration.get(managedObjectContext)
+                        expect(storedConf.release_duration) == 1.5
                     }
                     
                     it ("saves the lockdown timer with no decimals") {
@@ -477,26 +503,6 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
                         expect(alertView.shown).to(beTrue())
                         expect(alertView.message).to(equal("- \(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)\n"))
-                    }
-                    
-                    it ("requires the lockdown duration") {
-                        viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
-                        viewController.lockdownTime.text = ""
-                        
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.REQUIRE_LOCKDOWN)\n"))
-                    }
-                    
-                    it ("requires the release duration") {
-                        viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
-                        viewController.releaseTime.text = ""
-                        
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.REQUIRE_RELEASE)\n"))
                     }
                 }
             }

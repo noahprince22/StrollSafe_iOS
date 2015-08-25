@@ -16,11 +16,11 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
     var pageTitles: NSArray!
     var pageImages: NSArray!
     
-    static var MAIN_DESC = "To arm the app, place your finger on the fingerprint button"
-    static var THUMB_DESC = "When you are in danger, release your finger.\n\nTo enter shake mode, slide your finger to the shake mode button and release it."
-    static var RELEASE_DESC = "After lifting your finger, you will have 1.5 seconds to replace the finger to cancel the lockdown."
+    static var MAIN_DESC = "To arm the app, place your finger on the fingerprint button and hold it on the phone until you feel safe"
+    static var RELEASE_DESC = "After lifting your finger, you will have 1.5 seconds to replace the finger to cancel."
+    static var THUMB_DESC = "To enter shake mode, slide your finger to the shake mode button and release"
     static var SHAKE_DESC = "In shake mode, when you are in danger, just shake your phone.\n\nPlease do not lock your screen or exit the app while in shake mode; shake gestures will not be received."
-    static var LOCKDOWN_DESC = "In lockdown mode, you can disarm by entering your passcode within the time limit.\n\nDo not exit the app or lock your screen during this state. Emergency text messages will send regardless, but phone calls will not."
+    static var LOCKDOWN_DESC = "To disarm, enter your passcode within the time limit.\n\nDo not exit the app or lock your screen; emergency text messages will send, but phone calls will not."
 
     @IBOutlet weak var gotIt: UIButton!
 
@@ -33,8 +33,8 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.pageTitles = NSArray(objects: TutorialViewController.MAIN_DESC, TutorialViewController.THUMB_DESC, TutorialViewController.RELEASE_DESC, TutorialViewController.SHAKE_DESC, TutorialViewController.LOCKDOWN_DESC)
-        self.pageImages = NSArray(objects: "mainscreen.png", "thumbdown.png", "release.png", "shakemode",  "lockdown.png")
+        self.pageTitles = NSArray(objects: TutorialViewController.MAIN_DESC, TutorialViewController.RELEASE_DESC, TutorialViewController.THUMB_DESC, TutorialViewController.SHAKE_DESC, TutorialViewController.LOCKDOWN_DESC)
+        self.pageImages = NSArray(objects: "mainscreen.png", "release.png", "thumbdown.png", "shakemode",  "lockdown.png")
         self.pageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialPageViewController") as! UIPageViewController
         
         self.pageViewController.dataSource = self

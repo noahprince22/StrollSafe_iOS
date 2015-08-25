@@ -56,6 +56,7 @@
 		FABC7EBF1B75282B00C5E5C3 /* filler.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC7EBE1B75282B00C5E5C3 /* filler.png */; };
 		FABC7EC11B75290B00C5E5C3 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = FABC7EC01B75290B00C5E5C3 /* placeholder.png */; };
 		FABD328F1B84094F002144F5 /* address-book.png in Resources */ = {isa = PBXBuildFile; fileRef = FABD328E1B84094F002144F5 /* address-book.png */; };
+		FAC8FAE41B8A7587003E0B6C /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = FAC8FAE31B8A7587003E0B6C /* info.png */; };
 		FAD0D5861B6FF868000B7F1E /* TestUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5851B6FF868000B7F1E /* TestUtils.swift */; };
 		FAD0D5881B700B15000B7F1E /* ConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5871B700B15000B7F1E /* ConfigurationSpec.swift */; };
 		FAD0D5941B704884000B7F1E /* TimedActionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */; };
@@ -217,6 +218,7 @@
 		FABC7EBE1B75282B00C5E5C3 /* filler.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = filler.png; path = ../../filler.png; sourceTree = "<group>"; };
 		FABC7EC01B75290B00C5E5C3 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = placeholder.png; path = ../../placeholder.png; sourceTree = "<group>"; };
 		FABD328E1B84094F002144F5 /* address-book.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address-book.png"; sourceTree = "<group>"; };
+		FAC8FAE31B8A7587003E0B6C /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
 		FAD0D5851B6FF868000B7F1E /* TestUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestUtils.swift; sourceTree = "<group>"; };
 		FAD0D5871B700B15000B7F1E /* ConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSpec.swift; path = Models/ConfigurationSpec.swift; sourceTree = "<group>"; };
 		FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimedActionSpec.swift; path = Util/TimedActionSpec.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 		BFD7C97A1ABE3D5000D973DF /* images */ = {
 			isa = PBXGroup;
 			children = (
+				FAC8FAE31B8A7587003E0B6C /* info.png */,
 				FA8B24951B88F4A400A7F8B9 /* settings.png */,
 				FA8B248F1B88F34000A7F8B9 /* help.png */,
 				FABD328E1B84094F002144F5 /* address-book.png */,
@@ -688,6 +691,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC8FAE41B8A7587003E0B6C /* info.png in Resources */,
 				ACDDF2EB1ABD57F60029DF5D /* Main.storyboard in Resources */,
 				FA0378511B7AF9DC000083E0 /* mainscreen.png in Resources */,
 				BFD7C9801ABE3D8200D973DF /* shake_icon.png in Resources */,
