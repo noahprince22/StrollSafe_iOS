@@ -309,6 +309,9 @@ class MainViewController: UIViewController {
     }
     
     func lockdown() {
+        // Get out of shake mode so multiple shake gestures aren't received
+        self.mode = state.START
+        
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 
         dispatch_async(dispatch_get_main_queue(), {

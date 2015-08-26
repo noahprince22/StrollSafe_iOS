@@ -163,7 +163,8 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate {
                     })
                     
                     if let smsRecips = self.smsRecipients {
-                        let message = self.constructSmsBodyWithLocationInfo()
+                        var message = self.constructSmsBodyWithLocationInfo()
+                        message = message + "\nSent via StrollSafe"
                         communicationUtil.sendSms(smsRecips, body: message)
                     }
                     
