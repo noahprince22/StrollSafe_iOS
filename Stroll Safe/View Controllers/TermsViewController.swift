@@ -29,10 +29,6 @@ class TermsViewController: UIViewController {
             NSNotificationCenter.defaultCenter().postNotificationName(termsFinishedNotificationKey, object: self)
         })
     }
-    
-    func goToSettings() {
-        self.performSegueWithIdentifier("termsToSetPasscodeSegue", sender: self)
-    }
 
     /*
     // MARK: - Navigation

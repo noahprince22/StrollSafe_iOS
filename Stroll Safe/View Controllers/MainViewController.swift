@@ -11,6 +11,7 @@ import CoreData
 import MessageUI
 import AudioToolbox
 import Darwin
+import CoreLocation
 
 
 // Lets the time display as 2.00 and not 2
@@ -39,6 +40,8 @@ class MainViewController: UIViewController {
     static var SHAKE_TITLE = "Shake Mode"
     static var SHAKE_TITLE_SUB = "Shake Phone to Enter Lockdown"
     static var SHAKE_SHAKE_DESC =  "Press and Hold to Exit Shake Mode"
+    
+    let locationManager = CLLocationManager()
 
     enum state {
         case START, THUMB, RELEASE,SHAKE
@@ -393,6 +396,8 @@ class MainViewController: UIViewController {
         initializeApp()
         configure()
         enterStartState()
+        
+        locationManager.requestAlwaysAuthorization()
         
         // Don't allow auto screen locking while app is running
         UIApplication.sharedApplication().idleTimerDisabled = true

@@ -9,6 +9,7 @@ import Foundation
 import Quick
 import Nimble
 import CoreData
+import CoreLocation
 @testable import Stroll_Safe
 
 class LockdownViewControllerSpec: QuickSpec {
@@ -191,18 +192,110 @@ class LockdownViewControllerSpec: QuickSpec {
                 
                 describe ("exit function") {
                     describe ("while locked") {
-                        beforeEach {
-                            action.exitFunction(viewController.lockdownDuration)
+                        context("outbound communication") {
+                            beforeEach {
+                                action.exitFunction(viewController.lockdownDuration)
+                            }
+                            
+                            it ("calls the configured contacts") {
+                                expect(communicationUtilMock.callRecipient).to(equal(callRecipient))
+                            }
+                            
+                            it ("sms messages the configured contacts with the configured body") {
+                                expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient1))
+                                expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
+                                expect(communicationUtilMock.smsBody).to(contain(smsBody))
+                            }
                         }
                         
-                        it ("calls the configured contacts") {
-                            expect(communicationUtilMock.callRecipient).to(equal(callRecipient))
-                        }
-                        
-                        it ("sms messages the configured contacts with the configured body") {
-                            expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient1))
-                            expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
-                            expect(communicationUtilMock.smsBody).to(contain(smsBody))
+                        context ("sms body") {
+                            var coord = CLLocationCoordinate2D()
+                            
+                            class PlacemarkMock : CLPlacemark {
+                                var _name: String?
+                                var _thoroughfare: String?
+                                var _subThoroughfare: String?
+                                
+                                override var name: String? {
+                                    get {
+                                        return self._name
+                                    }
+                                    
+                                    set {
+                                        self._name = newValue
+                                    }
+                                }
+                                
+                                override var thoroughfare: String? {
+                                    get {
+                                        return self._thoroughfare
+                                    }
+                                    
+                                    set {
+                                        self._thoroughfare = newValue
+                                    }
+                                }
+                                
+                                override var subThoroughfare: String? {
+                                    get {
+                                        return self._subThoroughfare
+                                    }
+                                    
+                                    set {
+                                        self._subThoroughfare = newValue
+                                    }
+                                }
+                            }
+                            
+                            let placemark = PlacemarkMock()
+
+                            beforeEach {
+                                coord.latitude = 25
+                                coord.longitude = 50
+                                viewController.coordinates = coord
+                                viewController.placemark = placemark
+                            }
+                            
+                            it ("includes a non nil coord") {
+                                action.exitFunction(viewController.lockdownDuration)
+                                
+                                expect(communicationUtilMock.smsBody).to(contain("\(coord.latitude)"))
+                                expect(communicationUtilMock.smsBody).to(contain("\(coord.longitude)"))
+                                expect(communicationUtilMock.smsBody).to(contain("Nearest address unavailable"))
+                            }
+                            
+                            it ("does not include a nil coord") {
+                                viewController.coordinates = nil
+                                
+                                action.exitFunction(viewController.lockdownDuration)
+                                
+                                expect(communicationUtilMock.smsBody).toNot(contain("nil"))
+                                expect(communicationUtilMock.smsBody).to(contain("Nearest address unavailable"))
+                                expect(communicationUtilMock.smsBody).to(contain("Coordinates unavailable"))
+                            }
+                            
+                            context ("with non nil placemark") {
+                                it ("includes a non nil name") {
+                                    placemark.name = "Hello"
+                                    
+                                    action.exitFunction(viewController.lockdownDuration)
+                                    
+                                    expect(communicationUtilMock.smsBody).to(contain("\(placemark.name!)"))
+                                    expect(communicationUtilMock.smsBody).toNot(contain("nil"))
+                                    expect(communicationUtilMock.smsBody).toNot(contain("Nearest address unavailable"))
+                                }
+                                
+                                it ("includes a non nil address") {
+                                    placemark.thoroughfare = "Example Address St"
+                                    placemark.subThoroughfare = "15020"
+                                    
+                                    action.exitFunction(viewController.lockdownDuration)
+                                    
+                                    expect(communicationUtilMock.smsBody).to(contain("\(placemark.name!)"))
+                                    expect(communicationUtilMock.smsBody).toNot(contain("nil"))
+                                    expect(communicationUtilMock.smsBody).toNot(contain("Nearest address unavailable"))
+                                }
+                            }
                         }
                     }
                     

@@ -9,8 +9,13 @@
 import UIKit
 import CoreData
 import Alamofire
+import CoreLocation
 
-class LockdownViewController: UIViewController {
+class LockdownViewController: UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
+    var coordinates: CLLocationCoordinate2D?
+    var placemark: CLPlacemark?
 
     var lockdownDuration: Double!
     var smsRecipients: [String]? = []
@@ -94,6 +99,11 @@ class LockdownViewController: UIViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "interrupted", name: UIApplicationWillResignActiveNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "resumed", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
     }
     
     func interrupted() {
@@ -120,7 +130,7 @@ class LockdownViewController: UIViewController {
             }
             
             if let body = conf.sms_body {
-                self.smsBody = "\(conf.full_name!)\n\(conf.phone_number!):\n\n\(body)\n\nAlert sent using StrollSafe"
+                self.smsBody = "\(conf.full_name!)\n\(conf.phone_number!):\n\n\(body)"
             }
         } catch let error as NSError {
             print("An error occurred while loading the configuration in the MainViewController, using fallback values")
@@ -153,7 +163,8 @@ class LockdownViewController: UIViewController {
                     })
                     
                     if let smsRecips = self.smsRecipients {
-                        communicationUtil.sendSms(smsRecips, body: self.smsBody)
+                        let message = self.constructSmsBodyWithLocationInfo()
+                        communicationUtil.sendSms(smsRecips, body: message)
                     }
                     
                     if let callRecip = self.callRecipient {
@@ -168,6 +179,62 @@ class LockdownViewController: UIViewController {
             builder.accelerationRate = 0.000004
         }
         return TimedAction(builder: timedActionBuilder)
+    }
+    
+    /**
+    Appends location info to the end of the class sms body
+    
+    :returns: The message body
+    */
+    func constructSmsBodyWithLocationInfo() -> String {
+        var message = self.smsBody
+        
+        let addressUnavailable = "\n\nNearest address unavailable"
+        if let _ = self.placemark {
+            if let nearestAddr = self.nearestAddress() {
+                message = message + "\n\nNearest address: \(nearestAddr))"
+            }else {
+                message = message + addressUnavailable
+            }
+        } else {
+            message = message + addressUnavailable
+        }
+        
+        if let loc = self.coordinates {
+            message = message + "\nCoordinates: \(loc.latitude), \(loc.longitude)" as String!
+        } else {
+            message = message + "\nCoordinates unavailable"
+        }
+        
+        return message
+    }
+    
+
+    /**
+    Creates a string about the user's location
+    
+    :returns: the closest address to the current placemark (including possible business name)
+    */
+    func nearestAddress() -> String? {
+        var ret: String?
+        
+        if let pm = self.placemark {
+            if (pm.name != nil || pm.thoroughfare != nil) {
+                if let name = pm.name {
+                    ret = name
+                    if let street = pm.thoroughfare {
+                        if let streetNum = pm.subThoroughfare {
+                            let address = streetNum + " " + street
+                            if (name != address) {
+                                ret = ", " + ret! + address
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return ret
     }
     
     /**
@@ -209,6 +276,24 @@ class LockdownViewController: UIViewController {
     */
     @IBAction func timerTouchUp(sender: AnyObject) {
         asyncAlertAction.disableAcceleration()
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        if let location = manager.location {
+            self.coordinates = location.coordinate
+            
+            
+            CLGeocoder().reverseGeocodeLocation(location, completionHandler: {(placemarks, error)->Void in
+                if let er = error {
+                    print("Reverse geocoder failed with error" + er.localizedDescription)
+                    return
+                }
+                
+                if let pm = placemarks?.first {
+                    self.placemark = pm
+                }
+            })
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let MESSAGE_URL = "https://697c8438.ngrok.io/message"
+    static let MESSAGE_URL = "https://388c9f8a.ngrok.io/message"
     
     enum PhoneNumberError: ErrorType {
         case TooShort
