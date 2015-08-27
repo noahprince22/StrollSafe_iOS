@@ -62,10 +62,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var help: UIButton!
     
-    var termsVC: TermsViewController?
-    var tutorialVC: TutorialViewController?
-    var setPasscodeVC: SetPasscodeViewController?
-    
     static var test = testing
     
     @IBAction func settingsClicked(sender: UIButton) {
@@ -73,7 +69,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func helpClicked(sender: UIButton) {
-        displayTutorial()
+        self.performSegueWithIdentifier("mainToInfoSegue", sender: self)
     }
     
     /**
@@ -120,25 +116,34 @@ class MainViewController: UIViewController {
         notificationCenter.addObserver(self, selector: "displaySettings", name: setPasscodeFinishedNotificationKey, object: nil)
     }
     
+    /**
+    Displays the terms of use as a modal
+    */
     func displayTerms() {
         dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.termsVC {
+            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TermsViewController") as? TermsViewController {
                 self.presentViewController(vc, animated: true, completion: nil)
             }
         })
     }
     
+    /**
+    Displays the tutorial as a modal
+    */
     func displayTutorial() {
         dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.tutorialVC {
+            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController {
                 self.presentViewController(vc, animated: true, completion: nil)
             }
         })
     }
     
+    /**
+    Displays the set passcode interface as a modal
+    */
     func displaySetPasscode() {
         dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.setPasscodeVC {
+            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as? SetPasscodeViewController {
                 self.presentViewController(vc, animated: true, completion: nil)
             }
         })
@@ -409,20 +414,6 @@ class MainViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "interrupted", name: UIApplicationWillResignActiveNotification, object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        self.termsVC =     self.storyboard?.instantiateViewControllerWithIdentifier("TermsViewController") as? TermsViewController
-        
-        self.tutorialVC =     self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController
-        
-        self.setPasscodeVC =     self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as? SetPasscodeViewController
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        self.termsVC = nil
-        self.tutorialVC = nil
-        self.setPasscodeVC = nil
-    }
-    
     func interrupted() {
         if (self.mode == state.THUMB) {
             enterShakeState()
@@ -431,8 +422,5 @@ class MainViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
-        // Dispose of any resources that can be recreated.
-        self.termsVC = nil
-    }   
+    }
 }

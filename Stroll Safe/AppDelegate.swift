@@ -17,6 +17,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    static var VERSION: String!
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -26,6 +27,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
         pageController.currentPageIndicatorTintColor = UIColor.blackColor()
         pageController.backgroundColor = UIColor.whiteColor()
+        
+        if let bundleVersion = NSBundle.mainBundle().infoDictionary?["CFBundleVersion"] as? String {
+            if let shortVersionString = NSBundle.mainBundle().infoDictionary?["CFBundleShortVersionString"] as? String {
+                AppDelegate.VERSION = shortVersionString + "." + bundleVersion
+            }
+        }
         
         return true
     }

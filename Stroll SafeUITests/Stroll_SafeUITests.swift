@@ -122,6 +122,40 @@ class Stroll_SafeUITests: XCTestCase {
         let app = testLoginWithSettings()
         app.buttons["help"].tap()
         
+        let tablesQuery = app.tables
+        let sugguestAFeatureStaticText = tablesQuery.staticTexts["Sugguest a Feature"]
+        sugguestAFeatureStaticText.tap()
+        
+        let textField = tablesQuery.cells.containingType(.StaticText, identifier:"Subject:").childrenMatchingType(.TextField).element
+        textField.tap()
+        textField.typeText("sjkdfhkjs")
+        
+        let textView = tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(1).childrenMatchingType(.TextView).element
+        textView.tap()
+        textView.typeText("jhsadfkjs")
+        
+        let strollSafeMessagetableviewNavigationBar = app.navigationBars["Stroll_Safe.MessageTableView"]
+        let doneButton = strollSafeMessagetableviewNavigationBar.buttons["Done"]
+        let deleteButton = strollSafeMessagetableviewNavigationBar.buttons["Delete"]
+
+        doneButton.tap()
+        
+        sugguestAFeatureStaticText.tap()
+        deleteButton.tap()
+        
+        let reportABugStaticText = tablesQuery.staticTexts["Report a Bug"]
+        reportABugStaticText.tap()
+        textField.tap()
+        textField.typeText("jkfghkfjdgh")
+        textView.tap()
+        textView.typeText("dfkjhgfdkjg")
+        doneButton.tap()
+        
+        reportABugStaticText.tap()
+        deleteButton.tap()
+        
+        app.tables.staticTexts["View Tutorial"].tap()
+        
         TutorialUtil(app: app).finishTutorial()
     }
     
