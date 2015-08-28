@@ -82,4 +82,16 @@ class MessageTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = false
+        }
+    }
 }

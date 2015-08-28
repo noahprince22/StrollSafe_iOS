@@ -14,7 +14,7 @@ class InfoTableViewController: UITableViewController {
         if (indexPath.section == 1) {
             let tutorialVC = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController
             
-            self.presentViewController(tutorialVC!, animated: true, completion: nil)
+            self.navigationController!.pushViewController(tutorialVC!, animated: true)
         }
         
         if (indexPath.section == 2) {
@@ -51,6 +51,18 @@ class InfoTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = false
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         if let navController = self.navigationController {
             navController.navigationBarHidden = false
         }

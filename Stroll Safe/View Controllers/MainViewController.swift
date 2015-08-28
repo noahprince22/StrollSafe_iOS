@@ -23,7 +23,7 @@ extension Double {
 
 
 // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
-let testing: Bool = true
+let testing: Bool = false
 
 class MainViewController: UIViewController {
     
