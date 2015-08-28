@@ -9,13 +9,14 @@
 import UIKit
 
 let termsFinishedNotificationKey = "com.strollsafe.termsFinishedNotificationKey"
-class TermsViewController: UIViewController {
+class TermsViewController: DismissableViewController {
 
     @IBOutlet weak var acceptButton: UIButton!
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,20 +25,30 @@ class TermsViewController: UIViewController {
     }
     
     @IBAction func acceptTerms(sender: UIButton) {
-        // Open the tutorial vc and have it go to setings when it's done
-        self.dismissViewControllerAnimated(true, completion: {_ in
-            NSNotificationCenter.defaultCenter().postNotificationName(termsFinishedNotificationKey, object: self)
-        })
+        if let navController = self.navigationController {
+            let setPasscodeVC = self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as! DismissableViewController
+            setPasscodeVC.dismissFn = { _ in
+                let tutorialVC = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as! DismissableViewController
+                tutorialVC.dismissFn = { _ in
+                    let settingsVC = self.storyboard?.instantiateViewControllerWithIdentifier("SettingsNavigatorViewController") as! DismissableViewController
+                    
+                    settingsVC.dismissFn = { _ in
+                        navigationController?.popToRootViewControllerAnimated(true)
+                    }
+                    
+                    settingsVC.navigationItem.setHidesBackButton(true, animated: false)
+                    navController.pushViewController(settingsVC, animated: true)
+                }
+                
+                navController.pushViewController(tutorialVC, animated: true)
+            }
+            
+            navController.pushViewController(setPasscodeVC, animated: true)
+        }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func removePreviousVC(navigationController: UINavigationController) {
+        let length = navigationController.viewControllers.count
+        navigationController.viewControllers.removeAtIndex(length-2)
     }
-    */
-
 }

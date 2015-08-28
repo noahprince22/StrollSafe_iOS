@@ -8,9 +8,7 @@
 
 import UIKit
 
-let tutorialFinishedNotificationKey = "com.strollsafe.tutorialFinishedNotificationKey"
-
-class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
+class TutorialViewController: DismissableViewController, UIPageViewControllerDataSource {
     
     var pageViewController: UIPageViewController!
     var pageTitles: NSArray!
@@ -25,12 +23,15 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
     @IBOutlet weak var gotIt: UIButton!
 
     @IBAction func gotItPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: {_ in
-            NSNotificationCenter.defaultCenter().postNotificationName(tutorialFinishedNotificationKey, object: self)
-        })
+        self.dismiss()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
 
         // Do any additional setup after loading the view.
         self.pageTitles = NSArray(objects: TutorialViewController.MAIN_DESC, TutorialViewController.RELEASE_DESC, TutorialViewController.THUMB_DESC, TutorialViewController.SHAKE_DESC, TutorialViewController.LOCKDOWN_DESC)
@@ -54,7 +55,7 @@ class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
         gotIt.layer.zPosition = 1000
         self.view.bringSubviewToFront(gotIt)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

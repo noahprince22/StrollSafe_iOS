@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import CoreLocation
 
-class LockdownViewController: UIViewController, CLLocationManagerDelegate {
+class LockdownViewController: DismissableViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
     var coordinates: CLLocationCoordinate2D?
@@ -104,6 +104,10 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.startUpdatingLocation()
+        
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
     }
     
     func interrupted() {
@@ -254,7 +258,7 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate {
         pinpadViewController.setEnteredFunction({(pass: String) -> () in
             self.pinpadViewController.clear();
             if self.lock.unlock(pass) {
-                self.performSegueWithIdentifier("unlockSegue", sender: nil)
+                self.dismiss()
             } else {
                 self.pinpadViewController.shake();
             }

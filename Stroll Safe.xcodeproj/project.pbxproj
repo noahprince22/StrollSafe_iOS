@@ -35,10 +35,12 @@
 		FA1AD3AF1B800AE500CB4FC2 /* ContactSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */; };
 		FA1B934B1B74363400046268 /* ComunicationUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */; };
 		FA1B93571B743B5F00046268 /* CommunicationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1B93561B743B5F00046268 /* CommunicationUtil.swift */; };
-		FA4117061B8F7008001D1C94 /* InfoNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117051B8F7008001D1C94 /* InfoNavigationViewController.swift */; };
 		FA4117121B8F7067001D1C94 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */; };
 		FA4117171B8F7FDD001D1C94 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */; };
 		FA4117191B8F84DD001D1C94 /* MessageTableViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117181B8F84DC001D1C94 /* MessageTableViewControllerSpec.swift */; };
+		FA41171D1B8FAFFE001D1C94 /* DismissableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */; };
+		FA4117201B8FF0C7001D1C94 /* LeftToRightSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */; };
+		FA4117221B8FF521001D1C94 /* RightToLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA777AAA1B892427008996FF /* TutorialUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA777AA91B892427008996FF /* TutorialUtil.swift */; };
@@ -200,10 +202,12 @@
 		FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactSearchViewController.swift; path = "View Controllers/settings/ContactSearchViewController.swift"; sourceTree = "<group>"; };
 		FA1B934A1B74363400046268 /* ComunicationUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComunicationUtilSpec.swift; sourceTree = "<group>"; };
 		FA1B93561B743B5F00046268 /* CommunicationUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationUtil.swift; sourceTree = "<group>"; };
-		FA4117051B8F7008001D1C94 /* InfoNavigationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoNavigationViewController.swift; path = "View Controllers/InfoNavigationViewController.swift"; sourceTree = "<group>"; };
-		FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoTableViewController.swift; path = "View Controllers/InfoTableViewController.swift"; sourceTree = "<group>"; };
+		FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoTableViewController.swift; path = "View Controllers/info/InfoTableViewController.swift"; sourceTree = "<group>"; };
 		FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewController.swift; path = "View Controllers/info/MessageTableViewController.swift"; sourceTree = "<group>"; };
 		FA4117181B8F84DC001D1C94 /* MessageTableViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewControllerSpec.swift; sourceTree = "<group>"; };
+		FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableViewController.swift; sourceTree = "<group>"; };
+		FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftToRightSegue.swift; path = Segues/LeftToRightSegue.swift; sourceTree = "<group>"; };
+		FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeftSegue.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroll_SafeUITests.swift; sourceTree = "<group>"; };
 		FA59FE5D1B64196300F27162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -297,6 +301,7 @@
 		ACDDF2DF1ABD57F50029DF5D /* Stroll Safe */ = {
 			isa = PBXGroup;
 			children = (
+				FA41171E1B8FF080001D1C94 /* Segues */,
 				FA03785A1B7BD61B000083E0 /* Delegates */,
 				FA430BD91B73CE4100A0FA99 /* Models */,
 				FA9E54841B65740E005267F9 /* View Controllers */,
@@ -392,10 +397,18 @@
 			isa = PBXGroup;
 			children = (
 				FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */,
-				FA4117051B8F7008001D1C94 /* InfoNavigationViewController.swift */,
 				FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */,
 			);
 			name = info;
+			sourceTree = "<group>";
+		};
+		FA41171E1B8FF080001D1C94 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */,
+				FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */,
+			);
+			name = Segues;
 			sourceTree = "<group>";
 		};
 		FA430BD91B73CE4100A0FA99 /* Models */ = {
@@ -511,6 +524,7 @@
 				ACDDF2E71ABD57F60029DF5D /* MainViewController.swift */,
 				BF477D411ABE782D005D76E8 /* LockdownViewController.swift */,
 				BF2516A11AC3927300024CF6 /* PinpadViewController.swift */,
+				FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -847,17 +861,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4117201B8FF0C7001D1C94 /* LeftToRightSegue.swift in Sources */,
 				FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */,
 				FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */,
 				FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */,
 				BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */,
+				FA41171D1B8FAFFE001D1C94 /* DismissableViewController.swift in Sources */,
+				FA4117221B8FF521001D1C94 /* RightToLeftSegue.swift in Sources */,
 				ACDDF2E81ABD57F60029DF5D /* MainViewController.swift in Sources */,
 				FAA2A1721B7142FD00F3F89C /* TimedAction.swift in Sources */,
 				BF477D421ABE782D005D76E8 /* LockdownViewController.swift in Sources */,
 				FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */,
 				ACDDF2E61ABD57F60029DF5D /* Stroll_Safe.xcdatamodeld in Sources */,
 				FA03783C1B7839FE000083E0 /* Configuration.swift in Sources */,
-				FA4117061B8F7008001D1C94 /* InfoNavigationViewController.swift in Sources */,
 				FA4117121B8F7067001D1C94 /* InfoTableViewController.swift in Sources */,
 				FA1B93571B743B5F00046268 /* CommunicationUtil.swift in Sources */,
 				FA03784F1B7AA594000083E0 /* TutorialViewController.swift in Sources */,

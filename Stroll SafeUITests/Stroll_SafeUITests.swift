@@ -34,6 +34,8 @@ class Stroll_SafeUITests: XCTestCase {
     func testLoginWithSettings() -> XCUIApplication{
         let app = testCorrectSetPass()
         
+        TutorialUtil(app: app).finishTutorial()
+        
         let tablesQuery = app.tables
         tablesQuery.textFields["full_name"].tap()
         tablesQuery.textFields["full_name"].typeText("Urist McTest")
@@ -46,7 +48,7 @@ class Stroll_SafeUITests: XCTestCase {
         textContactTextField.tap()
         textContactTextField.typeText("555555555")
         
-        let doneButton = app.navigationBars["Settings"].buttons["Done"]
+        let doneButton = app.navigationBars["Settings"].buttons["Save"]
         doneButton.tap()
         app.alerts["Oops!"].collectionViews.buttons["Ok"].tap()
         textContactTextField.typeText("5")
@@ -70,9 +72,6 @@ class Stroll_SafeUITests: XCTestCase {
     func testIncorrectSetPass() {
         let app = XCUIApplication()
         app.buttons["I Agree, Continue"].tap()
-
-        TutorialUtil(app: app).finishTutorial()
-        
         let lockUtil = LockUtil(app: app)
         
         // Test invalid second entry
@@ -92,8 +91,6 @@ class Stroll_SafeUITests: XCTestCase {
     func testCorrectSetPass() -> XCUIApplication {
         let app = XCUIApplication()
         app.buttons["I Agree, Continue"].tap()
-
-        TutorialUtil(app: app).finishTutorial()
         
         let lockUtil = LockUtil(app: app)
         // Test valid entries
@@ -114,7 +111,7 @@ class Stroll_SafeUITests: XCTestCase {
         let app = testLoginWithSettings()
         app.buttons["settings"].tap()
 
-        let doneButton = app.navigationBars["Settings"].buttons["Done"]
+        let doneButton = app.navigationBars["Settings"].buttons["Save"]
         doneButton.tap()
     }
     

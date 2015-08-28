@@ -9,8 +9,7 @@
 import UIKit
 import CoreData
 
-let setPasscodeFinishedNotificationKey = "com.strollsafe.setPasscodeFinishedNotificationKey"
-class SetPasscodeViewController: UIViewController {
+class SetPasscodeViewController: DismissableViewController {
     
     static var ENTER_TEXT = "Enter a passcode"
     static var REENTER_TEXT = "Re-enter passcode"
@@ -32,6 +31,10 @@ class SetPasscodeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
         
         setupPinpadViewToStorePasscode()
     }
@@ -67,10 +70,7 @@ class SetPasscodeViewController: UIViewController {
                     //    with no stored password to unlock it
                     try! managedObjectContext.save()
                     
-                    // Transition to the main screen
-                    self.dismissViewControllerAnimated(true, completion: {_ in
-                        NSNotificationCenter.defaultCenter().postNotificationName(setPasscodeFinishedNotificationKey, object: self)
-                    })
+                    self.dismiss()
                 }else{
                     // They fucked up, take them back to the beginning
                     self.firstEntered = false

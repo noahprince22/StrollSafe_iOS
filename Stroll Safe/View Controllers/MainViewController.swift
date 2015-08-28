@@ -109,44 +109,7 @@ class MainViewController: UIViewController {
     }
     
     func firstTimeUser() {
-        displayTerms()
-        let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: "displayTutorial", name: termsFinishedNotificationKey, object: nil)
-        notificationCenter.addObserver(self, selector: "displaySetPasscode", name: tutorialFinishedNotificationKey, object: nil)
-        notificationCenter.addObserver(self, selector: "displaySettings", name: setPasscodeFinishedNotificationKey, object: nil)
-    }
-    
-    /**
-    Displays the terms of use as a modal
-    */
-    func displayTerms() {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TermsViewController") as? TermsViewController {
-                self.presentViewController(vc, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    /**
-    Displays the tutorial as a modal
-    */
-    func displayTutorial() {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController {
-                self.presentViewController(vc, animated: true, completion: nil)
-            }
-        })
-    }
-    
-    /**
-    Displays the set passcode interface as a modal
-    */
-    func displaySetPasscode() {
-        dispatch_async(dispatch_get_main_queue(), {
-            if let vc = self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as? SetPasscodeViewController {
-                self.presentViewController(vc, animated: true, completion: nil)
-            }
-        })
+        self.performSegueWithIdentifier("firstTimeUserSegue", sender: self)
     }
     
     func displaySettings() {
@@ -403,7 +366,6 @@ class MainViewController: UIViewController {
         
         initializeApp()
         configure()
-        enterStartState()
         
         locationManager.requestAlwaysAuthorization()
         
@@ -412,6 +374,14 @@ class MainViewController: UIViewController {
         
         // If interrupted by a phone call or something, just go back to start state
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "interrupted", name: UIApplicationWillResignActiveNotification, object: nil)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        if let navController = self.navigationController {
+            navController.navigationBarHidden = true
+        }
+        
+        enterStartState()
     }
     
     func interrupted() {
