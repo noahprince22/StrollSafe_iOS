@@ -113,10 +113,6 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         searchActive = false;
-        
-        self.dismissViewControllerAnimated(true, completion: { _ in
-            try! self.completionFn(searchBar.text!)
-        })
     }
     
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
