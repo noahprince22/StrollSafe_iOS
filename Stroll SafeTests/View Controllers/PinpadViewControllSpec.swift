@@ -12,8 +12,15 @@ import Nimble
 @testable import Stroll_Safe
 
 class PinpadViewControllerSpec: QuickSpec {
+    
     override func spec() {
         describe ("the view") {
+            class Delegate: PinpadViewDelegate {
+                func passEntered(controller: PinpadViewController, pass: String) {
+                    // do nothing
+                }
+            }
+            
             var viewController: Stroll_Safe.PinpadViewController!
             beforeEach {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -23,6 +30,7 @@ class PinpadViewControllerSpec: QuickSpec {
                 
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
+                viewController.delegate = Delegate()
             }
             
             func expectClear() {
@@ -188,20 +196,25 @@ class PinpadViewControllerSpec: QuickSpec {
             }
             
             it ("runs my function on completion with the correct pass") {
-                var functionCalled = false
-                viewController.setEnteredFunction({(pass: String) -> ()  in
-                    expect(pass).to(equal("1234"))
-                    viewController.clear();
-                    
-                    functionCalled = true
-                })
+                class thing: PinpadViewDelegate {
+                    var functionCalled = false
+                    var mainPass = "1234"
+                    func passEntered(controller: PinpadViewController, pass: String) {
+                        expect(pass).to(equal("1234"))
+                        controller.clear()
+                        functionCalled = true
+                    }
+                }
+            
+                let del = thing()
+                viewController.delegate = del
                 
                 viewController.buttonOne(self)
                 viewController.buttonTwo(self)
                 viewController.buttonThree(self)
                 viewController.buttonFour(self)
                 
-                expect(functionCalled).to(beTrue())
+                expect(del.functionCalled).to(beTrue())
                 expectClear();
             }
         }

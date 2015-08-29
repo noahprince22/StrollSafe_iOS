@@ -25,7 +25,7 @@ extension Double {
 // hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
 let testing: Bool = true
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, DismissableViewDelegate {
     
     static var MAIN_TITLE = "Stroll Safe"
     static var MAIN_TITLE_SUB = "Keeping You Safe on Your Late Night Strolls"
@@ -64,8 +64,30 @@ class MainViewController: UIViewController {
     
     static var test = testing
     
+    
+    func dismiss(controller: UIViewController) {
+        if (controller is NavigatorViewController) {
+            let nav = self.navigationController!
+            nav.viewControllers.removeAtIndex(0)
+            nav.pushViewController(self, animated: true)
+            nav.viewControllers.removeAtIndex(0)
+        } else {
+            self.navigationController!.popViewControllerAnimated(true)
+        }
+    }
+    
     @IBAction func settingsClicked(sender: UIButton) {
         displaySettings()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "mainToSettingsSegue") {
+            (segue.destinationViewController as! NavigatorViewController).delegate = self
+        } else if (segue.identifier == "mainToInfoSegue") {
+            (segue.destinationViewController as! InfoNavigatorViewController).delegate = self
+        } else if (segue.identifier == "mainToLockdownSegue") {
+            (segue.destinationViewController as! LockdownViewController).delegate = self
+        }
     }
     
     @IBAction func helpClicked(sender: UIButton) {
@@ -283,7 +305,7 @@ class MainViewController: UIViewController {
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
 
         dispatch_async(dispatch_get_main_queue(), {
-            self.performSegueWithIdentifier("lockdownSegue", sender: nil)
+            self.performSegueWithIdentifier("mainToLockdownSegue", sender: nil)
         })
     }
     
@@ -365,7 +387,6 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         initializeApp()
-        configure()
         
         locationManager.requestAlwaysAuthorization()
         
@@ -381,6 +402,7 @@ class MainViewController: UIViewController {
             navController.navigationBarHidden = true
         }
         
+        configure()
         enterStartState()
     }
     

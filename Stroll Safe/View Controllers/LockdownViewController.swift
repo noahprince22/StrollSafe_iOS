@@ -11,7 +11,7 @@ import CoreData
 import Alamofire
 import CoreLocation
 
-class LockdownViewController: DismissableViewController, CLLocationManagerDelegate {
+class LockdownViewController: UIViewController, CLLocationManagerDelegate, PinpadViewDelegate {
     
     let locationManager = CLLocationManager()
     var coordinates: CLLocationCoordinate2D?
@@ -21,6 +21,8 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
     var smsRecipients: [String]? = []
     var callRecipient: String?
     var smsBody: String!
+    
+    var delegate: DismissableViewDelegate! = nil
     
     class Lock {
         var pass: String = ""
@@ -62,13 +64,11 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
 
     var asyncAlertAction: TimedAction!
     
-    weak var pinpadViewController: PinpadViewController!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? PinpadViewController
             where segue.identifier == "lockdownEmbedPinpad" {
-                
-                self.pinpadViewController = vc
+                vc.delegate = self
         }
     }
 
@@ -93,7 +93,6 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
-        setupPinpadViewWithStoredPasscode()
         self.asyncAlertAction = buildAsyncAlertAction()
         asyncAlertAction.run()
         
@@ -146,6 +145,8 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
             self.callRecipient = "8675309"
             self.smsBody = "This is an alert from StrollSafe"
         }
+        
+        cacheStoredPass(configurationContext)
     }
     
     /**
@@ -175,6 +176,8 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
                     if let callRecip = self.callRecipient {
                         communicationUtil.sendCall(callRecip)
                     }
+                    
+                    self.delegate.dismiss(self)
                 }
             }
             builder.recurrentFunction = self.updateProgress
@@ -243,26 +246,32 @@ class LockdownViewController: DismissableViewController, CLLocationManagerDelega
     }
     
     /**
-    Sets up the embedded pinpad view with the correct functionality
+    The function run for the embedded pinpad view
     
-    :param: managedObjectContext the managed object context to store the pass in on completion
+    :param: controller the pinpad view controller that received the passcode
+    :param: pass the passcode
     */
-    func setupPinpadViewWithStoredPasscode(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
+    func passEntered(controller: PinpadViewController, pass: String) {
+        controller.clear();
+        if self.lock.unlock(pass) {
+            self.delegate.dismiss(self)
+        } else {
+            controller.shake();
+        }
+    }
+    
+    /**
+    Caches the stored passcode in the instance lock
+    
+    :param: managedObjectContext the context of the stored passcode
+    */
+    func cacheStoredPass(managedObjectContext: NSManagedObjectContext) {
         do {
             lock.lock(try Configuration.get(managedObjectContext).passcode!)
         } catch let error as NSError {
             NSLog(error.localizedDescription)
             NSLog("Something very bad happened. There was no stored pass when they got to the lockdown view")
         }
-
-        pinpadViewController.setEnteredFunction({(pass: String) -> () in
-            self.pinpadViewController.clear();
-            if self.lock.unlock(pass) {
-                self.dismiss()
-            } else {
-                self.pinpadViewController.shake();
-            }
-        })
     }
     
     /**

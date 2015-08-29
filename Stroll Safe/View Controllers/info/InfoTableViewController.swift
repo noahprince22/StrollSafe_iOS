@@ -8,15 +8,13 @@
 
 import UIKit
 
-class InfoTableViewController: UITableViewController {
+class InfoTableViewController: UITableViewController, DismissableViewDelegate {
     
     @IBOutlet weak var version: UILabel!
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section == 1) {
-            let tutorialVC = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController
-            
-            self.navigationController!.pushViewController(tutorialVC!, animated: true)
+            self.performSegueWithIdentifier("infoToTutorialSegue", sender: self)
         }
         
         if (indexPath.section == 2) {
@@ -34,11 +32,11 @@ class InfoTableViewController: UITableViewController {
                     }
                     
                     vc.doneAction = { _ in
-                        vc.close()
+                        self.navigationController!.popViewControllerAnimated(true)
                     }
                 case 1:
                     vc.doneAction = { _ in
-                        vc.close()
+                        self.navigationController!.popViewControllerAnimated(true)
                     }
                 default: break
                 }
@@ -48,6 +46,16 @@ class InfoTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "infoToTutorialSegue") {
+            (segue.destinationViewController as! TutorialViewController).delegate = self
+        }
+    }
+    
+    func dismiss(controller: UIViewController) {
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     override func viewDidLoad() {

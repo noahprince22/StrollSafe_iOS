@@ -8,11 +8,13 @@
 
 import UIKit
 
-class TutorialViewController: DismissableViewController, UIPageViewControllerDataSource {
+class TutorialViewController: UIViewController, UIPageViewControllerDataSource {
     
     var pageViewController: UIPageViewController!
     var pageTitles: NSArray!
     var pageImages: NSArray!
+    
+    var delegate: DismissableViewDelegate! = nil
     
     static var MAIN_DESC = "To arm the app, place your finger on the fingerprint button and hold it on the phone until you feel safe"
     static var RELEASE_DESC = "After lifting your finger, you will have 1.5 seconds to replace the finger to cancel."
@@ -23,7 +25,7 @@ class TutorialViewController: DismissableViewController, UIPageViewControllerDat
     @IBOutlet weak var gotIt: UIButton!
 
     @IBAction func gotItPressed(sender: AnyObject) {
-        self.dismiss()
+        delegate.dismiss(self)
     }
     
     override func viewDidLoad() {

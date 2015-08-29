@@ -38,7 +38,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var textBody: UITextField!
     var contactSearchVC: ContactSearchViewController!
     @IBOutlet weak var textEnabledSwitch: UISwitch!
-        
+            
     @IBAction func textEnabledPressed(sender: AnyObject) {
         if (self.textEnabledSwitch.on == false) {
             self.textContact.text = ""

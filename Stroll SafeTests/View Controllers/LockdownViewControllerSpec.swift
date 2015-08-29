@@ -12,7 +12,11 @@ import CoreData
 import CoreLocation
 @testable import Stroll_Safe
 
-class LockdownViewControllerSpec: QuickSpec {
+class LockdownViewControllerSpec: QuickSpec, DismissableViewDelegate {
+    var dismissed = false
+    func dismiss(controller: UIViewController) {
+        dismissed = true
+    }
     
     override func spec() {
         describe ("the lockdown view") {
@@ -48,6 +52,7 @@ class LockdownViewControllerSpec: QuickSpec {
             var communicationUtilMock: CommunicationUtilMock!
             
             beforeEach {
+                self.dismissed = false
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 viewController =
@@ -57,6 +62,7 @@ class LockdownViewControllerSpec: QuickSpec {
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
                 viewController.asyncAlertAction.pause()
+                viewController.delegate = self
                 
                 communicationUtilMock = CommunicationUtilMock()
                 
@@ -81,10 +87,6 @@ class LockdownViewControllerSpec: QuickSpec {
                     var shaken = false
                     var cleared = false
                     
-                    override func setEnteredFunction(fn: (String) throws -> ()) {
-                        self.enteredFunction = fn
-                    }
-                    
                     override func shake() {
                         shaken = true
                     }
@@ -98,23 +100,21 @@ class LockdownViewControllerSpec: QuickSpec {
                 
                 beforeEach {
                     pinpadViewController = PinpadViewControllerMock()
-                    
-                    viewController.pinpadViewController = pinpadViewController
-                    viewController.setupPinpadViewWithStoredPasscode(moc)
                 }
                 
                 it ("does not unlock when provided the wrong code") {
-                    try! pinpadViewController.enteredFunction("2222")
+                    viewController.passEntered(pinpadViewController, pass: "2222")
                     expect(viewController.lock.isLocked()).to(beTrue())
                     expect(pinpadViewController.shaken).to(beTrue())
                     expect(pinpadViewController.cleared).to(beTrue())
                 }
                 
                 it ("unlocks when provided the right code") {
-                    try! pinpadViewController.enteredFunction(passcode)
+                    viewController.passEntered(pinpadViewController, pass: passcode)
                     expect(viewController.lock.isLocked()).to(beFalse());
                     expect(pinpadViewController.shaken).to(beFalse())
                     expect(pinpadViewController.cleared).to(beTrue())
+                    expect(self.dismissed).to(beTrue())
                 }
             }
             
@@ -205,6 +205,10 @@ class LockdownViewControllerSpec: QuickSpec {
                                 expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient1))
                                 expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
                                 expect(communicationUtilMock.smsBody).to(contain(smsBody))
+                            }
+                            
+                            it ("dismisses the view controller") {
+                                expect(self.dismissed).to(beTrue())
                             }
                         }
                         

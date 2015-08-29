@@ -23,12 +23,8 @@ class PinpadViewController: UIViewController {
     var correctPass = [Double](count: 4, repeatedValue: 2.0)
     var passField = [Double](count: 4, repeatedValue: 0.0)
     var currentIdx = 0;
-
-    var enteredFn: (String) throws -> () = { (String) -> () in }
     
-    func setEnteredFunction(fn: (String) throws -> ()) {
-        enteredFn = fn
-    }
+    var delegate: PinpadViewDelegate! = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +66,7 @@ class PinpadViewController: UIViewController {
             third.hidden = false
         case 4:
             fourth.hidden = false
-            try! enteredFn(getCurrentPass() as String)
+            delegate.passEntered(self, pass: getCurrentPass() as String)
 
         default:
             print("Invalid")

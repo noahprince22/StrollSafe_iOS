@@ -433,7 +433,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="version" destination="Vgm-WF-Vmz" id="c7t-eP-zX4"/>
-                        <segue destination="bEl-p5-fu6" kind="show" identifier="infoViewTutorialSegue" id="zCe-zO-laQ"/>
+                        <segue destination="bEl-p5-fu6" kind="show" identifier="infoToTutorialSegue" id="zCe-zO-laQ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tNF-sh-Vif" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -455,21 +455,32 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5xg-2p-7Oo" id="00O-4Y-a6z">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBV-dg-sj6">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subject:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBV-dg-sj6">
                                                     <rect key="frame" x="8" y="11" width="63" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6G-2O-ClI">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W6G-2O-ClI">
                                                     <rect key="frame" x="79" y="5" width="233" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="233" id="IlW-BI-8Q0"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="W6G-2O-ClI" firstAttribute="top" secondItem="00O-4Y-a6z" secondAttribute="topMargin" constant="-3" id="Sqd-n3-ZqY"/>
+                                                <constraint firstItem="iBV-dg-sj6" firstAttribute="leading" secondItem="00O-4Y-a6z" secondAttribute="leadingMargin" id="T2B-Th-doK"/>
+                                                <constraint firstItem="iBV-dg-sj6" firstAttribute="top" secondItem="00O-4Y-a6z" secondAttribute="topMargin" constant="3" id="dHG-q5-S5z"/>
+                                                <constraint firstItem="iBV-dg-sj6" firstAttribute="centerY" secondItem="00O-4Y-a6z" secondAttribute="centerY" id="iXJ-hV-p6I"/>
+                                                <constraint firstItem="W6G-2O-ClI" firstAttribute="trailing" secondItem="00O-4Y-a6z" secondAttribute="trailingMargin" id="jJz-zj-pek"/>
+                                                <constraint firstItem="W6G-2O-ClI" firstAttribute="leading" secondItem="iBV-dg-sj6" secondAttribute="trailing" constant="8" symbolic="YES" id="ven-H5-vqx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="309" id="I7J-aS-NOw">
@@ -681,7 +692,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                         <outlet property="thumbDesc" destination="HpK-ox-49w" id="lC6-gw-mHd"/>
                         <outlet property="titleMain" destination="KOv-yq-ZNo" id="rCn-LQ-4xC"/>
                         <outlet property="titleSub" destination="pa5-dg-QGN" id="ejg-Zk-aqX"/>
-                        <segue destination="Fm8-VZ-o5H" kind="show" identifier="lockdownSegue" id="Ik0-4p-X00"/>
+                        <segue destination="Fm8-VZ-o5H" kind="show" identifier="mainToLockdownSegue" id="Ik0-4p-X00"/>
                         <segue destination="bWi-6g-m7W" kind="show" identifier="firstTimeUserSegue" id="fno-QU-lCn"/>
                         <segue destination="yr2-hh-Rh7" kind="custom" identifier="mainToSettingsSegue" customClass="LeftToRightSegue" customModule="Stroll_Safe" customModuleProvider="target" id="qOV-ng-dkM"/>
                         <segue destination="hEW-kh-fLl" kind="show" identifier="mainToInfoSegue" id="sbH-V4-V4l"/>
@@ -1633,7 +1644,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
         <image name="shake_icon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BtO-pi-kDi"/>
         <segue reference="iRs-Cr-keK"/>
+        <segue reference="ddd-sB-b0W"/>
     </inferredMetricsTieBreakers>
 </document>

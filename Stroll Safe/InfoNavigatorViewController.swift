@@ -7,9 +7,11 @@
 
 import UIKit
 
-class InfoNavigatorViewController: DismissableViewController {
+class InfoNavigatorViewController: UIViewController {
+    
+    var delegate: DismissableViewDelegate! = nil
     
     @IBAction func back(sender: UIBarButtonItem) {
-        self.dismiss()
+        self.delegate.dismiss(self)
     }
 }

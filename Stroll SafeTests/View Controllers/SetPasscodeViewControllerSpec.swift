@@ -11,13 +11,19 @@ import Quick
 import Nimble
 @testable import Stroll_Safe
 
-class SetPasscodeViewControllerSpec: QuickSpec {
+class SetPasscodeViewControllerSpec: QuickSpec, DismissableViewDelegate {
+    var dismissed = false
+    func dismiss(controller: UIViewController) {
+        dismissed = true
+    }
     
     override func spec() {
         describe ("the set passcode view") {
             var viewController: Stroll_Safe.SetPasscodeViewController!
             
-            beforeEach {                
+            beforeEach {
+                self.dismissed = false
+                
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 
                 viewController =
@@ -26,6 +32,7 @@ class SetPasscodeViewControllerSpec: QuickSpec {
                 
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
+                viewController.delegate = self
             }
             
             describe("pinpad control") {
@@ -33,10 +40,6 @@ class SetPasscodeViewControllerSpec: QuickSpec {
                     var enteredFunction: ((String) throws -> ())!
                     var shaken = false
                     var cleared = false
-                    
-                    override func setEnteredFunction(fn: (String) throws -> ()) {
-                        self.enteredFunction = fn
-                    }
                     
                     override func shake() {
                         shaken = true
@@ -52,34 +55,32 @@ class SetPasscodeViewControllerSpec: QuickSpec {
                 
                 beforeEach {
                     pinpadViewController = PinpadViewControllerMock()
-                    
-                    viewController.pinpadViewController = pinpadViewController
-                    viewController.setupPinpadViewToStorePasscode(managedObjectContext)
                 }
                 
                 it ("rejects two different passcodes") {
-                    try! pinpadViewController.enteredFunction("1234")
+                    viewController.checkAndStorePass(pinpadViewController, pass: "1234", managedObjectContext: managedObjectContext)
                     expect(pinpadViewController.cleared).to(beTrue())
                     expect(pinpadViewController.shaken).to(beFalse())
                     
-                    try! pinpadViewController.enteredFunction("5678")
+                    viewController.checkAndStorePass(pinpadViewController, pass: "5678", managedObjectContext: managedObjectContext)
                     expect(pinpadViewController.cleared).to(beTrue())
                     expect(pinpadViewController.shaken).to(beTrue())
                 }
                 
-                it ("accepts two identical passcodes and stores the passcode") {
+                it ("accepts two identical passcodes, stores the passcode, and dismisses") {
                     let pass = "1234"
                     
-                    try! pinpadViewController.enteredFunction(pass)
+                    viewController.checkAndStorePass(pinpadViewController, pass: pass, managedObjectContext: managedObjectContext)
                     expect(pinpadViewController.cleared).to(beTrue())
                     expect(pinpadViewController.shaken).to(beFalse())
                     
-                    try! pinpadViewController.enteredFunction(pass)
+                    viewController.checkAndStorePass(pinpadViewController, pass: pass, managedObjectContext: managedObjectContext)
                     expect(pinpadViewController.cleared).to(beTrue())
                     expect(pinpadViewController.shaken).to(beFalse())
                     
                     let storedConf = try! Configuration.get(managedObjectContext)
                     expect(storedConf.passcode).to(equal(pass))
+                    expect(self.dismissed).to(beTrue())
                 }
             }
         }

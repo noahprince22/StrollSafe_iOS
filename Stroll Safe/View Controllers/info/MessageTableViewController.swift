@@ -13,7 +13,7 @@ class MessageTableViewController: UITableViewController {
     @IBOutlet weak var subjectField: UITextField!
     @IBOutlet weak var bodyField: UITextView!
     @IBOutlet weak var navBar: UINavigationItem!
-    
+        
     var doneAction: (() throws -> ()) = { _ in
         return
     }

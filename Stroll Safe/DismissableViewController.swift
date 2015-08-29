@@ -1,5 +1,5 @@
 //
-//  VariableDismissalView.swift
+//  DismissableViewDelegate
 //  Stroll Safe
 //
 //  Created by Noah Prince on 8/27/15.
@@ -11,20 +11,6 @@
 import Foundation
 import UIKit
 
-class DismissableViewController: UIViewController {
-    func close() {
-        if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
-        }
-    }
-    
-    var dismissFn: (() throws -> ())?
-    
-    func dismiss() {
-        if let fn = dismissFn {
-            try! fn()
-        } else {
-            close()
-        }
-    }
+protocol DismissableViewDelegate {
+    func dismiss(controller: UIViewController)
 }

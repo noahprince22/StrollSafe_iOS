@@ -8,8 +8,9 @@
 
 import UIKit
 
-class NavigatorViewController: DismissableViewController {
+class NavigatorViewController: UIViewController {
     weak var settingsViewController: SettingsViewController!
+    var delegate: DismissableViewDelegate! = nil
     
     override func didMoveToParentViewController(parent: UIViewController?) {
         // If they hit the back button use the main right to left custom segue
@@ -27,14 +28,7 @@ class NavigatorViewController: DismissableViewController {
 
     @IBAction func donePress(sender: UIBarButtonItem) {
         if (settingsViewController.saveSettings()) {
-            if let _ = self.dismissFn {
-                self.dismiss()
-            } else {
-                let main = self.navigationController!.viewControllers.first!
-                self.navigationController!.viewControllers.removeAtIndex(0)
-                self.navigationController!.pushViewController(main, animated: true)
-                self.navigationController!.viewControllers.removeAtIndex(0)
-            }
+            delegate.dismiss(self)
         }
     }
 }
