@@ -177,7 +177,9 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate, Pinpa
                         communicationUtil.sendCall(callRecip)
                     }
                     
-                    self.delegate.dismiss(self)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        self.delegate.dismiss(self)
+                    })
                 }
             }
             builder.recurrentFunction = self.updateProgress
