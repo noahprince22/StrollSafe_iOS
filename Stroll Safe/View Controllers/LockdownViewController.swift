@@ -114,7 +114,9 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate, Pinpa
     }
     
     func resumed() {
-        asyncAlertAction.run()
+        if self.lock.isLocked() {
+            asyncAlertAction.run()
+        }
     }
     
     /**
@@ -176,6 +178,9 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate, Pinpa
                     if let callRecip = self.callRecipient {
                         communicationUtil.sendCall(callRecip)
                     }
+                    
+                    // Unlock so we don't do any more calls
+                    self.lock.locked = false
                     
                     dispatch_async(dispatch_get_main_queue(), {
                         self.delegate.dismiss(self)
