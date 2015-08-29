@@ -224,7 +224,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         expect(storedConf.sms_body).to(equal(smsBody))
                     }
                     
-                    it ("does not save the text contact and body if text is disabled") {
+                    it ("does not save the text contact if text is disabled") {
                         let smsRecipient = "15556667788"
                         let smsBody = "Hello"
                         viewController.textContact.text = smsRecipient
@@ -236,7 +236,21 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.sms_recipients).to(beNil())
-                        expect(storedConf.sms_body).toNot(equal(smsBody))
+                    }
+                    
+                    it ("does save the text body if text is disabled") {
+                        let smsRecipient = "15556667788"
+                        let smsBody = "Hello"
+                        viewController.textContact.text = smsRecipient
+                        viewController.textBody.text = smsBody
+                        viewController.textEnabledSwitch.on = false
+                        
+                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
+                        expect(alertView.shown).to(beFalse())
+                        
+                        let storedConf = try! Configuration.get(managedObjectContext)
+                        expect(storedConf.sms_recipients).to(beNil())
+                        expect(storedConf.sms_body).to(equal(smsBody))
                     }
                     
                     it ("saves the lockdown timer with decimals") {
@@ -313,6 +327,37 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.call_recipient).to(equal(SettingsViewController.POLICE_PHONE_NUMBER))
+                    }
+                    
+                    it ("deletes the stored text contact if texting is disabled") {
+                        viewController.contactPoliceSwitch.on = true
+                        viewController.callContact.text = ""
+                        viewController.textContact.text = "5555555555"
+                        viewController.textBody.text = "hello"
+                        viewController.textEnabledSwitch.on = true
+                        
+                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
+                        expect(alertView.shown).to(beFalse())
+                        
+                        // Get another viewcontroller
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        
+                        viewController =
+                            storyboard.instantiateViewControllerWithIdentifier(
+                                "settingsViewController") as! Stroll_Safe.SettingsViewController
+                        
+                        viewController.beginAppearanceTransition(true, animated: false)
+                        viewController.endAppearanceTransition()
+                        viewController.initSavedValues(managedObjectContext)
+                        
+                        viewController.textEnabledSwitch.on = false
+                        
+                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
+                        expect(alertView.shown).to(beFalse())
+                        
+                        let storedConf = try! Configuration.get(managedObjectContext)
+                        expect(storedConf.sms_recipients).to(beNil())
+                        expect(storedConf.sms_body).toNot(beNil())
                     }
                 }
                 

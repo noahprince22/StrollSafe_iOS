@@ -39,6 +39,12 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     var contactSearchVC: ContactSearchViewController!
     @IBOutlet weak var textEnabledSwitch: UISwitch!
         
+    @IBAction func textEnabledPressed(sender: AnyObject) {
+        if (self.textEnabledSwitch.on == false) {
+            self.textContact.text = ""
+        }
+    }
+    
     @IBAction func callContactDidChange(sender: UITextField) {
         contactPoliceSwitch.on = false
     }
@@ -179,8 +185,11 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             
             if (self.textEnabledSwitch.on) {
                 conf.sms_recipients = formattedTextContact
-                conf.sms_body = self.textBody.text
+            } else {
+                conf.sms_recipients = nil
             }
+            
+            conf.sms_body = self.textBody.text
             
             if let lockdown = lockdownTime.text {
                 if (lockdown != "") {
@@ -285,7 +294,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                     NSLog(error.localizedDescription)
                 }
                 
-                self.contactPoliceSwitch.on = false
+                if self.callContact.text != "" {
+                    self.contactPoliceSwitch.on = false
+                }
             }
         })
         
@@ -304,7 +315,9 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
                 }
             }
             
-            self.textEnabledSwitch.on = true
+            if self.textContact.text != "" {
+                self.textEnabledSwitch.on = true
+            }
         })
         
         self.presentViewController(contactSearchVC, animated: true, completion: nil)

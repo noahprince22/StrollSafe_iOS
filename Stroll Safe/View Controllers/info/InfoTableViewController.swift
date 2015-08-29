@@ -10,6 +10,8 @@ import UIKit
 
 class InfoTableViewController: UITableViewController {
     
+    @IBOutlet weak var version: UILabel!
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if (indexPath.section == 1) {
             let tutorialVC = self.storyboard?.instantiateViewControllerWithIdentifier("TutorialViewController") as? TutorialViewController
@@ -54,18 +56,8 @@ class InfoTableViewController: UITableViewController {
         if let navController = self.navigationController {
             navController.navigationBarHidden = false
         }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        if let navController = self.navigationController {
-            navController.navigationBarHidden = true
-        }
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        if let navController = self.navigationController {
-            navController.navigationBarHidden = false
-        }
+        
+        self.version.text = AppDelegate.VERSION
     }
 
     override func didReceiveMemoryWarning() {

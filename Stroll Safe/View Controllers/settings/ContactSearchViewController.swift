@@ -41,27 +41,31 @@ class ContactSearchViewController: UIViewController,  UITableViewDataSource, UIT
             addressBook).takeRetainedValue() as NSArray
         
         for person in allPeople {
+            var fullName = ""
             if let firstName = ABRecordCopyValue(person, kABPersonFirstNameProperty) {
+                let fn:String = (firstName.takeRetainedValue() as? String) ?? ""
                 if let lastName = ABRecordCopyValue(person, kABPersonLastNameProperty) {
                     let ln:String = (lastName.takeRetainedValue() as? String) ?? ""
-                    let fn:String = (firstName.takeRetainedValue() as? String) ?? ""
-                    
-                    /* Get all the phone numbers this user has */
-                    let unmanagedPhones = ABRecordCopyValue(person, kABPersonPhoneProperty)
-                    let phones: ABMultiValueRef =
-                    Unmanaged.fromOpaque(unmanagedPhones.toOpaque()).takeUnretainedValue()
-                        as NSObject as ABMultiValueRef
-                    
-                    let countOfPhones = ABMultiValueGetCount(phones)
-                    
-                    for index in 0..<countOfPhones{
-                        let unmanagedPhone = ABMultiValueCopyValueAtIndex(phones, index)
-                        let phone: String = Unmanaged.fromOpaque(
-                            unmanagedPhone.toOpaque()).takeUnretainedValue() as NSObject as! String
-                        
-                        people.append(("\(fn) \(ln)", phone))
-                    }
+                    fullName = "\(fn) \(ln)"
+                } else {
+                    fullName = fn
                 }
+            }
+            
+            /* Get all the phone numbers this user has */
+            let unmanagedPhones = ABRecordCopyValue(person, kABPersonPhoneProperty)
+            let phones: ABMultiValueRef =
+            Unmanaged.fromOpaque(unmanagedPhones.toOpaque()).takeUnretainedValue()
+                as NSObject as ABMultiValueRef
+            
+            let countOfPhones = ABMultiValueGetCount(phones)
+            
+            for index in 0..<countOfPhones{
+                let unmanagedPhone = ABMultiValueCopyValueAtIndex(phones, index)
+                let phone: String = Unmanaged.fromOpaque(
+                    unmanagedPhone.toOpaque()).takeUnretainedValue() as NSObject as! String
+                
+                people.append((fullName, phone))
             }
         }
     }

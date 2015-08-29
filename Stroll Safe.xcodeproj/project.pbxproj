@@ -41,6 +41,7 @@
 		FA41171D1B8FAFFE001D1C94 /* DismissableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */; };
 		FA4117201B8FF0C7001D1C94 /* LeftToRightSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */; };
 		FA4117221B8FF521001D1C94 /* RightToLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */; };
+		FA4117281B910102001D1C94 /* InfoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117271B910102001D1C94 /* InfoNavigatorViewController.swift */; };
 		FA59FE5C1B64196300F27162 /* Stroll_SafeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */; };
 		FA59FE651B641D2F00F27162 /* LockUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA59FE641B641D2F00F27162 /* LockUtil.swift */; };
 		FA777AAA1B892427008996FF /* TutorialUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA777AA91B892427008996FF /* TutorialUtil.swift */; };
@@ -208,6 +209,7 @@
 		FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableViewController.swift; sourceTree = "<group>"; };
 		FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftToRightSegue.swift; path = Segues/LeftToRightSegue.swift; sourceTree = "<group>"; };
 		FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeftSegue.swift; sourceTree = "<group>"; };
+		FA4117271B910102001D1C94 /* InfoNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoNavigatorViewController.swift; sourceTree = "<group>"; };
 		FA59FE591B64196200F27162 /* Stroll SafeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Stroll SafeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA59FE5B1B64196300F27162 /* Stroll_SafeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroll_SafeUITests.swift; sourceTree = "<group>"; };
 		FA59FE5D1B64196300F27162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 			children = (
 				FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */,
 				FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */,
+				FA4117271B910102001D1C94 /* InfoNavigatorViewController.swift */,
 			);
 			name = info;
 			sourceTree = "<group>";
@@ -883,6 +886,7 @@
 				BF2516A61AC3A4C600024CF6 /* SetPasscodeViewController.swift in Sources */,
 				BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */,
 				FA03784D1B7AA44A000083E0 /* TutorialContentViewController.swift in Sources */,
+				FA4117281B910102001D1C94 /* InfoNavigatorViewController.swift in Sources */,
 				FA4117171B8F7FDD001D1C94 /* MessageTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
