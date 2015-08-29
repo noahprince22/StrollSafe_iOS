@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class SettingsViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate{
+class SettingsViewController: UITableViewController, UITextFieldDelegate, UISearchBarDelegate, DismissableViewDelegate {
     
     static let PHONE_TOO_LONG = "phone number was too long. Phone numbers must be 10-11 characters."
     static let PHONE_TOO_SHORT = "phone number was too short. Phone numbers must be 10-11 characters."
@@ -38,6 +38,19 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var textBody: UITextField!
     var contactSearchVC: ContactSearchViewController!
     @IBOutlet weak var textEnabledSwitch: UISwitch!
+    
+    
+    func dismiss(controller: UIViewController) {
+        if (controller is SetPasscodeViewController) {
+            self.navigationController!.popViewControllerAnimated(true)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "settingsToSetPasscodeSegue") {
+            (segue.destinationViewController as! SetPasscodeViewController).delegate = self
+        }
+    }
             
     @IBAction func textEnabledPressed(sender: AnyObject) {
         if (self.textEnabledSwitch.on == false) {
@@ -57,7 +70,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         }
     }
     
-    @IBAction func personalPhoneHelp(sender: AnyObject) {
+    @IBAction func personalPhoneInfo(sender: AnyObject) {
         let alert = UIAlertView()
         alert.addButtonWithTitle("Ok")
         alert.title = "Privacy"
@@ -279,7 +292,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     
     @IBAction func resetPasscode(sender: UIButton) {
         if (saveSettings()) {
-            self.performSegueWithIdentifier("resetPassSegue", sender: self)
+            self.performSegueWithIdentifier("settingsToSetPasscodeSegue", sender: self)
         }
     }
     

@@ -38,7 +38,7 @@
 		FA4117121B8F7067001D1C94 /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */; };
 		FA4117171B8F7FDD001D1C94 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */; };
 		FA4117191B8F84DD001D1C94 /* MessageTableViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117181B8F84DC001D1C94 /* MessageTableViewControllerSpec.swift */; };
-		FA41171D1B8FAFFE001D1C94 /* DismissableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */; };
+		FA41171D1B8FAFFE001D1C94 /* DismissableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171C1B8FAFFE001D1C94 /* DismissableViewDelegate.swift */; };
 		FA4117201B8FF0C7001D1C94 /* LeftToRightSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */; };
 		FA4117221B8FF521001D1C94 /* RightToLeftSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */; };
 		FA4117281B910102001D1C94 /* InfoNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4117271B910102001D1C94 /* InfoNavigatorViewController.swift */; };
@@ -207,7 +207,7 @@
 		FA4117111B8F7067001D1C94 /* InfoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InfoTableViewController.swift; path = "View Controllers/info/InfoTableViewController.swift"; sourceTree = "<group>"; };
 		FA4117161B8F7FDD001D1C94 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageTableViewController.swift; path = "View Controllers/info/MessageTableViewController.swift"; sourceTree = "<group>"; };
 		FA4117181B8F84DC001D1C94 /* MessageTableViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewControllerSpec.swift; sourceTree = "<group>"; };
-		FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableViewController.swift; sourceTree = "<group>"; };
+		FA41171C1B8FAFFE001D1C94 /* DismissableViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissableViewDelegate.swift; sourceTree = "<group>"; };
 		FA41171F1B8FF0C7001D1C94 /* LeftToRightSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeftToRightSegue.swift; path = Segues/LeftToRightSegue.swift; sourceTree = "<group>"; };
 		FA4117211B8FF521001D1C94 /* RightToLeftSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightToLeftSegue.swift; sourceTree = "<group>"; };
 		FA4117271B910102001D1C94 /* InfoNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoNavigatorViewController.swift; sourceTree = "<group>"; };
@@ -529,7 +529,7 @@
 				BF2516A51AC3A4C600024CF6 /* SetPasscodeViewController.swift */,
 				ACDDF2E71ABD57F60029DF5D /* MainViewController.swift */,
 				BF477D411ABE782D005D76E8 /* LockdownViewController.swift */,
-				FA41171C1B8FAFFE001D1C94 /* DismissableViewController.swift */,
+				FA41171C1B8FAFFE001D1C94 /* DismissableViewDelegate.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -880,7 +880,7 @@
 				FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */,
 				FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */,
 				BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */,
-				FA41171D1B8FAFFE001D1C94 /* DismissableViewController.swift in Sources */,
+				FA41171D1B8FAFFE001D1C94 /* DismissableViewDelegate.swift in Sources */,
 				FA4117221B8FF521001D1C94 /* RightToLeftSegue.swift in Sources */,
 				ACDDF2E81ABD57F60029DF5D /* MainViewController.swift in Sources */,
 				FAA2A1721B7142FD00F3F89C /* TimedAction.swift in Sources */,
