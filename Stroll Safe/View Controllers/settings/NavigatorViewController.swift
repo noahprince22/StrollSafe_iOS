@@ -27,8 +27,11 @@ class NavigatorViewController: UIViewController {
     }
 
     @IBAction func donePress(sender: UIBarButtonItem) {
-        if (settingsViewController.saveSettings()) {
+        let errorString = settingsViewController.saveSettings()
+        if (errorString == "") {
             delegate.dismiss(self)
+        } else {
+            settingsViewController.displayAlertView("Oops!", message: errorString)
         }
     }
 }

@@ -71,26 +71,37 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     }
     
     @IBAction func personalPhoneInfo(sender: AnyObject) {
-        let alert = UIAlertView()
-        alert.addButtonWithTitle("Ok")
-        alert.title = "Privacy"
-        alert.message = "Stroll Safe uses your phone number only to identify you to the police and to your emergency text contact.\n\nWe will not sell or distribute this information"
-        alert.show()
+        displayAlertView("Privacy", message: "Stroll Safe uses your phone number only to identify you to the police and to your emergency text contact.\n\nWe will not sell or distribute this information")
+    }
+    
+    /**
+    Displays an 'ok' only alert view with the given title and message
+    
+    :param: title
+    :param: message
+    */
+    func displayAlertView(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+            
+        }
+        alertController.addAction(OKAction)
+        
+        self.presentViewController(alertController, animated: true) {
+            
+        }
     }
 
     /**
     Attempts to save all settings
     
     :param: managedObjectContext the managed object context to save to
-    :param: alertView            the alert view to present issues
     :param: communicationUtil    the communication utility used to format phone numbers
     
-    :returns: whether or not the save was successful
+    :returns: a message of any error. "" if none
     */
-    func saveSettings(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!, alertView: UIAlertView = UIAlertView(), communicationUtil: CommunicationUtil = CommunicationUtil()) -> Bool {
-        alertView.title = "Oops!"
-        alertView.message = ""
-        alertView.addButtonWithTitle("Ok")
+    func saveSettings(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!, communicationUtil: CommunicationUtil = CommunicationUtil()) -> String {
+        var message = ""
         
         var formattedCallContact = ""
         var formattedTextContact = ""
@@ -101,35 +112,35 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             if (personalContact != "") {
                 let personalValidation = validatePhoneNumber(personalContact, communicationUtil: communicationUtil)
                 if let error = personalValidation.1 {
-                    alertView.message! += alertItem("Personal \(error)")
+                    message += alertItem("Personal \(error)")
                 } else {
                     formattedPersonalContact = personalValidation.0
                 }
             } else {
-                alertView.message! += alertItem(SettingsViewController.REQUIRE_PHONE)
+                message += alertItem(SettingsViewController.REQUIRE_PHONE)
             }
         } else {
-            alertView.message! += alertItem(SettingsViewController.REQUIRE_PHONE)
+            message += alertItem(SettingsViewController.REQUIRE_PHONE)
         }
         
         // Require full name
         if let fullName = self.name.text {
             if (fullName == "") {
-                alertView.message! += alertItem(SettingsViewController.REQUIRE_FULL_NAME)
+                message += alertItem(SettingsViewController.REQUIRE_FULL_NAME)
             }
         } else {
-            alertView.message! += alertItem(SettingsViewController.REQUIRE_FULL_NAME)
+            message += alertItem(SettingsViewController.REQUIRE_FULL_NAME)
         }
 
         // Test that all phone numbers are valid (ie not too long, too short, unreachable, 911)
         if (self.callContact.text == "911") {
-            alertView.message! += alertItem(SettingsViewController.PHONE_911)
+            message += alertItem(SettingsViewController.PHONE_911)
         }
         else if let callContact = self.callContact.text {
             if (callContact != "") {
                 let callValidation = validatePhoneNumber(callContact, communicationUtil: communicationUtil)
                 if let error = callValidation.1 {
-                    alertView.message! += alertItem("Calling \(error)")
+                    message += alertItem("Calling \(error)")
                 } else {
                     formattedCallContact = callValidation.0
                 }
@@ -137,13 +148,13 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         }
         
         if (self.textContact.text == "911") {
-            alertView.message! += alertItem(SettingsViewController.PHONE_911)
+            message += alertItem(SettingsViewController.PHONE_911)
         }
         else if let textContact = self.textContact.text {
             if (textContact != "") {
                 let textValidation = validatePhoneNumber(textContact, communicationUtil: communicationUtil)
                 if let error = textValidation.1 {
-                    alertView.message! += alertItem("Texting \(error)")
+                    message += alertItem("Texting \(error)")
                 } else {
                     formattedTextContact = textValidation.0
                 }
@@ -152,25 +163,25 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         
         // Texting requires a contact phone number
         if (self.textEnabledSwitch.on && formattedTextContact == "") {
-            alertView.message! += alertItem(SettingsViewController.TEXT_ENABLED_REQUIRE_CONTACT)
+            message += alertItem(SettingsViewController.TEXT_ENABLED_REQUIRE_CONTACT)
         }
         
         // Either texting or calling should be enabled
         if (!self.textEnabledSwitch.on && !self.contactPoliceSwitch.on && formattedCallContact == "") {
-            alertView.message! += alertItem(SettingsViewController.REQUIRE_TEXTING_OR_CALLING)
+            message += alertItem(SettingsViewController.REQUIRE_TEXTING_OR_CALLING)
         }
         
         // Validate that the timers have values and don't have multiple decimals or something weird
         if let lockdown = self.lockdownTime.text {
             if (lockdown != "") {
                 if (countOccurencesOfCharInWord(lockdown, char: ".") > 1) {
-                    alertView.message! += alertItem(SettingsViewController.TIMER_MULTIPLE_DECIMALS)
+                    message += alertItem(SettingsViewController.TIMER_MULTIPLE_DECIMALS)
                 }
                 
                 // Lockdown duration cannot be greater than a certain threshold when contacting police
                 //   this is to prevent false calls
                 if ((self.lockdownTime.text! as NSString).doubleValue < SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD && self.contactPoliceSwitch.on) {
-                    alertView.message! += alertItem(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)
+                    message += alertItem(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)
                 }
             }
         }
@@ -178,13 +189,13 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         if let release = self.releaseTime.text {
             if (release != "") {
                 if (countOccurencesOfCharInWord(release, char: ".") > 1) {
-                    alertView.message! += alertItem(SettingsViewController.TIMER_MULTIPLE_DECIMALS)
+                    message += alertItem(SettingsViewController.TIMER_MULTIPLE_DECIMALS)
                 }
             }
         }
         
         // Save everything if there was no error
-        if (alertView.message == "") {
+        if (message == "") {
             let conf = try! Configuration.get(managedObjectContext)
             
             conf.full_name = self.name.text
@@ -218,14 +229,13 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             
             do {
                 try managedObjectContext.save()
-                return true
+                return message
             } catch let error as NSError {
                 NSLog("Unresolved error while storing configuration \(error), \(error.userInfo)")
                 abort()
             }
         } else {
-            alertView.show()
-            return false
+            return message
         }
     }
     
@@ -291,8 +301,11 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     }
     
     @IBAction func resetPasscode(sender: UIButton) {
-        if (saveSettings()) {
+        let errorString = saveSettings()
+        if (errorString == "") {
             self.performSegueWithIdentifier("settingsToSetPasscodeSegue", sender: self)
+        } else {
+            displayAlertView("Oops!", message: errorString)
         }
     }
     
