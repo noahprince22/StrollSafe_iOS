@@ -47,7 +47,7 @@
 		FA777AAA1B892427008996FF /* TutorialUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA777AA91B892427008996FF /* TutorialUtil.swift */; };
 		FA7A9C911B6FE00B00B7366B /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7A9C891B6FDEBC00B7366B /* Nimble.framework */; };
 		FA8B247D1B86ABF300A7F8B9 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */; };
-		FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */; };
+		FA8B248A1B87DABE00A7F8B9 /* SettingsNavigatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8B24891B87DABE00A7F8B9 /* SettingsNavigatorViewController.swift */; };
 		FA8B24901B88F34000A7F8B9 /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B248F1B88F34000A7F8B9 /* help.png */; };
 		FA8B24961B88F4A400A7F8B9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B24951B88F4A400A7F8B9 /* settings.png */; };
 		FA8B3C011B8403040029BC93 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8B3C001B8403040029BC93 /* search.png */; };
@@ -218,7 +218,7 @@
 		FA777AA91B892427008996FF /* TutorialUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialUtil.swift; sourceTree = "<group>"; };
 		FA7A9C811B6FDEBC00B7366B /* Nimble.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Nimble.xcodeproj; path = Vendor/Nimble/Nimble.xcodeproj; sourceTree = "<group>"; };
 		FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigatorViewController.swift; path = "View Controllers/settings/NavigatorViewController.swift"; sourceTree = "<group>"; };
+		FA8B24891B87DABE00A7F8B9 /* SettingsNavigatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsNavigatorViewController.swift; path = "View Controllers/settings/SettingsNavigatorViewController.swift"; sourceTree = "<group>"; };
 		FA8B248F1B88F34000A7F8B9 /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
 		FA8B24951B88F4A400A7F8B9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		FA8B3C001B8403040029BC93 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search.png; path = images/search.png; sourceTree = "<group>"; };
@@ -467,7 +467,7 @@
 			children = (
 				FA1AD3AE1B800AE500CB4FC2 /* ContactSearchViewController.swift */,
 				FA03783F1B7937F5000083E0 /* SettingsViewController.swift */,
-				FA8B24891B87DABE00A7F8B9 /* NavigatorViewController.swift */,
+				FA8B24891B87DABE00A7F8B9 /* SettingsNavigatorViewController.swift */,
 			);
 			name = settings;
 			sourceTree = "<group>";
@@ -876,7 +876,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA4117201B8FF0C7001D1C94 /* LeftToRightSegue.swift in Sources */,
-				FA8B248A1B87DABE00A7F8B9 /* NavigatorViewController.swift in Sources */,
+				FA8B248A1B87DABE00A7F8B9 /* SettingsNavigatorViewController.swift in Sources */,
 				FA8C718D1B069A3B0091BEB8 /* TermsViewController.swift in Sources */,
 				FA03785C1B7BD65D000083E0 /* ContactSearchDelegate.swift in Sources */,
 				BF2516A21AC3927300024CF6 /* PinpadViewController.swift in Sources */,

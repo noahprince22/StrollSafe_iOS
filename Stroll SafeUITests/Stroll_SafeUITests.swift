@@ -31,7 +31,40 @@ class Stroll_SafeUITests: XCTestCase {
         //Passcode.purge()
     }
     
-    func testLoginWithSettings() -> XCUIApplication{
+    func testLoginWithSettings() -> XCUIApplication {
+//        
+//        
+//        let app = XCUIApplication()
+//        app.buttons["I Agree, Continue"].tap()
+//        
+//        let button = app.buttons["2"]
+//        button.doubleTap()
+//        button.doubleTap()
+//        button.doubleTap()
+//        button.doubleTap()
+//        app.images["mainscreen.png"].swipeLeft()
+//        app.images["release.png"].swipeLeft()
+//        app.images["thumbdown.png"].swipeLeft()
+//        app.images["shakemode"].swipeLeft()
+//        app.buttons["Got it!"].tap()
+//        
+//        let tablesQuery = app.tables
+//        tablesQuery.textFields["full_name"].tap()
+//    tablesQuery.textFields["full_name"].typeText("asdfd")
+//        tablesQuery.textFields["phone_number"].tap()
+//            tablesQuery.textFields["phone_number"].typeText("s2222222222")
+//        
+//        let textContactTextField = tablesQuery.textFields["text_contact"]
+//        textContactTextField.tap()
+//        textContactTextField.typeText("222222222")
+//        
+//        let saveButton = app.navigationBars["Settings"].buttons["Save"]
+//        saveButton.tap()
+//        app.alerts["Oops!"].collectionViews.buttons["OK"].tap()
+//        textContactTextField.typeText("2")
+//        saveButton.tap()
+//        
+        
         let app = testCorrectSetPass()
         
         TutorialUtil(app: app).finishTutorial()
@@ -50,10 +83,11 @@ class Stroll_SafeUITests: XCTestCase {
         
         let doneButton = app.navigationBars["Settings"].buttons["Save"]
         doneButton.tap()
-        app.alerts["Oops!"].collectionViews.buttons["Ok"].tap()
+        app.alerts["Oops!"].collectionViews.buttons["OK"].tap()
+
         textContactTextField.typeText("5")
         doneButton.tap()
-        
+
         return app
     }
     
@@ -64,9 +98,6 @@ class Stroll_SafeUITests: XCTestCase {
         fingerIconButton.tap()
         sleep(2)
         app.buttons["speed-dial"].pressForDuration(3)
-        let timeRemaining = app.descendantsMatchingType(.StaticText)["timeRemaining"].label
-      
-        XCTAssertEqual(timeRemaining, "0")
     }
     
     func testIncorrectSetPass() {

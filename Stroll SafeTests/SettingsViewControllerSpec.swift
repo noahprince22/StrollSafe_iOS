@@ -26,14 +26,6 @@ class SettingsViewControllerSpec: QuickSpec {
         describe ("the settings view") {
             var viewController: Stroll_Safe.SettingsViewController!
             
-            class UIAlertViewMock: UIAlertView {
-                var shown = false
-                
-                override func show() {
-                    shown = true
-                }
-            }
-            
             // A number that will pass the error mock
             let safeNumber = "5555555555"
             class CommunicationUtilErrorMock: Stroll_Safe.CommunicationUtil {
@@ -53,7 +45,6 @@ class SettingsViewControllerSpec: QuickSpec {
                     return number
                 }
             }
-            var alertView: UIAlertViewMock!
             
             var managedObjectContext: NSManagedObjectContext!
             beforeEach {
@@ -69,8 +60,6 @@ class SettingsViewControllerSpec: QuickSpec {
                 viewController.beginAppearanceTransition(true, animated: false)
                 viewController.endAppearanceTransition()
                 viewController.initSavedValues(managedObjectContext)
-                
-                alertView = UIAlertViewMock()
             }
             
             describe ("saving the settings") {
@@ -189,8 +178,7 @@ class SettingsViewControllerSpec: QuickSpec {
                     }
                     
                     it ("saves the full name and phone number") {
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.full_name).to(equal(fullName))
@@ -202,8 +190,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.contactPoliceSwitch.on = false
                         viewController.callContact.text = callRecipient
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.call_recipient).to(equal(callRecipient))
@@ -216,8 +203,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.textBody.text = smsBody
                         viewController.textEnabledSwitch.on = true
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.sms_recipients).to(equal(smsRecipient))
@@ -231,8 +217,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.textBody.text = smsBody
                         viewController.textEnabledSwitch.on = false
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.sms_recipients).to(beNil())
@@ -245,8 +230,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.textBody.text = smsBody
                         viewController.textEnabledSwitch.on = false
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.sms_recipients).to(beNil())
@@ -258,8 +242,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.lockdownTime.text = lockdownDuration
                         viewController.contactPoliceSwitch.on = false
                         viewController.callContact.text = "5558675309"
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.lockdown_duration) == 0.2
@@ -269,8 +252,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.lockdownTime.text = ""
                         viewController.contactPoliceSwitch.on = false
                         viewController.callContact.text = "5558675309"
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.lockdown_duration) == 20
@@ -280,8 +262,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.releaseTime.text = ""
                         viewController.contactPoliceSwitch.on = false
                         viewController.callContact.text = "5558675309"
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.release_duration) == 1.5
@@ -290,8 +271,7 @@ class SettingsViewControllerSpec: QuickSpec {
                     it ("saves the lockdown timer with no decimals") {
                         let lockdownDuration = "826"
                         viewController.lockdownTime.text = lockdownDuration
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.lockdown_duration) == 826
@@ -300,8 +280,7 @@ class SettingsViewControllerSpec: QuickSpec {
                     it ("saves the release timer with decimals") {
                         let releaseDuration = "0.2"
                         viewController.releaseTime.text = releaseDuration
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.release_duration) == 0.2
@@ -311,8 +290,7 @@ class SettingsViewControllerSpec: QuickSpec {
                     it ("saves the release timer with no decimals") {
                         let releaseDuration = "200"
                         viewController.releaseTime.text = releaseDuration
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.release_duration) == 200
@@ -322,8 +300,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.contactPoliceSwitch.on = true
                         viewController.callContact.text = ""
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.call_recipient).to(equal(SettingsViewController.POLICE_PHONE_NUMBER))
@@ -336,8 +313,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.textBody.text = "hello"
                         viewController.textEnabledSwitch.on = true
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         // Get another viewcontroller
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -352,8 +328,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         viewController.textEnabledSwitch.on = false
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                        expect(alertView.shown).to(beFalse())
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal(""))
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.sms_recipients).to(beNil())
@@ -389,27 +364,21 @@ class SettingsViewControllerSpec: QuickSpec {
                             it ("personal fails") {
                                 viewController.phonenumber.text = "1234567"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
                             }
                             
                             it ("call fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "1234567"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Calling \(SettingsViewController.PHONE_TOO_SHORT)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Calling \(SettingsViewController.PHONE_TOO_SHORT)\n"))
                             }
                             
                             it ("text fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "1234567"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Texting \(SettingsViewController.PHONE_TOO_SHORT)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Texting \(SettingsViewController.PHONE_TOO_SHORT)\n"))
                             }
                         }
                         
@@ -422,27 +391,21 @@ class SettingsViewControllerSpec: QuickSpec {
                             it ("personal fails validation") {
                                 viewController.phonenumber.text = "345678910118"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Personal \(SettingsViewController.PHONE_TOO_LONG)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_LONG)\n"))
                             }
                             
                             it ("call fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "345678910118"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Calling \(SettingsViewController.PHONE_TOO_LONG)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Calling \(SettingsViewController.PHONE_TOO_LONG)\n"))
                             }
                             
                             it ("text fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "345678910118"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Texting \(SettingsViewController.PHONE_TOO_LONG)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Texting \(SettingsViewController.PHONE_TOO_LONG)\n"))
                             }
                             
                         }
@@ -455,27 +418,21 @@ class SettingsViewControllerSpec: QuickSpec {
                                 viewController.phonenumber.text = "911"
                                 comUtil.error = CommunicationUtilErrorMock.PhoneNumberError.TooShort
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
                             }
                             
                             it ("calling fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "911"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtil)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- \(SettingsViewController.PHONE_911)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- \(SettingsViewController.PHONE_911)\n"))
                             }
                             
                             it ("texting fails validation") {
                                 viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "911"
                                 
-                                viewController.saveSettings(managedObjectContext, alertView: alertView)
-                                expect(alertView.shown).to(beTrue())
-                                expect(alertView.message).to(equal("- \(SettingsViewController.PHONE_911)\n"))
+                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- \(SettingsViewController.PHONE_911)\n"))
                             }
                         }
                     }
@@ -483,17 +440,13 @@ class SettingsViewControllerSpec: QuickSpec {
                     it ("requires full name") {
                         viewController.phonenumber.text = "5555555555"
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.REQUIRE_FULL_NAME)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.REQUIRE_FULL_NAME)\n"))
                     }
                     
                     it ("requires phone number") {
                         viewController.name.text = "Urist McTest"
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.REQUIRE_PHONE)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.REQUIRE_PHONE)\n"))
                     }
 
                     it ("requires either texting or calling to be enabled") {
@@ -503,9 +456,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.contactPoliceSwitch.on = false
                         viewController.textEnabledSwitch.on = false
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.REQUIRE_TEXTING_OR_CALLING)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.REQUIRE_TEXTING_OR_CALLING)\n"))
                     }
 
                     it ("does not allow multiple decimal places in the lockdown timer") {
@@ -513,9 +464,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.phonenumber.text = "5555555555"
                         viewController.lockdownTime.text = "10..5"
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
                     }
 
                     it ("does not allow multiple decimal places in the release timer") {
@@ -523,9 +472,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.phonenumber.text = "5555555555"
                         viewController.releaseTime.text = ".1."
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
                     }
 
                     it ("does not allow texting to be enabled without a contact phone number") {
@@ -534,9 +481,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.textContact.text = ""
                         viewController.textEnabledSwitch.on = true
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.TEXT_ENABLED_REQUIRE_CONTACT)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.TEXT_ENABLED_REQUIRE_CONTACT)\n"))
                     }
                     
                     it ("cannot contact the police if the lockdown timer is less than 10 seconds") {
@@ -545,9 +490,7 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.contactPoliceSwitch.on = true
                         viewController.lockdownTime.text = "\(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD - 0.1)"
                         
-                        viewController.saveSettings(managedObjectContext, alertView: alertView, communicationUtil: comUtilNoError)
-                        expect(alertView.shown).to(beTrue())
-                        expect(alertView.message).to(equal("- \(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)\n"))
+                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME)\n"))
                     }
                 }
             }

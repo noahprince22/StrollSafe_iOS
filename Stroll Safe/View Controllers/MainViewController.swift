@@ -66,7 +66,7 @@ class MainViewController: UIViewController, DismissableViewDelegate {
     
     
     func dismiss(controller: UIViewController) {
-        if (controller is NavigatorViewController) {
+        if (controller is SettingsNavigatorViewController) {
             let nav = self.navigationController!
             nav.viewControllers.removeAtIndex(0)
             nav.pushViewController(self, animated: true)
@@ -82,7 +82,7 @@ class MainViewController: UIViewController, DismissableViewDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "mainToSettingsSegue") {
-            (segue.destinationViewController as! NavigatorViewController).delegate = self
+            (segue.destinationViewController as! SettingsNavigatorViewController).delegate = self
         } else if (segue.identifier == "mainToInfoSegue") {
             (segue.destinationViewController as! InfoNavigatorViewController).delegate = self
         } else if (segue.identifier == "mainToLockdownSegue") {

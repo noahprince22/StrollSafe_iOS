@@ -206,10 +206,12 @@ class LockdownViewControllerSpec: QuickSpec, DismissableViewDelegate {
                                 expect(communicationUtilMock.smsRecipients).to(contain(smsRecipient2))
                                 expect(communicationUtilMock.smsBody).to(contain(smsBody))
                             }
-                            
-                            it ("dismisses the view controller") {
-                                expect(self.dismissed).to(beTrue())
-                            }
+
+                        }
+                        
+                        it ("dismisses the view controller") {
+                            action.exitFunction(viewController.lockdownDuration)
+                            expect(self.dismissed).toEventually(beTrue())
                         }
                         
                         context ("sms body") {

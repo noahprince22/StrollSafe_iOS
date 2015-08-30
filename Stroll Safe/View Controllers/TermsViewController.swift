@@ -48,13 +48,13 @@ class TermsViewController: UIViewController, DismissableViewDelegate {
             }
             else if (controller is TutorialViewController) {
                 let settingsVC =
-                self.storyboard?.instantiateViewControllerWithIdentifier("SettingsNavigatorViewController") as! NavigatorViewController
+                self.storyboard?.instantiateViewControllerWithIdentifier("SettingsNavigatorViewController") as! SettingsNavigatorViewController
                 settingsVC.delegate = self
                 
                 settingsVC.navigationItem.setHidesBackButton(true, animated: false)
                 navController.pushViewController(settingsVC, animated: true)
             }
-            else if (controller is NavigatorViewController) {
+            else if (controller is SettingsNavigatorViewController) {
                 navigationController?.popToRootViewControllerAnimated(true)
             }
         }

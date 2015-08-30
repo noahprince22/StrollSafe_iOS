@@ -37,7 +37,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6j-94-mZ7">
                                 <rect key="frame" x="8" y="8" width="304" height="472"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, ei mazim solet eligendi sea. Eu nec tota everti mnesarchum, ut dicit ceteros alienum eum, te conceptam adolescens pro. Et vix affert noster aperiri, ex mea utroque consequat. Qui indoctum periculis in. Usu te esse praesent hendrerit, malis urbanitas repudiandae mea cu.
+                                <string key="text">Lorem ipsum dolor sit amet, ei mazim solet eligendi sea. Eu nec tota everti mnesarchum, ut dicit ceteros alienum eum, te conceptam adolescens pro. Et vix affert noster aperiri, ex mea utroque consequat. Qui indoctum periculis in. Usu te esse praesent hendrerit, malis urbanitas repudiandae mea cu.
 
 Quando equidem dolorem mel in. Et mea quis impedit. Eu mei meliore mentitum antiopam. His ut nulla diceret instructior. Unum adolescens pro eu.
 
@@ -45,7 +45,7 @@ At debitis phaedrum vim, ne animal impetus pri, vide inani paulo ex cum. Id duo 
 
 Utroque atomorum ocurreret duo ut. Pro agam esse et, te movet aliquip sit, cum saperet propriae voluptatibus cu. Duo zril nusquam ei. Pertinacia liberavisse necessitatibus quo at, labore voluptatibus in vis, ex ornatus noluisse vix. Qui altera iuvaret ea, eu his gloriatur constituam. Electram torquatos scripserit ex quo. Eleifend splendide temporibus ei his.
 
-Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. Ad mei tota vidisse mentitum, ut vix vidisse mediocritatem. In porro graecis est, id aperiri percipitur his, eros quodsi te eos. Ad vel mutat erant cotidieque, enim luptatum urbanitas eu usu. Integre verterem interpretaris an duo, ex invidunt volutpat similique vim, vim suscipit splendide ad.</mutableString>
+Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. Ad mei tota vidisse mentitum, ut vix vidisse mediocritatem. In porro graecis est, id aperiri percipitur his, eros quodsi te eos. Ad vel mutat erant cotidieque, enim luptatum urbanitas eu usu. Integre verterem interpretaris an duo, ex invidunt volutpat similique vim, vim suscipit splendide ad.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -823,10 +823,10 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
             </objects>
             <point key="canvasLocation" x="676" y="417"/>
         </scene>
-        <!--Navigator View Controller-->
+        <!--Settings Navigator View Controller-->
         <scene sceneID="bGv-36-tp5">
             <objects>
-                <viewController storyboardIdentifier="SettingsNavigatorViewController" id="yr2-hh-Rh7" customClass="NavigatorViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsNavigatorViewController" id="yr2-hh-Rh7" customClass="SettingsNavigatorViewController" customModule="Stroll_Safe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VRf-SD-S5y"/>
                         <viewControllerLayoutGuide type="bottom" id="LPS-CZ-z52"/>
@@ -1074,7 +1074,7 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M1j-Os-JPL">
                                                     <rect key="frame" x="263" y="6" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="textEnabledPressed:" destination="vwp-iV-zhN" eventType="editingChanged" id="vns-Tb-N3T"/>
+                                                        <action selector="textEnabledPressed:" destination="vwp-iV-zhN" eventType="valueChanged" id="zHC-57-WCe"/>
                                                     </connections>
                                                 </switch>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OTa-cP-CET">

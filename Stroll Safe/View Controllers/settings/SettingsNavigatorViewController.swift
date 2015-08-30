@@ -8,16 +8,9 @@
 
 import UIKit
 
-class NavigatorViewController: UIViewController {
+class SettingsNavigatorViewController: UIViewController {
     weak var settingsViewController: SettingsViewController!
     var delegate: DismissableViewDelegate! = nil
-    
-    override func didMoveToParentViewController(parent: UIViewController?) {
-        // If they hit the back button use the main right to left custom segue
-//        if (parent == nil && self.dismissFn == nil) {
-//            self.performSegueWithIdentifier("settingsToMainSegue", sender: self)
-//        }
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? SettingsViewController
