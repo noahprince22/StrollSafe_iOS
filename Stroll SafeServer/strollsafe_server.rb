@@ -15,3 +15,21 @@ post '/message' do
         :body => params["body"]    
   })  
 end
+
+post '/feature' do
+  Mail.deliver do 
+    from "#{params['phone']}@strollsafe"
+    to 'noahprince8@gmail.com'
+    subject "[FEATURE] #{params['subject']}"
+    body params['body']
+  end
+end
+
+post '/bug' do 
+  Mail.deliver do
+    from "#{params['phone']}@strollsafe"
+    to 'noahprince8@gmail.com'
+    subject "[BUG] #{params['subject']}"
+    body params['body']
+  end
+end
