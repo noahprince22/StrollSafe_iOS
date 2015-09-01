@@ -68,6 +68,7 @@
 		FAD0D5881B700B15000B7F1E /* ConfigurationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5871B700B15000B7F1E /* ConfigurationSpec.swift */; };
 		FAD0D5941B704884000B7F1E /* TimedActionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */; };
 		FAD2DCF01B924A8E00265252 /* PinpadViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD2DCEF1B924A8E00265252 /* PinpadViewDelegate.swift */; };
+		FAD6940E1B96046D00C2F039 /* SimulatorUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6940D1B96046D00C2F039 /* SimulatorUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,7 @@
 		FAD0D5871B700B15000B7F1E /* ConfigurationSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConfigurationSpec.swift; path = Models/ConfigurationSpec.swift; sourceTree = "<group>"; };
 		FAD0D5931B704884000B7F1E /* TimedActionSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimedActionSpec.swift; path = Util/TimedActionSpec.swift; sourceTree = "<group>"; };
 		FAD2DCEF1B924A8E00265252 /* PinpadViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinpadViewDelegate.swift; sourceTree = "<group>"; };
+		FAD6940D1B96046D00C2F039 /* SimulatorUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SimulatorUtility.swift; path = Util/SimulatorUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +516,7 @@
 				FAA2A1711B7142FD00F3F89C /* TimedAction.swift */,
 				FA1B93561B743B5F00046268 /* CommunicationUtil.swift */,
 				FA8B247C1B86ABF300A7F8B9 /* Reachability.swift */,
+				FAD6940D1B96046D00C2F039 /* SimulatorUtility.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -896,6 +899,7 @@
 				ACDDF2E31ABD57F60029DF5D /* AppDelegate.swift in Sources */,
 				BF2516A61AC3A4C600024CF6 /* SetPasscodeViewController.swift in Sources */,
 				BF01558A1AC2094E00BED16A /* CircleProgressView.swift in Sources */,
+				FAD6940E1B96046D00C2F039 /* SimulatorUtility.swift in Sources */,
 				FA03784D1B7AA44A000083E0 /* TutorialContentViewController.swift in Sources */,
 				FA4117281B910102001D1C94 /* InfoNavigatorViewController.swift in Sources */,
 				FA4117171B8F7FDD001D1C94 /* MessageTableViewController.swift in Sources */,

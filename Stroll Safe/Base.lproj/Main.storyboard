@@ -843,6 +843,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             </containerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIf-qL-9tP">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iIf-qL-9tP" secondAttribute="height" multiplier="80:11" id="cog-fe-Uab"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Settings" id="dGK-If-k6R">
                                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="Vxz-TK-U5z">
@@ -1601,6 +1604,9 @@ Eos ei tempor diceret, et graeco praesent eam. Partem utamur torquatos te quo. A
                             </containerView>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jb4-Hn-53a">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jb4-Hn-53a" secondAttribute="height" multiplier="80:11" id="Ded-Hg-sWG"/>
+                                </constraints>
                                 <items>
                                     <navigationItem title="Info" id="9KN-0J-Uaq">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="wAL-MB-TFQ">

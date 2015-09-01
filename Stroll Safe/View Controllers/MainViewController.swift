@@ -21,11 +21,9 @@ extension Double {
     }
 }
 
-
-// hacked see http://stackoverflow.com/questions/31798371/how-to-start-with-empty-core-data-for-every-ui-test-assertion-in-swift
-let testing: Bool = false
-
 class MainViewController: UIViewController, DismissableViewDelegate {
+    
+    static var MEMORY_CLEARED = false
     
     static var MAIN_TITLE = "Stroll Safe"
     static var MAIN_TITLE_SUB = "Keeping You Safe on Your Late Night Strolls"
@@ -61,9 +59,6 @@ class MainViewController: UIViewController, DismissableViewDelegate {
     @IBOutlet weak var thumbDesc: UILabel!
     @IBOutlet weak var settings: UIButton!
     @IBOutlet weak var help: UIButton!
-    
-    static var test = testing
-    
     
     func dismiss(controller: UIViewController) {
         if (controller is SettingsNavigatorViewController) {
@@ -103,7 +98,8 @@ class MainViewController: UIViewController, DismissableViewDelegate {
     :returns: <#return value description#>
     */
     func initializeApp(managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
-        if (MainViewController.test) {
+        // If we're on a simulator, we're testing. Always clear the data.
+        if (SimulatorUtility.isRunningSimulator && !MainViewController.MEMORY_CLEARED) {
             let request = NSFetchRequest(entityName: "Configuration")
             
             var configs = try! managedObjectContext.executeFetchRequest(request)
@@ -116,7 +112,7 @@ class MainViewController: UIViewController, DismissableViewDelegate {
             configs.removeAll(keepCapacity: false)
             try! managedObjectContext.save()
             
-            MainViewController.test = false
+            MainViewController.MEMORY_CLEARED = true
         }
         
         do {

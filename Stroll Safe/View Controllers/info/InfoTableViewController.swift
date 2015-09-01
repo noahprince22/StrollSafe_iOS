@@ -32,10 +32,12 @@ class InfoTableViewController: UITableViewController, DismissableViewDelegate {
                     }
                     
                     vc.doneAction = { _ in
+                        CommunicationUtil().sendFeature(vc.subject, body: vc.body)
                         self.navigationController!.popViewControllerAnimated(true)
                     }
                 case 1:
                     vc.doneAction = { _ in
+                        CommunicationUtil().sendBug(vc.subject, body: vc.body)
                         self.navigationController!.popViewControllerAnimated(true)
                     }
                 default: break

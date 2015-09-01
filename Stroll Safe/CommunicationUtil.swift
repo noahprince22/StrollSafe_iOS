@@ -10,13 +10,33 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let MESSAGE_URL = "https://388c9f8a.ngrok.io/message"
+    static let SERVER_URL = "https://388c9f8a.ngrok.io"
+    static let MESSAGE_URL = "\(CommunicationUtil.SERVER_URL)/message"
+    static let FEATURE_URL = "\(CommunicationUtil.SERVER_URL)/feature"
+    static let BUG_URL = "\(CommunicationUtil.SERVER_URL)/bug"
+
+    static let UUID = NSUUID().UUIDString
     
     enum PhoneNumberError: ErrorType {
         case TooShort
         case TooLong
         case ContainsInvalidCharacters
         case CannotContact
+    }
+    
+    func getPersonalPhone() -> String {
+        var conf: Configuration!
+        do {
+            conf = try Configuration.get((UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!)
+        } catch {
+            return ""
+        }
+        
+        if let phoneNumber = conf.phone_number {
+            return phoneNumber
+        } else {
+            return ""
+        }
     }
     
     /**
@@ -27,7 +47,7 @@ class CommunicationUtil {
     */
     func sendSms(recipients: [String], body: String) {
         for recipient in recipients {
-            let request = Alamofire.request(.POST, CommunicationUtil.MESSAGE_URL, parameters: ["to": recipient, "body": body])
+            let request = Alamofire.request(Method.POST, CommunicationUtil.MESSAGE_URL, parameters: ["phone": getPersonalPhone(), "to": recipient, "body": body, "uuid": CommunicationUtil.UUID])
             request.validate()
             request.response { request, response, data, error in
                 print(request)
@@ -69,8 +89,8 @@ class CommunicationUtil {
             throw PhoneNumberError.TooLong
         }
         
-        // Finally, check if the number can be dialed
-        if (!testing) {
+        // Finally, check if the number can be dialed (only on non-simulator)
+        if (!(SimulatorUtility.isRunningSimulator)) {
             if let phoneCallURL:NSURL = NSURL(string:"tel://"+"\(strippedPhoneNumber)") {
                 let application:UIApplication = UIApplication.sharedApplication()
                 if (!application.canOpenURL(phoneCallURL)) {
@@ -80,6 +100,23 @@ class CommunicationUtil {
         }
         
         return strippedPhoneNumber
+    }
+    
+
+     /**
+    Emails me a feature idea with the given subject and description
+    
+    :param: subject
+    :param: body
+    */
+    func sendFeature(subject: String, body: String) {
+        let request = Alamofire.request(Method.POST, CommunicationUtil.FEATURE_URL, parameters: ["phone": getPersonalPhone(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
+        request.validate()
+        request.response { request, response, data, error in
+            print(request)
+            print(response)
+            print(error)
+        }
     }
     
     /**
@@ -93,6 +130,23 @@ class CommunicationUtil {
     func csvNumbersToArray(numbers: String) -> [String] {
         return numbers.characters.split {$0 == ","}.map { String($0) }
     }
+    
+    /**
+     Emails me a bug report with the given subject and description
+    
+     :param: subject
+     :param: body
+     */
+    func sendBug(subject: String, body: String) {
+        let request = Alamofire.request(Method.POST, CommunicationUtil.BUG_URL, parameters: ["phone": getPersonalPhone(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
+        request.validate()
+        request.response { request, response, data, error in
+            print(request)
+            print(response)
+            print(error)
+        }
+    }
+    
     
     func containsInvalidCharacters(input: String) -> Bool {
         for chr in input.characters {

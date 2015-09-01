@@ -25,8 +25,6 @@ class MainViewControllerSpec: QuickSpec {
             var viewController: Stroll_Safe.MainViewController!
             
             beforeEach {
-                MainViewController.test = true
-
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 viewController =
                     storyboard.instantiateViewControllerWithIdentifier(
