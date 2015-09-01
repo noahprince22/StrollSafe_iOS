@@ -102,11 +102,18 @@ class LockdownViewController: UIViewController, CLLocationManagerDelegate, Pinpa
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
         
         if let navController = self.navigationController {
             navController.navigationBarHidden = true
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        locationManager.startUpdatingLocation()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        locationManager.stopUpdatingLocation()
     }
     
     func interrupted() {
