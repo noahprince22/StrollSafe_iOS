@@ -8,10 +8,10 @@
 
 import UIKit
 import CoreData
-import UIKit
-import CoreData
+import Fabric
+import Crashlytics
+import DigitsKit
 
-//import KeychainSwiftAPI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         //application.statusBarHidden = true
+        
+        Fabric.with([Crashlytics.self(), Digits.self()])
+
         
         let pageController = UIPageControl.appearance()
         pageController.pageIndicatorTintColor = UIColor.lightGrayColor()

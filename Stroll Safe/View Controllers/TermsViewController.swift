@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DigitsKit
+import Crashlytics
 
 let termsFinishedNotificationKey = "com.strollsafe.termsFinishedNotificationKey"
 class TermsViewController: UIViewController, DismissableViewDelegate {
@@ -25,12 +27,39 @@ class TermsViewController: UIViewController, DismissableViewDelegate {
     }
     
     @IBAction func acceptTerms(sender: UIButton) {
+        accept()
+    }
+    
+    func accept(digits: Digits = Digits.sharedInstance(), crashlytics: Crashlytics = Crashlytics.sharedInstance(), managedObjectContext: NSManagedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!) {
         if let navController = self.navigationController {
             // Note that the dismiss function of DismissableViewDelegate will handle further views
             let setPasscodeVC = self.storyboard?.instantiateViewControllerWithIdentifier("SetPasscodeViewController") as! SetPasscodeViewController
             setPasscodeVC.delegate = self
-            navController.pushViewController(setPasscodeVC, animated: true)
+            
+            digits.authenticateWithTitle("Set Phone Number", completion: { (session: DGTSession!, error: NSError!) in
+                if (error == nil) {
+                    let userId = session.userID
+                    crashlytics.setUserIdentifier(userId)
+                    self.storePhoneNumber(session.phoneNumber, managedObjectContext: managedObjectContext)
+                    navController.pushViewController(setPasscodeVC, animated: true)
+                }
+            })
         }
+    }
+    
+    func storePhoneNumber(number: String, managedObjectContext: NSManagedObjectContext) {
+        var newConf: Configuration
+        do {
+            try newConf = Configuration.get(managedObjectContext)
+        } catch {
+            // We can be sure this is the first run, so we'll just set the phone number on a new
+            //    configuration, which will have all of the default values for everything else
+            newConf = NSEntityDescription.insertNewObjectForEntityForName("Configuration", inManagedObjectContext: managedObjectContext) as! Configuration
+        }
+        
+        newConf.phone_number = number
+        
+        try! managedObjectContext.save()
     }
     
     func close(controller: UIViewController) {

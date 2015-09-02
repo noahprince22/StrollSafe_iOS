@@ -1,8 +1,18 @@
 PODS:
   - Alamofire (1.3.0)
+  - Crashlytics (3.1.1)
+  - Digits (1.9.0)
+  - Fabric (1.4.0):
+    - Fabric/Base (= 1.4.0)
+  - Fabric/Base (1.4.0)
+  - TwitterCore (1.9.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - Crashlytics
+  - Digits
+  - Fabric
+  - TwitterCore
 
 EXTERNAL SOURCES:
   Alamofire:
@@ -16,5 +26,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: e57db85401895fda01783b3b9bda5b32d9f347ff
+  Crashlytics: 39ab395565bc03c29cdecd2b9d103ebf30930c10
+  Digits: be373967dc2c51917941228d79b231340e2a2dca
+  Fabric: 6d1d1c1eaf7ebc76fc3307e2c0259456411baf26
+  TwitterCore: 98ed97a6047c4ef109522840337e815683ead7e5
 
 COCOAPODS: 0.38.2

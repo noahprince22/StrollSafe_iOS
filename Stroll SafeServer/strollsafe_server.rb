@@ -17,19 +17,23 @@ post '/message' do
 end
 
 post '/feature' do
+  puts params
+
   Mail.deliver do 
     from "#{params['phone']}@strollsafe"
     to 'noahprince8@gmail.com'
     subject "[FEATURE] #{params['subject']}"
-    body params['body']
+    body "#{params['body']}\nFrom: #{params['name']}"
   end
 end
 
-post '/bug' do 
+post '/bug' do
+  puts params
+ 
   Mail.deliver do
     from "#{params['phone']}@strollsafe"
     to 'noahprince8@gmail.com'
     subject "[BUG] #{params['subject']}"
-    body params['body']
+    body "#{params['body']}\nFrom: #{params['name']}"
   end
 end

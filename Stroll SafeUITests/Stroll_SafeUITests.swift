@@ -72,8 +72,6 @@ class Stroll_SafeUITests: XCTestCase {
         let tablesQuery = app.tables
         tablesQuery.textFields["full_name"].tap()
         tablesQuery.textFields["full_name"].typeText("Urist McTest")
-        tablesQuery.textFields["Please include area code"].tap()
-        tablesQuery.textFields["phone_number"].typeText("3018675309")
         tablesQuery.cells.containingType(.StaticText, identifier:"Or").textFields["Number to Contact"].tap()
         tablesQuery.textFields["call_contact"].typeText("5555555555")
         
@@ -163,7 +161,7 @@ class Stroll_SafeUITests: XCTestCase {
         textView.typeText("jhsadfkjs")
         
         let strollSafeMessagetableviewNavigationBar = app.navigationBars["Stroll_Safe.MessageTableView"]
-        let doneButton = strollSafeMessagetableviewNavigationBar.buttons["Done"]
+        let doneButton = strollSafeMessagetableviewNavigationBar.buttons["Send"]
         let deleteButton = strollSafeMessagetableviewNavigationBar.buttons["Delete"]
 
         doneButton.tap()

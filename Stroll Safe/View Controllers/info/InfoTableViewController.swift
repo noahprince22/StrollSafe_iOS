@@ -28,7 +28,7 @@ class InfoTableViewController: UITableViewController, DismissableViewDelegate {
                 case 0:
                     vc.configure = { _ in
                         vc.subjectField.placeholder = "a brief description of the feature"
-                        vc.body = "Overview:"
+                        vc.body = "Overview:\n"
                     }
                     
                     vc.doneAction = { _ in
@@ -36,6 +36,11 @@ class InfoTableViewController: UITableViewController, DismissableViewDelegate {
                         self.navigationController!.popViewControllerAnimated(true)
                     }
                 case 1:
+                    vc.configure = { _ in
+                        vc.subjectField.placeholder = "a brief description of the bug"
+                        vc.body = "Description:\n\n\n\nSteps to Recreate This Bug:\n"
+                    }
+                    
                     vc.doneAction = { _ in
                         CommunicationUtil().sendBug(vc.subject, body: vc.body)
                         self.navigationController!.popViewControllerAnimated(true)

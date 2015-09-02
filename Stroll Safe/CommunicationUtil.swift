@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let SERVER_URL = "https://388c9f8a.ngrok.io"
+    static let SERVER_URL = "https://63fb3334.ngrok.io"
     static let MESSAGE_URL = "\(CommunicationUtil.SERVER_URL)/message"
     static let FEATURE_URL = "\(CommunicationUtil.SERVER_URL)/feature"
     static let BUG_URL = "\(CommunicationUtil.SERVER_URL)/bug"
@@ -39,6 +39,21 @@ class CommunicationUtil {
         }
     }
     
+    func getFullName() -> String {
+        var conf: Configuration!
+        do {
+            conf = try Configuration.get((UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext!)
+        } catch {
+            return ""
+        }
+        
+        if let fullName = conf.full_name {
+            return fullName
+        } else {
+            return ""
+        }
+    }
+    
     /**
     Sends an sms using twilio by requesting to my twilio server ruby app
     
@@ -47,7 +62,7 @@ class CommunicationUtil {
     */
     func sendSms(recipients: [String], body: String) {
         for recipient in recipients {
-            let request = Alamofire.request(Method.POST, CommunicationUtil.MESSAGE_URL, parameters: ["phone": getPersonalPhone(), "to": recipient, "body": body, "uuid": CommunicationUtil.UUID])
+            let request = Alamofire.request(Method.POST, CommunicationUtil.MESSAGE_URL, parameters: ["phone": getPersonalPhone(),"name": getFullName(), "to": recipient, "body": body, "uuid": CommunicationUtil.UUID])
             request.validate()
             request.response { request, response, data, error in
                 print(request)
@@ -110,7 +125,7 @@ class CommunicationUtil {
     :param: body
     */
     func sendFeature(subject: String, body: String) {
-        let request = Alamofire.request(Method.POST, CommunicationUtil.FEATURE_URL, parameters: ["phone": getPersonalPhone(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
+        let request = Alamofire.request(Method.POST, CommunicationUtil.FEATURE_URL, parameters: ["phone": getPersonalPhone(), "name": getFullName(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
         request.validate()
         request.response { request, response, data, error in
             print(request)
@@ -138,7 +153,7 @@ class CommunicationUtil {
      :param: body
      */
     func sendBug(subject: String, body: String) {
-        let request = Alamofire.request(Method.POST, CommunicationUtil.BUG_URL, parameters: ["phone": getPersonalPhone(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
+        let request = Alamofire.request(Method.POST, CommunicationUtil.BUG_URL, parameters: ["phone": getPersonalPhone(), "name": getFullName(), "body": body, "subject": subject, "uuid": CommunicationUtil.UUID])
         request.validate()
         request.response { request, response, data, error in
             print(request)

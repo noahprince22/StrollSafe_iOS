@@ -4,7 +4,7 @@
         <attribute name="call_recipient" optional="YES" attributeType="String" defaultValueString="4444444466" syncable="YES"/>
         <attribute name="full_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lockdown_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="20" syncable="YES"/>
-        <attribute name="passcode" attributeType="String" syncable="YES"/>
+        <attribute name="passcode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="phone_number" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="release_duration" optional="YES" attributeType="Double" minValueString="0" defaultValueString="1.5" syncable="YES"/>
         <attribute name="sms_body" optional="YES" attributeType="String" defaultValueString="This is an alert from StrollSafe" syncable="YES"/>

@@ -65,12 +65,10 @@ class SettingsViewControllerSpec: QuickSpec {
             describe ("saving the settings") {
                 describe ("good input") {
                     let fullName = "Urist McTest"
-                    let phoneNumber = "12345678910"
                     
                     var comUtil: CommunicationUtilNonErrorMock!
                     beforeEach {
                         viewController.name.text = fullName
-                        viewController.phonenumber.text = phoneNumber
                         comUtil = CommunicationUtilNonErrorMock()
                     }
                     
@@ -115,7 +113,6 @@ class SettingsViewControllerSpec: QuickSpec {
                         viewController.initSavedValues(managedObjectContext)
                         
                         expect(viewController.name.text).to(equal(full_name))
-                        expect(viewController.phonenumber.text).to(equal(phone_number))
                         expect(viewController.callContact.text).to(equal(call_recipient))
                         expect(viewController.textContact.text).to(equal(sms_recipient))
                         expect(viewController.textBody.text).to(equal(sms_body))
@@ -130,7 +127,6 @@ class SettingsViewControllerSpec: QuickSpec {
                         let full_name = "Noah Prince"
                         let phone_number = "5555555555"
                         
-                        viewController.phonenumber.text = phone_number
                         viewController.name.text = full_name
                         viewController.contactPoliceSwitch.on = false
                         viewController.textContact.text = phone_number
@@ -156,7 +152,6 @@ class SettingsViewControllerSpec: QuickSpec {
                         let full_name = "Noah Prince"
                         let phone_number = "5555555555"
                         
-                        viewController.phonenumber.text = phone_number
                         viewController.name.text = full_name
                         viewController.saveSettings(managedObjectContext)
                         viewController.contactPoliceSwitch.on = true
@@ -182,7 +177,6 @@ class SettingsViewControllerSpec: QuickSpec {
                         
                         let storedConf = try! Configuration.get(managedObjectContext)
                         expect(storedConf.full_name).to(equal(fullName))
-                        expect(storedConf.phone_number).to(equal(phoneNumber))
                     }
                     
                     it ("saves the call contact") {
@@ -349,7 +343,6 @@ class SettingsViewControllerSpec: QuickSpec {
                     describe ("incorrect phone numbers") {
                         beforeEach {
                             viewController.callContact.text = ""
-                            viewController.phonenumber.text = ""
                             viewController.textContact.text = ""
                             viewController.contactPoliceSwitch.on = true
                         }
@@ -361,21 +354,13 @@ class SettingsViewControllerSpec: QuickSpec {
                                 viewController.name.text = "Urist McTest"
                             }
                             
-                            it ("personal fails") {
-                                viewController.phonenumber.text = "1234567"
-                                
-                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
-                            }
-                            
                             it ("call fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "1234567"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Calling \(SettingsViewController.PHONE_TOO_SHORT)\n"))
                             }
                             
                             it ("text fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "1234567"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Texting \(SettingsViewController.PHONE_TOO_SHORT)\n"))
@@ -388,21 +373,13 @@ class SettingsViewControllerSpec: QuickSpec {
                                 viewController.name.text = "Urist McTest"
                             }
                             
-                            it ("personal fails validation") {
-                                viewController.phonenumber.text = "345678910118"
-                                
-                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_LONG)\n"))
-                            }
-                            
                             it ("call fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "345678910118"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Calling \(SettingsViewController.PHONE_TOO_LONG)\n"))
                             }
                             
                             it ("text fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "345678910118"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Texting \(SettingsViewController.PHONE_TOO_LONG)\n"))
@@ -414,22 +391,14 @@ class SettingsViewControllerSpec: QuickSpec {
                             beforeEach {
                                 viewController.name.text = "Urist McTest"
                             }
-                            it ("personal fails validation") {
-                                viewController.phonenumber.text = "911"
-                                comUtil.error = CommunicationUtilErrorMock.PhoneNumberError.TooShort
-                                
-                                expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- Personal \(SettingsViewController.PHONE_TOO_SHORT)\n"))
-                            }
-                            
+
                             it ("calling fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.callContact.text = "911"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- \(SettingsViewController.PHONE_911)\n"))
                             }
                             
                             it ("texting fails validation") {
-                                viewController.phonenumber.text = safeNumber
                                 viewController.textContact.text = "911"
                                 
                                 expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtil)).to(equal("- \(SettingsViewController.PHONE_911)\n"))
@@ -438,20 +407,11 @@ class SettingsViewControllerSpec: QuickSpec {
                     }
                     
                     it ("requires full name") {
-                        viewController.phonenumber.text = "5555555555"
-                        
                         expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.REQUIRE_FULL_NAME)\n"))
-                    }
-                    
-                    it ("requires phone number") {
-                        viewController.name.text = "Urist McTest"
-                        
-                        expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.REQUIRE_PHONE)\n"))
                     }
 
                     it ("requires either texting or calling to be enabled") {
                         viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
                         viewController.callContact.text = ""
                         viewController.contactPoliceSwitch.on = false
                         viewController.textEnabledSwitch.on = false
@@ -461,7 +421,6 @@ class SettingsViewControllerSpec: QuickSpec {
 
                     it ("does not allow multiple decimal places in the lockdown timer") {
                         viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
                         viewController.lockdownTime.text = "10..5"
                         
                         expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
@@ -469,7 +428,6 @@ class SettingsViewControllerSpec: QuickSpec {
 
                     it ("does not allow multiple decimal places in the release timer") {
                         viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
                         viewController.releaseTime.text = ".1."
                         
                         expect(viewController.saveSettings(managedObjectContext, communicationUtil: comUtilNoError)).to(equal("- \(SettingsViewController.TIMER_MULTIPLE_DECIMALS)\n"))
@@ -477,7 +435,6 @@ class SettingsViewControllerSpec: QuickSpec {
 
                     it ("does not allow texting to be enabled without a contact phone number") {
                         viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
                         viewController.textContact.text = ""
                         viewController.textEnabledSwitch.on = true
                         
@@ -486,7 +443,6 @@ class SettingsViewControllerSpec: QuickSpec {
                     
                     it ("cannot contact the police if the lockdown timer is less than 10 seconds") {
                         viewController.name.text = "Urist McTest"
-                        viewController.phonenumber.text = "5555555555"
                         viewController.contactPoliceSwitch.on = true
                         viewController.lockdownTime.text = "\(SettingsViewController.POLICE_MINIMUM_LOCKDOWN_TIME_THRESHOLD - 0.1)"
                         

@@ -17,7 +17,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     static let PHONE_CANNOT_CONTACT = "cannot contact the number provided"
     static let PHONE_INVALID_CHARS = "had invalid characters"
     static let REQUIRE_FULL_NAME = "Full Name is required"
-    static let REQUIRE_PHONE = "Phone Number is required"
     static let REQUIRE_TEXTING_OR_CALLING = "One of texting or calling must be enabled"
     static let TEXT_ENABLED_REQUIRE_CONTACT = "Texting cannot be enabled without a phone number to contact"
     static let TIMER_MULTIPLE_DECIMALS = "Timer values cannot have multiple decimals"
@@ -32,7 +31,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var lockdownTime: UITextField!
     @IBOutlet weak var releaseTime: UITextField!
-    @IBOutlet weak var phonenumber: UITextField!
     @IBOutlet weak var textContact: UITextField!
     @IBOutlet weak var callContact: UITextField!
     @IBOutlet weak var textBody: UITextField!
@@ -70,10 +68,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         }
     }
     
-    @IBAction func personalPhoneInfo(sender: AnyObject) {
-        displayAlertView("Privacy", message: "Stroll Safe uses your phone number only to identify you to the police and to your emergency text contact.\n\nWe will not sell or distribute this information")
-    }
-    
     /**
     Displays an 'ok' only alert view with the given title and message
     
@@ -105,23 +99,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         
         var formattedCallContact = ""
         var formattedTextContact = ""
-        var formattedPersonalContact = ""
-        
-        // The person's own phone number should be valid and present
-        if let personalContact = self.phonenumber.text {
-            if (personalContact != "") {
-                let personalValidation = validatePhoneNumber(personalContact, communicationUtil: communicationUtil)
-                if let error = personalValidation.1 {
-                    message += alertItem("Personal \(error)")
-                } else {
-                    formattedPersonalContact = personalValidation.0
-                }
-            } else {
-                message += alertItem(SettingsViewController.REQUIRE_PHONE)
-            }
-        } else {
-            message += alertItem(SettingsViewController.REQUIRE_PHONE)
-        }
         
         // Require full name
         if let fullName = self.name.text {
@@ -199,7 +176,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
             let conf = try! Configuration.get(managedObjectContext)
             
             conf.full_name = self.name.text
-            conf.phone_number = formattedPersonalContact
             
             if (formattedCallContact == "" && self.contactPoliceSwitch.on == true) {
                 conf.call_recipient = SettingsViewController.POLICE_PHONE_NUMBER
@@ -353,7 +329,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
         super.viewDidLoad()
         
         self.name.delegate = self
-        self.phonenumber.delegate = self
         //self.callContact.delegate = self
         //self.textContact.delegate = self
         self.textBody.delegate = self
@@ -392,10 +367,6 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
 
         if let name = conf.full_name {
             self.name.text = name
-        }
-        
-        if let phone = conf.phone_number {
-            self.phonenumber.text = phone
         }
         
         // Enable the contact police switch only if the saved number is the police
@@ -456,7 +427,7 @@ class SettingsViewController: UITableViewController, UITextFieldDelegate, UISear
 
         switch section {
         case 0:
-            return 2
+            return 1
         case 1:
             return 2
         case 2:
