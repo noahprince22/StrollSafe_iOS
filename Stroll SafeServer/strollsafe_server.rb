@@ -10,20 +10,25 @@ post '/message' do
   # set up a client to talk to the Twilio REST API 
   @client = Twilio::REST::Client.new config[:account_sid], config[:auth_token] 
   @client.account.messages.create({
-  	:from => '+12403497236',
-        :to => params["to"],
-        :body => params["body"]    
+  	:from => params['phone'],
+    :to => params["to"],
+    :body => params["body"]    
   })  
+end
+
+def build_body_from_params(params)
+  return "#{params['body']}\nFrom: #{params['name']}\n uuid: #{params['uuid']}\n digits_id: #{params['digits_id']}\n phone: #{params['phone']}"
 end
 
 post '/feature' do
   puts params
 
-  Mail.deliver do 
-    from "#{params['phone']}@strollsafe"
+  Mail.deliver do
+    delivery_method :sendmail
+    from "#{params['name']}@strollsafe"
     to 'noahprince8@gmail.com'
     subject "[FEATURE] #{params['subject']}"
-    body "#{params['body']}\nFrom: #{params['name']}"
+    body build_body_from_params(params)
   end
 end
 
@@ -34,6 +39,6 @@ post '/bug' do
     from "#{params['phone']}@strollsafe"
     to 'noahprince8@gmail.com'
     subject "[BUG] #{params['subject']}"
-    body "#{params['body']}\nFrom: #{params['name']}"
+    body build_body_from_params
   end
 end
