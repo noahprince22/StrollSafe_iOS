@@ -2,7 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.2'
 use_frameworks!
 
-pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
+pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git'
 link_with 'Stroll Safe', 'Stroll SafeTests'
 
 pod 'Fabric'

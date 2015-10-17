@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 class CommunicationUtil {
-    static let SERVER_URL = "https://63fb3334.ngrok.io"
+    static let SERVER_URL = "http://ec2-52-88-201-242.us-west-2.compute.amazonaws.com:4567"
     static let MESSAGE_URL = "\(CommunicationUtil.SERVER_URL)/message"
     static let FEATURE_URL = "\(CommunicationUtil.SERVER_URL)/feature"
     static let BUG_URL = "\(CommunicationUtil.SERVER_URL)/bug"
@@ -89,7 +89,7 @@ class CommunicationUtil {
     :param: number the phone number
     */
     func formatNumber(number: String) throws -> String {
-        let strippedPhoneNumber = "".join(number.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet))
+        let strippedPhoneNumber = number.componentsSeparatedByCharactersInSet(NSCharacterSet.decimalDigitCharacterSet().invertedSet).joinWithSeparator(",")
         
         if (containsInvalidCharacters(strippedPhoneNumber)) {
             throw PhoneNumberError.ContainsInvalidCharacters

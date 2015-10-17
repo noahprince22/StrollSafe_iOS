@@ -1,6 +1,11 @@
 require 'sinatra'
 require 'twilio-ruby' 
 require 'yaml'
+require 'sinatra_ssl'
+
+set :port, 8443
+set :ssl_certificate, "server.crt"
+set :ssl_key, "server.key"
 
 post '/message' do
   config = YAML.load_file('config.yml')
